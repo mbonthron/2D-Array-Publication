@@ -8,27 +8,21 @@ N_modes = data.N_modes;
 
 %% Determine A0 - starting in Chiral shape
 % Load in the Chiral Shape from the periodic System
-load("Chiral N = 3.mat","A0p");
+load("b = 0.15 pi.mat","A0p");
 A0 = zeros(2*N*N_modes,1);
 
 %% Go Unit Cell by Unit Cell
-unit_cell_count = N / 22;
-periodic_order = [1 2 3 4 5 6 7 8 9 10 11 12 13 16 17 20 21 22 -14 -15 -18 -19];
-% unraveled_periodic_order = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 23];
+unit_cell_count = (N - 1) / 16;
+% This relates the non-periodic -> periodic
+% nonperiodic_order = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16];
+periodic_order = [1 2 3 4 5 6 7 8 9 11 12 15 16 -10 -13 14];
 
 for i = 0:unit_cell_count-1
     % For the ith unit cell (From the periodic system)
-    for j = 1:22
-        % For each arch
-        if j == 1 && i == 0
-            global_arch_number = 22*i+1;
-        elseif j == 1
-            global_arch_number = 22*i;
-        elseif j == 22
-            global_arch_number = 22*i+j+1;
-        else
-            global_arch_number = 22*i+j;
-        end
+    for j = 1:16
+        % For each arch - if first unit cell and first arch
+        global_arch_number = 16*i+j;
+        
         fprintf("%.0f \t %.0f\n",[periodic_order(j) global_arch_number])
         start_idx = N_modes*global_arch_number - (N_modes - 1);
         end_idx = N_modes*global_arch_number;
@@ -41,26 +35,18 @@ for i = 0:unit_cell_count-1
 
         else
             A0(start_idx:end_idx) = A0p(start_idxp:end_idxp);
-
         end
+        
     end
 end
 
-% Add in the initial shape for the last two arches
-global_arch_number = N - 2;
+% Add in the initial shape for the last arch
+global_arch_number = N;
 start_idx = N_modes*global_arch_number - (N_modes - 1);
 end_idx = N_modes*global_arch_number;
 
 start_idxp = N_modes*periodic_order(1) - (N_modes - 1);
 end_idxp = N_modes*periodic_order(1);
-A0(start_idx:end_idx) = A0p(start_idxp:end_idxp);
-
-global_arch_number = N;
-start_idx = N_modes*global_arch_number - (N_modes - 1);
-end_idx = N_modes*global_arch_number;
-
-start_idxp = N_modes*periodic_order(2) - (N_modes - 1);
-end_idxp = N_modes*periodic_order(2);
 A0(start_idx:end_idx) = A0p(start_idxp:end_idxp);
 
 data.A0 = A0;

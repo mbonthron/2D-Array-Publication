@@ -19,12 +19,5 @@ for i = 2:number_of_elements
     points = [points ; points_to_add];
 end
 
-
-% Determine the adjacency matrix
-adjacency_matrix = determine_adjacency_matrix(points);
-
-% Visualize the point and connection between the nodes
-plot_grid(adjacency_matrix,points,1);
-
-N = sum(triu(adjacency_matrix,1) ==1,'all');
-unit_cell_count = (N - 1) / 16;
+data.points = points;
+data.V = length(points);
