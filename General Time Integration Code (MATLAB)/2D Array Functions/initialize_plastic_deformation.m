@@ -49,6 +49,7 @@ data.displacement_omega = zeros(N,1);
 %% Imposed Rotation Values
 data.impose_rotation_at = impose_rotation_at;
 data.rotation_omega = zeros(data.V,1);
+data.rotation_mag = ones(data.V,1);
 
 end
 

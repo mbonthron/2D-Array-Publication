@@ -1,5 +1,5 @@
 yy = sqrt(3)/2;
-number_of_elements = 2;
+number_of_elements = 10;
 
 points0 = [0 0;
          0.5 yy;

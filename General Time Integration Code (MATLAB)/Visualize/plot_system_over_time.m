@@ -31,6 +31,10 @@ arch_linewidth = 2;
 tinterp = linspace(t(1),t(end),frames);
 Ainterp = interp1(t,A,tinterp);
 
+if ~exist("Videos\", 'dir')
+    mkdir("Videos\");
+end
+
 file_name = "Videos\"+file_name;
 
 %  Initialize the video write and open the video

@@ -13,7 +13,7 @@ data.N_modes = 3;   % Number of modes used to describe the system
 
 %% Load and visualize the node data
 % run('points_chain.m')
-run('points_square_chain.m')
+run('points_triangle.m')
 
 % Determine the adjacency matrix & Total Number of Arches
 [data] = determine_adjacency_matrix(data);

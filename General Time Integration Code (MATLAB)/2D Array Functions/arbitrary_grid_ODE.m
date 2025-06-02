@@ -1,4 +1,4 @@
-function dAdt = arbitrary_grid_ODE(t,A,data)
+function dAdt = arbitrary_grid_ODE(t,Ahat,data)
 %ARBITRARY_GRID_ODE Performs time integration on an arbitrary system of
 %arches
 %   INPUTS
@@ -15,6 +15,8 @@ function dAdt = arbitrary_grid_ODE(t,A,data)
 %       respect to time of each variable
 %% Load Data
 coeff_matrix = data.coeff_matrix;
+coeff_matrix_modes = data.coeff_matrix_modes;
+
 b_vector = data.b_vector;
 e_vector = data.e_vector;
 t_vector = data.t_vector;
@@ -28,18 +30,44 @@ force_omega = data.force_omega;
 
 impose_rotation_at = data.impose_rotation_at;
 rotation_omega = data.rotation_omega;
+rotation_mag = data.rotation_mag;
 
 beta = data.beta;
 N = data.N;
 V = data.V;
 N_modes = data.N_modes;
 
+C  = data.constraint_count;
+modes_to_skip = data.modes_to_skip;
 %%
 % Set up empty vector used to describe the system
-dAdt = zeros(2*N*N_modes,1);
+dAdt = zeros(2*(N*N_modes-C),1);
 
 % Relate first and second derivative
-dAdt(1:N*N_modes) = A(N*N_modes+1:end);
+dAdt(1:N*N_modes-C,:) = Ahat(N*(N_modes)-C+1:end,:);
+
+%%
+% Recover the lost variable
+last_C_rows = coeff_matrix_modes(end-(C-1):end,1:N*N_modes); 
+LHS = last_C_rows(:,modes_to_skip);
+RHS = -1*last_C_rows(:,setdiff(1:N*N_modes,modes_to_skip));
+
+missingvals = (LHS\RHS)*Ahat(1:end/2,:);
+Dmissingvals = (LHS\RHS)*Ahat(end/2+1:end,:);
+
+% Produce the 'full' A matrix which can be used in dVdAN
+A = Ahat;
+for i = 1:C
+    mode = modes_to_skip(i);
+    A = [A(1:mode-1,:); missingvals(i,:) ; A(mode:end,:)];
+end
+shift_modes = N*N_modes;    % Do the same for the derivative terms
+for i = 1:C
+    mode = modes_to_skip(i);
+    A = [A(1:shift_modes+mode-1,:); Dmissingvals(i,:) ; A(shift_modes+mode:end,:)];
+end
+
+%% Use A to solve the full system
 
 % Construct the vector composing of dv/daN
 RHS = zeros(length(coeff_matrix),1);
@@ -86,9 +114,15 @@ imposed_rotation_at = find(impose_rotation_at ~= 0);
 if ~isempty(imposed_rotation_at)
     rotation_count = length(imposed_rotation_at);
     omega_vals = rotation_omega(imposed_rotation_at);
-    RHS(N*N_modes+2*N+displacement_count+1:N*N_modes+2*N+displacement_count+rotation_count) = data.initial_angle.*omega_vals.^2.*cos(omega_vals*t);
+    mag_vals = data.rotation_mag(imposed_rotation_at);
+
+    RHS(N*N_modes+2*N+displacement_count+1:N*N_modes+2*N+displacement_count+rotation_count) = mag_vals.*data.initial_angle.*omega_vals.^2.*cos(omega_vals*t);
 end
 
+%% Final Inversion
 solution = -(inv(coeff_matrix))*RHS;
-dAdt(N_modes*N+1:end) = solution(1:N_modes*N);
+
+% Move the needed rows into the solution matrix
+keep_rows = setdiff(1:N*N_modes,modes_to_skip);
+dAdt(N*N_modes-C+1:end,:) = solution(keep_rows);
 end

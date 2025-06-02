@@ -1,4 +1,4 @@
-function [data] = initialize_from_flat(impose_displacement_at,impose_rotation_at,data)
+function [data] = initialize_chiral(impose_displacement_at,impose_rotation_at,data)
 %INITIALIZE_CIRAL Defines displacement_vector and force_matrix 
 %   a system with plastic deformation such that we start each element in
 %   its CHIRAL shape (higher) energy well
@@ -63,6 +63,7 @@ data.displacement_omega = zeros(N,1);
 %% Imposed Rotation Values
 data.impose_rotation_at = impose_rotation_at;
 data.rotation_omega = zeros(data.V,1);
+data.rotation_mag = ones(data.V,1);
 
 
 end

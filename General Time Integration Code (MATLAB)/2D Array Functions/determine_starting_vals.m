@@ -17,4 +17,5 @@ C = sum(data.impose_rotation_at);   % Find the number of vertecies where rotatio
 coeff = data.coeff_matrix(end-(C-1):end,1:N*N_modes);          % Load the last C rows of the coefficient matrix
 
 data.initial_angle = coeff*A0(1:N*N_modes);
+
 end

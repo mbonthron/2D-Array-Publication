@@ -225,6 +225,9 @@ for i=1:size(arch_pairs,1)
 end
 1;
 
+data.constraint_count = size(arch_pairs,1);
+
+
 %% If there are Imposed Displacements
 arches_with_displacements = find(impose_displacement_at~=0);
 for i=1:num_displacements_linear
@@ -297,5 +300,6 @@ end
 
 %%
 data.coeff_matrix = coeff_matrix;
+data.coeff_matrix_modes = coeff_matrix(1:N_modes*N+num_moments,1:N_modes*N+num_moments);
 
 end

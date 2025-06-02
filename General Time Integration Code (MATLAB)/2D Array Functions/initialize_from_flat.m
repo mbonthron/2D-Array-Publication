@@ -1,4 +1,4 @@
-function [data] = initialize_elastic_deformation(impose_displacement_at,impose_rotation_at,data)
+function [data] = initialize_from_flat(impose_displacement_at,impose_rotation_at,data)
 %INITIALIZE_ELASTIC_DEFORMATION Defines displacement_vector and force_matrix for a
 %   elastically deformed system.
 %
@@ -31,6 +31,7 @@ data.displacement_omega = zeros(N,1);
 %% Imposed Rotation Values
 data.impose_rotation_at = impose_rotation_at;
 data.rotation_omega = zeros(data.V,1);
+data.rotation_mag = ones(data.V,1);
 
 
 end
