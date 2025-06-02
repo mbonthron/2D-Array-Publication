@@ -16,9 +16,11 @@ e_vector = data.e_vector;
 adjacency_matrix = data.adjacency_matrix;
 points = data.points;
 
+mod_factor = (18/size(points,1))^1.4;
+
 %% Plot Styles
 arch_color = 'k';
-arch_linewidth = 4;
+arch_linewidth = 4*mod_factor;
 
 %% Make the grid without any of the deformed arches plotted
 f = plot_grid(data,false);

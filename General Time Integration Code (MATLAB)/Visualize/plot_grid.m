@@ -12,27 +12,29 @@ function [f] = plot_grid(data,add_labels)
 points = data.points;
 adjacency_matrix = data.adjacency_matrix;
 
+mod_factor = (18/size(points,1))^1.4;
+
 %% Plot Styles
 grid_color = 0.5*[1 1 1];
 grid_linewidth = 2;
 grid_linestyle = '--';
 
 node_big_circle_color = 0.75*[1 1 1];
-node_big_circle_size  = 200;
+node_big_circle_size  = 200*mod_factor;
 
 node_little_circle_color = 'k';
-node_little_circle_size = 50;
+node_little_circle_size = 50*mod_factor;
 
-node_number_font_size = 18;
+node_number_font_size = 18*mod_factor;
 node_number_color = 'k';
 
-arch_number_font_size = 18;
+arch_number_font_size = 18*mod_factor;
 arch_number_color = [191 2 59]/255;
 
-moment_left_font_size = 8;
+moment_left_font_size = 8*mod_factor;
 moment_left_color = [2 172 191]/255;
 
-moment_right_font_size = 8;
+moment_right_font_size = 8*mod_factor;
 moment_right_color = [191 81 2]/255;
 
 %% Define Commonly Used Variables
@@ -55,8 +57,8 @@ buffer = 0.15*major_axis;
 f = figure(9898); clf; hold on
 daspect([1 1 1])
 
-xlim(x_center+.5*[-width width]+buffer*[-1 1])
-ylim(y_center+.5*[-height height]+buffer*[-1 1])
+xlim(x_center+.5*[-width width]+buffer*[-1 1]*mod_factor)
+ylim(y_center+.5*[-height height]+buffer*[-1 1]*mod_factor)
 
 %% Create Grid
 % Connect the corresponding nodes per the adjacency_matrix
