@@ -32,7 +32,7 @@ run('rise_rhombus_chain_constant')
 plot_system_once(data.A0,data)
 
 %% Prepare for Time Integration
-data.beta = 0.005;
+data.beta = 0.0075;
 T_end = 5000;
 data = determine_coefficient_matrix(data);
 data = determine_starting_vals(data);
@@ -42,9 +42,12 @@ data.A0hat = determine_Ahat_from_A(data.A0,data);
 %% Run Time Integration
 [t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);
 
+data_Orig = deepCopyStruct(data);
 %% Recover A
-A = determine_A_from_Ahat(Ahat,data);
-
+A_Orig = determine_A_from_Ahat(Ahat,data);
+for beta = .000005:.000005:.00025
+A = A_Orig;
+data = data_Orig;
 %% Visualize the Results
 % data.frames = 100;
 % data.file_name = "b = 0.15 Testing Init";
@@ -57,37 +60,51 @@ data.A0 = A(end,:)';
 data.A0(data.N*data.N_modes+1:end) = 0;
 
 %% Prepare for Time Integration
-data.beta = 0.00002;
 
-
-data.impose_rotation_at(24) = 1;
-data.rotation_omega(24) = 2*pi/T_end;
-data.rotation_mag(24) = 2.5;
-
-data.impose_rotation_at(25) = 1;
-data.rotation_omega(25) = 2*pi/T_end;
-data.rotation_mag(25) = 2.5;
-
-% data.impose_rotation_at(6) = 1;
-% data.rotation_omega(6) = 0.0013; 
-% data.rotation_mag(6) = 2;
-% 
-% data.impose_rotation_at(7) = 1;
-% data.rotation_omega(7) = 0.0013; 
-% data.rotation_mag(7) = 2;
-
-data = determine_coefficient_matrix(data);
-data = determine_starting_vals(data);
-data = determine_modes_to_skip(data);
-data.A0hat = determine_Ahat_from_A(data.A0,data);
-
-%% Run Time Integration
-[t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);
-
-%% Recover A
-A = determine_A_from_Ahat(Ahat,data);
-
-%% Visualize the Results
-data.frames = 100;
-data.file_name = "b = 0.15";
-plot_system_over_time(t,A,data)
+    data.beta = beta;
+    
+    %data.impose_rotation_at(24) = 1;
+    %data.rotation_omega(24) = 2*pi/T_end;
+    %data.rotation_mag(24) = 2.5;
+    
+    %data.impose_rotation_at(25) = 1;
+    %data.rotation_omega(25) = 2*pi/T_end;
+    %data.rotation_mag(25) = 2.5;
+    
+    data.impose_rotation_at(2) = 1;
+    data.rotation_omega(2) = 0.0013; 
+    data.rotation_mag(2) = 0;
+    
+    data.impose_rotation_at(3) = 1;
+    data.rotation_omega(3) = 0.0013; 
+    data.rotation_mag(3) = 0;
+    
+    data.impose_rotation_at(46) = 1;
+    data.rotation_omega(46) = 0.0013; 
+    data.rotation_mag(46) = 0;
+    
+    data.impose_rotation_at(47) = 1;
+    data.rotation_omega(47) = 0.0013; 
+    data.rotation_mag(47) = 0;
+    
+    
+    
+    data.impose_displacement_at(52) = 0.5;
+    data.displacement_omega(52) = 2*pi/T_end;
+    
+    data = determine_coefficient_matrix(data);
+    data = determine_starting_vals(data);
+    data = determine_modes_to_skip(data);
+    data.A0hat = determine_Ahat_from_A(data.A0,data);
+    
+    %% Run Time Integration
+    [t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);
+    
+    %% Recover A
+    A = determine_A_from_Ahat(Ahat,data);
+    
+    %% Visualize the Results
+    data.frames = 100;
+    data.file_name = "b = 0.15 beta = " + num2str(data.beta);
+    plot_system_over_time(t,A,data)
+end
