@@ -14,20 +14,22 @@ if shapeNum == 1
     % Take a look at the initial condition
     %plot_system_once(data.A0,data)
     %%
-    data = add_periodicity(data);
     
-    % Visualize the point and connection between the nodes
-    plot_grid(data,1);
-    
-    % Determin the coefficient matrix and number of constraints of the system
-    data = determine_coefficient_matrix(data);
-    modes_to_skip = determine_modes_to_skip(data);
-    
-    %% General Stuff for Coco Continuation
-    run_number = 1;
-    run_name1 = ['rhombus_direct_run' sprintf('%.0f',run_number)];
-
 end
+
+data = add_periodicity(data);
+
+% Visualize the point and connection between the nodes
+plot_grid(data,1);
+
+% Determine the coefficient matrix and number of constraints of the system
+data = determine_coefficient_matrix(data);
+modes_to_skip = determine_modes_to_skip(data);
+
+%% General Stuff for Coco Continuation
+run_number = 1;
+run_name1 = ['rhombus_direct_run' sprintf('%.0f',run_number)];
+
 
 N = data.N;
 N_modes = data.N_modes;

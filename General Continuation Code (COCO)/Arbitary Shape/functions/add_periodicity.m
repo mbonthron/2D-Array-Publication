@@ -50,6 +50,7 @@ end
 %% Store into data
 data.adjacency_matrix = temp_adjacency_matrix;
 data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
+data.points_finite = [points;temp_points];
 
 end
 
