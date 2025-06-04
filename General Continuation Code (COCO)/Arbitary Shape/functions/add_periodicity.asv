@@ -18,10 +18,11 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     x = ground_nodes_points(GN_point_idx,1);
     y = ground_nodes_points(GN_point_idx,2);
     
-    min_dist_curr = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
-    min_dist = min([min_dist, min_dist_curr]);
+    max_x = max(points(points(:,2) == y,1));
+    min_dist = min()
 
-temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*min_dist, zeros(size(ground_nodes_points,1),1)];
+    
+temp_points(GN_point_idx,:) = [ y
 
 % Find which points are 1 unit away from these points
 
