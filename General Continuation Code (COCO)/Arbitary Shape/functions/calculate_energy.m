@@ -1,4 +1,4 @@
-function [V] = calculate_energy(A,N,b_vector,t_vector,N_modes)
+function [V] = calculate_energy(data)
 %CALCULATE_ENERGY Summary of this function goes here
 %   INPUTS
 %   ===================================================
@@ -18,6 +18,12 @@ function [V] = calculate_energy(A,N,b_vector,t_vector,N_modes)
 %   V: 1 x N vector which each index corresponds to the potential energy 
 %       of the corresponding arch number.
 %%
+A = data.A0;
+N = data.N;
+b_vector = data.b_vector;
+t_vector = data.t_vector;
+N_modes = data.N_modes;
+
 V = zeros(1,N);
 
 for i = 1:N

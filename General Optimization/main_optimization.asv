@@ -32,7 +32,7 @@ data = general_COCO(data, bpoints);
 
 %% Determine High Energy State(s) at each b
 %Assumes highest energy state goes to another ideal state
-
+data = get_mode_shape_from_coco(data)
 % Inside for loop for each b
 
 
