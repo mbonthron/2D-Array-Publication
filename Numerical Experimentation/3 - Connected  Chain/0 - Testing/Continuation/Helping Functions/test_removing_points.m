@@ -46,8 +46,8 @@ middles = [1 2;
            8 9;
            9 10];
 
-remove_middles = [1 3 5 7 ]+1;
-remove_middles = [3 7];
+% remove_middles = [1 3 5 7 9];
+remove_middles = [3 6 7];
 for i = remove_middles
     data = remove_connection(middles(i,1),middles(i,2),data);
 end
@@ -80,3 +80,13 @@ if r == n
 else
     fprintf("SYSTEM IS NOT FRUSTRATED\n")
 end
+
+%%
+x = 0:1:10;
+x2 = 0.5:1:10.5;
+
+
+figure(1); clf; hold on
+scatter(x,zeros(size(x)),50,"filled")
+scatter(x2,sqrt(3)/2*ones(size(x2)),50,"filled")
+axis equal
