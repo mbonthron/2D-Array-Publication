@@ -44,6 +44,8 @@ open(v)
 
 % Make the empty grid
 f = plot_grid(data,false);
+f.Position(3:4) = [2500 1000];
+
 
 up_adjac = triu(adjacency_matrix,1);
 [left, right] = find(up_adjac == 1);

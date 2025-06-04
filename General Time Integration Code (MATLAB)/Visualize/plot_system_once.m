@@ -24,6 +24,7 @@ arch_linewidth = 4*mod_factor;
 
 %% Make the grid without any of the deformed arches plotted
 f = plot_grid(data,false);
+f.Position(3:4) = [2500 1000];
 
 %% Add the shape of each arch
 up_adjac = triu(adjacency_matrix,1);
