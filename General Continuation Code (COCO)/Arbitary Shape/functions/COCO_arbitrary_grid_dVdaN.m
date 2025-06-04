@@ -1,4 +1,4 @@
-function [dVdt] = arbitrary_grid_dVdaN(A,N,b_vector,t_vector,N_modes)
+function [dVdt] = COCO_arbitrary_grid_dVdaN(A,data)
 %   ARBITRARY_GRID_DVDT Determines the nonlinear terms associated with zeroth derivative
 %   terms
 %   INPUTS
@@ -18,6 +18,12 @@ function [dVdt] = arbitrary_grid_dVdaN(A,N,b_vector,t_vector,N_modes)
 %       respect to time of each variable
 
 %%
+N = data.N;
+b_vector = data.b_vector;
+e_vector = data.e_vector;
+t_vector = data.t_vector;
+N_modes = data.N_modes;
+
 [m,n] = size(A);
 dVdt = zeros(N_modes*N,n);
 
@@ -56,5 +62,3 @@ else
         end
     end
 end
-
-
