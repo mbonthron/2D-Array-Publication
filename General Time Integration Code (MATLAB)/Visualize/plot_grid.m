@@ -48,8 +48,8 @@ height = max(y) - min(y);
 
 major_axis = max([width height]);
 
-x_center = 0.5*(max(x)-min(x));
-y_center = 0.5*(max(y)-min(y));
+x_center = 0.5*(max(x)-min(x)) + min(x);
+y_center = 0.5*(max(y)-min(y)) + min(y);
 
 buffer = 0.15*major_axis;
 
