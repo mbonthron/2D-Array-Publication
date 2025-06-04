@@ -20,24 +20,36 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     
     min_dist_curr = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
     min_dist = min([min_dist, min_dist_curr]);
+end
 
-temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*min_dist, zeros(size(ground_nodes_points,1),1)];
+
+temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+1), zeros(size(ground_nodes_points,1),1)];
+temp_adjacency_matrix = data.adjacency_matrix;
 
 % Find which points are 1 unit away from these points
+% This can be vectorized using matrix math, do later
+x = points(:,1);
+y = points(:,2);
+for i = 1:size(temp_points,1)
+    % i is the index of the ground node and the new "temp" point
+    % Determine the distance from the ith point to all other points
+    xi = temp_points(i,1);
+    yi = temp_points(i,2);
+    distances = sqrt(sum(([xi yi] - [x y]).^2,2));
+    
+    % Find all the points that are distance 1 from the ith point
+    neighbors = find(round(distances,1)==1);
+    
+    i_sized_neighbors = i*ones(size(neighbors));
 
+    temp_adjacency_matrix(i_sized_neighbors,neighbors) = 1;
+    temp_adjacency_matrix(neighbors,i_sized_neighbors) = 1;
+end
 % Add connections between the rightmost points to the leftmost points
 
-connections_to_add = [1 7;
-                      1 8;
-                      2 8];
+%% Store into data
+data.adjacency_matrix = temp_adjacency_matrix;
+data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
 
-for i = 1:length(connections_to_add)
-    node1 = connections_to_add(i,1);
-    node2 = connections_to_add(i,2);
-    
-    adjacency_matrix(node1,node2) = 1;
-    adjacency_matrix(node2,node1) = 1;
-
-end
 end
 

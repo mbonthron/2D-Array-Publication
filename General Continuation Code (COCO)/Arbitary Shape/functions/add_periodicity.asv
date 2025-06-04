@@ -18,14 +18,32 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     x = ground_nodes_points(GN_point_idx,1);
     y = ground_nodes_points(GN_point_idx,2);
     
-    max_x = max(points(points(:,2) == y,1));
-    min_dist = min()
+    min_dist_curr = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
+    min_dist = min([min_dist, min_dist_curr]);
+end
 
-    
-temp_points(GN_point_idx,:) = [ y
 
+temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*min_dist, zeros(size(ground_nodes_points,1),1)];
 % Find which points are 1 unit away from these points
+% This can be vectorized using matrix math, do later
 
+for i = 1:size(points,1)
+    for j 
+    % [x,y] position of the ith point
+    xi = x(i);
+    yi = y(i);
+
+    % Determine the distance from the ith point to all other points
+    distances = sqrt(sum(([xi yi] - [x y]).^2,2));
+    
+    % Find all the points that are distance 1 from the ith point
+    neighbors = find(round(distances,1)==1);
+    
+    i_sized_neighbors = i*ones(size(neighbors));
+
+    adjacency_matrix(i_sized_neighbors,neighbors) = 1;
+    adjacency_matrix(neighbors,i_sized_neighbors) = 1;
+end
 % Add connections between the rightmost points to the leftmost points
 
 connections_to_add = [1 7;
