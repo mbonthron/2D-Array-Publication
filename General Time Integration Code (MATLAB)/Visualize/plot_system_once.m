@@ -24,6 +24,8 @@ arch_linewidth = 4*mod_factor;
 
 %% Make the grid without any of the deformed arches plotted
 f = plot_grid(data,false);
+f.Position(3:4) = [2500 1000];
+
 
 %% Add the shape of each arch
 up_adjac = triu(adjacency_matrix,1);
@@ -52,7 +54,7 @@ for i = 1:N
     [xi,wi] = determine_shape_from_modes(Apart,e_vector(i),horiz_length);
     
     % Scale by pi so the x and y axis are tru to scale
-    wi = (1/pi)*wi;
+    wi = (1/pi)*wi*(.15/data.b_vector(1));
 
     % Find the angle between the two endpoints
     angle = atan2(y_right-y_left,x_right-x_left);
