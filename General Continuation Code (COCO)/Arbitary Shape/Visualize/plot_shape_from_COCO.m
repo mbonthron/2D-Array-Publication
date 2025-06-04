@@ -1,6 +1,12 @@
-function [] = plot_shape_from_COCO(run_name,N,N_modes,adjacency_matrix,points,coeff_matrix,modes_to_skip)
+function [] = plot_shape_from_COCO(run_name, data)
 %PLOT_SHAPE_FROM_COCO Given a run from coco, plots the points defined by UZ
 %   points in the coco run
+N = data.N;
+N_modes = data.N_modes;
+adjacency_matrix = data.adjacency_matrix;
+points = data.points;
+coeff_matrix = data.coeff_matrix;
+modes_to_skip = data.modes_to_skip;
 
 %% Load the data from coco for the mode shapes
 bd = coco_bd_read(run_name);
@@ -41,7 +47,7 @@ end
 
 %% Plot the system at each UZ point
 for i = 1:length(UZ)
-    f = plot_system_once(Ahat(:,i),N,N_modes,zeros(N,1),adjacency_matrix,points);
+    f = plot_system_once(Ahat(:,i),data);
 
     figure
     copyobj(allchild(f),gcf);

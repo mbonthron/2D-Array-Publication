@@ -51,6 +51,12 @@ end
 data.adjacency_matrix = temp_adjacency_matrix;
 data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
 data.points_finite = [points;temp_points];
+data.b_vector = zeros(data.N,1);
+[data] = initialize_elastic_deformation(zeros(data.N,1),zeros(data.V,1),data);
+
+%Consider what's actually necessary since this is going into COCO
+data.e_vector = 0*ones(data.N,1);
+data.t_vector = data.t_vector(1)*ones(data.N,1);
 
 end
 
