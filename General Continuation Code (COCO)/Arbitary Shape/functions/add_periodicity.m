@@ -1,0 +1,43 @@
+function [data] = add_periodicity(data)
+%ADD_PERIODICITY Adds the required arches for the periodic unit cell
+%% Load Data
+points = data.points;
+
+%% Add Periodicity
+% Determine which points are "ground nodes" that begin the supercell
+[root_node_x, root_node_idx] = min(points(:,1));
+ground_nodes_idx = find(points(:,1) - root_node_x < 1);
+ground_nodes_points = points(ground_nodes_idx,:);
+
+% Add another column of ground nodes on the right side temporarily
+% Determine minimum distance for L =1 on same y level
+% ASSUMES horizontal arch in periodic 
+temp_points = zeros(size(ground_nodes_points,1),2);
+min_dist = 9999;
+for GN_point_idx = 1:size(ground_nodes_points,1)
+    x = ground_nodes_points(GN_point_idx,1);
+    y = ground_nodes_points(GN_point_idx,2);
+    
+    min_dist_curr = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
+    min_dist = min([min_dist, min_dist_curr]);
+
+temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*min_dist, zeros(size(ground_nodes_points,1),1)];
+
+% Find which points are 1 unit away from these points
+
+% Add connections between the rightmost points to the leftmost points
+
+connections_to_add = [1 7;
+                      1 8;
+                      2 8];
+
+for i = 1:length(connections_to_add)
+    node1 = connections_to_add(i,1);
+    node2 = connections_to_add(i,2);
+    
+    adjacency_matrix(node1,node2) = 1;
+    adjacency_matrix(node2,node1) = 1;
+
+end
+end
+

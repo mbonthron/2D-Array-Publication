@@ -53,7 +53,7 @@ for i = 1:N
     [xi,wi] = determine_shape_from_modes(Apart,e_vector(i),horiz_length);
     
     % Scale by pi so the x and y axis are tru to scale
-    wi = (1/pi)*wi;
+    wi = (1/pi)*wi*(.15/data.b_vector(1));
 
     % Find the angle between the two endpoints
     angle = atan2(y_right-y_left,x_right-x_left);
