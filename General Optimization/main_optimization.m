@@ -24,7 +24,7 @@ data.N_modes = 3;   % Number of modes used to describe the system
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
-bpoints = [0.15*pi];
+bpoints = [0.1 0.15]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
@@ -36,7 +36,9 @@ data = init_shape(shapeNum, data);
 
     %% Run time integration for each b
     % Pattern periodic into long chain %Michael
+    data = initialize_time_integration(b_val,data);
     
+
     % Time integration and mitigate edge effects 
     
     % Determine which arch to force/displace %MICHAEL QUESTION

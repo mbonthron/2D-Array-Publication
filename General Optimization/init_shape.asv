@@ -54,7 +54,10 @@ data = add_periodicity(data);
 
 data = remove_connection(data,connections_to_remove);
 
+data = determine_per_to_finite(data);
+
 plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
+COCO_plot_system_once(zeros(data.N*data.N_modes),data)
 data.b_vector = zeros(data.N,1);
 
 
@@ -68,5 +71,10 @@ data.t_vector = 0.01*pi*ones(data.N,1);
 % Determine the coefficient matrix and number of constraints of the system
 data = determine_coefficient_matrix(data);
 data = determine_modes_to_skip(data);
+
+%% Initilize Time Integration Values
+data.points_time_integration =
+data.adjacency_matrix_time_integration =
+
 end
 

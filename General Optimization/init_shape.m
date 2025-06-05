@@ -71,5 +71,14 @@ data.t_vector = 0.01*pi*ones(data.N,1);
 % Determine the coefficient matrix and number of constraints of the system
 data = determine_coefficient_matrix(data);
 data = determine_modes_to_skip(data);
+
+%% Initilize Time Integration Values (stored for use during time integration)
+data.N_cells = 3;   % Number of unit cells to pattern
+
+L = 
+
+data.points_time_integration =
+data.adjacency_matrix_time_integration =
+
 end
 
