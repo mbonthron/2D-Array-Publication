@@ -12,7 +12,7 @@ function [f] = plot_grid(data,add_labels)
 points = data.points;
 adjacency_matrix = data.adjacency_matrix;
 
-mod_factor = (18/size(points,1))^1.4;
+mod_factor = 1;
 
 %% Plot Styles
 grid_color = 0.5*[1 1 1];

@@ -69,4 +69,5 @@ for i = 1:length(UZ)
     text(Ahat(1,i),Ahat(2,i),bcrits(i),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
 end
 
+
 end
