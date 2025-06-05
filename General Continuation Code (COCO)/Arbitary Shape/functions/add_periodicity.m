@@ -13,13 +13,13 @@ ground_nodes_points = points(ground_nodes_idx,:);
 % Determine minimum distance for L =1 on same y level
 % ASSUMES horizontal arch in periodic 
 temp_points = zeros(size(ground_nodes_points,1),2);
-min_dist = 9999;
+min_dist = -9999;
 for GN_point_idx = 1:size(ground_nodes_points,1)
     x = ground_nodes_points(GN_point_idx,1);
     y = ground_nodes_points(GN_point_idx,2);
     
-    min_dist_curr = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
-    min_dist = min([min_dist, min_dist_curr]);
+    [min_dist_curr, min_dist_idx] = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
+    min_dist = max([min_dist, min_dist_curr-x]);
 end
 
 

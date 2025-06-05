@@ -49,6 +49,7 @@ elseif shapeNum == 6
 end
 
 data = remove_node(data, nodes_to_remove);
+data = determine_adjacency_matrix(data);
 plot_grid(data, 1)
 
 data = add_periodicity(data);
