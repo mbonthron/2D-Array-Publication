@@ -25,6 +25,7 @@ end
 
 temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+1), zeros(size(ground_nodes_points,1),1)];
 temp_adjacency_matrix = data.adjacency_matrix;
+temp_adjacency_matrix2 = [data.adjacency_matrix zeros(size(data.adjacency_matrix,1), size(ground_nodes_points,1)); zeros(size(ground_nodes_points,1), size(data.adjacency_matrix,1)+size(ground_nodes_points,1))];
 
 % Find which points are 1 unit away from these points
 % This can be vectorized using matrix math, do later
@@ -44,19 +45,23 @@ for i = 1:size(temp_points,1)
 
     temp_adjacency_matrix(i_sized_neighbors,neighbors) = 1;
     temp_adjacency_matrix(neighbors,i_sized_neighbors) = 1;
+
+    temp_adjacency_matrix2(i_sized_neighbors+size(points,1),neighbors) = 1;
+    temp_adjacency_matrix2(neighbors,i_sized_neighbors+size(points,1)) = 1;
 end
 % Add connections between the rightmost points to the leftmost points
 
 %% Store into data
 data.adjacency_matrix = temp_adjacency_matrix;
+data.adjacency_matrix_finite = temp_adjacency_matrix2;
 data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
 data.points_finite = [points;temp_points];
 data.b_vector = zeros(data.N,1);
 [data] = initialize_elastic_deformation(zeros(data.N,1),zeros(data.V,1),data);
 
 %Consider what's actually necessary since this is going into COCO
-data.e_vector = 0*ones(data.N,1);
-data.t_vector = data.t_vector(1)*ones(data.N,1);
+% data.e_vector = 0*ones(data.N,1);
+% data.t_vector = data.t_vector(1)*ones(data.N,1);
 data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
 
 end

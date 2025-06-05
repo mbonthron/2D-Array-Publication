@@ -2,11 +2,6 @@ function [data,run_max_E_per_b] = general_COCO(data, bpoints)
 %% Visualize the point and connection between the nodes
 plot_grid(data,1);
 
-%% Determine the coefficient matrix and the modes to skip
-% (Remove after a push / pull)
-data = determine_coefficient_matrix(data);
-data = determine_modes_to_skip(data);
-
 %% General Stuff for Coco Continuation
 run_number = 1;
 run_name1 = [data.shape_name '_run' sprintf('%.0f',run_number)];
