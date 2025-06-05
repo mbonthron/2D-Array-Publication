@@ -15,6 +15,7 @@ if shapeNum == 1
     data.e_vector = 0*ones(data.N,1);
     data.t_vector = 0.01*pi*ones(data.N,1);
     data.shape_name = 'Rhombus';
+    data = add_periodicity(data);
 
 elseif shapeNum == 2
 

@@ -1,7 +1,4 @@
 function [data,run_max_E_per_b] = general_COCO(data, bpoints)
-
-data = add_periodicity(data);
-
 % Visualize the point and connection between the nodes
 plot_grid(data,1);
 
