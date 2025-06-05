@@ -1,9 +1,9 @@
 function [data,run_max_E_per_b] = general_COCO(data, bpoints)
-
 %% Visualize the point and connection between the nodes
 plot_grid(data,1);
 
 %% Determine the coefficient matrix and the modes to skip
+% (Remove after a push / pull)
 data = determine_coefficient_matrix(data);
 data = determine_modes_to_skip(data);
 
@@ -81,11 +81,11 @@ end
 
 %% ========================================================================
 % CONTINUE FROM BP POINTS
-run_name_start_from = [run_name1 sprintf('%.0f',1)];
+run_name_start_from = run_name1;
 BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
 
 for i = 1:2
-    run_name = ['coco_run_' sprintf('%.0f',run_number)];
+    run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
     prob = coco_prob();
     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
     prob = coco_set(prob,'cont','branch','switch');
@@ -93,6 +93,8 @@ for i = 1:2
     prob = coco_set(prob,'cont','NPR',0);
     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
     prob = coco_add_event(prob,'UZ','b',UZpoints);
+
+    fprintf("Run %.0f =========================================",run_number)
     coco(prob,run_name,[],1,parameter_names,computational_domain)  
     run_number = run_number + 1;
 end
@@ -101,30 +103,28 @@ end
 %% Plot the Results from Coco
 close all
 cd('data');
-rhombus_runs = dir([data.shape_name '*']);
+coco_runs = dir([data.shape_name '*']);
 cd ..
 
 theme1 = struct('special', {{'EP','FP','HB','BP'}});
 figure(9899); clf; hold on
 
-% 5 - metric
-% 6 - Asymmetric
-run_max_E_per_b = [bpoints' zeros(length(bpoints),2)];
-for i = 1:length(rhombus_runs)
-% for i = [11]
-    coco_plot_bd(theme1, rhombus_runs(i).name, 'x',1,'x',2,'b')
-    
-    b_V_matrix = plot_shape_from_COCO(rhombus_runs(i).name,data);
 
-    for bpnt_idx = 1:length(bpoints)
-        bpnt = bpoints(bpnt_idx);
-        matrix_b = b_V_matrix(round(b_V_matrix(:,1),7) == round(bpnt,7),:);
-        [max_E, max_E_idx] = max(matrix_b(:,2));
-        if max_E > run_max_E_per_b(bpnt_idx,2)
-            run_max_E_per_b(bpnt_idx, 2) = i;
-            run_max_E_per_b(bpnt_idx, 3) = matrix_b(max_E_idx,3);
-        end
-    end
+run_max_E_per_b = [bpoints' zeros(length(bpoints),2)];
+for i = 1:length(coco_runs)
+    coco_plot_bd(theme1, coco_runs(i).name, 'x',1,'x',2,'b')
+    
+    b_V_matrix = plot_shape_from_COCO(coco_runs(i).name,data);
+
+    % for bpnt_idx = 1:length(bpoints)
+    %     bpnt = bpoints(bpnt_idx);
+    %     matrix_b = b_V_matrix(round(b_V_matrix(:,1),7) == round(bpnt,7),:);
+    %     [max_E, max_E_idx] = max(matrix_b(:,2));
+    %     if max_E > run_max_E_per_b(bpnt_idx,2)
+    %         run_max_E_per_b(bpnt_idx, 2) = i;
+    %         run_max_E_per_b(bpnt_idx, 3) = matrix_b(max_E_idx,3);
+    %     end
+    % end
 end
 % Step 1: max over j (2nd dim) → gives size [I x K]
 % max_over_j = squeeze(max(b_V_matrix, [], 2));  % size [I x K]
@@ -145,12 +145,7 @@ grid()
 coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',1)], 'x',1,'x',2,'b')
 coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',2)], 'x',1,'x',2,'b')
 coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',3)], 'x',1,'x',2,'b')
-% coco_plot_bd(theme1, 'rhombus_direct_run4', 'x',1,'x',2,'b')
-% coco_plot_bd(theme1, 'rhombus_direct_run5', 'x',1,'x',2,'b')
-% coco_plot_bd(theme1, 'rhombus_direct_run6', 'x',1,'x',2,'b')
-% coco_plot_bd(theme1, 'rhombus_direct_run7', 'x',1,'x',2,'b')
-% coco_plot_bd(theme1, 'rhombus_direct_run8', 'x',1,'x',2,'b')
+coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',4)], 'x',1,'x',2,'b')
+coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',5)], 'x',1,'x',2,'b')
 
-
-
-
+end

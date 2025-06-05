@@ -23,7 +23,8 @@ data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
 
 % initialize parameters to sweep over (b, maybe t)
-bpoints = [0.05:0.01:0.20]; %times pi
+% bpoints = [0.05:0.01:0.20]; %times pi
+bpoints = [0.15*pi];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
