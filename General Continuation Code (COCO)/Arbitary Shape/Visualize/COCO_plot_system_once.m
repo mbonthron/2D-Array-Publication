@@ -1,4 +1,4 @@
-function [f] = plot_system_once(A,data)
+function [f] = COCO_plot_system_once(A,data)
 %PLOT_SYSTEM_ONCE Plots the system for a single point
 %
 %   INPUTS
