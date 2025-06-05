@@ -27,8 +27,7 @@ for k = 1:length(UZ)
 end
 
 %% Recover the missing modes from the system 
-A = determine_A_from_Ahat()
-
+A = determine_A_from_Ahat(Ahat',data)';
 
 
 %% Plot the system at each UZ point

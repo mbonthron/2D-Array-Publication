@@ -2,7 +2,7 @@
 addpath('functions')
 addpath('Visualize')
 addpath('Shapes Point Data')
-clear; clc; close all
+% clear; clc; close all
 
 %% Set the Number of Modes to Consider
 N_modes = 3; % Number of modes to describe each triangle
