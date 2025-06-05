@@ -1,6 +1,11 @@
 function [data,run_max_E_per_b] = general_COCO(data, bpoints)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 % Visualize the point and connection between the nodes
+=======
+
+%% Visualize the point and connection between the nodes
+>>>>>>> Stashed changes
 =======
 
 %% Visualize the point and connection between the nodes
