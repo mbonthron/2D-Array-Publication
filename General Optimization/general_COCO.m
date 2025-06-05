@@ -14,7 +14,6 @@ f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
 initial_parameter_value = [0;0.01*pi];      % Starting values of b and t
 
-active_continuation_parameter = 'b';        % Which parameter do we want to vary
 computational_domain = [0 pi*0.2];          % What is the domain of b to explore
 UZpoints = bpoints;
 
@@ -50,7 +49,7 @@ end
 prob = coco_add_event(prob,'UZ','b',bcrits);
 prob = coco_add_event(prob,'UZ','b',UZpoints);
 
-fprintf("Run %.0f =========================================",1)
+fprintf("\nRun %.0f =========================================",1)
 coco(prob,run_name1,[],1,parameter_names,computational_domain)
 
 run_number = run_number + 1;
@@ -69,7 +68,7 @@ for i = 1:2
     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
     prob = coco_add_event(prob,'UZ','b',UZpoints);
 
-    fprintf("Run %.0f =========================================",run_number)
+    fprintf("\nRun %.0f =========================================",run_number)
     coco(prob,run_name,[],1,parameter_names,computational_domain)
     run_number = run_number + 1;
 end
@@ -89,7 +88,7 @@ for i = 1:2
     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
     prob = coco_add_event(prob,'UZ','b',UZpoints);
 
-    fprintf("Run %.0f =========================================",run_number)
+    fprintf("\nRun %.0f =========================================",run_number)
     coco(prob,run_name,[],1,parameter_names,computational_domain)  
     run_number = run_number + 1;
 end
@@ -111,16 +110,17 @@ for i = 1:length(coco_runs)
     
     b_V_matrix = plot_shape_from_COCO(coco_runs(i).name,data);
 
-    % for bpnt_idx = 1:length(bpoints)
-    %     bpnt = bpoints(bpnt_idx);
-    %     matrix_b = b_V_matrix(round(b_V_matrix(:,1),7) == round(bpnt,7),:);
-    %     [max_E, max_E_idx] = max(matrix_b(:,2));
-    %     if max_E > run_max_E_per_b(bpnt_idx,2)
-    %         run_max_E_per_b(bpnt_idx, 2) = i;
-    %         run_max_E_per_b(bpnt_idx, 3) = matrix_b(max_E_idx,3);
-    %     end
-    % end
+    for bpnt_idx = 1:length(bpoints)
+        bpnt = bpoints(bpnt_idx);
+        matrix_b = b_V_matrix(round(b_V_matrix(:,1),7) == round(bpnt,7),:);
+        [max_E, max_E_idx] = max(matrix_b(:,2));
+        if max_E > run_max_E_per_b(bpnt_idx,2)
+            run_max_E_per_b(bpnt_idx, 2) = i;
+            run_max_E_per_b(bpnt_idx, 3) = matrix_b(max_E_idx,3);
+        end
+    end
 end
+
 % Step 1: max over j (2nd dim) → gives size [I x K]
 % max_over_j = squeeze(max(b_V_matrix, [], 2));  % size [I x K]
 % 

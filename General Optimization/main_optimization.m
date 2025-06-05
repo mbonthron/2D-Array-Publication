@@ -28,7 +28,7 @@ bpoints = [0.15*pi];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 3;
+shapeNum = 2;
 data = init_shape(shapeNum, data);
 [data,run_max_E_per_b] = general_COCO(data, bpoints);
 
