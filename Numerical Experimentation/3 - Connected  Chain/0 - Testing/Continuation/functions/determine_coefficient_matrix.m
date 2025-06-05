@@ -1,17 +1,21 @@
-function [coeff_matrix,constraint_count] = determine_coefficient_matrix(adjacency_matrix,displacement_vector,N,N_modes)
+function [data] = determine_coefficient_matrix(data)
 %DETERMINE_COEFFICIENT_MATRIX Returns the coefficient matrix given the
 % adjacency matrix, imposed displacement conditions and number of modes
 %   INPUTS
 %   ===================================================
-%   adjacency_matrix:   Adjacency matrix describing the corresponding points in the point matrix
-%   displacement_vector: Nx1 vector describing where along each arch the
-%       displacement is controlled
-%   N = number of arches in the system
-%   N_modes = number of modes to describe each arch
+%   data
 %
 %   OUTPUTS
 %   ===================================================
 %   coeff_matrix = coefficient matrix of the system
+%% Load Data
+N                       = data.N;
+N_modes                 = data.N_modes;
+adjacency_matrix        = data.adjacency_matrix;
+
+impose_displacement_at  = 0;
+impose_rotation_at      = 0;
+
 
 %%
 % We consider each arch to have a moment on both sides, although some of
@@ -19,13 +23,16 @@ function [coeff_matrix,constraint_count] = determine_coefficient_matrix(adjacenc
 num_moments = N*2;
 
 % Get the number of applied displacements
-num_displacements = sum(displacement_vector~=0);
+num_displacements_linear = sum(impose_displacement_at~=0);
+
+% Get the number of applied rotation
+num_displacements_rotational = sum(impose_rotation_at~=0);
 
 % Total size of the system
-sz = N_modes*N+num_moments+num_displacements;
+sz = N_modes*N+num_moments+num_displacements_linear+num_displacements_rotational;
 
 % Initialize start of the coeffiecient matrix and right hand side
-coeff_matrix = [eye(N_modes*N, sz); zeros(num_moments,sz)];
+coeff_matrix = [eye(N_modes*N, sz); zeros(num_moments+num_displacements_linear+num_displacements_rotational,sz)];
 
 % Find connections and treat left as lower in number and right as greater
 % in number
@@ -220,11 +227,14 @@ for i=1:size(arch_pairs,1)
 end
 1;
 
+data.constraint_count = size(arch_pairs,1);
 
-arches_with_displacements = find(displacement_vector~=0);
-for i=1:num_displacements
+
+%% If there are Imposed Displacements
+arches_with_displacements = find(impose_displacement_at~=0);
+for i=1:num_displacements_linear
     arch = arches_with_displacements(i);
-    frac = abs(displacement_vector(arch));
+    frac = abs(impose_displacement_at(arch));
     a_coeffs = zeros(1,N_modes);
     for j=1:N_modes
         a_coeffs(j) = sin(frac*j*pi);
@@ -239,6 +249,59 @@ for i=1:num_displacements
     coeff_matrix(first_col_row_idx:first_col_row_idx+N_modes-1,N_modes*N+num_moments+i) = a_coeffs;
 end
 
-constraint_count = size(arch_pairs,1);
+%% If there are Imposed Rotations
+nodes_with_rotation = find(impose_rotation_at~=0);
+if ~isempty(nodes_with_rotation)
+rotation_count = 1;
+    for i = nodes_with_rotation'
+        idx = N_modes*N+num_moments+num_displacements_linear + rotation_count;
+
+        %% Find all arches that intersect with the nodes
+        all_arches_at_i = arches(any(left_and_right == i,2));
+    
+        % Add in the unknown moment based on if left or right for each
+        % of the arches at the node
+        left_arches_at_i = arches(left == i);
+        right_arches_at_i = arches(right == i);
+    
+        % If a left arch add in the left coefficinets
+        for j = left_arches_at_i
+            row_idx = N_modes*j-(N_modes-1):N_modes*j; 
+            coeff_matrix(row_idx,idx) = Left_moment_coefficient';
+        end
+    
+        for j = right_arches_at_i
+            row_idx = N_modes*j-(N_modes-1):N_modes*j; 
+            coeff_matrix(row_idx,idx) = Right_moment_coefficient';
+        end
+    
+        %% Add in the constraint equation to the bottom row(s) of the
+        % coefficient matrix
+
+        % Take the lowest number arch that is at the hinge
+        arch_to_add_constraint = min(all_arches_at_i);
+        
+        % Find the columns that correspond to the points
+        col_idx = N_modes*arch_to_add_constraint-(N_modes-1):N_modes*arch_to_add_constraint;
+    
+        % Rewrite the bottom row based on slope conditions
+        if ismember(arch_to_add_constraint,right_arches_at_i)
+            coeff_matrix(idx,col_idx) = -1*Right_constraint_coefficient;
+        else
+            coeff_matrix(idx,col_idx) = Left_constraint_coefficient;
+        end
+    
+        % Add in the moment to the sum of moment equation
+        row_idx = N*N_modes + i;
+    
+        coeff_matrix(row_idx,idx) = 1;
+    
+        rotation_count = rotation_count + 1;
+    end
+end
+
+%%
+data.coeff_matrix = coeff_matrix;
+data.coeff_matrix_modes = coeff_matrix(1:N_modes*N+num_moments,1:N_modes*N+num_moments);
 
 end

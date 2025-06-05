@@ -1,4 +1,4 @@
-function dAdt = arbitrary_grid_ODE(A,p,coeff_matrix,N,N_modes,modes_to_skip)
+function dAdt = COCO_arbitrary_grid_ODE(A,p,data)
 %ARBITRARY_GRID_ODE Performs time integration on an arbitrary system of
 %arches
 %   INPUTS
@@ -22,9 +22,18 @@ function dAdt = arbitrary_grid_ODE(A,p,coeff_matrix,N,N_modes,modes_to_skip)
 %   dAdt: Since the system is in first order form, partial derivative with
 %       respect to time of each variable
 %%
+coeff_matrix = data.coeff_matrix;
+N = data.N;
+N_modes = data.N_modes;
+modes_to_skip = data.modes_to_skip;
+
 % Load the parameters
 b = p(1,:);
 t = p(2,:);
+
+data.b_vector = b;
+data.t_vector = t;
+
 
 % Constraint Count
 C = length(modes_to_skip);
@@ -56,7 +65,7 @@ for i = 1:C
 end
 
 % Use dVdANvec function to solve for RHS of 
-dVdaNvec = arbitrary_grid_dVdaN(Ahat,N,b,t,N_modes);
+dVdaNvec = COCO_arbitrary_grid_dVdaN(Ahat,data);
 
 % Construct the vector composing of dv/daN
 RHS = zeros(length(coeff_matrix),width(A));

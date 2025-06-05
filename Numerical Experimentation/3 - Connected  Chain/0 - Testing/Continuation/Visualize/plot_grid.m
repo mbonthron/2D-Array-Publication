@@ -1,15 +1,16 @@
-function [f] = plot_grid(adjacency_matrix,points,add_labels)
+function [f] = plot_grid(data,add_labels)
 %PLOT_GRID Plots the adjacency matrix with corresponding points matrix
 %   INPUTS
 %   ===================================================
-%   adjacency_matrix:   Adjacency matrix describing the corresponding points in the point matrix
-%   points(:,1) = x position of the nodes
-%   points(:,2) = y position of the nodes
+%   data
 %   add_labels  = true / false value if the nodes should be labeled
 %
 %   OUTPUTS
 %   ===================================================
 %   f = figure handle the grid was plotted on
+%% Load Data
+points = data.points;
+adjacency_matrix = data.adjacency_matrix;
 
 %% Plot Styles
 grid_color = 0.5*[1 1 1];
@@ -21,8 +22,6 @@ node_big_circle_size  = 200;
 
 node_little_circle_color = 'k';
 node_little_circle_size = 50;
-
-text_background_color = [1 1 1 0.25];    % Adds a semitransparent background to make the text easier to read
 
 node_number_font_size = 18;
 node_number_color = 'k';
@@ -47,17 +46,14 @@ height = max(y) - min(y);
 
 major_axis = max([width height]);
 
-x_center = 0.5*(max(x)-min(x));
-y_center = 0.5*(max(y)-min(y));
+x_center = 0.5*(max(x)-min(x)) + min(x);
+y_center = 0.5*(max(y)-min(y)) + min(y);
 
-buffer = 0.25*major_axis;
+buffer = 0.15*major_axis;
 
 %% Create Figure
 f = figure(9898); clf; hold on
 daspect([1 1 1])
-
-% xlim(x_center+.65*[-major_axis major_axis])
-% ylim(y_center+.65*[-major_axis major_axis])
 
 xlim(x_center+.5*[-width width]+buffer*[-1 1])
 ylim(y_center+.5*[-height height]+buffer*[-1 1])
@@ -80,37 +76,36 @@ scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,
 %% Add Text
 if add_labels
     offset = .05*major_axis;
-
+    
     % Add the node number label
     text(x-offset,y-offset,string(1:length(x)), "Color",node_number_color, 'FontWeight', 'bold', ...
-        'FontSize',node_number_font_size,'HorizontalAlignment','center', ...
-        'BackgroundColor',text_background_color)
-
-    % % Add Arch number label
+        'FontSize',node_number_font_size,'HorizontalAlignment','center')
+    
+    % Add Arch number label
     up_adjac = triu(adjacency_matrix,1);
     arch_count = sum(up_adjac,'all');
     arches = 1:arch_count;
-    % 
+    
     [left, right] = find(up_adjac == 1);
+    
+    % text((x(left)+x(right))/2,(y(left)+y(right))/2,string(arches), "Color",arch_number_color, "FontWeight", 'bold', ...
+    %     'FontSize',arch_number_font_size,'HorizontalAlignment','center')
+    
+    for i = 1:length(left)
+        text((x(left(i))+x(right(i)))/2,(y(left(i))+y(right(i)))/2,string(arches(i)), "Color",arch_number_color, "FontWeight", 'bold', ...
+        'FontSize',arch_number_font_size,'HorizontalAlignment','center')
 
-    text((x(left)+x(right))/2,(y(left)+y(right))/2,string(arches), "Color",arch_number_color, "FontWeight", 'bold', ...
-        'FontSize',arch_number_font_size,'HorizontalAlignment','center', ...
-        'BackgroundColor',text_background_color)
-    
-    % for i = 1:length(left)
-    %     text((x(left(i))+x(right(i)))/2,(y(left(i))+y(right(i)))/2,string(arches(i)), "Color",arch_number_color, "FontWeight", 'bold', ...
-    %     'FontSize',arch_number_font_size,'HorizontalAlignment','center', ...
-    %     'BackgroundColor',text_background_color)
-    % 
-    %     line1 = plot([x(left(i)), x(right(i))],[y(left(i)) y(right(i))],"Color","r",'LineWidth',2);
-    %     scatter1 = scatter(x(left(i)),y(left(i)),100,'LineWidth',4);
-    %     scatter2 = scatter(x(right(i)),y(right(i)),100,'LineWidth',4);
-    % 
-    %     delete(line1);
-    %     delete(scatter1);
-    %     delete(scatter2);
-    % end
-    
+        line1 = plot([x(left(i)), x(right(i))],[y(left(i)) y(right(i))],"Color","r",'LineWidth',2);
+        scatter1 = scatter(x(left(i)),y(left(i)),100,'LineWidth',4);
+        scatter2 = scatter(x(right(i)),y(right(i)),100,'LineWidth',4);
+
+        delete(line1);
+        delete(scatter1);
+        delete(scatter2);
+    end
+
+
+
     % Number of nodes, label each left and right
     % for node_num=1:N
     %     L_arch_num = find(left == node_num);
@@ -125,11 +120,10 @@ if add_labels
     %         node_left_right_label = node_left_right_label + "R"+string(R_arch)+" ";
     %     end
     %     text(x(node_num)-offset,y(node_num)+offset,node_left_right_label,"Color",moment_right_color, "FontWeight", 'bold', ...
-    %         'FontSize',moment_right_font_size,'HorizontalAlignment','center', ...
-    %         'BackgroundColor',text_background_color)
+    %         'FontSize',moment_right_font_size,'HorizontalAlignment','center')
     % end
-    % 
-    % % Number of nodes, label moment
+    
+    % Number of nodes, label moment
     % for node_num=1:length(adjacency_matrix)
     %     L_arch_num = find(left == node_num);
     %     R_arch_num = find(right == node_num);
@@ -143,8 +137,7 @@ if add_labels
     %         node_moment_label = node_moment_label + "M"+string(R_arch + length(left))+" ";
     %     end
     %     text(x(node_num)+offset,y(node_num)-offset,node_moment_label,"Color",moment_left_color, "FontWeight", 'bold', ...
-    %         'FontSize',moment_left_font_size,'HorizontalAlignment','center', ...
-    %         'BackgroundColor',text_background_color)
+    %         'FontSize',moment_left_font_size,'HorizontalAlignment','center')
     % end
 end
 

@@ -1,4 +1,4 @@
-function [f] = plot_system_once(A,N,N_modes,e_vector,adjacency_matrix,points)
+function [f] = plot_system_once(A,data)
 %PLOT_SYSTEM_ONCE Plots the system for a single point
 %
 %   INPUTS
@@ -10,32 +10,41 @@ function [f] = plot_system_once(A,N,N_modes,e_vector,adjacency_matrix,points)
 %   adjacency_matrix: Describing the connection of the 
 %   points: Nx2 vector with the x and y position of each node in 1st and 2nd column (respectively)
 
+%%
+N = data.N;
+N_modes = data.N_modes;
+e_vector = zeros(data.N,1);
+adjacency_matrix = data.adjacency_matrix;
+adjacency_matrix_finite = data.adjacency_matrix_finite;
+
+points = data.points;
+points_finite = data.points_finite;
+
 %% Plot Styles
 arch_color = 'k';
 arch_linewidth = 4;
 
 
-addpath("Shapes Point Data\")
-% Loads points2 to describe the full system
-run("points_rhombus_direct2")
-adjacency_matrix2 = determine_adjacency_matrix(points2);
-
 % The ith index of expand points to the arch number of the expanded system
-expand = [1 2 3 4 5 6 7 8 9 -14 10 11 -15 -16 12 13];
+expand = data.expand;
+
 %% Make the grid without any of the deformed arches plotted
-f = plot_grid(adjacency_matrix2,points2,false);
+data2.points = points_finite;
+data2.adjacency_matrix = adjacency_matrix_finite;
+
+f = plot_grid(data2,false);
 
 %% Add the shape of each arch
 up_adjac = triu(adjacency_matrix,1);
 [left, right] = find(up_adjac == 1);
 
-up_adjac2 = triu(adjacency_matrix2,1);
+up_adjac2 = triu(adjacency_matrix_finite,1);
 [left2, right2] = find(up_adjac2 == 1);
 
 % Load the x and y position of the endpoints
 % Need to load from the full system
-x = points2(:,1);
-y = points2(:,2);
+x = points_finite(:,1);
+y = points_finite(:,2);
 
 
 % Go arch by arch
@@ -80,6 +89,5 @@ for i = 1:N
     line = plot(rotated_xw(1,:)+x_left,rotated_xw(2,:)+y_left,"linewidth",arch_linewidth,"color",arch_color,"LineStyle",'-');
 end
 
-plot_grid2(adjacency_matrix2,points,1)
 end
 

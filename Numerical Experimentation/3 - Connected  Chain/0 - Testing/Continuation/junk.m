@@ -1,8 +1,11 @@
-x = linspace(0,4*pi,100);
-y = sin(x);
+%% Find expand
+data.vertex_map_p2f = [1 13];
+data = determine_per_to_finite(data);
 
-figure(1); clf; hold on
-plot(x,y)
-scatter(0:pi:4*pi,zeros(1,5),100,"filled","MarkerFaceColor","k")
+%%
+A = zeros(data.N*data.N_modes,1);
 
-axis off
+change_arch_number = 13;
+A(change_arch_number*data.N_modes - (data.N_modes-1),1) = 0.75;
+
+plot_system_once(A,data);
