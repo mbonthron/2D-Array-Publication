@@ -22,14 +22,19 @@ stability   = zeros(1,length(UZ));
 for k = 1:length(UZ)
     bcrits(k)    = coco_bd_val(bd,UZ(k),'b');
     Ahat(:,k)    = coco_bd_val(bd,UZ(k),'x');
-    stability(k) = max(real(coco_bd_val(bd,UZ(k),'eigs')));
+    maxeig       = max(real(coco_bd_val(bd,UZ(k),'eigs')));
+    if maxeig > 0
+        stability(k) = 1;   % Unstable Solution
+    else
+        stability(k) = -1;  % Stable Solution
+    end
 end
 
 %% Recover the missing modes from the system 
 A = determine_A_from_Ahat(Ahat',data)';
 
 %% Plot the system at each UZ point
-b_V_vector = zeros(length(UZ),4);
+b_V_vector = zeros(length(UZ),5);
 
 for i = 1:length(UZ)
     f = COCO_plot_system_once(A(:,i),data);
@@ -45,7 +50,7 @@ for i = 1:length(UZ)
     V_vector = calculate_energy(data);
     title(sprintf("%.6f",sum(V_vector)))
 
-    b_V_vector(i,:) = [bcrits(i), sum(V_vector), UZ(i), stability(i)];
+    b_V_vector(i,:) = [0 bcrits(i), sum(V_vector), UZ(i), stability(i)];
  
 
     figure(9899); hold on

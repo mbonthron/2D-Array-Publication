@@ -28,14 +28,9 @@ bpoints = [0.15*pi];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 3;
+shapeNum = 1;
 data = init_shape(shapeNum, data);
 [data,run_max_E_per_b] = general_COCO(data, bpoints);
-
-%% Determine High Energy State(s) at each b
-%Assumes highest energy state goes to another ideal state
-data = get_mode_shape_from_coco(data,run_max_E_per_b); %Michael
-
 
 % Inside for loop for each b
 
