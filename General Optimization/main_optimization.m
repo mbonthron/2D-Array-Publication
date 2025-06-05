@@ -34,26 +34,26 @@ data = init_shape(shapeNum, data);
 
 %% Determine High Energy State(s) at each b
 %Assumes highest energy state goes to another ideal state
-data = get_mode_shape_from_coco(data,run_max_E_per_b);
+data = get_mode_shape_from_coco(data,run_max_E_per_b); %Michael
+
+
 % Inside for loop for each b
 
+    %% Run time integration for each b
+    % Pattern periodic into long chain %Michael
+    
+    % Time integration and mitigate edge effects 
+    
+    % Determine which arch to force/displace %MICHAEL QUESTION
+    
+    % We have tiled state with edge effects, now need to compare transition
+    
+    
+    % for loop for different beta values
 
-%% Run time integration for each b
-% Pattern periodic into long chain
-
-% Time integration and mitigate edge effects
-
-% Determine which arch to force/displace %MICHAEL QUESTION
-
-% We have tiled state with edge effects, now need to compare transition
-
-
-% for loop for different beta values
-
-
-% Determine if a transition occurred and save info (boolean? or distance of wave?)
-% Within each unit cell, calc potential energy, see which ones went from
-% high to low (within say 10% and within 3 unit/super cells)
+        % Determine if a transition occurred and save info (boolean? or distance of wave?)
+        % Within each unit cell, calc potential energy, see which ones went from
+        % high to low (within say 10% and within 3 unit/super cells)
 
 
 
