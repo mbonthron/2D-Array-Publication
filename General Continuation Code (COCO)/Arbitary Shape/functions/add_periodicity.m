@@ -68,9 +68,14 @@ data.b_vector = zeros(data.N,1);
 % data.t_vector = data.t_vector(1)*ones(data.N,1);
 data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
 
-points_repeated = repmat(points, data.N_cells);
-increments = repmat((0:(min_dist+extra_hor_offset):(data.N_cells-1)*(min_dist+extra_hor_offset))', 1, 2);
-data.points_time_integration = points_repeated + kron(increments,[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)]);
+points_time_integration = points;
+for i = 1:data.N_cells
+    add_in = points + i*[ones(size(points,1),1)*(min_dist+extra_hor_offset), zeros(size(points,1),1)];
+    points_time_integration = [points_time_integration; add_in];
+end
+data.points_time_integration = points_time_integration;
+
+data.L_super_cell = min_dist+extra_hor_offset;
 
 end
 

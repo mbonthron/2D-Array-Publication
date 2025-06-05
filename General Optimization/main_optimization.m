@@ -21,6 +21,7 @@ addpath('Shapes Point Data/')
 %% Create Empty Data Structure to be Populated
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
+data.N_cells = 3;
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
