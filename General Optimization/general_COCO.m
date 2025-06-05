@@ -1,8 +1,13 @@
 function [data,run_max_E_per_b] = general_COCO(data, bpoints)
+<<<<<<< Updated upstream
 % Visualize the point and connection between the nodes
+=======
+
+%% Visualize the point and connection between the nodes
+>>>>>>> Stashed changes
 plot_grid(data,1);
 
-% Determine the coefficient matrix and number of constraints of the system
+%% Determine the coefficient matrix and the modes to skip
 data = determine_coefficient_matrix(data);
 data = determine_modes_to_skip(data);
 
@@ -10,46 +15,41 @@ data = determine_modes_to_skip(data);
 run_number = 1;
 run_name1 = [data.shape_name '_run' sprintf('%.0f',run_number)];
 
+Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
 
-N = data.N;
-N_modes = data.N_modes;
-constraint_count = 2*N-data.V; %double check line
-
-
-A0 = zeros(2*(N*(N_modes)-constraint_count),1);
-
-% Define the function as ode_triangle
+% Define the function as the arbitrary gride ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
-parameter_names = {'b' 't'};            % Names our two parameters 'b' and 't'
+parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
 initial_parameter_value = [0;0.01*pi];      % Starting values of b and t
 
-active_continuation_parameter = 'b';    % Which parameter do we want to vary
-computational_domain = [0 pi*0.2];         % What is the domain of b to explore
-%UZpoints = [0.05*pi:0.01*pi:0.20*pi];                       % Values to explicitly call out to be used to plot
+active_continuation_parameter = 'b';        % Which parameter do we want to vary
+computational_domain = [0 pi*0.2];          % What is the domain of b to explore
 UZpoints = bpoints;
+
 %% Continuation Constants
 iterations_max = 5000;                  % Maximum number of iterations before continuation terminates
 hmin = 0.0005;                           % Minimum step size of the continuation
 hmax = 0.001;                            % Maximum step size of the continuation
 
-%% ===============
+%% ========================================================================
 %  INITIAL RUN FROM ZERO
 prob = coco_prob();
-prob = ode_isol2ep(prob,'',f,A0,parameter_names,initial_parameter_value);
+prob = ode_isol2ep(prob,'',f,Ahat0,parameter_names,initial_parameter_value);
 prob = coco_set(prob,'cont','ItMX', iterations_max);
 prob = coco_set(prob,'cont','NPR',0);
 prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
 
 coco(prob,run_name1,[],1,parameter_names,computational_domain)
 
-clc
-% Load all the HBs as UZR Points and Run Again
+
+%% ========================================================================
+%  RERUN ANY HB POINTS AS UZ POINTS TO DO CONTINUATION FROM
 bd = coco_bd_read(run_name1);
 HBlbls = coco_bd_labs(run_name1, 'HB');
 
 bcrits = zeros(1,length(HBlbls));
-acrits = zeros(2*(N*(N_modes)-constraint_count),length(HBlbls));
+acrits = zeros(2*(data.N*(data.N_modes)-data.constraint_count),length(HBlbls));
 
 for k = 1:length(HBlbls)
     bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
@@ -59,13 +59,12 @@ end
 prob = coco_add_event(prob,'UZ','b',bcrits);
 prob = coco_add_event(prob,'UZ','b',UZpoints);
 
-
 fprintf("Run %.0f =========================================",1)
 coco(prob,run_name1,[],1,parameter_names,computational_domain)
 
 run_number = run_number + 1;
 
-%% ===============
+%% ========================================================================
 % Continue from UZ points
 UZ = coco_bd_labs(run_name1, 'UZ'); 
 
@@ -84,42 +83,24 @@ for i = 1:2
     run_number = run_number + 1;
 end
 
+%% ========================================================================
+% CONTINUE FROM BP POINTS
+run_name_start_from = [run_name1 sprintf('%.0f',1)];
+BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
 
-%% ===============
-% Continue from the branch points of the second run
-% run_name_start_from = ['rhombus_direct_run' sprintf('%.0f',9)];
-% BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
-% 
-% for i = 1:length(BP2)
-%     run_name = ['rhombus_direct_run' sprintf('%.0f',run_number)];
-%     prob = coco_prob();
-%     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
-%     prob = coco_set(prob,'cont','branch','switch');
-%     prob = coco_set(prob,'cont','ItMX', iterations_max);
-%     prob = coco_set(prob,'cont','NPR',0);
-%     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
-%     prob = coco_add_event(prob,'UZ','b',UZpoints);
-%     coco(prob,run_name,[],1,parameter_names,computational_domain)  
-%     run_number = run_number + 1;
-% 
-% end
-% 
-% run_name_start_from = ['rhombus_direct_run' sprintf('%.0f',14)];
-% BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
-% 
-% for i = 1:length(BP2)
-%     run_name = ['rhombus_direct_run' sprintf('%.0f',run_number)];
-%     prob = coco_prob();
-%     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
-%     prob = coco_set(prob,'cont','branch','switch');
-%     prob = coco_set(prob,'cont','ItMX', iterations_max);
-%     prob = coco_set(prob,'cont','NPR',0);
-%     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
-%     prob = coco_add_event(prob,'UZ','b',UZpoints);
-%     coco(prob,run_name,[],1,parameter_names,computational_domain)  
-%     run_number = run_number + 1;
-% 
-% end
+for i = 1:2
+    run_name = ['coco_run_' sprintf('%.0f',run_number)];
+    prob = coco_prob();
+    prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
+    prob = coco_set(prob,'cont','branch','switch');
+    prob = coco_set(prob,'cont','ItMX', iterations_max);
+    prob = coco_set(prob,'cont','NPR',0);
+    prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+    prob = coco_add_event(prob,'UZ','b',UZpoints);
+    coco(prob,run_name,[],1,parameter_names,computational_domain)  
+    run_number = run_number + 1;
+end
+
 
 %% Plot the Results from Coco
 close all
