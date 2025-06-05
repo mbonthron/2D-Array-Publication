@@ -22,8 +22,12 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     min_dist = max([min_dist, min_dist_curr-x]);
 end
 
-
-temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+1), zeros(size(ground_nodes_points,1),1)];
+if isempty(points(points(:,2) == y,1)) % Hexagon (should be true for all, can speed this up)
+    extra_hor_offset = .5;
+else
+    extra_hor_offset = 1;
+end
+temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
 temp_adjacency_matrix = data.adjacency_matrix;
 temp_adjacency_matrix2 = [data.adjacency_matrix zeros(size(data.adjacency_matrix,1), size(ground_nodes_points,1)); zeros(size(ground_nodes_points,1), size(data.adjacency_matrix,1)+size(ground_nodes_points,1))];
 
@@ -63,6 +67,10 @@ data.b_vector = zeros(data.N,1);
 % data.e_vector = 0*ones(data.N,1);
 % data.t_vector = data.t_vector(1)*ones(data.N,1);
 data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
+
+points_repeated = repmat(points, data.N_cells);
+increments = repmat((0:(min_dist+extra_hor_offset):(data.N_cells-1)*(min_dist+extra_hor_offset))', 1, 2);
+data.points_time_integration = points_repeated + kron(increments,[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)]);
 
 end
 

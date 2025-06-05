@@ -13,19 +13,23 @@ ground_nodes_points = points(ground_nodes_idx,:);
 % Determine minimum distance for L =1 on same y level
 % ASSUMES horizontal arch in periodic 
 temp_points = zeros(size(ground_nodes_points,1),2);
-min_dist = 9999;
+min_dist = -9999;
 for GN_point_idx = 1:size(ground_nodes_points,1)
     x = ground_nodes_points(GN_point_idx,1);
     y = ground_nodes_points(GN_point_idx,2);
     
-    min_dist_curr = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
-    min_dist = min([min_dist, min_dist_curr]);
+    [min_dist_curr, min_dist_idx] = max(points(points(:,2) == y,1)-points(GN_point_idx,1));
+    min_dist = max([min_dist, min_dist_curr-x]);
 end
 
-
-temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+1), zeros(size(ground_nodes_points,1),1)];
+if isempty(points(points(:,2) == y,1)) % Hexagon (should be true for all, can speed this up)
+    extra_hor_offset = .5;
+else
+    extra_hor_offset = 1;
+end
+temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
 temp_adjacency_matrix = data.adjacency_matrix;
-temp_adjacency_matrix2 = data.adjacency_matrix;
+temp_adjacency_matrix2 = [data.adjacency_matrix zeros(size(data.adjacency_matrix,1), size(ground_nodes_points,1)); zeros(size(ground_nodes_points,1), size(data.adjacency_matrix,1)+size(ground_nodes_points,1))];
 
 % Find which points are 1 unit away from these points
 % This can be vectorized using matrix math, do later
@@ -46,14 +50,14 @@ for i = 1:size(temp_points,1)
     temp_adjacency_matrix(i_sized_neighbors,neighbors) = 1;
     temp_adjacency_matrix(neighbors,i_sized_neighbors) = 1;
 
-    temp_adjacency_matrix2(i_sized_neighbors,neighbors) = 1;
-    temp_adjacency_matrix2(neighbors,i_sized_neighbors) = 1;
+    temp_adjacency_matrix2(i_sized_neighbors+size(points,1),neighbors) = 1;
+    temp_adjacency_matrix2(neighbors,i_sized_neighbors+size(points,1)) = 1;
 end
 % Add connections between the rightmost points to the leftmost points
 
 %% Store into data
 data.adjacency_matrix = temp_adjacency_matrix;
-data.adjacency_matrix_finite = 
+data.adjacency_matrix_finite = temp_adjacency_matrix2;
 data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
 data.points_finite = [points;temp_points];
 data.b_vector = zeros(data.N,1);
@@ -64,5 +68,8 @@ data.b_vector = zeros(data.N,1);
 % data.t_vector = data.t_vector(1)*ones(data.N,1);
 data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
 
++ [ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
+
+data.points_time_integration = 
 end
 
