@@ -1,4 +1,4 @@
-function [] = plot_shape_from_COCO(run_name, data)
+function b_V_vector = plot_shape_from_COCO(run_name, data)
 %PLOT_SHAPE_FROM_COCO Given a run from coco, plots the points defined by UZ
 %   points in the coco run
 N = data.N;
@@ -46,6 +46,7 @@ for i = 1:C
 end
 
 %% Plot the system at each UZ point
+b_V_vector = zeros(length(UZ),3);
 for i = 1:length(UZ)
     f = plot_system_once(Ahat(:,i),data);
 
@@ -55,8 +56,12 @@ for i = 1:length(UZ)
     lbl = gcf().Number;
     text(min(xlim),max(ylim),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
     axis off
-    V_vector = calculate_energy(Ahat(:,i)',N,bcrits(i)*ones(N,1)',0.1*pi*ones(N,1)',N_modes);
+    data.A0 = Ahat(:,i)';
+    data.b_vector = bcrits(i)*ones(N,1)';
+    V_vector = calculate_energy(data);
     title(sprintf("%.6f",sum(V_vector)))
+
+    b_V_vector(i,:) = [bcrits(i), sum(V_vector), UZ(i)];
  
 
     figure(9899); hold on

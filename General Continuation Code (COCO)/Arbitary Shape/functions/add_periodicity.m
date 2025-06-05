@@ -57,6 +57,7 @@ data.b_vector = zeros(data.N,1);
 %Consider what's actually necessary since this is going into COCO
 data.e_vector = 0*ones(data.N,1);
 data.t_vector = data.t_vector(1)*ones(data.N,1);
+data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
 
 end
 

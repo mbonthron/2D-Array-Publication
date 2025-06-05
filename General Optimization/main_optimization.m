@@ -16,6 +16,7 @@ addpath('..\General Time Integration Code (MATLAB)\Visualize')
 addpath('..\General Time Integration Code (MATLAB)\2D Array Functions')
 addpath('..\General Continuation Code (COCO)\Arbitary Shape\functions\')
 addpath('..\General Continuation Code (COCO)\Arbitary Shape\Visualize\')
+addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
 %% Create Empty Data Structure to be Populated
 data = struct();
@@ -28,11 +29,11 @@ bpoints = [0.05:0.01:0.20]; %times pi
 % Choose which shape
 shapeNum = 1;
 data = init_shape(shapeNum, data);
-data = general_COCO(data, bpoints);
+[data,run_max_E_per_b] = general_COCO(data, bpoints);
 
 %% Determine High Energy State(s) at each b
 %Assumes highest energy state goes to another ideal state
-data = get_mode_shape_from_coco(data);
+data = get_mode_shape_from_coco(data,run_max_E_per_b);
 % Inside for loop for each b
 
 

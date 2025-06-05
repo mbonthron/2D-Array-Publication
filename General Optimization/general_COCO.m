@@ -1,4 +1,4 @@
-function [data] = general_COCO(data, bpoints)
+function [data,run_max_E_per_b] = general_COCO(data, bpoints)
 
 data = add_periodicity(data);
 
@@ -135,14 +135,28 @@ figure(9899); clf; hold on
 
 % 5 - metric
 % 6 - Asymmetric
+run_max_E_per_b = [bpoints' zeros(length(bpoints),2)];
 for i = 1:length(rhombus_runs)
 % for i = [11]
     coco_plot_bd(theme1, rhombus_runs(i).name, 'x',1,'x',2,'b')
-    if i ~= 1
-        plot_shape_from_COCO(rhombus_runs(i).name,data)
+    
+    b_V_matrix = plot_shape_from_COCO(rhombus_runs(i).name,data);
+
+    for bpnt_idx = 1:length(bpoints)
+        bpnt = bpoints(bpnt_idx);
+        matrix_b = b_V_matrix(round(b_V_matrix(:,1),7) == round(bpnt,7),:);
+        [max_E, max_E_idx] = max(matrix_b(:,2));
+        if max_E > run_max_E_per_b(bpnt_idx,2)
+            run_max_E_per_b(bpnt_idx, 2) = i;
+            run_max_E_per_b(bpnt_idx, 3) = matrix_b(max_E_idx,3);
+        end
     end
 end
-
+% Step 1: max over j (2nd dim) → gives size [I x K]
+% max_over_j = squeeze(max(b_V_matrix, [], 2));  % size [I x K]
+% 
+% % Step 2: find index of max over k (3rd dim) for each i
+% [~, run_max_E_per_b] = max(max_over_j, [], 2);  % size [I x 1]
 
 figure(9899)
 axis tight; grid on; view(3)
