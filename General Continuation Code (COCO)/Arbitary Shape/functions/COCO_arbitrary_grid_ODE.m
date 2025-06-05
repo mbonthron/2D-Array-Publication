@@ -64,7 +64,7 @@ for i = 1:C
 end
 
 % Use dVdANvec function to solve for RHS of 
-dVdaNvec = arbitrary_grid_dVdaN_COCO(Ahat,data);
+dVdaNvec = COCO_arbitrary_grid_dVdaN(Ahat,data);
 
 % Construct the vector composing of dv/daN
 RHS = zeros(length(coeff_matrix),width(A));

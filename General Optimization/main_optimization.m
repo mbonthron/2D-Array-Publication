@@ -10,10 +10,14 @@ clear; clc; close all
 % addpath('COCO Continuation/functions')
 % addpath('COCO Continuation')
 % addpath('Time Integration')
-
-addpath('..\General Time Integration Code (MATLAB)\2D Array Functions\')
-addpath('..\General Continuation Code (COCO)\Arbitrary Shape\')
-
+restoredefaultpath
+startup
+addpath('..\General Time Integration Code (MATLAB)\Visualize')
+addpath('..\General Time Integration Code (MATLAB)\2D Array Functions')
+addpath('..\General Continuation Code (COCO)\Arbitary Shape\functions\')
+addpath('..\General Continuation Code (COCO)\Arbitary Shape\Visualize\')
+addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
+addpath('Shapes Point Data/')
 %% Create Empty Data Structure to be Populated
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
@@ -23,12 +27,13 @@ bpoints = [0.05:0.01:0.20]; %times pi
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-init_shape(shapeNum, data);
-general_COCO(data, bpoints);
+shapeNum = 1;
+data = init_shape(shapeNum, data);
+[data,run_max_E_per_b] = general_COCO(data, bpoints);
 
 %% Determine High Energy State(s) at each b
 %Assumes highest energy state goes to another ideal state
-
+data = get_mode_shape_from_coco(data,run_max_E_per_b);
 % Inside for loop for each b
 
 
@@ -53,10 +58,10 @@ general_COCO(data, bpoints);
 
 
 
-data = rhombus_direct(data, bpoints);
-
-data = get_mode_shape_from_coco(data);
-
-for b=bpoints
-    data = system_elastic_from_chiral(data,b);
-end
+% data = rhombus_direct(data, bpoints);
+% 
+% data = get_mode_shape_from_coco(data);
+% 
+% for b=bpoints
+%     data = system_elastic_from_chiral(data,b);
+% end

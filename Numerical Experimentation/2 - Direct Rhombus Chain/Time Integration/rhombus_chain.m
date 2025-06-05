@@ -6,6 +6,7 @@ bvals = [.05:.05:.30];
 
 %% Add the Paths to the Required Functions
 restoredefaultpath
+startup
 addpath('..\..\..\General Time Integration Code (MATLAB)\2D Array Functions\')
 addpath('2D Array Functions\')
 addpath('Shapes Point Data')
