@@ -63,29 +63,13 @@ for i = 1:N_cells
     end
 end
 
-k = 1;
-i = N_cells + 1;
+i = 1;
 while count < N
-    % Find the finite index from periodic
-    finite_idx = abs(expand(k));
-
-    % From finite to the time integration system
-    time_idx = finite_idx + N_periodic*(i-1);   % Might be N_finite (?)
-
-    % Grab the modes from A0p
-    rows_to_grab = (k-1)*N_modes+1:k*N_modes;
-    modes_p = A0p(rows_to_grab);
-
-    % Check if expand(k) is negative
-    if expand(k) < 0
-        modes_p(1:2:N_modes) = -1*modes_p(1:2:N_modes);
-    end
     
     % Write to the time integration A0
-    rows_to_write = (time_idx - 1)*N_modes+1:time_idx*N_modes;
+    rows_to_write = (count - 1)*N_modes+1:count*N_modes;
     A0(rows_to_write) = modes_p;
     count = count + 1;
-    k = k + 1;
 end
     
 

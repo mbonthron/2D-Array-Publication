@@ -9,13 +9,15 @@ if shapeNum == 1
     %% === Load a points data for the system
     %run('points_rhombus_direct')
     nodes_to_remove = [3,6,9,12];
+    nodes_to_remove2 = [];
     connections_to_remove = []; %THIS IS AFTER NODES ARE REMOVED
     data.shape_name = 'Rhombus';
 
 elseif shapeNum == 2
     % Double Triangle Chain
-
+    
     nodes_to_remove = [];
+    nodes_to_remove2 = (data.N_cells*12)+[2 3];
 
     connections_to_remove = [2 5
                             5 8
@@ -31,6 +33,7 @@ elseif shapeNum == 3
     % Alternating Triangle Chain
 
     nodes_to_remove = [3, 5, 9, 11];
+    nodes_to_remove2 = [];
 
     connections_to_remove = [];
     data.shape_name = 'Alternating Triangle';
@@ -54,8 +57,6 @@ data = determine_adjacency_matrix(data);
 % Differentiates between points, points_finite, and points_time_integration
 data = add_periodicity(data);
 
-% If needed to help remove connections
-% plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
 
 % Create the adjacency matrix for the time integration
 data2.points = data.points_time_integration;
@@ -64,7 +65,20 @@ data2 = determine_adjacency_matrix(data2);
 % Save the time integration adjacency matrix into data
 data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
+data2.points = data.points_time_integration;
+data2.adjacency_matrix = data.adjacency_matrix_time_integration;
+data2 = remove_node(data2,nodes_to_remove2);
+data.points_time_integration = data2.points;
+data.N_time_integration = data2.N;
+data.adjacency_matrix_time_integration = data2.adjacency_matrix;
+
+% If needed to help remove connections
+ plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
+
+
 data = remove_connection(data,connections_to_remove);
+plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
+
 data = determine_per_to_finite(data);
 
 plot_grid(data, 1) %debugging, ask Michael for his nice plotting code

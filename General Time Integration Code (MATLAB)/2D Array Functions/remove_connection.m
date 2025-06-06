@@ -64,21 +64,25 @@ data.points_finite(floating_points,:) = [];
 adjacency_matrix_finite(floating_points,:) = [];
 adjacency_matrix_finite(:,floating_points) = [];
 
-
 data.adjacency_matrix_finite = adjacency_matrix_finite;
-
 
 %% = Remove the Connections for the Time Integration Adj. Matrix
 N_cells = data.N_cells;
 V = data.V;
 adjacency_matrix_time_integration = data.adjacency_matrix_time_integration;
 
+V_time_integration = size(data.points_time_integration,1);
+
 % Loop over each super cell and remove connections
 for i = 1:N_cells
     connections_to_remove_cell = connections_to_remove + (i-1)*V;
     vertex_map_p2f_cell = vertex_map_p2f + (i-1)*V;
     
-    for k = 1:length(connections_to_remove)
+    % Any points in connection_to_remove_cell exceed points,
+    any_row_matches = any(vertex_map_p2f_cell > V_time_integration,2);
+    vertex_map_p2f_cell(any_row_matches,:) = [];
+
+    for k = 1:length(connections_to_remove_cell)
         node1 = connections_to_remove_cell(k,1);
         node2 = connections_to_remove_cell(k,2);
         
@@ -114,7 +118,7 @@ for i = 1:N_cells
 end
 
 data.adjacency_matrix_time_integration = adjacency_matrix_time_integration;
-
+data.N_time_integration = sum(triu(adjacency_matrix_time_integration,1) ==1,'all');
 
 end
 

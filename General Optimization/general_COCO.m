@@ -150,7 +150,7 @@ for i = 1:length(UZpoints)
     A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
 
     % Save the A0hatp
-    save("b = "+ num2str(b_val/pi) +" pi.mat","A0hatp")
+    save(data.shape_name + " b = "+ num2str(b_val/pi) +" pi.mat","A0hatp")
     
 end
 

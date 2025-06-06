@@ -21,6 +21,8 @@ for i = 1:length(nodes_to_remove)
     
 end
 
+
+
 points_cleaned = points(~any(isnan(points), 2), :);
 data.points = points_cleaned;
 

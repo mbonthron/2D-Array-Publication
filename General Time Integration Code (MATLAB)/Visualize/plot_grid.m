@@ -87,12 +87,25 @@ if add_labels
     up_adjac = triu(adjacency_matrix,1);
     arch_count = sum(up_adjac,'all');
     arches = 1:arch_count;
-    
+
     [left, right] = find(up_adjac == 1);
-    
+
     text((x(left)+x(right))/2,(y(left)+y(right))/2,string(arches), "Color",arch_number_color, "FontWeight", 'bold', ...
         'FontSize',arch_number_font_size,'HorizontalAlignment','center')
     
+    % for i = 1:length(left)
+    %     text((x(left(i))+x(right(i)))/2,(y(left(i))+y(right(i)))/2,string(arches(i)), "Color",arch_number_color, "FontWeight", 'bold', ...
+    %     'FontSize',arch_number_font_size,'HorizontalAlignment','center')
+    % 
+    %     line1 = plot([x(left(i)), x(right(i))],[y(left(i)) y(right(i))],"Color","r",'LineWidth',2);
+    %     scatter1 = scatter(x(left(i)),y(left(i)),100,'LineWidth',4);
+    %     scatter2 = scatter(x(right(i)),y(right(i)),100,'LineWidth',4);
+    % 
+    %     delete(line1);
+    %     delete(scatter1);
+    %     delete(scatter2);
+    % end
+
     
     % Number of nodes, label each left and right
     % for node_num=1:N
