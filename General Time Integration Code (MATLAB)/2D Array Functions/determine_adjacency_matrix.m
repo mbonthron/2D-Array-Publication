@@ -1,13 +1,5 @@
 function [data] = determine_adjacency_matrix(data)
 %DETERMINE_ADJACENCY Determines the adjacency matrix from a matrix of points
-%   INPUTS
-%   ===================================================
-%   data
-%
-%   OUTPUTS
-%   ===================================================
-%   adjacency_matrix = adjacency matrix where the (i,j) element is 1 if the
-%   i and j elements are connect and 0 if the elements are not connected
 %% Load Data
 points = data.points;
 

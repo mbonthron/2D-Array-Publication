@@ -12,9 +12,9 @@ function [data] = initialize_time_integration(b_val,data)
 %   OUTPUTS
 %   ===================================================
 %   data
-%% Load data
-N = data.N;
-N_modes = data.N_modes;
+%% Switch the data values for time integration now
+data.N = data.N_time_integration;                                   % Now we have N arches referring to time integration
+data.adjacency_matrix = data.adjacency_matrix_time_integration; 
 
 %% Determine A0
 data.A0 = zeros(2*N*N_modes,1);

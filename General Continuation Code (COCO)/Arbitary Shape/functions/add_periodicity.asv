@@ -10,7 +10,7 @@ ground_nodes_idx = find(points(:,1) - root_node_x < 1);
 ground_nodes_points = points(ground_nodes_idx,:);
 
 % Add another column of ground nodes on the right side temporarily
-% Determine minimum distance for L =1 on same y level
+% Determine minimum distance for L = 1 on same y level
 % ASSUMES horizontal arch in periodic 
 temp_points = zeros(size(ground_nodes_points,1),2);
 min_dist = -9999;
@@ -56,27 +56,34 @@ end
 % Add connections between the rightmost points to the leftmost points
 
 %% Store into data
-data.adjacency_matrix = temp_adjacency_matrix;
+data.adjacency_matrix        = temp_adjacency_matrix;
 data.adjacency_matrix_finite = temp_adjacency_matrix2;
+
 data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
+
 data.points_finite = [points;temp_points];
 data.b_vector = zeros(data.N,1);
 [data] = initialize_elastic_deformation(zeros(data.N,1),zeros(data.V,1),data);
 
-%Consider what's actually necessary since this is going into COCO
-% data.e_vector = 0*ones(data.N,1);
-% data.t_vector = data.t_vector(1)*ones(data.N,1);
+% Map the periodic vertecies to the finite structure
 data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
 
-points_repeated = repmat(points, data.N_cells,1);
-
-increments = repmat((0:(min_dist+extra_hor_offset):(data.N_cells-1)*(min_dist+extra_hor_offset))', 1, 1);
+% Determine the expanded points for time integration
 points_time_integration = points;
-for i = 1:data.N_cells
+for i = 1:(data.N_cells-1)
     add_in = points + i*[ones(size(points,1),1)*(min_dist+extra_hor_offset), zeros(size(points,1),1)];
     points_time_integration = [points_time_integration; add_in];
 end
 
+%% Add in the last ground points
+% Check if the ground points all have the same x value
+if all(ground_node_points(:,1) == ground_node_points(1,1))
+    el
+add_in = ground_nodes_points + data.N_cells*[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
+points_time_integration = [points_time_integration ; add_in];
+
+data.points_time_integration = points_time_integration;
+data.L_super_cell = min_dist+extra_hor_offset;
 
 end
 

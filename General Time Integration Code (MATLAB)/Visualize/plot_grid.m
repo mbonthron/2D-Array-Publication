@@ -77,7 +77,7 @@ scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,
 
 %% Add Text
 if add_labels
-    offset = .05*major_axis;
+    offset = .01*major_axis;
     
     % Add the node number label
     text(x-offset,y-offset,string(1:length(x)), "Color",node_number_color, 'FontWeight', 'bold', ...
@@ -95,38 +95,38 @@ if add_labels
     
     
     % Number of nodes, label each left and right
-    for node_num=1:N
-        L_arch_num = find(left == node_num);
-        R_arch_num = find(right == node_num);
-        node_left_right_label = "";
-        for i =1:length(L_arch_num)
-            L_arch = L_arch_num(i);
-            node_left_right_label = node_left_right_label + "L"+num2str(L_arch)+" ";
-        end
-        for i=1:length(R_arch_num)
-            R_arch = R_arch_num(i);
-            node_left_right_label = node_left_right_label + "R"+string(R_arch)+" ";
-        end
-        text(x(node_num)-offset,y(node_num)+offset,node_left_right_label,"Color",moment_right_color, "FontWeight", 'bold', ...
-            'FontSize',moment_right_font_size,'HorizontalAlignment','center')
-    end
-    
-    % Number of nodes, label moment
-    for node_num=1:length(adjacency_matrix)
-        L_arch_num = find(left == node_num);
-        R_arch_num = find(right == node_num);
-        node_moment_label = "";
-        for i =1:length(L_arch_num)
-            L_arch = L_arch_num(i);
-            node_moment_label = node_moment_label + "M"+num2str(L_arch)+" ";
-        end
-        for i=1:length(R_arch_num)
-            R_arch = R_arch_num(i);
-            node_moment_label = node_moment_label + "M"+string(R_arch + length(left))+" ";
-        end
-        text(x(node_num)+offset,y(node_num)-offset,node_moment_label,"Color",moment_left_color, "FontWeight", 'bold', ...
-            'FontSize',moment_left_font_size,'HorizontalAlignment','center')
-    end
+    % for node_num=1:N
+    %     L_arch_num = find(left == node_num);
+    %     R_arch_num = find(right == node_num);
+    %     node_left_right_label = "";
+    %     for i =1:length(L_arch_num)
+    %         L_arch = L_arch_num(i);
+    %         node_left_right_label = node_left_right_label + "L"+num2str(L_arch)+" ";
+    %     end
+    %     for i=1:length(R_arch_num)
+    %         R_arch = R_arch_num(i);
+    %         node_left_right_label = node_left_right_label + "R"+string(R_arch)+" ";
+    %     end
+    %     text(x(node_num)-offset,y(node_num)+offset,node_left_right_label,"Color",moment_right_color, "FontWeight", 'bold', ...
+    %         'FontSize',moment_right_font_size,'HorizontalAlignment','center')
+    % end
+    % 
+    % % Number of nodes, label moment
+    % for node_num=1:length(adjacency_matrix)
+    %     L_arch_num = find(left == node_num);
+    %     R_arch_num = find(right == node_num);
+    %     node_moment_label = "";
+    %     for i =1:length(L_arch_num)
+    %         L_arch = L_arch_num(i);
+    %         node_moment_label = node_moment_label + "M"+num2str(L_arch)+" ";
+    %     end
+    %     for i=1:length(R_arch_num)
+    %         R_arch = R_arch_num(i);
+    %         node_moment_label = node_moment_label + "M"+string(R_arch + length(left))+" ";
+    %     end
+    %     text(x(node_num)+offset,y(node_num)-offset,node_moment_label,"Color",moment_left_color, "FontWeight", 'bold', ...
+    %         'FontSize',moment_left_font_size,'HorizontalAlignment','center')
+    % end
 end
 
 end

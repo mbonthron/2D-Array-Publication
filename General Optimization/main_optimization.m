@@ -21,7 +21,7 @@ addpath('Shapes Point Data/')
 %% Create Empty Data Structure to be Populated
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
-data.N_cells = 3;
+data.N_cells = 2;
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
@@ -29,7 +29,7 @@ bpoints = [0.1 0.15]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 1;
+shapeNum = 2;
 data = init_shape(shapeNum, data);
 [data,run_max_E_per_b] = general_COCO(data, bpoints);
 

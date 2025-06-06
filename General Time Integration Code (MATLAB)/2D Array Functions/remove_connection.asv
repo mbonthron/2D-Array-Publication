@@ -76,8 +76,7 @@ adjacency_matrix_time_integration = data.adjacency_matrix_time_integration;
 % Loop over each super cell and remove connections
 for i = 1:N_cells
     connections_to_remove_cell = connections_to_remove + (i-1)*V;
-    vertex_map_p2f_cell = vertex_map_p2f + (i-1)*V;
-    
+
     for k = 1:length(connections_to_remove)
         node1 = connections_to_remove_cell(k,1);
         node2 = connections_to_remove_cell(k,2);
@@ -86,28 +85,28 @@ for i = 1:N_cells
         adjacency_matrix_time_integration(node2,node1) = 0;
 
         % Check if either node is mapped to a different the finite structure
-        if any(ismember([node1 node2],vertex_map_p2f_cell(:,1)))
+        if any(ismember([node1 node2],vertex_map_p2f(:,1)))
             % Find which node needs mapping
-            mode_needing_mapping =  ismember([node1 node2],vertex_map_p2f_cell(:,1));
-
+            mode_needing_mapping =  ismember([node1 node2],vertex_map_p2f(:,1));
+            
             old_nodes = [node1 node2];
             new_nodes = old_nodes;
-
+    
             % Find which of the nodes is mapped to a new one
             idx_to_change = find(mode_needing_mapping == 1);
-
-            for j = idx_to_change
-                row_from_map_p2f = find(vertex_map_p2f_cell(:,1) == old_nodes(j));
-                new_nodes(j) = vertex_map_p2f_cell(row_from_map_p2f,2);
+    
+            for k = idx_to_change
+                row_from_map_p2f = find(vertex_map_p2f(:,1) == old_nodes(k));
+                new_nodes(k) = vertex_map_p2f(row_from_map_p2f,2);
             end
-
+    
             % If they are mapped, switch out the numbering
             node1 = new_nodes(1);
             node2 = new_nodes(2);
-
-            adjacency_matrix_time_integration(node1,node2) = 0;
-            adjacency_matrix_time_integration(node2,node1) = 0;
-
+    
+            adjacency_matrix_finite(node1,node2) = 0;
+            adjacency_matrix_finite(node2,node1) = 0;
+    
         end
 
     end

@@ -44,16 +44,27 @@ elseif shapeNum == 6
 
 end
 
+% Remove any unneeded vertecies
 data = remove_node(data, nodes_to_remove);
+
+% Determine the adjacency_matrix (assuming ALL connections)
 data = determine_adjacency_matrix(data);
 
+% Determine what is needed to make structure periodic
+% Differentiates between points, points_finite, and points_time_integration
 data = add_periodicity(data);
 
 % If needed to help remove connections
 % plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
 
-data = remove_connection(data,connections_to_remove);
+% Create the adjacency matrix for the time integration
+data2.points = data.points_time_integration;
+data2 = determine_adjacency_matrix(data2);
 
+% Save the time integration adjacency matrix into data
+data.adjacency_matrix_time_integration = data2.adjacency_matrix;
+
+data = remove_connection(data,connections_to_remove);
 data = determine_per_to_finite(data);
 
 plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
