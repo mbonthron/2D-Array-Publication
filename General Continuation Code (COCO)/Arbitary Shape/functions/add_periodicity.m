@@ -75,18 +75,20 @@ for i = 1:(data.N_cells-1)
     points_time_integration = [points_time_integration; add_in];
 end
 
-%% Add in the last ground points
+% Add in the last ground points
 % Check if the ground points all have the same x value
-if all(ground_nodes_points(:,1) == ground_nodes_points(1,1))
-    % Ground nodes have the same x values -> add in all
-    add_in = ground_nodes_points + data.N_cells*[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
+% if all(ground_nodes_points(:,1) == ground_nodes_points(1,1))
+%     % Ground nodes have the same x values -> add in all
+%     add_in = ground_nodes_points + data.N_cells*[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
+% 
+% else
+%     % Ground nodes have different x values -> add in smallest x
+%     [val, idx] = min(ground_nodes_points(:,1));
+%     ground_nodes_to_add = ground_nodes_points(ground_nodes_points(:,1) == val,:);
+%     add_in = ground_nodes_to_add + data.N_cells*[ones(size(ground_nodes_to_add,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_to_add,1),1)];
+% end
+add_in = ground_nodes_points + data.N_cells*[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
 
-else
-    % Ground nodes have different x values -> add in smallest x
-    [val, idx] = min(ground_nodes_points(:,1));
-    ground_nodes_to_add = ground_nodes_points(ground_nodes_points(:,1) == val,:);
-    add_in = ground_nodes_to_add + data.N_cells*[ones(size(ground_nodes_to_add,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_to_add,1),1)];
-end
 points_time_integration = [points_time_integration ; add_in];
 
 data.points_time_integration = points_time_integration;

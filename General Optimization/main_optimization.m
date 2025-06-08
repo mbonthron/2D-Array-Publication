@@ -36,20 +36,16 @@ shapeNum = 1;
 shapeNum = 2;
 >>>>>>> f192290af18bf6b727fd2a98e251ddf25241ebba
 data = init_shape(shapeNum, data);
+
+%%
 [data,run_max_E_per_b] = general_COCO(data, bpoints);
 
 % Inside for loop for each b
 for b = bpoints
     %% Run time integration for each b
     % Pattern periodic into long chain %Michael
-    data = initialize_time_integration(b_val,data);
+    data = initialize_time_integration(b,data);
     
-
-    % Time integration and mitigate edge effects 
-    
-    % Determine which arch to force/displace %MICHAEL QUESTION
-    
-
     % Time integration and mitigate edge effects
     % Take a look at the initial condition
     plot_system_once(data.A0,data)
