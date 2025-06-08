@@ -10,7 +10,7 @@ ground_nodes_idx = find(points(:,1) - root_node_x < 1);
 ground_nodes_points = points(ground_nodes_idx,:);
 
 % Add another column of ground nodes on the right side temporarily
-% Determine minimum distance for L =1 on same y level
+% Determine minimum distance for L = 1 on same y level
 % ASSUMES horizontal arch in periodic 
 temp_points = zeros(size(ground_nodes_points,1),2);
 min_dist = -9999;
@@ -22,8 +22,12 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     min_dist = max([min_dist, min_dist_curr-x]);
 end
 
-
-temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+1), zeros(size(ground_nodes_points,1),1)];
+if isempty(points(points(:,2) == y,1)) % Hexagon (should be true for all, can speed this up)
+    extra_hor_offset = .5;
+else
+    extra_hor_offset = 1;
+end
+temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
 temp_adjacency_matrix = data.adjacency_matrix;
 temp_adjacency_matrix2 = [data.adjacency_matrix zeros(size(data.adjacency_matrix,1), size(ground_nodes_points,1)); zeros(size(ground_nodes_points,1), size(data.adjacency_matrix,1)+size(ground_nodes_points,1))];
 
@@ -52,17 +56,41 @@ end
 % Add connections between the rightmost points to the leftmost points
 
 %% Store into data
-data.adjacency_matrix = temp_adjacency_matrix;
+data.adjacency_matrix        = temp_adjacency_matrix;
 data.adjacency_matrix_finite = temp_adjacency_matrix2;
+
 data.N = sum(triu(temp_adjacency_matrix,1) ==1,'all');
+
 data.points_finite = [points;temp_points];
 data.b_vector = zeros(data.N,1);
 [data] = initialize_elastic_deformation(zeros(data.N,1),zeros(data.V,1),data);
 
-%Consider what's actually necessary since this is going into COCO
-% data.e_vector = 0*ones(data.N,1);
-% data.t_vector = data.t_vector(1)*ones(data.N,1);
+% Map the periodic vertecies to the finite structure
 data.vertex_map_p2f = [ground_nodes_idx size(points,1)*ones(size(ground_nodes_idx,1),1)+ground_nodes_idx];
+
+% Determine the expanded points for time integration
+points_time_integration = points;
+for i = 1:(data.N_cells-1)
+    add_in = points + i*[ones(size(points,1),1)*(min_dist+extra_hor_offset), zeros(size(points,1),1)];
+    points_time_integration = [points_time_integration; add_in];
+end
+
+%% Add in the last ground points
+% Check if the ground points all have the same x value
+if all(ground_nodes_points(:,1) == ground_nodes_points(1,1))
+    % Ground nodes have the same x values -> add in all
+    add_in = ground_nodes_points + data.N_cells*[ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
+
+else
+    % Ground nodes have different x values -> add in smallest x
+    [val, idx] = min(ground_nodes_points(:,1));
+    ground_nodes_to_add = ground_nodes_points(ground_nodes_points(:,1) == val,:);
+    add_in = ground_nodes_to_add + data.N_cells*[ones(size(ground_nodes_to_add,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_to_add,1),1)];
+end
+points_time_integration = [points_time_integration ; add_in];
+
+data.points_time_integration = points_time_integration;
+data.L_super_cell = min_dist+extra_hor_offset;
 
 end
 

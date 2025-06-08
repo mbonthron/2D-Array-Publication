@@ -75,23 +75,23 @@ end
 
 %% ========================================================================
 % CONTINUE FROM BP POINTS
-run_name_start_from = run_name1;
-BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
-
-for i = 1:2
-    run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
-    prob = coco_prob();
-    prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
-    prob = coco_set(prob,'cont','branch','switch');
-    prob = coco_set(prob,'cont','ItMX', iterations_max);
-    prob = coco_set(prob,'cont','NPR',0);
-    prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
-    prob = coco_add_event(prob,'UZ','b',UZpoints);
-
-    fprintf("\nRun %.0f =========================================",run_number)
-    coco(prob,run_name,[],1,parameter_names,computational_domain)  
-    run_number = run_number + 1;
-end
+% run_name_start_from = run_name1;
+% BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
+% 
+% for i = 1:2
+%     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
+%     prob = coco_prob();
+%     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
+%     prob = coco_set(prob,'cont','branch','switch');
+%     prob = coco_set(prob,'cont','ItMX', iterations_max);
+%     prob = coco_set(prob,'cont','NPR',0);
+%     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+%     prob = coco_add_event(prob,'UZ','b',UZpoints);
+% 
+%     fprintf("\nRun %.0f =========================================",run_number)
+%     coco(prob,run_name,[],1,parameter_names,computational_domain)  
+%     run_number = run_number + 1;
+% end
 
 
 %% Plot the Results from Coco
@@ -103,33 +103,57 @@ cd ..
 theme1 = struct('special', {{'EP','FP','HB','BP'}});
 figure(9899); clf; hold on
 
+% Initilize matrix for pertinant values from coco
+UZ_data_from_coco = zeros(1,5);
 
 run_max_E_per_b = [bpoints' zeros(length(bpoints),2)];
 for i = 1:length(coco_runs)
     coco_plot_bd(theme1, coco_runs(i).name, 'x',1,'x',2,'b')
     
+    % Plot shape and find b_V_matrix
+    % b_V_matrix = [run_number bcrit energy UZ stability]
     b_V_matrix = plot_shape_from_COCO(coco_runs(i).name,data);
+    b_V_matrix(:,1) = i;
 
-    for bpnt_idx = 1:length(bpoints)
-        bpnt = bpoints(bpnt_idx);
-        matrix_b = b_V_matrix(round(b_V_matrix(:,1),7) == round(bpnt,7),:);
-        [max_E, max_E_idx] = max(matrix_b(:,2));
-        if max_E > run_max_E_per_b(bpnt_idx,2)
-            run_max_E_per_b(bpnt_idx, 2) = i;
-            run_max_E_per_b(bpnt_idx, 3) = matrix_b(max_E_idx,3);
-        end
-    end
+    UZ_data_from_coco = [UZ_data_from_coco ; b_V_matrix];
 end
-
-% Step 1: max over j (2nd dim) → gives size [I x K]
-% max_over_j = squeeze(max(b_V_matrix, [], 2));  % size [I x K]
-% 
-% % Step 2: find index of max over k (3rd dim) for each i
-% [~, run_max_E_per_b] = max(max_over_j, [], 2);  % size [I x 1]
 
 figure(9899)
 axis tight; grid on; view(3)
 zlim([0 0.5]); xlim([-1 1]); ylim(0.5*[-1 1])
+
+%% Find time integration starting points
+% Round 'b' values from numerical inaccuracy
+UZ_data_from_coco(:,2) = round(UZ_data_from_coco(:,2),5);
+UZpoints = round(UZpoints,5);
+
+
+for i = 1:length(UZpoints)
+    % Find branches that had values matching the UZ points
+    % (i.e. values that match the current b value)
+    b_val = UZpoints(i);
+    possible_branches = UZ_data_from_coco(UZ_data_from_coco(:,2)==b_val,:);
+
+    % Ignore all the unstable branches
+    possible_branches = possible_branches(possible_branches(:,5)==-1,:);
+
+    % Find the row with the highest energy state
+    [~,row] = max(possible_branches(:,3));
+
+    % Take the Run Number and the UZ index for the higher energy stable
+    % state
+    run_number = possible_branches(row,1);
+    uz_idx     = possible_branches(row,4);
+
+    % Have COCO grab the A0hatp from reading the solution
+    run_name_to_grab = [data.shape_name '_run' sprintf('%.0f',run_number)];
+    A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
+
+    % Save the A0hatp
+    save("b = "+ num2str(b_val/pi) +" pi.mat","A0hatp")
+    
+end
+
 
 
 %% Coco Plotting Trouble Shoot
@@ -140,7 +164,7 @@ grid()
 coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',1)], 'x',1,'x',2,'b')
 coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',2)], 'x',1,'x',2,'b')
 coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',3)], 'x',1,'x',2,'b')
-coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',4)], 'x',1,'x',2,'b')
-coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',5)], 'x',1,'x',2,'b')
+% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',4)], 'x',1,'x',2,'b')
+% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',5)], 'x',1,'x',2,'b')
 
 end
