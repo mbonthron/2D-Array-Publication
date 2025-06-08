@@ -29,12 +29,7 @@ bpoints = [0.1 0.15]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-<<<<<<< HEAD
-shapeNum = 1;
-
-=======
 shapeNum = 2;
->>>>>>> f192290af18bf6b727fd2a98e251ddf25241ebba
 data = init_shape(shapeNum, data);
 
 %%
@@ -60,12 +55,25 @@ for b = bpoints
     [t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);
 
     %% Look at end of time integration
-    plot_system_once(Ahat(end,:)',data)
+    A = determine_A_from_Ahat(Ahat, data);
+    data.plot_labels = 1;
+    plot_system_once(A(end,:)',data)
+    data.plot_labels = 0;
 
     data.A0hat = Ahat(end,:)';
     data.A0hat(data.N*data.N_modes+1:end) = 0;
 
     %% Determine which arch to force/displace %MICHAEL QUESTION
+
+    % For now will try hardcoding into init_shape?
+    % hold some nodes near edge stationary
+    data.impose_rotation_at(data.nodes_to_hold) = 1;
+    data.rotation_omega(data.nodes_to_hold) = 0.0013;
+    data.rotation_mag(data.nodes_to_hold) = 0;
+
+    data.impose_displacement_at(22) = 0.5;
+    data.displacement_omega(22) = 2*pi/T_end;
+
 
     %data.impose_rotation_at(24) = 1;
     %data.rotation_omega(24) = 2*pi/T_end;
@@ -79,9 +87,7 @@ for b = bpoints
     % data.rotation_omega(2) = 0.0013;
     % data.rotation_mag(2) = 0;
     %
-    % data.impose_rotation_at(3) = 1;
-    % data.rotation_omega(3) = 0.0013;
-    % data.rotation_mag(3) = 0;
+    
     %
     % data.impose_rotation_at(46) = 1;
     % data.rotation_omega(46) = 0.0013;
@@ -91,8 +97,7 @@ for b = bpoints
     % data.rotation_omega(47) = 0.0013;
     % data.rotation_mag(47) = 0;
     %
-    % data.impose_displacement_at(52) = 0.5;
-    % data.displacement_omega(52) = 2*pi/T_end;
+
 
     % Remake data with new actuation
     data = determine_coefficient_matrix(data);
@@ -122,7 +127,7 @@ for b = bpoints
 
         %% Visualize the Results
         data.frames = 100;
-        data.file_name = "b = " + num2str(bval) + " beta = " + num2str(data.beta);
+        data.file_name = data.shape_name + " b = " + num2str(bval) + " beta = " + num2str(data.beta);
         plot_system_over_time(t,A,data)
 
         % Determine if a transition occurred and save info (boolean? or distance of wave?)

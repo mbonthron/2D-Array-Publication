@@ -22,8 +22,12 @@ mod_factor = 1;
 arch_color = 'k';
 arch_linewidth = 4*mod_factor;
 
-%% Make the grid without any of the deformed arches plotted
-f = plot_grid(data,false);
+%% Make the grid without any of the deformed arches plotted unless otherwise specified
+if isfield(data, 'plot_labels')
+    f = plot_grid(data,data.plot_labels);
+else
+    f = plot_grid(data,false);
+end
 
 %% Add the shape of each arch
 up_adjac = triu(adjacency_matrix,1);
