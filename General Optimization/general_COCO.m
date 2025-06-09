@@ -12,7 +12,7 @@ Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
 parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
-initial_parameter_value = [0;0.02*pi];      % Starting values of b and t
+initial_parameter_value = [0;0.01*pi];      % Starting values of b and t
 
 computational_domain = [0 pi*0.2];          % What is the domain of b to explore
 UZpoints = bpoints;

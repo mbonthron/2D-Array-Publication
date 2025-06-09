@@ -20,7 +20,7 @@ addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
 %% Create Empty Data Structure to be Populated
 data = struct();
-data.N_modes = 5;   % Number of modes used to describe the system
+data.N_modes = 3;   % Number of modes used to describe the system
 data.N_cells = 2;
 
 % initialize parameters to sweep over (b, maybe t)
@@ -32,7 +32,7 @@ betavals = [.00002 .0075];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 5;
+shapeNum = 4;
 data = init_shape(shapeNum, data);
 
 %%
