@@ -1,4 +1,4 @@
-function [data,run_max_E_per_b] = general_COCO(data, bpoints)
+function [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints)
 %% Visualize the point and connection between the nodes
 plot_grid(data,1);
 
@@ -144,14 +144,19 @@ for i = 1:length(UZpoints)
     % state
     run_number = possible_branches(row,1);
     uz_idx     = possible_branches(row,4);
-
+    
+    if ~isempty(run_number)
     % Have COCO grab the A0hatp from reading the solution
     run_name_to_grab = [data.shape_name '_run' sprintf('%.0f',run_number)];
     A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
 
     % Save the A0hatp
     save(data.shape_name + " b = "+ num2str(b_val/pi) +" pi.mat","A0hatp")
-    
+    else
+        % disp("edge case smh")
+        disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
+        bpoints(i) = [];
+    end
 end
 
 
@@ -159,11 +164,11 @@ end
 %% Coco Plotting Trouble Shoot
 theme1 = struct('special', {{'EP','FP','HB','BP'}});
 
-figure(9900); clf; hold on; view(3); zlim([0 0.1]); xlim(0.3*[-1 1]); ylim(0.2*[-1 1])
-grid()
-coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',1)], 'x',1,'x',2,'b')
-coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',2)], 'x',1,'x',2,'b')
-coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',3)], 'x',1,'x',2,'b')
+figure(9900); clf; hold on; view(3); zlim([0 0.1]); xlim(0.3*[-1 1]); ylim(0.2*[-1 1]);
+grid();
+coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',1)], 'x',1,'x',2,'b');
+coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',2)], 'x',1,'x',2,'b');
+coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',3)], 'x',1,'x',2,'b');
 % coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',4)], 'x',1,'x',2,'b')
 % coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',5)], 'x',1,'x',2,'b')
 

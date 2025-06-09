@@ -22,8 +22,8 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     min_dist = max([min_dist, min_dist_curr-x]);
 end
 
-if isempty(points(points(:,2) == y,1)) % Hexagon (should be true for all, can speed this up)
-    extra_hor_offset = .5;
+if isempty(points(points(1:3,2) == y,1)) % Hexagon (should be true for all, can speed this up)
+    extra_hor_offset = sqrt(3);
 else
     extra_hor_offset = 1;
 end

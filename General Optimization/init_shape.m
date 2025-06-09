@@ -30,7 +30,7 @@ elseif shapeNum == 2
                             12 3];
     data.shape_name = 'Double Triangle';
 
-    nodes_to_hold = [2 3 data.N_cells*12 data.N_cells*12+2];
+    nodes_to_hold = [2 3 data.N_cells*12-1 data.N_cells*12];
 
 elseif shapeNum == 3
     % Alternating Triangle Chain
@@ -44,6 +44,16 @@ elseif shapeNum == 3
     data.shape_name = 'Alternating Triangle';
 
 elseif shapeNum == 4
+    % Hexagon
+    run('points_hexagon.m')
+    nodes_to_remove = [21 22 23];
+    nodes_to_remove2 = [];
+
+    nodes_to_hold = [];
+
+    connections_to_remove = [];
+    data.shape_name = 'Hexagon';
+
 
 elseif shapeNum == 5
 
@@ -61,6 +71,8 @@ data = determine_adjacency_matrix(data);
 % Determine what is needed to make structure periodic
 % Differentiates between points, points_finite, and points_time_integration
 data = add_periodicity(data);
+plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
+
 
 
 % Create the adjacency matrix for the time integration
@@ -78,15 +90,15 @@ data.N_time_integration = data2.N;
 data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
 % If needed to help remove connections
- plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
+ plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
 
 data = remove_connection(data,connections_to_remove);
-plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
+plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
 data = determine_per_to_finite(data);
 
-plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
+plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 COCO_plot_system_once(zeros(data.N*data.N_modes),data)
 data.b_vector = zeros(data.N,1);
 
