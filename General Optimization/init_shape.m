@@ -56,6 +56,14 @@ elseif shapeNum == 4
 
 
 elseif shapeNum == 5
+    run('points_diamond_chain');
+    nodes_to_remove = [];
+    nodes_to_remove2 = [];
+
+    nodes_to_hold = [];
+
+    connections_to_remove = [];
+    data.shape_name = 'Diamond Chain';
 
 elseif shapeNum == 6
 

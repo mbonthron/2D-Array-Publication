@@ -32,7 +32,7 @@ expand = data.expand;
 data2.points = points_finite;
 data2.adjacency_matrix = adjacency_matrix_finite;
 
-f = plot_grid(data2,true);
+f = plot_grid(data2,false);
 
 %% Add the shape of each arch
 up_adjac = triu(adjacency_matrix,1);

@@ -12,7 +12,7 @@ Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
 parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
-initial_parameter_value = [0;0.01*pi];      % Starting values of b and t
+initial_parameter_value = [0;0.02*pi];      % Starting values of b and t
 
 computational_domain = [0 pi*0.2];          % What is the domain of b to explore
 UZpoints = bpoints;
@@ -75,23 +75,23 @@ end
 
 %% ========================================================================
 % CONTINUE FROM BP POINTS
-% run_name_start_from = run_name1;
-% BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
-% 
-% for i = 1:2
-%     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
-%     prob = coco_prob();
-%     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
-%     prob = coco_set(prob,'cont','branch','switch');
-%     prob = coco_set(prob,'cont','ItMX', iterations_max);
-%     prob = coco_set(prob,'cont','NPR',0);
-%     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
-%     prob = coco_add_event(prob,'UZ','b',UZpoints);
-% 
-%     fprintf("\nRun %.0f =========================================",run_number)
-%     coco(prob,run_name,[],1,parameter_names,computational_domain)  
-%     run_number = run_number + 1;
-% end
+run_name_start_from = run_name1;
+BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
+
+for i = 1:4
+    run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
+    prob = coco_prob();
+    prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
+    prob = coco_set(prob,'cont','branch','switch');
+    prob = coco_set(prob,'cont','ItMX', iterations_max);
+    prob = coco_set(prob,'cont','NPR',0);
+    prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+    prob = coco_add_event(prob,'UZ','b',UZpoints);
+
+    fprintf("\nRun %.0f =========================================",run_number)
+    coco(prob,run_name,[],1,parameter_names,computational_domain)  
+    run_number = run_number + 1;
+end
 
 
 %% Plot the Results from Coco

@@ -22,11 +22,14 @@ for GN_point_idx = 1:size(ground_nodes_points,1)
     min_dist = max([min_dist, min_dist_curr-x]);
 end
 
-if isempty(points(points(1:3,2) == y,1)) % Hexagon (should be true for all, can speed this up)
+% Check if the x points are spaced by '1' or by sqrt(3)/2
+xpoints = points(:,1) / (sqrt(3)/2);
+if all(round(xpoints,0) == round(xpoints,2)) 
     extra_hor_offset = sqrt(3);
 else
     extra_hor_offset = 1;
 end
+
 temp_points = ground_nodes_points + [ones(size(ground_nodes_points,1),1)*(min_dist+extra_hor_offset), zeros(size(ground_nodes_points,1),1)];
 temp_adjacency_matrix = data.adjacency_matrix;
 temp_adjacency_matrix2 = [data.adjacency_matrix zeros(size(data.adjacency_matrix,1), size(ground_nodes_points,1)); zeros(size(ground_nodes_points,1), size(data.adjacency_matrix,1)+size(ground_nodes_points,1))];

@@ -17,7 +17,7 @@ mod_factor = 1;
 %% Plot Styles
 grid_color = 0.5*[1 1 1];
 grid_linewidth = 2;
-grid_linestyle = '--';
+grid_linestyle = '-';
 
 node_big_circle_color = 0.75*[1 1 1];
 node_big_circle_size  = 200*mod_factor;
@@ -62,13 +62,13 @@ ylim(y_center+.5*[-height height]+buffer*[-1 1]*mod_factor)
 
 %% Create Grid
 % Connect the corresponding nodes per the adjacency_matrix
-for i = 1:N
-    for j = i+1:N
-        if i ~= j && adjacency_matrix(i,j) == 1
-            plot([x(i) x(j)],[y(i) y(j)],grid_linestyle,"LineWidth",grid_linewidth,"Color",grid_color)
-        end
-    end
-end
+% for i = 1:N
+%     for j = i+1:N
+%         if i ~= j && adjacency_matrix(i,j) == 1
+%             plot([x(i) x(j)],[y(i) y(j)],grid_linestyle,"LineWidth",grid_linewidth,"Color",grid_color)
+%         end
+%     end
+% end
 
 % Plot the nodes
 scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k")
