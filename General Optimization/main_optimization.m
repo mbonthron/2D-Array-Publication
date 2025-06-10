@@ -20,20 +20,20 @@ addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
 %% Create Empty Data Structure to be Populated
 data = struct();
-data.N_modes = 5;   % Number of modes used to describe the system
-data.N_cells = 10;
+data.N_modes = 3;   % Number of modes used to describe the system
+data.N_cells = 2;
 data.plot_grids = 1;
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [.1 0.15 .2]*pi;
-betavals = [.00008 .0003 .0009 .002 .004 .006];
+bpoints = [.05 .1 0.15 .2]*pi;
+betavals = [.01 .05 .1];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 5;
+shapeNum = 4;
 data = init_shape(shapeNum, data);
 
 %%

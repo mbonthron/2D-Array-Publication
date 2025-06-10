@@ -28,8 +28,8 @@ data.plot_grids = 1;
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [0.15]*pi;
-betavals = [.00002 .0075];
+bpoints = [.05 .1 0.15 .2]*pi;
+betavals = [.00008 .0003 .0009 .002 .004 .006];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
@@ -38,7 +38,7 @@ data = init_shape(shapeNum, data);
 
 %%
 % Run COCO
-%[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
+[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
  
 %% Run Optimization
 % Get the current date and time
