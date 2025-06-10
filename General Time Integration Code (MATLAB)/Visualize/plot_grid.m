@@ -62,13 +62,18 @@ ylim(y_center+.5*[-height height]+buffer*[-1 1]*mod_factor)
 
 %% Create Grid
 % Connect the corresponding nodes per the adjacency_matrix
-% for i = 1:N
-%     for j = i+1:N
-%         if i ~= j && adjacency_matrix(i,j) == 1
-%             plot([x(i) x(j)],[y(i) y(j)],grid_linestyle,"LineWidth",grid_linewidth,"Color",grid_color)
-%         end
-%     end
-% end
+if isfield(data, 'plot_grids')
+    if data.plot_grids
+        for i = 1:N
+            for j = i+1:N
+                if i ~= j && adjacency_matrix(i,j) == 1
+                    plot([x(i) x(j)],[y(i) y(j)],grid_linestyle,"LineWidth",grid_linewidth,"Color",grid_color)
+                end
+            end
+        end
+    end
+else
+end
 
 % Plot the nodes
 scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k")

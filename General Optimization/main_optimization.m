@@ -22,6 +22,7 @@ addpath('Shapes Point Data/')
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
 data.N_cells = 2;
+data.plot_grids = 1;
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
@@ -46,4 +47,4 @@ nowTime = datetime('now');
 data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
 
 %% Run Optimization
-% optimize(data, bpoints, betavals);
+optimize(data, bpoints, betavals);
