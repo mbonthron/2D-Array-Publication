@@ -95,7 +95,7 @@ add_in = ground_nodes_points + data.N_cells*[ones(size(ground_nodes_points,1),1)
 points_time_integration = [points_time_integration ; add_in];
 
 data.points_time_integration = points_time_integration;
-data.L_super_cell = min_dist+extra_hor_offset;
+
 
 end
 

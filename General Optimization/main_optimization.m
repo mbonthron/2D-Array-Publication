@@ -28,7 +28,7 @@ data.plot_grids = 1;
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [.05 .1 0.15 .2]*pi;
+bpoints = [.2]*pi;
 betavals = [.01 .05 .1];
 
 %% Run Continuation to Get Stable Configurations at each b

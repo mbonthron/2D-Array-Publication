@@ -98,7 +98,6 @@ data = add_periodicity(data);
 plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
 
-
 % Create the adjacency matrix for the time integration
 data2.points = data.points_time_integration;
 data2 = determine_adjacency_matrix(data2);
@@ -118,12 +117,15 @@ data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
 
 data = remove_connection(data,connections_to_remove);
+data.L_super_cell = max(data.points_finite(:,1) - data.points_finite(1,1));
+
 plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
 data = determine_per_to_finite(data);
+data = determine_time_to_periodic(data);
 
 plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
-COCO_plot_system_once(zeros(data.N*data.N_modes),data)
+%COCO_plot_system_once(zeros(data.N*data.N_modes),data);
 data.b_vector = zeros(data.N,1);
 
 % Nodes to hold stationary
