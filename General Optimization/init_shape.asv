@@ -11,10 +11,6 @@ if shapeNum == 1
     nodes_to_remove = [3,6,9,12];
     nodes_to_remove2 = [];
     nodes_to_hold = [];
-    arches_to_displace = [];
-    nodes_to_rotate = [];
-    arches_to_force = [];
-
     connections_to_remove = []; %THIS IS AFTER NODES ARE REMOVED
     data.shape_name = 'Rhombus';
 
@@ -35,9 +31,6 @@ elseif shapeNum == 2
     data.shape_name = 'Double Triangle';
 
     nodes_to_hold = [2 3 data.N_cells*12-1 data.N_cells*12];
-    arches_to_displace = [90];
-    nodes_to_rotate = [];
-    arches_to_force = [];
 
 elseif shapeNum == 3
     % Alternating Triangle Chain
@@ -46,9 +39,6 @@ elseif shapeNum == 3
     nodes_to_remove2 = [];
 
     nodes_to_hold = [];
-    arches_to_displace = [];
-    nodes_to_rotate = [];
-    arches_to_force = [];
 
     connections_to_remove = [];
     data.shape_name = 'Alternating Triangle';
@@ -60,9 +50,7 @@ elseif shapeNum == 4
     nodes_to_remove2 = [];
 
     nodes_to_hold = [];
-    arches_to_displace = [41, 42, 43, 45];
-    nodes_to_rotate = [];
-    arches_to_force = [];
+    arch_to_hold
 
     connections_to_remove = [];
     data.shape_name = 'Hexagon';
@@ -74,9 +62,6 @@ elseif shapeNum == 5
     nodes_to_remove2 = [];
 
     nodes_to_hold = [];
-    arches_to_displace = [];
-    nodes_to_rotate = [];
-    arches_to_force = [51, 52];
 
     connections_to_remove = [];
     data.shape_name = 'Diamond Chain';
@@ -128,9 +113,7 @@ data.b_vector = zeros(data.N,1);
 
 % Nodes to hold stationary
 data.nodes_to_hold = nodes_to_hold;
-data.arches_to_displace = arches_to_displace;
-data.nodes_to_rotate = nodes_to_rotate;
-data.arches_to_force = arches_to_force;
+
 
 %% Start with elastic deformation
 [data] = initialize_elastic_deformation(zeros(data.N,1),zeros(data.V,1),data);

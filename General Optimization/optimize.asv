@@ -45,13 +45,14 @@ for b = bpoints
     data.impose_displacement_at(data.arches_to_displace) = 0.5;
     data.displacement_omega(data.arches_to_displace) = 2*pi/T_end;
 
+
     data.impose_rotation_at(data.nodes_to_rotate) = 1;
     data.rotation_omega(data.nodes_to_rotate) = 2*pi/T_end;
     data.rotation_mag(data.nodes_to_rotate) = 2.5;
 
-    data.force_eta(data.arches_to_force) = .5;
-    data.force_omega(data.arches_to_force) = 2*pi/T_end;
-    data.force_magnitude(data.arches_to_force) = 2;
+    %data.impose_rotation_at(data.arches_to_force) = 1;
+    %data.rotation_omega(25) = 2*pi/T_end;
+    %data.rotation_mag(25) = 2.5;
 
     % data.impose_rotation_at(2) = 1;
     % data.rotation_omega(2) = 0.0013;

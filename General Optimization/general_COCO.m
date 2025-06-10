@@ -127,7 +127,7 @@ zlim([0 0.5]); xlim([-1 1]); ylim(0.5*[-1 1])
 UZ_data_from_coco(:,2) = round(UZ_data_from_coco(:,2),5);
 UZpoints = round(UZpoints,5);
 
-
+no_stable_count = 0;
 for i = 1:length(UZpoints)
     % Find branches that had values matching the UZ points
     % (i.e. values that match the current b value)
@@ -155,7 +155,8 @@ for i = 1:length(UZpoints)
     else
         % disp("edge case smh")
         disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
-        bpoints(i) = [];
+        bpoints(i- no_stable_count) = [];
+        no_stable_count = no_stable_count+1; 
     end
 end
 

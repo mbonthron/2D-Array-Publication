@@ -90,14 +90,14 @@ if ~isempty(imposed_force_at)
     sin_modes_eta_pi = sin(modes  .* pi .* (eta_vals));  % size: [N_modes x num_forces]
     
     % Compute time factor depending on omega
-    time_factor = ones(1, length(eta_vals));
+    time_factor = ones(1, length(imposed_force_at));
     nonzero_omega = omega_vals ~= 0;
     time_factor(nonzero_omega) = sin(omega_vals(nonzero_omega) * t);
     
     % Compute contributions
     contributions = Q_vals' .* time_factor .* sin_modes_eta_pi;  % [N_modes x num_forces]
     
-    RHS(1:N_modes*N) = RHS(1:N_modes*N) + contributions(:);
+    RHS(1:N_modes*N) = contributions(:);
 end
 
 %% Include term relating first and second derivatives for imposed disp
