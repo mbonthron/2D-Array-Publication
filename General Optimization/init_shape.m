@@ -56,7 +56,7 @@ elseif shapeNum == 3
 elseif shapeNum == 4
     % Hexagon
     run('points_hexagon.m')
-    nodes_to_remove = [21 22 23];
+    nodes_to_remove = [11 12 13];
     nodes_to_remove2 = [];
 
     nodes_to_hold = [];

@@ -28,7 +28,6 @@ load(data.shape_name + " b = "+ num2str(b_val/pi) +" pi.mat","A0hatp")
 % Convert to the A0 system 
 if nargin == 2
     A0p = determine_A_from_Ahat(A0hatp',data)';
-
 else
     A0p = zeros(44*6,1);
     A0p(3*i-1) = 0.25*pi;

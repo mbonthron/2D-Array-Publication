@@ -1,5 +1,5 @@
 xx = sqrt(3)/2;
-number_of_elements = 2;
+number_of_elements = 1;
 
 points = [0 2;
           0 1;

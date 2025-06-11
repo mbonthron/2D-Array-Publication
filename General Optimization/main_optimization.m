@@ -1,6 +1,7 @@
 %% Clear Everything so there are no stragglers
 clear; clc; close all
 
+
 %% Add the Paths to the Required Functions
 % addpath('2D Array Functions')
 % addpath('COCO Continuation/Shapes Point Data/')
@@ -29,11 +30,12 @@ data.plot_grids = 1;
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
 bpoints = [.2]*pi;
+
 betavals = [.01 .05 .1];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 4;
+shapeNum = 1;
 data = init_shape(shapeNum, data);
 
 %%
