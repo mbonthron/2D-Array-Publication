@@ -50,9 +50,13 @@ for b = bpoints
     data.rotation_omega(data.nodes_to_rotate) = 2*pi/T_end;
     data.rotation_mag(data.nodes_to_rotate) = 2.5;
 
-    data.force_eta(data.arches_to_force) = .5;
-    data.force_omega(data.arches_to_force) = 2*pi/T_end;
-    data.force_magnitude(data.arches_to_force) = 2;
+    data.force_eta(data.arches_to_force_positive) = .5;
+    data.force_omega(data.arches_to_force_positive) = 0;
+    data.force_magnitude(data.arches_to_force_positive) = .008;
+
+    data.force_eta(data.arches_to_force_negative) = .5;
+    data.force_omega(data.arches_to_force_negative) = 0;
+    data.force_magnitude(data.arches_to_force_negative) = -.008;
 
     % data.impose_rotation_at(2) = 1;
     % data.rotation_omega(2) = 0.0013;
@@ -101,7 +105,7 @@ for b = bpoints
         if ~exist("Videos\"+ data.timeStr + "\", 'dir')
             mkdir("Videos\"+data.timeStr + "\");
         end
-        data.file_name = data.timeStr + "\"+ data.shape_name + " b = " + num2str(b) + " beta = " + num2str(data.beta) + " NumCells = "+ num2str(data.N_cells);
+        data.file_name = data.timeStr + "\"+ data.shape_name + " b = " + num2str(b) + " beta = " + num2str(data.beta) + " NumCells = "+ num2str(data.N_cells) + " t = "+num2str(data.t);
         plot_system_over_time(t,A,data)
 
         % Determine if a transition occurred and save info (boolean? or distance of wave?)

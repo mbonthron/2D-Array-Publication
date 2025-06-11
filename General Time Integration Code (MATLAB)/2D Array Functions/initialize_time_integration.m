@@ -25,7 +25,7 @@ b_val = data.b;
 t_val = data.t;
 %% Determine A0
 % Load in A0hatp from COCO
-load(data.shape_name + " b = "+ num2str(b_val/pi) +" pi t = "+num2str(t_val/pi) + "pi.mat","A0hatp")
+load(data.shape_name + " b = "+ num2str(b_val/pi) +" pi t = "+num2str(t_val/pi) + " pi.mat","A0hatp")
 
 % Convert to the A0 system 
 if nargin == 1

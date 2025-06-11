@@ -29,10 +29,10 @@ data.plot_grids = 1;
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [.15]*pi;
+bpoints = [.15 .2]*pi;
 
 betavals = [.01 .05 .1];
-tvals = [.01, .015, .02]*pi;
+tvals = [.01 .015 .02 .05 .1]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
@@ -40,6 +40,11 @@ shapeNum = 4;
 data = init_shape(shapeNum, data);
 
 %%
+% Get the current date and time
+nowTime = datetime('now');
+
+% Format the datetime as a string (e.g., '2025-06-08_14-30-15')
+data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
 raw_data = deepCopyStruct(data);
 for t = tvals
     % Run COCO
@@ -48,11 +53,5 @@ for t = tvals
     [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
     
     %% Run Optimization
-    % Get the current date and time
-    nowTime = datetime('now');
-    
-    % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
-    data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
-    
     optimize(data, bpoints, betavals);
 end

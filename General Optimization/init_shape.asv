@@ -13,8 +13,7 @@ if shapeNum == 1
     nodes_to_hold = [];
     arches_to_displace = [];
     nodes_to_rotate = [];
-    arches_to_force_positive = [];
-    arches_to_force_negative = [];
+    arches_to_force = [];
 
     connections_to_remove = []; %THIS IS AFTER NODES ARE REMOVED
     data.shape_name = 'Rhombus';
@@ -38,8 +37,7 @@ elseif shapeNum == 2
     nodes_to_hold = [2 3 data.N_cells*12-1 data.N_cells*12];
     arches_to_displace = [90];
     nodes_to_rotate = [];
-    arches_to_force_positive = [];
-    arches_to_force_negative = [];
+    arches_to_force = [];
 
 elseif shapeNum == 3
     % Alternating Triangle Chain
@@ -50,8 +48,7 @@ elseif shapeNum == 3
     nodes_to_hold = [];
     arches_to_displace = [];
     nodes_to_rotate = [];
-    arches_to_force_positive = [];
-    arches_to_force_negative = [];
+    arches_to_force = [];
 
     connections_to_remove = [];
     data.shape_name = 'Alternating Triangle';
@@ -80,8 +77,8 @@ elseif shapeNum == 5
     nodes_to_hold = [];
     arches_to_displace = [];
     nodes_to_rotate = [];
-    arches_to_force_positive = [51, 52];
-    arches_to_force_negative = [];
+    arches_to_force = [51, 52];
+    
 
     connections_to_remove = [];
     data.shape_name = 'Diamond Chain';
