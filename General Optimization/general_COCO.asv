@@ -1,4 +1,4 @@
-function [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints)
+function [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints, t_val)
 %% Visualize the point and connection between the nodes
 plot_grid(data,1);
 
@@ -11,7 +11,6 @@ Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
 % Define the function as the arbitrary gride ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
-t_val = data.t;
 parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
 initial_parameter_value = [0;t_val];      % Starting values of b and t
 
@@ -152,7 +151,7 @@ for i = 1:length(UZpoints)
     A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
 
     % Save the A0hatp
-    save(data.shape_name + " b = "+ num2str(b_val/pi) +" pi t = "+num2str(t_val/pi) +" pi.mat","A0hatp")
+    save(data.shape_name + " b = "+ num2str(b_val/pi) +" pi t = " .mat","A0hatp")
     else
         % disp("edge case smh")
         disp(num2str(b_val) + " found no stable solutions, removing from bpoints")

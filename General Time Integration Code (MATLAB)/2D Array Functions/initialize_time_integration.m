@@ -1,4 +1,4 @@
-function [data] = initialize_time_integration(b_val,data, i)
+function [data] = initialize_time_integration(data, i)
 %INITIALIZE_ELASTIC_DEFORMATION Defines displacement_vector and force_matrix for a
 %   elastically deformed system.
 %   i is optional argument
@@ -21,12 +21,14 @@ N = data.N_time_integration;
 N_modes = data.N_modes;
 N_cells = data.N_cells;
 expand  = data.expand;
+b_val = data.b;
+t_val = data.t;
 %% Determine A0
 % Load in A0hatp from COCO
-load(data.shape_name + " b = "+ num2str(b_val/pi) +" pi.mat","A0hatp")
+load(data.shape_name + " b = "+ num2str(b_val/pi) +" pi t = "+num2str(t_val/pi) + "pi.mat","A0hatp")
 
 % Convert to the A0 system 
-if nargin == 2
+if nargin == 1
     A0p = determine_A_from_Ahat(A0hatp',data)';
 else
     A0p = zeros(44*6,1);

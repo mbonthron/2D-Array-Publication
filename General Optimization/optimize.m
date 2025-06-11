@@ -6,7 +6,8 @@ for b = bpoints
     data = data_Orig1;
     % Run time integration for each b
     % Pattern periodic into long chain %Michael
-    data = initialize_time_integration(b,data);
+    data.b = b;
+    data = initialize_time_integration(data);
     
     % Time integration and mitigate edge effects
     % Take a look at the initial condition

@@ -43,7 +43,7 @@ elseif shapeNum == 3
     % Alternating Triangle Chain
 
     nodes_to_remove = [3, 5, 9, 11];
-    nodes_to_remove2 = [];
+    nodes_to_remove2 = [data.N_cells*8+2];
 
     nodes_to_hold = [];
     arches_to_displace = [];
@@ -60,7 +60,7 @@ elseif shapeNum == 4
     nodes_to_remove2 = [];
 
     nodes_to_hold = [];
-    arches_to_displace = [41, 42, 43, 45];
+    arches_to_displace = [2,3,4,5];
     nodes_to_rotate = [];
     arches_to_force = [];
 
@@ -107,6 +107,7 @@ data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
 data2.points = data.points_time_integration;
 data2.adjacency_matrix = data.adjacency_matrix_time_integration;
+%plot_grid(data2, 1);
 data2 = remove_node(data2,nodes_to_remove2);
 data.points_time_integration = data2.points;
 data.N_time_integration = data2.N;
@@ -117,7 +118,6 @@ data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
 
 data = remove_connection(data,connections_to_remove);
-data.L_super_cell = max(data.points_finite(:,1) - data.points_finite(1,1));
 
 plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
