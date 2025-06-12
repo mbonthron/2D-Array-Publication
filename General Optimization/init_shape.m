@@ -65,7 +65,7 @@ elseif shapeNum == 4
     nodes_to_hold = [];
     arches_to_displace = [];
     nodes_to_rotate = [];
-    arches_to_force_positive = [5,6];
+    arches_to_force_positive = [5,6,7];
     arches_to_force_negative = [3,4];
 
     connections_to_remove = [];

@@ -52,11 +52,11 @@ for b = bpoints
 
     data.force_eta(data.arches_to_force_positive) = .5;
     data.force_omega(data.arches_to_force_positive) = 0;
-    data.force_magnitude(data.arches_to_force_positive) = .008;
+    data.force_magnitude(data.arches_to_force_positive) = .001;
 
     data.force_eta(data.arches_to_force_negative) = .5;
     data.force_omega(data.arches_to_force_negative) = 0;
-    data.force_magnitude(data.arches_to_force_negative) = -.008;
+    data.force_magnitude(data.arches_to_force_negative) = -.001;
 
     % data.impose_rotation_at(2) = 1;
     % data.rotation_omega(2) = 0.0013;
