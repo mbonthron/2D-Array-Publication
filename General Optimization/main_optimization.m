@@ -51,7 +51,9 @@ for t = tvals
     % Run COCO
     data = raw_data;
     data.t = t;
-    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
+    data.t_vector = t*ones(data.N,1);
+
+    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
     
     %% Run Optimization
     optimize(data, bpoints, betavals);

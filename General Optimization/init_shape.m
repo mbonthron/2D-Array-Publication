@@ -145,7 +145,6 @@ data.arches_to_force_negative = arches_to_force_negative;
 
 %Consider what's actually necessary since this is going into COCO
 data.e_vector = 0*ones(data.N,1);
-data.t_vector = 0.01*pi*ones(data.N,1);
 
 % Determine the coefficient matrix and number of constraints of the system
 data = determine_coefficient_matrix(data);

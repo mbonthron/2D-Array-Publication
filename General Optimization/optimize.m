@@ -14,8 +14,8 @@ for b = bpoints
     plot_system_once(data.A0,data);
 
     % Prepare for Time Integration
-    data.beta = 0.01;
-    T_end = 10000;
+    data.beta = .1;
+    T_end = 200;
     data = determine_coefficient_matrix(data);
     data = determine_starting_vals(data);
     data = determine_modes_to_skip(data);
