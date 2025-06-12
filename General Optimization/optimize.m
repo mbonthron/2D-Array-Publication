@@ -35,7 +35,7 @@ for b = bpoints
 
     % For now will try hardcoding into init_shape?
     % hold some nodes near edge stationary
-    T_end = 5000;
+    T_end = 2000;
     data.impose_rotation_at(data.nodes_to_hold) = 1;
     data.rotation_omega(data.nodes_to_hold) = 0.0013;
     data.rotation_mag(data.nodes_to_hold) = 0;
