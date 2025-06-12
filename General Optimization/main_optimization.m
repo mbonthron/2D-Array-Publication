@@ -29,10 +29,10 @@ data.plot_grids = 1;
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [.08 .1 .15 .2]*pi;
+bpoints = [.05 .08 .1 .15]*pi;
 
-betavals = [.01 .05 .1];
-tvals = [.01 .015 .02 .05 .1]*pi;
+betavals = [.01];
+tvals = [.005 .01 .015 .02]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape

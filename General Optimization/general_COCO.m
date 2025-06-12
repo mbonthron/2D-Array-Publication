@@ -152,7 +152,7 @@ for i = 1:length(UZpoints)
     A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
 
     % Save the A0hatp
-    save(data.shape_name + " b = "+ num2str(b_val/pi) +" pi t = "+num2str(t_val/pi) +" pi.mat","A0hatp")
+    save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi.mat","A0hatp")
     else
         % disp("edge case smh")
         disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
