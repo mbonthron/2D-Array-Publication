@@ -29,11 +29,11 @@ data.plot_grids = 1;
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-%bpoints = [.08 .1 .15 .2]*pi;
-bpoints = [.25];
+bpoints = [.08 .1 .12 .15 .2]*pi;
+%bpoints = [.25];
 
 betavals = [.01 .05 .1];
-tvals = [.1]*pi;
+tvals = [.07 .08 .09 .1]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
@@ -53,7 +53,7 @@ for t = tvals
     data.t = t;
     data.t_vector = t*ones(data.N,1);
 
-    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
+    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
     
     %% Run Optimization
     optimize(data, bpoints, betavals);
