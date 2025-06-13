@@ -60,7 +60,7 @@ for t_idx = 1:length(tvals)
     data.t = t;
     data.t_vector = t*ones(data.N,1);
 
-    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
+    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
     
     %% Run Optimization
     trans_percent_tensor(:,:,t_idx) = optimize(data, bpoints, betavals);
