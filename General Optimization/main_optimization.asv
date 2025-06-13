@@ -1,6 +1,7 @@
 %% Clear Everything so there are no stragglers
 clear; clc; close all
 
+
 %% Add the Paths to the Required Functions
 % addpath('2D Array Functions')
 % addpath('COCO Continuation/Shapes Point Data/')
@@ -18,34 +19,53 @@ addpath('..\General Continuation Code (COCO)\Arbitary Shape\functions\')
 addpath('..\General Continuation Code (COCO)\Arbitary Shape\Visualize\')
 addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
+addpath("Debugging\")
 %% Create Empty Data Structure to be Populated
 data = struct();
-data.N_modes = 5;   % Number of modes used to describe the system
-data.N_cells = 10;
+data.N_modes = 3;   % Number of modes used to describe the system
+data.N_cells = 5;
 data.plot_grids = 1;
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [.05 .1 0.15 .2]*pi;
-betavals = [.00008 .0003 .0009 .002 .004 .006];
+%bpoints = [.08 .1 .15 .2]*pi;
+bpoints = [.25 .2*pi];
+
+betavals = [.01 .1];
+tvals = [.1]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 5;
+shapeNum = 4;
 data = init_shape(shapeNum, data);
 
 %%
-% Run COCO
-[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
- 
-%% Run Optimization
 % Get the current date and time
 nowTime = datetime('now');
 
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
 data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
+raw_data = deepCopyStruct(data);
+for t_idx = 1:length(tvals)
+    t = tvals(t_idx);
+    % Run COCO
+    data = raw_data;
+    data.t = t;
+    data.t_vector = t*ones(data.N,1);
 
+    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
+    
+    %% Run Optimization
+    trans_percent_matrix = optimize(data, bpoints, betavals);
+end
 
-optimize(data, bpoints, betavals);
+results_cell = [ {'b/t'}, num2cell(data.t); ...
+         num2cell(b), num2cell(trans_percent)];
+
+if ~exist("TransitionExcel\"+ data.timeStr + "\", 'dir')
+    mkdir("TransitionExcel\"+data.timeStr + "\");
+end
+
+writecell(results_cell, "TransitionExcel\"+data.file_name_trans +".xlsx");
