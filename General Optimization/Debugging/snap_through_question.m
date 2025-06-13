@@ -69,6 +69,7 @@ if isempty(percent_trans)
     percent_trans = 0;
 end
 disp(num2str(percent_trans) +"%" )
+plot(percent_trans*N/100*[1 1],ylim,":","Color","r",'LineWidth',1)
 
 if ~exist("Videos\", 'dir')
     mkdir("Videos\");

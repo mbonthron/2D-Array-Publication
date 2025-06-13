@@ -68,8 +68,8 @@ end
 
 for beta_idx = 1:length(betavals)
     beta = betavals(beta_idx);
-    results_cell = [ {'b/t'}, num2cell(tvals); ...
-             num2cell(bpoints), num2cell(trans_percent_tensor(:,beta_idx,:))];
+    results_cell = [ {'b/t'}, num2cell(tvals/pi); ...
+             num2cell(bpoints/pi)', squeeze(num2cell(trans_percent_tensor(:,beta_idx,:)))];
     
     if ~exist("TransitionExcel\"+ data.timeStr + "\", 'dir')
         mkdir("TransitionExcel\"+data.timeStr + "\");
