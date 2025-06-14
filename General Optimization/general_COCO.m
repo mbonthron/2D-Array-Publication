@@ -15,7 +15,7 @@ t_val = data.t;
 parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
 initial_parameter_value = [0;t_val];      % Starting values of b and t
 
-computational_domain = [0 pi*0.24];          % What is the domain of b to explore
+computational_domain = [0 max([pi*0.24,bpoints+.02])];          % What is the domain of b to explore
 UZpoints = bpoints;
 
 %% Continuation Constants
