@@ -32,9 +32,9 @@ data.plot_grids = 1;
 % betavals = [.00002 .0025  .005 .0075];
 %bpoints = [.07 .08 .09 .1 .11 .12 .13 .14 .15 .175 .2 .225 .25 .275 .3 .325 .35]*pi;
 %bpoints = [.25];
-bpoints = [.07 .08 .09 .1 .11 .12 .13 .15 .2 .25 .3 .35]*pi;
+bpoints = [.070 .075 .080 .085 .090 .095 .10 .105 .110 .115 .120 .125 .13]*pi;
 betavals = [.01 .02 .03 .04 .05 .06 .07 .08 .09 .1];
-tvals = [.05 .06 .07 .08 .09 .1]*pi;
+tvals = [.065 .070 .075 .08 .085 .09 .095 .1 .105]*pi;
 
 % bpoints = [.25 .2*pi];
 % betavals = [.01 .1];
@@ -62,13 +62,14 @@ for t_idx = 1:length(tvals)
     data.t = t;
     data.t_vector = t*ones(data.N,1);
     bpoints = OG_bpoints;
-
-    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
+    
+    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
     
     %% Run Optimization
     if tensor_true % Check for errors if bpoints change size in COCO
         try
             trans_percent_tensor(:,:,t_idx) = optimize(data, bpoints, betavals);
+            save("temp", "trans_percent_tensor");
         catch ME
             if any(trans_percent_tensor) % Check if data has been written
                 for i=1:(t_idx-1)
@@ -83,6 +84,7 @@ for t_idx = 1:length(tvals)
     else
         trans_percent_cell{t_idx,1} = optimize(data, bpoints, betavals);
         trans_percent_cell{t_idx,2} = bpoints;
+        save("temp", "trans_percent_cell");
     end
 end
 

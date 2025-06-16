@@ -32,7 +32,7 @@ data.plot_grids = 1;
 % betavals = [.00002 .0025  .005 .0075];
 %bpoints = [.07 .08 .09 .1 .11 .12 .13 .14 .15 .175 .2 .225 .25 .275 .3 .325 .35]*pi;
 %bpoints = [.25];
-bpoints = [.07 .08 .09 .1 .11 .12 .13 .15 .2 .25 .3 .35]*pi;
+bpoints = [.070 .075 .080 .085 .090 .095 .10 .105 .110 .115 .120 .125 .13 .15 .2 .25 .3 .35]*pi;
 betavals = [.01 .02 .03 .04 .05 .06 .07 .08 .09 .1];
 tvals = [.05 .06 .07 .08 .09 .1]*pi;
 
@@ -63,7 +63,7 @@ for t_idx = 1:length(tvals)
     data.t_vector = t*ones(data.N,1);
     bpoints = OG_bpoints;
 
-    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
+    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
     
     %% Run Optimization
     if tensor_true % Check for errors if bpoints change size in COCO
@@ -101,11 +101,14 @@ if tensor_true
         writecell(results_cell, "TransitionExcel\"+data.file_name_trans +".xlsx");
 
         figure(77); clf; hold on;
+        title("Transition Percent " + data.shape_name + " beta = " + num2str(beta) + " NumCells = "+ num2str(data.N_cells));
         xlabel("t");
         ylabel("b");
         clim([0 100]);
-        colorbar;
-        print(gcf, file_name + " - Transition.png", '-dpng', '-r600');
+        a=colorbar;
+        a.Label.String = 'Transition Percent %';
+        imagesc(tvals/pi, bpoints/pi, squeeze(trans_percent_tensor(:,beta_idx,:)))
+        print(gcf, "TransitionExcel\"+data.file_name_trans + " - Visual.png", '-dpng', '-r600');
     end
 else
     for t_idx = 1:length(tvals)
