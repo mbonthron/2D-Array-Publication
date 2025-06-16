@@ -30,10 +30,11 @@ data.plot_grids = 1;
 % bpoints = [0.05:0.01:0.20]; %times pi
 % bpoints = [.05 0.1 0.15 .2]*pi;
 % betavals = [.00002 .0025  .005 .0075];
-bpoints = [.07 .08 .09 .1 .11 .12 .13 .14 .15 .175 .2 .225 .25 .275 .3 .325 .35]*pi;
+%bpoints = [.07 .08 .09 .1 .11 .12 .13 .14 .15 .175 .2 .225 .25 .275 .3 .325 .35]*pi;
 %bpoints = [.25];
+bpoints = [.07 .08 .09 .1 .11 .12 .13 .15 .2 .25 .3 .35]*pi;
 betavals = [.01 .02 .03 .04 .05 .06 .07 .08 .09 .1];
-tvals = [.005 .01 .02 .03 .04 .05 .06 .07 .08 .09 .1]*pi;
+tvals = [.05 .06 .07 .08 .09 .1]*pi;
 
 % bpoints = [.25 .2*pi];
 % betavals = [.01 .1];
@@ -62,7 +63,7 @@ for t_idx = 1:length(tvals)
     data.t_vector = t*ones(data.N,1);
     bpoints = OG_bpoints;
 
-    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
+    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
     
     %% Run Optimization
     if tensor_true % Check for errors if bpoints change size in COCO
