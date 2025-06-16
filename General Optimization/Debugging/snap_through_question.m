@@ -4,12 +4,19 @@ N_modes = data.N_modes;
 
 font_name = 'Helvetica';
 
-figure(76); clf; 
-subplot(2,2,1);
-hold on
+figure(76); clf; hold on;
+tiledlayout(2,2);
+ax = nexttile;
+
 sgtitle(data.shape_name + ", b = " + num2str(data.b) + ", beta = " + num2str(data.beta) + ", NumCells = "+ num2str(data.N_cells) + ", t = "+num2str(data.t), 'FontName', font_name);
 title("A", 'FontName', font_name);
 imagesc(A(:,1:N*N_modes))
+
+xlim(ax,[1 N*N_modes]);
+ylim(ax,[1 length(t)]);
+xlabel(ax, "Modes");
+ylabel(ax, "time");
+colorbar(ax);
 set(gca, 'FontName', font_name);
 
 x_num = 100;
@@ -34,23 +41,31 @@ for i = 1:N
     w_matrix_sum(:,i) = w_sum;
 end
 
-subplot(2,2,2); hold on;
+ax = nexttile; hold on;
 imagesc(w_matrix)
+xlim(ax,[1 N*N_modes]);
+ylim(ax,[1 length(t)]);
+xlabel(ax, "Modes");
+ylabel(ax, "time");
+colorbar(ax);
 title("w vs x for all arches", 'FontName', font_name);
 set(gca, 'FontName', font_name);
 
 
 %%
-for i = 1:N
-    plot(x_num*i*[1 1],ylim,":","Color","r",'LineWidth',1)
-end
+% for i = 1:N
+%     plot(x_num*i*[1 1],ylim,":","Color","r",'LineWidth',1)
+% end
 
 %%
 w_matrix_norm = abs(w_matrix - w_matrix(1,:));
 
 w_matrix_norm(isnan(w_matrix_norm)) = data.b;
 
-subplot(2,2,3); hold on;
+ax = nexttile; hold on;
+xlim(ax,[1 N*N_modes]);
+ylim(ax,[1 length(t)]);
+colorbar(ax);
 title("w norm (last w - first w) vs x for all arches", 'FontName', font_name);
 imagesc(w_matrix_norm)
 set(gca, 'FontName', font_name);
@@ -58,7 +73,10 @@ set(gca, 'FontName', font_name);
 
 
 %%
-subplot(2,2,4); hold on;
+ax = nexttile; hold on;
+xlim(ax,[1 N*N_modes]);
+ylim(ax,[1 length(t)]);
+colorbar(ax);
 title("w norm summed for all arches", 'FontName', font_name);
 imagesc(w_matrix_sum)
 set(gca, 'FontName', font_name);

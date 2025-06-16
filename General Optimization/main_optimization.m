@@ -63,7 +63,7 @@ for t_idx = 1:length(tvals)
     data.t_vector = t*ones(data.N,1);
     bpoints = OG_bpoints;
 
-    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
+    %[data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
     
     %% Run Optimization
     if tensor_true % Check for errors if bpoints change size in COCO
