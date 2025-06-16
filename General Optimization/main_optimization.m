@@ -99,6 +99,16 @@ if tensor_true
     
         
         writecell(results_cell, "TransitionExcel\"+data.file_name_trans +".xlsx");
+
+        figure(77); clf; hold on;
+        title("Transition Percent " + data.shape_name + " beta = " + num2str(beta) + " NumCells = "+ num2str(data.N_cells));
+        xlabel("t");
+        ylabel("b");
+        clim([0 100]);
+        a=colorbar;
+        a.Label.String = 'Transition Percent %';
+        imagesc(tvals/pi, bpoints/pi, squeeze(trans_percent_tensor(:,beta_idx,:)))
+        print(gcf, "TransitionExcel\"+data.file_name_trans + " - Visual.png", '-dpng', '-r600');
     end
 else
     for t_idx = 1:length(tvals)
