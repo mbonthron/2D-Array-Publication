@@ -42,7 +42,7 @@ tvals = [.05 .06 .07 .08 .09 .1]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 4;
+shapeNum = 7;
 data = init_shape(shapeNum, data);
 
 %%

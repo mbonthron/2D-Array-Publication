@@ -87,12 +87,48 @@ elseif shapeNum == 5
     data.shape_name = 'Diamond Chain';
 
 elseif shapeNum == 6
+    % Diagonal Rhombus
+    run('points_hexagon.m')
+    nodes_to_remove = [1 6 11 12 13];
+    nodes_to_remove2 = [];
 
+    nodes_to_hold = [];
+    arches_to_displace = [];
+    nodes_to_rotate = [];
+    arches_to_force_positive = [5,6,7];
+    arches_to_force_negative = [3,4];
+
+    connections_to_remove = [];
+    data.shape_name = 'Diagonal Rhombus';
+
+elseif shapeNum == 7
+    % Diagonal Rhombus with Arch
+    run('points_hexagon.m')
+    nodes_to_remove = [11 12 13];
+    nodes_to_remove2 = [];
+
+    nodes_to_hold = [];
+    arches_to_displace = [];
+    nodes_to_rotate = [];
+    arches_to_force_positive = [3,6];
+    arches_to_force_negative = [5];
+
+    connections_to_remove = [3 5;
+                             5 8;
+                             8 10
+                             10 3];
+    data.shape_name = 'Diagonal Arched Rhombus';
+
+
+
+else
+    error("SHAPE DOES NOT EXIST (please fix)")
 
 end
 
 % Remove any unneeded vertecies
 data = remove_node(data, nodes_to_remove);
+plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
 % Determine the adjacency_matrix (assuming ALL connections)
 data = determine_adjacency_matrix(data);
@@ -112,7 +148,7 @@ data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
 data2.points = data.points_time_integration;
 data2.adjacency_matrix = data.adjacency_matrix_time_integration;
-%plot_grid(data2, 1);
+plot_grid(data2, 1);
 data2 = remove_node(data2,nodes_to_remove2);
 data.points_time_integration = data2.points;
 data.N_time_integration = data2.N;

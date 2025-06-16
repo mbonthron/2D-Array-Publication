@@ -32,5 +32,6 @@ if isfield(data, 'adjacency_matrix')
     data.N = sum(triu(adjacency_matrix,1) ==1,'all');   
 end
 
+data.V = length(data.points);
 end
 

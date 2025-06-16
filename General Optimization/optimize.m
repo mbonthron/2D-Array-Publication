@@ -16,7 +16,7 @@ for b = bpoints
 
     % Prepare for Time Integration
     data.beta = .1;
-    T_end = 200;
+    T_end = 2000;
     data = determine_coefficient_matrix(data);
     data = determine_starting_vals(data);
     data = determine_modes_to_skip(data);
