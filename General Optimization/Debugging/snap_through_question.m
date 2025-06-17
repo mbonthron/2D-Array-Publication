@@ -22,7 +22,7 @@ function percent_trans = snap_through_question(t,A,data)
     colorbar(ax);
     set(gca, 'FontName', font_name);
     
-    x_num = 100;
+    x_num = 25;
     x = linspace(0,pi,x_num);
     modes = (1:N_modes)';
     
@@ -39,7 +39,7 @@ function percent_trans = snap_through_question(t,A,data)
         w_norm = abs(w - w(1,:))/100;
         w_sum = sum(w_norm,2);
     
-        w_matrix(:,x_num*(i-1)+1:x_num*i) = w;
+        %w_matrix(:,x_num*(i-1)+1:x_num*i) = w;
         w_matrix_norm(:,x_num*(i-1)+1:x_num*i) = w_norm;
         w_matrix_sum(:,i) = w_sum;
     end
