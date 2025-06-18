@@ -35,7 +35,7 @@ else
     A0p(3*i-1) = 0.25*pi;
 end
 
-COCO_plot_system_once(A0p,data)
+COCO_plot_system_once(A0p,data);
 
 
 % Initialize Empty Vector

@@ -55,10 +55,10 @@ buffer = 0.15*major_axis;
 
 %% Create Figure
 f = figure(9898); clf; hold on
-daspect([1 1 1])
+daspect([1 1 1]);
 
-xlim(x_center+.5*[-width width]+buffer*[-1 1]*mod_factor)
-ylim(y_center+.5*[-height height]+buffer*[-1 1]*mod_factor)
+xlim(x_center+.5*[-width width]+buffer*[-1 1]*mod_factor);
+ylim(y_center+.5*[-height height]+buffer*[-1 1]*mod_factor);
 
 %% Create Grid
 % Connect the corresponding nodes per the adjacency_matrix
@@ -67,7 +67,7 @@ if isfield(data, 'plot_grids')
         for i = 1:N
             for j = i+1:N
                 if i ~= j && adjacency_matrix(i,j) == 1
-                    plot([x(i) x(j)],[y(i) y(j)],grid_linestyle,"LineWidth",grid_linewidth,"Color",grid_color)
+                    plot([x(i) x(j)],[y(i) y(j)],grid_linestyle,"LineWidth",grid_linewidth,"Color",grid_color);
                 end
             end
         end
@@ -76,8 +76,8 @@ else
 end
 
 % Plot the nodes
-scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k")
-scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,"MarkerEdgeColor","k")
+scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k");
+scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,"MarkerEdgeColor","k");
 
 
 %% Add Text
@@ -86,7 +86,7 @@ if add_labels
     
     % Add the node number label
     text(x-offset,y-offset,string(1:length(x)), "Color",node_number_color, 'FontWeight', 'bold', ...
-        'FontSize',node_number_font_size,'HorizontalAlignment','center')
+        'FontSize',node_number_font_size,'HorizontalAlignment','center');
     
     % Add Arch number label
     up_adjac = triu(adjacency_matrix,1);
@@ -96,7 +96,7 @@ if add_labels
     [left, right] = find(up_adjac == 1);
 
     text((x(left)+x(right))/2,(y(left)+y(right))/2,string(arches), "Color",arch_number_color, "FontWeight", 'bold', ...
-        'FontSize',arch_number_font_size,'HorizontalAlignment','center')
+        'FontSize',arch_number_font_size,'HorizontalAlignment','center');
     
     % for i = 1:length(left)
     %     text((x(left(i))+x(right(i)))/2,(y(left(i))+y(right(i)))/2,string(arches(i)), "Color",arch_number_color, "FontWeight", 'bold', ...

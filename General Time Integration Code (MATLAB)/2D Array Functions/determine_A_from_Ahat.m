@@ -20,15 +20,23 @@ Dmissingvals = (LHS\RHS)*Ahat(end/2+1:end,:);
 
 % Produce the 'full' Ahat matrix which can be used in dVdAN
 A = Ahat;
-for i = 1:C
-    mode = modes_to_skip(i);
-    A = [A(1:mode-1,:); missingvals(i,:) ; A(mode:end,:)];
-end
-shift_modes = N*N_modes;    % Do the same for the derivative terms
-for i = 1:C
-    mode = modes_to_skip(i);
-    A = [A(1:shift_modes+mode-1,:); Dmissingvals(i,:) ; A(shift_modes+mode:end,:)];
-end
+clear Ahat;
+shift_modes = N*N_modes;
+[M_size, N_size] = size(A);
+C = length(modes_to_skip);
+A_new = zeros(M_size + 2*C, N_size);
 
-A = A';
+insert_locs = false(M_size + 2*C, 1);
+insert_locs(modes_to_skip) = true;
+insert_locsD = false(M_size + 2*C, 1);
+insert_locsD(modes_to_skip+shift_modes) = true;
+
+% Create final matrix
+A_new(insert_locs, :) = missingvals;
+clear missingvals;
+A_new(insert_locsD, :) = Dmissingvals;
+clear Dmissingvals;
+A_new(~(insert_locs| insert_locsD), :) = A;
+
+A = A_new';
 end

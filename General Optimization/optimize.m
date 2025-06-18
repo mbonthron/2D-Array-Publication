@@ -12,7 +12,7 @@ for b = bpoints
     
     % Time integration and mitigate edge effects
     % Take a look at the initial condition
-    plot_system_once(data.A0,data);
+    %[~] = plot_system_once(data.A0,data);
 
     % Prepare for Time Integration
     data.beta = .1;
@@ -26,17 +26,18 @@ for b = bpoints
     %% Look at end of time integration
     A = determine_A_from_Ahat(Ahat, data);
     data.plot_labels = 1;
-    plot_system_once(A(end,:)',data);
+    %[~] = plot_system_once(A(end,:)',data);
     data.plot_labels = 0;
 
     data.A0hat = Ahat(end,:)';
+    clear Ahat;
     data.A0hat(data.N*data.N_modes+1:end) = 0;
 
     %% Determine which arch to force/displace %MICHAEL QUESTION
 
     % For now will try hardcoding into init_shape?
     % hold some nodes near edge stationary
-    T_end = 6000;
+    
     data.impose_rotation_at(data.nodes_to_hold) = 1;
     data.rotation_omega(data.nodes_to_hold) = 0.0013;
     data.rotation_mag(data.nodes_to_hold) = 0;
@@ -85,24 +86,31 @@ for b = bpoints
     % Save data being iterated over
     data_Orig2 = deepCopyStruct(data);
     % Recover A
-    A_Orig2 = determine_A_from_Ahat(Ahat,data);
+    %A_Orig2 = determine_A_from_Ahat(Ahat,data);
 
     % for loop for different beta values
     %% Run Time Integration for each Beta
     for beta = betavals
-        A = A_Orig2;
+        %A = A_Orig2;
         data = data_Orig2;
         %% Prepare for Time Integration
         data.beta = beta;
+        T_end = min([2000*sqrt(beta/.1)-400,10000]);
 
         %% Run Time Integration
         [t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);
 
         %% Recover A
         A = determine_A_from_Ahat(Ahat,data);
+        clear Ahat;
+        
 
         %% Visualize the Results
         data.frames = 100;
+        tinterp = linspace(t(1),t(end),data.frames);
+        Ainterp = interp1(t,A,tinterp);
+        clear A t;
+    
         if ~exist("Videos\"+ data.timeStr + "\", 'dir')
             mkdir("Videos\"+data.timeStr + "\");
         end
@@ -110,7 +118,7 @@ for b = bpoints
         data.file_name_trans = data.timeStr + "\"+ data.shape_name + " beta = " + num2str(data.beta) + " NumCells = "+ num2str(data.N_cells);
 
         
-        %plot_system_over_time(t,A,data)
+        %plot_system_over_time(tinterp,Ainterp,data)
 
         % Determine if a transition occurred and save info (boolean? or distance of wave?)
         % Within each unit cell, calc potential energy, see which ones went from
@@ -118,7 +126,7 @@ for b = bpoints
         b_idx = round(bpoints,4) == round(b,4);
         beta_idx = round(betavals,4) == round(beta,4);
 
-        trans_percent_matrix(b_idx,beta_idx) = snap_through_question(t,A,data);    
+        trans_percent_matrix(b_idx,beta_idx) = snap_through_question(tinterp,Ainterp,data);    
     end
 end
 end

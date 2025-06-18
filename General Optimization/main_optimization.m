@@ -1,7 +1,8 @@
 %% Clear Everything so there are no stragglers
 clear; clc; close all
 
-
+%profile -memory on;
+%setpref('profiler','showJitLines',1);
 %% Add the Paths to the Required Functions
 % addpath('2D Array Functions')
 % addpath('COCO Continuation/Shapes Point Data/')
@@ -32,6 +33,7 @@ data.plot_grids = 1;
 % betavals = [.00002 .0025  .005 .0075];
 %bpoints = [.07 .08 .09 .1 .11 .12 .13 .14 .15 .175 .2 .225 .25 .275 .3 .325 .35]*pi;
 %bpoints = [.25];
+
 bpoints = [.070 .075 .080 .085 .090 .095 .10 .105 .110 .115 .120 .125 .13]*pi;
 betavals = [.1:.1:1 2:1:5];
 tvals = [.01 .025 .05 .06 .065 .070 .075 .08 .085 .09 .095 .1 .105]*pi;
@@ -65,17 +67,23 @@ for t_idx = 1:length(tvals)
     bpoints = OG_bpoints;
     
     runs_exist = 1;
+    troubleshooting_flag = 0;
     for b = bpoints
         if ~isfile(data.shape_name + " b = "+ num2str(round(b/pi,4)) +" pi t = "+num2str(round(t/pi,4)) +" pi.mat")
             runs_exist = 0;
         end
     end
-    if ~runs_exist
+    if ~runs_exist || troubleshooting_flag
         [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
+    
     end
 end
 
 %% Run Optimization
+myCluster = parcluster('Processes');
+delete(myCluster.Jobs);
+myCluster.NumWorkers = 4;
+saveProfile(myCluster);
 parfor t_idx = 1:length(tvals)
     t = tvals(t_idx);
     % Run COCO
@@ -85,6 +93,7 @@ parfor t_idx = 1:length(tvals)
     bpoints = OG_bpoints;
     %% Run Optimization
     trans_percent_tensor(:,:,t_idx) = optimize(data, bpoints, betavals);
+    close all hidden;
     % if tensor_true % Check for errors if bpoints change size in COCO
     %     if length(bpoints) == length(OG_bpoints)
     %         trans_percent_tensor(:,:,t_idx) = optimize(data, bpoints, betavals);
