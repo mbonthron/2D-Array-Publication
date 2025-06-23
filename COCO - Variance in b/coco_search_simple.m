@@ -11,7 +11,7 @@ addpath('Shapes Point Data/')
 clear; clc; close all
 %% Create Empty Data Structure to be Populated
 data = struct();
-data.N_modes = 3;   % Number of modes used to describe the system
+data.N_modes = 4;   % Number of modes used to describe the system
 data.N_cells = 2;
 data.plot_grids = 1;
 
@@ -40,9 +40,9 @@ bpoints = 0.15*pi;
 data.mu = 1;
 data.sigma = 0.025;
 
-rng('default')
-data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
-% data.variance = ones(data.N,1);
+% rng('default')
+% data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
+data.variance = ones(data.N,1);
 % data.variance = [1.05 ; 1 ; 1];
 
 %% Run COCO with variance

@@ -79,7 +79,7 @@ end
 run_name_start_from = run_name1;
 BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
 
-for i = 1:5
+for i = 1:2
     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
     prob = coco_prob();
     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
