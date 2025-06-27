@@ -34,13 +34,13 @@ data.plot_grids = 1;
 %bpoints = [.07 .08 .09 .1 .11 .12 .13 .14 .15 .175 .2 .225 .25 .275 .3 .325 .35]*pi;
 %bpoints = [.25];
 
-bpoints = [.070 .075 .080 .085 .090 .095 .10 .105 .110 .115 .120 .125 .13]*pi;
-betavals = [.1:.1:1 2:1:5];
-tvals = [.01 .025 .05 .06 .065 .070 .075 .08 .085 .09 .095 .1 .105]*pi;
+% bpoints = [.070 .075 .080 .085 .090 .095 .10 .105 .110 .115 .120 .125 .13]*pi;
+% betavals = [.1:.1:1 2:1:5];
+% tvals = [.01 .025 .05 .06 .065 .070 .075 .08 .085 .09 .095 .1 .105]*pi;
 
-% bpoints = [.25];
-% betavals = [.1];
-% tvals = [.1]*pi;
+bpoints = [.08 .1]*pi;
+betavals = [ .05 .1];
+tvals = [ .09 .1]*pi;
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape

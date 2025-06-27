@@ -1,9 +1,10 @@
-function [f] = plot_grid(data,add_labels)
+function [f] = plot_grid(data,add_labels,use_curr_fig)
 %PLOT_GRID Plots the adjacency matrix with corresponding points matrix
 %   INPUTS
 %   ===================================================
 %   data
 %   add_labels  = true / false value if the nodes should be labeled
+%   use_curr_fig (optional), 1 to use currently opened figure
 %
 %   OUTPUTS
 %   ===================================================
@@ -54,7 +55,11 @@ y_center = 0.5*(max(y)-min(y)) + min(y);
 buffer = 0.15*major_axis;
 
 %% Create Figure
-f = figure(9898); clf; hold on
+if nargin <= 2 || use_curr_fig == 0
+f = figure(9898); clf;
+end
+
+hold on;
 daspect([1 1 1]);
 
 xlim(x_center+.5*[-width width]+buffer*[-1 1]*mod_factor);
@@ -113,38 +118,38 @@ if add_labels
 
     
     % Number of nodes, label each left and right
-    % for node_num=1:N
-    %     L_arch_num = find(left == node_num);
-    %     R_arch_num = find(right == node_num);
-    %     node_left_right_label = "";
-    %     for i =1:length(L_arch_num)
-    %         L_arch = L_arch_num(i);
-    %         node_left_right_label = node_left_right_label + "L"+num2str(L_arch)+" ";
-    %     end
-    %     for i=1:length(R_arch_num)
-    %         R_arch = R_arch_num(i);
-    %         node_left_right_label = node_left_right_label + "R"+string(R_arch)+" ";
-    %     end
-    %     text(x(node_num)-offset,y(node_num)+offset,node_left_right_label,"Color",moment_right_color, "FontWeight", 'bold', ...
-    %         'FontSize',moment_right_font_size,'HorizontalAlignment','center')
-    % end
-    % 
-    % % Number of nodes, label moment
-    % for node_num=1:length(adjacency_matrix)
-    %     L_arch_num = find(left == node_num);
-    %     R_arch_num = find(right == node_num);
-    %     node_moment_label = "";
-    %     for i =1:length(L_arch_num)
-    %         L_arch = L_arch_num(i);
-    %         node_moment_label = node_moment_label + "M"+num2str(L_arch)+" ";
-    %     end
-    %     for i=1:length(R_arch_num)
-    %         R_arch = R_arch_num(i);
-    %         node_moment_label = node_moment_label + "M"+string(R_arch + length(left))+" ";
-    %     end
-    %     text(x(node_num)+offset,y(node_num)-offset,node_moment_label,"Color",moment_left_color, "FontWeight", 'bold', ...
-    %         'FontSize',moment_left_font_size,'HorizontalAlignment','center')
-    % end
+    for node_num=1:N
+        L_arch_num = find(left == node_num);
+        R_arch_num = find(right == node_num);
+        node_left_right_label = "";
+        for i =1:length(L_arch_num)
+            L_arch = L_arch_num(i);
+            node_left_right_label = node_left_right_label + "L"+num2str(L_arch)+" ";
+        end
+        for i=1:length(R_arch_num)
+            R_arch = R_arch_num(i);
+            node_left_right_label = node_left_right_label + "R"+string(R_arch)+" ";
+        end
+        text(x(node_num)-offset,y(node_num)+offset,node_left_right_label,"Color",moment_right_color, "FontWeight", 'bold', ...
+            'FontSize',moment_right_font_size,'HorizontalAlignment','center')
+    end
+
+    % Number of nodes, label moment
+    for node_num=1:length(adjacency_matrix)
+        L_arch_num = find(left == node_num);
+        R_arch_num = find(right == node_num);
+        node_moment_label = "";
+        for i =1:length(L_arch_num)
+            L_arch = L_arch_num(i);
+            node_moment_label = node_moment_label + "M"+num2str(L_arch)+" ";
+        end
+        for i=1:length(R_arch_num)
+            R_arch = R_arch_num(i);
+            node_moment_label = node_moment_label + "M"+string(R_arch + length(left))+" ";
+        end
+        text(x(node_num)+offset,y(node_num)-offset,node_moment_label,"Color",moment_left_color, "FontWeight", 'bold', ...
+            'FontSize',moment_left_font_size,'HorizontalAlignment','center')
+    end
 end
 
 end
