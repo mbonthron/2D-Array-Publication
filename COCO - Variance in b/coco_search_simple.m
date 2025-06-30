@@ -38,11 +38,12 @@ bpoints = 0.15*pi;
 
 %% Add variance
 data.mu = 1;
-data.sigma = 0.025;
+% data.sigma = 0.025;
+data.sigma = 0.0183;
 
-% rng('default')
-% data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
-data.variance = ones(data.N,1);
+rng('default')
+data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
+% data.variance = ones(data.N,1);
 % data.variance = [1.05 ; 1 ; 1];
 
 %% Run COCO with variance

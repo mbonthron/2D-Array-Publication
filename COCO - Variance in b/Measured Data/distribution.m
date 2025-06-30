@@ -1,6 +1,12 @@
 % Load the data
 L0_vector = readmatrix('b = 10 mm L = 100 mm.csv');
 
+% remove the four largest values (they seem like outliers)
+[~, idx] = maxk(L0_vector, 4);
+
+% Remove those elements
+L0_vector(idx) = [];
+
 %
 b_vector = zeros(size(L0_vector));
 
@@ -32,7 +38,7 @@ mu = mean(b_vector)
 sigma = std(b_vector)
 
 %% Overlay the fit
-x = linspace(8,12,200);
+x = linspace(8.5,10.5,200);
 y = 1/(sigma*sqrt(2*pi))*exp(-(x-mu).^2/(2*sigma^2));
 
-plot(x,12*y,'LineWidth',2)
+plot(x,5.5*y,'LineWidth',2)

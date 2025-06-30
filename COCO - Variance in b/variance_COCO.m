@@ -36,50 +36,50 @@ coco(prob,run_name1,[],1,parameter_names,computational_domain)
 
 %% ========================================================================
 %  RERUN ANY HB POINTS AS UZ POINTS TO DO CONTINUATION FROM
-bd = coco_bd_read(run_name1);
-HBlbls = coco_bd_labs(run_name1, 'HB');
-
-bcrits = zeros(1,length(HBlbls));
-acrits = zeros(2*(data.N*(data.N_modes)-data.constraint_count),length(HBlbls));
-
-for k = 1:length(HBlbls)
-    bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
-    acrits(:,k) = coco_bd_val(bd,HBlbls(k),'x');
-end
-
-prob = coco_add_event(prob,'UZ','b',bcrits);
-prob = coco_add_event(prob,'UZ','b',UZpoints);
-
-fprintf("\nRun %.0f =========================================",1)
-coco(prob,run_name1,[],1,parameter_names,computational_domain)
-
-run_number = run_number + 1;
+% bd = coco_bd_read(run_name1);
+% HBlbls = coco_bd_labs(run_name1, 'HB');
+% 
+% bcrits = zeros(1,length(HBlbls));
+% acrits = zeros(2*(data.N*(data.N_modes)-data.constraint_count),length(HBlbls));
+% 
+% for k = 1:length(HBlbls)
+%     bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
+%     acrits(:,k) = coco_bd_val(bd,HBlbls(k),'x');
+% end
+% 
+% prob = coco_add_event(prob,'UZ','b',bcrits);
+% prob = coco_add_event(prob,'UZ','b',UZpoints);
+% 
+% fprintf("\nRun %.0f =========================================",1)
+% coco(prob,run_name1,[],1,parameter_names,computational_domain)
+% 
+% run_number = run_number + 1;
 
 %% ========================================================================
 % Continue from UZ points
-UZ = coco_bd_labs(run_name1, 'UZ'); 
-
-for i = 1:2
-    run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
-    prob = coco_prob();
-    prob = ode_ep2ep(prob,'',run_name1,UZ(i));
-    prob = coco_set(prob,'cont','branch','switch');
-    prob = coco_set(prob,'cont','ItMX', iterations_max);
-    prob = coco_set(prob,'cont','NPR',0);
-    prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
-    prob = coco_add_event(prob,'UZ','b',UZpoints);
-
-    fprintf("\nRun %.0f =========================================",run_number)
-    coco(prob,run_name,[],1,parameter_names,computational_domain)
-    run_number = run_number + 1;
-end
+% UZ = coco_bd_labs(run_name1, 'UZ'); 
+% 
+% for i = 1:2
+%     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
+%     prob = coco_prob();
+%     prob = ode_ep2ep(prob,'',run_name1,UZ(i));
+%     prob = coco_set(prob,'cont','branch','switch');
+%     prob = coco_set(prob,'cont','ItMX', iterations_max);
+%     prob = coco_set(prob,'cont','NPR',0);
+%     prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+%     prob = coco_add_event(prob,'UZ','b',UZpoints);
+% 
+%     fprintf("\nRun %.0f =========================================",run_number)
+%     coco(prob,run_name,[],1,parameter_names,computational_domain)
+%     run_number = run_number + 1;
+% end
 
 %% ========================================================================
 % CONTINUE FROM BP POINTS
 run_name_start_from = run_name1;
 BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
 
-for i = 1:2
+for i = 1:3
     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
     prob = coco_prob();
     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));

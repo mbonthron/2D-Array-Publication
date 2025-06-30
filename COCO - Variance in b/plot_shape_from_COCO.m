@@ -37,8 +37,8 @@ A = determine_A_from_Ahat(Ahat',data)';
 b_V_vector = zeros(length(UZ),5);
 
 for i = 1:length(UZ)
-    f = COCO_plot_system_once(A(:,i),data);
-    % f = plot_system_once(A(:,i),data);
+    % f = COCO_plot_system_once(A(:,i),data);
+    f = plot_system_once(A(:,i),data);
 
     figure
     copyobj(allchild(f),gcf);
