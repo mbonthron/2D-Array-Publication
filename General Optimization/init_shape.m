@@ -119,7 +119,20 @@ elseif shapeNum == 7
                              10 3];
     data.shape_name = 'Diagonal Arched Rhombus';
 
+elseif shapeNum == 8
+    % Hexagon
+    run('points_hexagon.m')
+    nodes_to_remove = [1 2 3 11 12 13];
+    nodes_to_remove2 = [];
 
+    nodes_to_hold = [];
+    arches_to_displace = [];
+    nodes_to_rotate = [];
+    arches_to_force_positive = [5,6,7];
+    arches_to_force_negative = [3,4];
+
+    connections_to_remove = [];
+    data.shape_name = 'Hexagon';
 
 else
     error("SHAPE DOES NOT EXIST (please fix)")
@@ -146,6 +159,9 @@ data2 = determine_adjacency_matrix(data2);
 % Save the time integration adjacency matrix into data
 data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 
+if isfield(data, 'static_only')
+    static_only = data.static_only;
+    if static_only
 data2.points = data.points_time_integration;
 data2.adjacency_matrix = data.adjacency_matrix_time_integration;
 [~] = plot_grid(data2, 1);
@@ -153,7 +169,10 @@ data2 = remove_node(data2,nodes_to_remove2);
 data.points_time_integration = data2.points;
 data.N_time_integration = data2.N;
 data.adjacency_matrix_time_integration = data2.adjacency_matrix;
-
+    end
+else
+    static_only = 0;
+end
 % If needed to help remove connections
 [~] = plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
@@ -162,8 +181,10 @@ data = remove_connection(data,connections_to_remove);
 
 [~] = plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
+if static_only == 0
 data = determine_per_to_finite(data);
 data = determine_time_to_periodic(data);
+end
 
 [~] = plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 %COCO_plot_system_once(zeros(data.N*data.N_modes),data);
