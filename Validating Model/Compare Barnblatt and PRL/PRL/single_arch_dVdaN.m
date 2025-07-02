@@ -27,19 +27,36 @@ N_modes = data.N_modes;
 indices = 1:N_modes;
 
 
-dVdt = zeros(N_modes,1);
+if n == 1
+    dVdt = zeros(N_modes,1);
 
-% Elastic Arch
-deltaL = 1 + (b/2)^2;
-sum1 = sum(((1:1:N_modes).^2.*A(indices).'.^2).');
+    % Elastic Arch
+    deltaL = 1 + (b/2)^2;
+    sum1 = sum(((1:1:N_modes).^2.*A(indices).'.^2).');
+    
+    % Write the equation for the first mode
+    j = 1;
+    dVdt(1) = (j^4).*A(indices(j)) - (j^2).*(deltaL - 1/2*e*A(indices(1))  - 0.25.*(sum1)).*(A(indices(j))+e);
+    
+    % Write the equation for all subsequent modes
+    for j = 2:N_modes
+        dVdt(j) = (j^4).*A(indices(j)) - (j^2).*(deltaL - 1/2*e*A(indices(1))  - 0.25.*(sum1)).*A(indices(j));
+    end
+else
+    dVdt = zeros(N_modes,m);
 
-% Write the equation for the first mode
-j = 1;
-dVdt(1) = (j^4).*A(indices(j)) - (j^2).*(deltaL - 1/2*e*A(indices(1))  - 0.25.*(sum1)).*(A(indices(j))+e);
-
-% Write the equation for all subsequent modes
-for j = 2:N_modes
-    dVdt(j) = (j^4).*A(indices(j)) - (j^2).*(deltaL - 1/2*e*A(indices(1))  - 0.25.*(sum1)).*A(indices(j));
+    % Elastic Arch
+    deltaL = 1 + (b/2)^2;
+    sum1 = sum((1:1:N_modes).^2.*A(:,indices).^2,2);
+    
+    % Write the equation for the first mode
+    j = 1;
+    dVdt(1,:) = (j^4).*A(:,indices(j)) - (j^2).*(deltaL - 1/2*e*A(:,indices(1))  - 0.25.*(sum1)).*(A(:,indices(j))+e);
+    
+    % Write the equation for all subsequent modes
+    for j = 2:N_modes
+        dVdt(j,:) = (j^4).*A(:,indices(j)) - (j^2).*(deltaL - 1/2*e*A(:,indices(1))  - 0.25.*(sum1)).*A(:,indices(j));
+    end
 end
 
 end

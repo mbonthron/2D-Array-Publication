@@ -15,9 +15,9 @@ function dAdt = PRL_single_arch_ODE(t,Ahat,data)
 %       respect to time of each variable
 
 %% Load in values
-N_modes         = 3;
-coeff_matrix    = [0 1 ; 1 0];
-beta            = 1.5;
+N_modes         = data.N_modes;
+coeff_matrix    = data.coeff_matrix;
+beta            = data.beta;
 
 %% Final Inversion
 if data.imposed
@@ -46,6 +46,7 @@ if data.imposed
 
     % Move the needed rows into the solution matrix
     dAdt(N_modes:end,:) = solution(2:end-1);
+
 elseif ~ data.imposed
     % Free - NOTE AHAT NOW REFERS TO A
     A = Ahat;

@@ -22,10 +22,10 @@ w = 0.25*25.4 / 1000;  % [m] Width
 
 b = 0.5*9.101 / 1000;  % [m] Rise
 
-alpha = 0.999/1000; % [m/s] Indentor Speed
-eta = 0.5;      % [UL] Location of Indentor
+alpha = 0.999/1000;     % [m/s] Indentor Speed
+eta = 0.5;              % [UL] Location of Indentor
 
-beta = 5;     % [Ns/m^2] Damping
+beta = 2.5;     % [Ns/m^2] Damping
 
 %  Derived Constants
 II = 1/12*w*t^3;
@@ -33,7 +33,7 @@ AA = w*t;
 rr = sqrt(II/AA);
 
 
-N_modes = 3;
+N_modes = 5;
 file_string = material + " b = "+b*1000 + "mm t = "+t*1000+"mm.mat";
 
 

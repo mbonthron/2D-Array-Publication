@@ -42,7 +42,6 @@ function [data] = run_PRL(data)
     last_positive = find(Q > 0,1,'last');
     
     A0 = A1(last_positive+1,:)';
-    t0 = t1(last_positive+1);
     
     %% Switch to Non Imposed Displacement
     data.imposed = false;

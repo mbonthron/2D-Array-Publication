@@ -1,4 +1,4 @@
-function dAdt = single_arch_ODE(t,Ahat,data)
+function dAdt = BB_single_arch_ODE(t,Ahat,data)
 %ARBITRARY_GRID_ODE Performs time integration on an arbitrary system of
 %arches
 %   INPUTS
