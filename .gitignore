@@ -1,3 +1,20 @@
 /General Optimization/data
 /General Optimization/Videos
 General Time Integration Code (MATLAB)/2D Array Functions/initialize_time_integration.m
+/Validating Model/Barenblatt Nondimensionalization/Continuation/data
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.02pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.03pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.04pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.05pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.06pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.07pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.08pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.09pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.11pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.12pi eta = 0.5.mat
+Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.1pi eta = 0.5.mat
+Validating Model/Compare Barnblatt and PRL/PRL steel b = 10mm t = 1mm.mat
+Validating Model/Compare Barnblatt and PRL/BB  steel b = 10mm t = 1mm.mat
+Validating Model/PRL Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi.mat
