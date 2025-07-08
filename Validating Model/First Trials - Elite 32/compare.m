@@ -1,9 +1,8 @@
-addpath('PRL')
 file_name = dir('*.xlsx');
 
 figure(4); clf; hold on
 
-look_at = setdiff(1:6,[]);
+look_at = setdiff(1:5,[]);
 counter = 1;
 
 for i = look_at
@@ -21,16 +20,29 @@ for i = look_at
     counter = counter + 1;
 end
 
+
+%% ============== Plot PRL
 cd('PRL')
 matfiles = dir('*.mat');
 for i = 1:length(matfiles)
     load(matfiles(i).name)
 
-    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4))
+    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[3 207 252 125]/255)
 end
 cd ..
 
-legend()
+
+%% ============== Plot Barenblatt
+cd('Barenblatt')
+matfiles = dir('*.mat');
+for i = 1:length(matfiles)
+    load(matfiles(i).name)
+
+    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[252 186 3 125]/255)
+end
+cd ..
+
+xlim([0 10])
 xlabel('Position')
 ylabel('Force')
 
