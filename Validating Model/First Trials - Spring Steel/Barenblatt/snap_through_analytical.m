@@ -1,14 +1,13 @@
 clear
 
 %% Dimensional Parameters
-L = 100 / 1000;      % Length [m]
+L = 100 / 1000;             % Length [m]
 thickness = .3048 / 1000;    % Thickness [m]
-w = 11.53 / 1000;    % Width [m]
-rise = 16 / 1000;    % Initial Rise [m]
-% EE = 160e9;          % Young's Modulus [N/m^2]
-EE = 210e9;
+w = 11.53 / 1000;     % Width [m]
+rise = 16 / 1000;       % Initial Rise [m]
+EE = 180e9;                 % Young's Modulus [N/m^2]
 
-rho = 7930;          % Volumetric Density [kg/m^3]
+rho = 7930;                 % Volumetric Density [kg/m^3]
 
 indentor_speed_mms = 0.2;      % Indentor Speed mm/s
 
@@ -18,13 +17,11 @@ II = 1/12 * w * thickness^3;
 AA = thickness*w;
 r = sqrt(II/AA);
 
-beta_PRL = 5;
-% beta_PRL = 0.4;
+beta_PRL = 0.25;
 beta_dimensional = beta_PRL * pi^2*sqrt(rho*AA*EE*II)/L^2;
 beta = beta_dimensional*pi/(L*sqrt(rho*EE));
-% beta = 0.0035*0.5;
 
-
+eta = 0.5;
 
 
 % Nondimensionalization
@@ -55,7 +52,7 @@ U(4)=0.0; 			%a1bdot
 options = odeset(RelTol=1e-11,AbsTol=1e-12);
 
 tic
-[T_contact,U_contact] = ode45(@(t,x0) in_contact(t,x0,b,tbar,AAbar,beta,indentor_speed),linspace(0,T_end,50000) ,U,options);
+[T_contact,U_contact] = ode45(@(t,x0) in_contact(t,x0,eta,b,tbar,AAbar,beta,indentor_speed),linspace(0,T_end,50000) ,U,options);
 toc
 
 Rxn = zeros(size(T_contact));
@@ -63,7 +60,7 @@ a3 = zeros(size(T_contact));
 a3dot = zeros(size(T_contact));
 
 for i = 1:1:length(T_contact)
-    [Q1,a1cVAL,a1cdotVAL] = in_contact2(T_contact(i),U_contact(i,:),b,tbar,AAbar,beta,indentor_speed);
+    [Q1,a1cVAL,a1cdotVAL] = in_contact2(T_contact(i),U_contact(i,:),eta,b,tbar,AAbar,beta,indentor_speed);
     Rxn(i) = Q1;
     a3(i) = a1cVAL;
     a3dot(i) = a1cdotVAL;
@@ -122,7 +119,8 @@ xlabel('Displacement')
 ylabel('Force')
 legend()
 
-save("Varying Beta\EE = "+EE/(1e9)+"e9 beta= "+beta_PRL+".mat",'disp_dimensional','Rxn_dimensional','snap_through_index')
+
+save("EE = "+EE/(1e9)+"e9 beta = "+beta_PRL+" eta =" + eta + ".mat",'disp_dimensional','Rxn_dimensional','snap_through_index','T_combined_dimensional','U_combined_dimensional')
 
 %% Dimensional Plots
 sample_time = linspace(0,T_combined(end),50000);

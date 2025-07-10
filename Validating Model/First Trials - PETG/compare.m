@@ -10,7 +10,7 @@ for i = look_at
     position = A.Var2; 
     force = A.Var3;
 
-    startidx = find(force>0.05);
+    startidx = find(force>0.05,1,'first');
 
     position = position(startidx:end);
     force = force(startidx:end);
@@ -42,8 +42,17 @@ for i = 1:length(matfiles)
 end
 cd ..
 
-legend()
-xlim([0 10])
-xlabel('Position')
-ylabel('Force')
 
+%% ============== Plot Dimensional
+cd('Dimensional')
+matfiles = dir('*.mat');
+for i = 1:length(matfiles)
+    load(matfiles(i).name)
+
+    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[98 50 168 125]/255)
+end
+cd ..
+
+
+xlim([0 10])
+%%%

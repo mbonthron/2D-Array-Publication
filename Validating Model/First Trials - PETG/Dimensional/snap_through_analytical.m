@@ -1,15 +1,14 @@
 %% Dimensional Parameters
-L = 100 / 1000;             % Length [m]
-t = 0.75 / 1000;    % Thickness [m]
-w = 14.18 / 1000;     % Width [m]
-rise = 10 / 1000;       % Initial Rise [m]
-EE = 4.3e9;                 % Young's Modulus [N/m^2]
+L = 100 / 1000;    % Length [m]
+t = 0.75 / 1000;   % Thickness [m]
+w = 14.18 / 1000;  % Width [m]
+rise = 10 / 1000;  % Initial Rise [m]
+EE = 4.3e9;        % Young's Modulus [N/m^2]
 
-rho = 1270;                 % Volumetric Density [kg/m^3]
+rho = 1270;        % Volumetric Density [kg/m^3]
 
 indentor_speed_mms = 0.2;      % Indentor Speed mm/s
 
-beta = 0.25;
 
 eta = 0.5;
 
@@ -20,23 +19,38 @@ r = sqrt(II/AA);
 T_end_sec = (1.5*rise*1000)/indentor_speed_mms;
 
 
+% Save into data
+beta_PRL = 0.25;
+beta = beta_PRL * pi^2*sqrt(rho*AA*EE*II)/L^2;
+
+
+data.rho = rho;
+data.AA = AA;
+data.II = II;
+data.EE = EE;
+data.L = L;
+
+
 %% Integrate the system
 % opts = odeset('RelTol',1e-3,'AbsTol',1e-3);
 % opts = odeset('MaxStep',100,'MinStep',10)
 
-b = rise/r;
-T_end = T_end_sec * (pi^2/L^2*sqrt(EE*II/AA/rho));
-indentor_speed = (indentor_speed_mms/1000)/r / (pi^2/L^2*sqrt(EE*II/AA/rho));
+U2_PRL = 1e-6;
+U2_dimensional = U2_PRL*r;
+
+b = rise;
+T_end = T_end_sec ;
+indentor_speed = (indentor_speed_mms/1000);
 
 U = zeros(4,1);
-U(1)=+b;		    %a1a
-U(2)=1e-6;			%a1b
+U(1)=sqrt(b^2-(1/3)*t^2);		    %a1a
+U(2)=U2_dimensional;			%a1b
 U(3)=0.0; 			%a1adot
 U(4)=0.0; 			%a1bdot
 
 %% Integrate when indentor in contact
 tic
-[T_contact,U_contact] = ode45(@(t,x0) in_contact(t,x0,eta,b,beta,indentor_speed),linspace(0,T_end,5000),U);
+[T_contact,U_contact] = ode45(@(t,x0) in_contact(t,x0,eta,b,beta,indentor_speed,data),linspace(0,T_end,5000),U);
 toc
 
 Rxn = zeros(size(T_contact));
@@ -44,7 +58,7 @@ a3 = zeros(size(T_contact));
 a3dot = zeros(size(T_contact));
 
 for i = 1:1:length(T_contact)
-    [Q1,a1cVAL,a1cdotVAL] = in_contact2(T_contact(i),U_contact(i,:),eta,b,beta,indentor_speed);
+    [Q1,a1cVAL,a1cdotVAL] = in_contact2(T_contact(i),U_contact(i,:),eta,b,beta,indentor_speed,data);
     Rxn(i) = Q1;
     a3(i) = a1cVAL;
     a3dot(i) = a1cdotVAL;
@@ -58,7 +72,7 @@ Rxn      = Rxn(1:snap_through_index);
 U_contact = [U_contact(1:snap_through_index,1:2) a3(1:snap_through_index) U_contact(1:snap_through_index,3:4) a3dot(1:snap_through_index)] ;
 
 % Switch to the free integration
-[T_free,U_free] = ode45(@(t,x0) snap_through(t,x0,b,beta),linspace(T_contact(end),T_end,500),U_contact(end,:));
+[T_free,U_free] = ode45(@(t,x0) snap_through(t,x0,b,beta,data),linspace(T_contact(end),T_end,500),U_contact(end,:));
 
 %% Dimensionless Plots
 T_combined = [T_contact; T_free(2:end,:)];
@@ -79,14 +93,14 @@ figure(3)
 plot(T_contact,Rxn(1:snap_through_index),"DisplayName","Reaction Force")
 legend()
 
-Rxn_dimensional = Rxn*pi^4*EE*II*r / (2*L^3);
-disp_dimensional = (T_contact*indentor_speed)*r;
+Rxn_dimensional = Rxn;
+disp_dimensional = (T_contact*indentor_speed);
 
 energy = cumtrapz(Rxn_dimensional,disp_dimensional);
 
 %%
-T_combined_dimensional = T_combined/(pi^2/L^2*sqrt(EE*II/AA/rho));
-U_combined_dimensional = U_combined*r;
+T_combined_dimensional = T_combined;
+U_combined_dimensional = U_combined;
 figure(10)
 clf, hold on
 plot(T_combined_dimensional,U_combined_dimensional(:,1)*1000,"DisplayName","a1")
@@ -96,12 +110,12 @@ legend()
 
 %%
 figure(4); hold on
-plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"-","LineWidth",3)
+plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),":","LineWidth",3)
 xlabel('Displacement')
 ylabel('Force')
 legend()
 
-save("EE = "+EE/(1e9)+"e9 beta = "+beta+" eta =" + eta + ".mat",'disp_dimensional','Rxn_dimensional','snap_through_index','U_combined_dimensional','T_combined_dimensional')
+save("EE = "+EE/(1e9)+"e9 beta = "+beta_PRL+" eta =" + eta + ".mat",'disp_dimensional','Rxn_dimensional','snap_through_index','T_combined_dimensional','U_combined_dimensional')
 
 %% Dimensional Plots
 sample_time = linspace(0,T_combined(end),50000);

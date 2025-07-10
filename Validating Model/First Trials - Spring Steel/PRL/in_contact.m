@@ -1,29 +1,36 @@
-function [F] = in_contact(T,U,b,beta,indentor_speed)
+function [F] = in_contact(T,U,eta,b,beta,indentor_speed)
 F = zeros(4,length(T));
+
+a1 = U(1);
+a2 = U(2);
+a1dot = U(3);
+a2dot = U(4);
 
 %% === Values specific to arch
 deltaL1=1+(+b/2.0).^2;
-% a1cVAL=U(1)-b.*cos(omn01.*T);
-% a1cdotVAL=U(3)+b.*omn01.*sin(omn01.*T);
-% QQQ1=+b.*omn01.^2.*cos(omn01.*T);
     
-a1cVAL=U(1)-b+T*indentor_speed;
-a1cdotVAL=U(3)+indentor_speed;
-QQQ1=0;
+a3   = (1/sin(3*eta*pi))*(b*sin(eta*pi) - T*indentor_speed - a1*sin(eta*pi) - a2*sin(2*eta*pi));
+a3dot= (1/sin(3*eta*pi))*(              -   indentor_speed - a1dot*sin(eta*pi) - a2dot*sin(2*eta*pi));
+QQQ1 = 0;
 
 
-a1a=beta.*U(3)+U(1)-(deltaL1-0.25.*(U(1).^2+4.*U(2).^2+9.*a1cVAL.^2)).*U(1);
-a1b=beta.*U(4)+16.*U(2)-4.*(deltaL1-0.25.*(U(1).^2+4.*U(2).^2+9.*a1cVAL.^2)).*U(2);
-a1c=beta.*a1cdotVAL+81.*a1cVAL-9.*(deltaL1-0.25.*(U(1).^2+4.*U(2).^2+9.*a1cVAL.^2)).*a1cVAL;
+dVa1=beta.*a1dot+    a1-   (deltaL1-0.25.*(a1.^2+4.*a2.^2+9.*a3.^2)).*a1;
+dVa2=beta.*a2dot+16.*a2-4.*(deltaL1-0.25.*(a1.^2+4.*a2.^2+9.*a3.^2)).*a2;
+dVa3=beta.*a3dot+81.*a3-9.*(deltaL1-0.25.*(a1.^2+4.*a2.^2+9.*a3.^2)).*a3;
 
 
 %% First Order System
-F(1,:)=U(3);
-F(2,:)=U(4);
-F(3,:)=-0.5.*QQQ1-0.5.*a1a-0.5.*a1c;
-F(4,:)=-a1b;
+% LHS = [1 0 0 sin(eta*pi); 0 1 0  sin(2*eta*pi); 0 0 1 sin(3*eta*pi); sin((1:3)*eta*pi) 0];
 
-Q1 = (0.5.*QQQ1 - 0.5.*a1a + 0.5.*a1c);
+LHS = [1 0 0 1 ; 0 1 0 0 ; 0 0 1 -1; 1 0 -1 0];
+
+sol = LHS \ (-1*[dVa1 ; dVa2 ; dVa3 ; 0]);
+F(1,:)=a1dot;
+F(2,:)=a2dot;
+F(3,:)=sol(1);
+F(4,:)=sol(2);
+
+Q1 = sol(4);
 
 end
 

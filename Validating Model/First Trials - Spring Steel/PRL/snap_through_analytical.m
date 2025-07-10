@@ -1,17 +1,17 @@
 %% Dimensional Parameters
 L = 100 / 1000;             % Length [m]
-t = .3048 / 1000;    % Thickness [m]
-w = 11.53 / 1000;     % Width [m]
-rise = 16 / 1000;       % Initial Rise [m]
-EE = 210e9;                 % Young's Modulus [N/m^2]
-% EE = 180e9;
+t = 0.3048 / 1000;   % Thickness [m]
+w = 11.53 / 1000;  % Width [m]
+rise = 16 / 1000;  % Initial Rise [m]
+EE = 180e9;        % Young's Modulus [N/m^2]
 
-rho = 7930;                 % Volumetric Density [kg/m^3]
+rho = 7930;        % Volumetric Density [kg/m^3]
 
 indentor_speed_mms = 0.2;      % Indentor Speed mm/s
 
-beta = 5;
-% beta = 0.4;
+beta = 0.25;
+
+eta = 0.5;
 
 % Derived parameters
 II = 1/12 * w * t^3;
@@ -36,7 +36,7 @@ U(4)=0.0; 			%a1bdot
 
 %% Integrate when indentor in contact
 tic
-[T_contact,U_contact] = ode45(@(t,x0) in_contact(t,x0,b,beta,indentor_speed),linspace(0,T_end,5000),U);
+[T_contact,U_contact] = ode45(@(t,x0) in_contact(t,x0,eta,b,beta,indentor_speed),linspace(0,T_end,5000),U);
 toc
 
 Rxn = zeros(size(T_contact));
@@ -44,7 +44,7 @@ a3 = zeros(size(T_contact));
 a3dot = zeros(size(T_contact));
 
 for i = 1:1:length(T_contact)
-    [Q1,a1cVAL,a1cdotVAL] = in_contact2(T_contact(i),U_contact(i,:),b,beta,indentor_speed);
+    [Q1,a1cVAL,a1cdotVAL] = in_contact2(T_contact(i),U_contact(i,:),eta,b,beta,indentor_speed);
     Rxn(i) = Q1;
     a3(i) = a1cVAL;
     a3dot(i) = a1cdotVAL;
@@ -96,12 +96,12 @@ legend()
 
 %%
 figure(4); hold on
-plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),":","LineWidth",3)
+plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"-","LineWidth",3)
 xlabel('Displacement')
 ylabel('Force')
 legend()
 
-save("Varying Beta\EE = "+EE/(1e9)+"e9 beta= "+beta+".mat",'disp_dimensional','Rxn_dimensional','snap_through_index')
+save("EE = "+EE/(1e9)+"e9 beta = "+beta+" eta =" + eta + ".mat",'disp_dimensional','Rxn_dimensional','snap_through_index','U_combined_dimensional','T_combined_dimensional')
 
 %% Dimensional Plots
 sample_time = linspace(0,T_combined(end),50000);
