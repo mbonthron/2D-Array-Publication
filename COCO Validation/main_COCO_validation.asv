@@ -19,6 +19,9 @@ data.N_modes = 3;   % Number of modes used to describe the system
 data.N_cells = 1;
 data.plot_grids = 1;
 
+bpoints = [.1]*pi;
+tvals = [.01]*pi;
+
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
 shapeNum = 8;
@@ -30,7 +33,7 @@ data.arch_center_distance_mm = 120;
 data.number_of_points = 1;
 [picture_points_height, picture_points_position] = picture2points(data);
 
-% Run COCO and find stable configurations   
+%% Run COCO and find stable configurations   
     % Do we care which configuration? All of them?
     % If all of them, then load picture for each configuration?
     % If multiple, would be nice to have a mapping from physical picture number to
@@ -38,23 +41,23 @@ data.number_of_points = 1;
     % Autodetection of mapping based on coarsely autodetecting which are
     % most similar would be good (ML?)
 
-t = tvals(t_idx);
+t = tvals(1);
 % Run COCO
 data = raw_data;
 data.t = t;
 data.t_vector = t*ones(data.N,1);
-bpoints = OG_bpoints;
+%data.b_vector = b*ones(data.N,1);
+
 
 runs_exist = 1;
 troubleshooting_flag = 0;
 for b = bpoints
-    if ~isfile(data.shape_name + " b = "+ num2str(round(b/pi,4)) +" pi t = "+num2str(round(t/pi,4)) +" pi.mat")
+    if ~isfile(data.shape_name + " b = "+ num2str(round(b/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi run "+ sprintf('%.0f',run_number)+".mat")
         runs_exist = 0;
     end
 end
 if ~runs_exist || troubleshooting_flag
-    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints); close all;
-
+    [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints);
 end
 
 % Show plot of configuration with left and right side of each arch labeled

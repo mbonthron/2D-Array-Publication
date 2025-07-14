@@ -9,7 +9,7 @@ N = data.N;
 arch_center_distance_mm = data.arch_center_distance_mm;
 number_of_points = data.number_of_points;
 
-file_name = "Example.png";
+
 
 objectFrame = imread(file_name);
 
