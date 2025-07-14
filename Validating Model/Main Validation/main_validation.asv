@@ -12,16 +12,9 @@ addpath('Single Arch Snap Through - PRL\')
 
 bvals = [10]; %mm
 tvals = [.75]; %mm
-schemes_to_run = ['B', 'D', 'P'];
-% Run for 3 different locations
-eta_vals = [.500000000000];
 
-total_cell = cell(length(bvals), length(tvals), length(eta_vals), 3, 2);
-
-for b_idx = 1:length(bvals)
-    b = bvals(b_idx);
-    for t_idx = 1:length(tvals)
-        t = tvals(t_idx);
+for b = bvals
+    for t = tvals
         %% Initialize data
         data = struct();
         data.L = 100 / 1000;    % Length [m]
@@ -38,19 +31,19 @@ for b_idx = 1:length(bvals)
 
         %% Run numerical results
 
-
+        schemes_to_run = ['B', 'D', 'P'];
+        % Run for 3 different locations
+        eta_vals = [.500000000000];
 
         data.save_each = 1; %Save each inner for loop
         data.clear_each = 1; %Clear each inner for loop
         nowTime = datetime('now');
         data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
 
-        temp_cell = validation(data, schemes_to_run, eta_vals);
+        temp_cell = validation(data, schemes_to_run, eta_vals)
 
-        % Save to bigger cell
-        %total_cell{b_idx, t_idx, :, :, :} = temp_cell;
+        %% Plot each relevant combination
 
 
     end
 end
-%% Plot each relevant combination

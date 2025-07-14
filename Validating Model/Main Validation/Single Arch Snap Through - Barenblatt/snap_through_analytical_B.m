@@ -1,4 +1,4 @@
-function snap_through_analytical_B(data)
+function [disp_dimensional, Rxn_dimensional_return] = snap_through_analytical_B(data)
 
 %% Dimensional Parameters
 % L = 100 / 1000;             % Length [m]
@@ -123,13 +123,14 @@ legend()
 
 %%
 figure(4); hold on
-plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3)
+plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',"Barenblatt")
 xlabel('Displacement')
 ylabel('Force')
 legend()
 
+Rxn_dimensional_return = Rxn_dimensional(1:snap_through_index);
 
-save("EE = "+EE/(1e9)+"e9 beta = "+beta_PRL+" eta =" + eta + ".mat",'disp_dimensional','Rxn_dimensional','snap_through_index','T_combined_dimensional','U_combined_dimensional')
+save("b = "+data.rise*1000+"mm L =" +data.L*1000 +"mm EE = "+EE/(1e9)+"e9 beta = "+beta_PRL+" eta =" + eta + ".mat",'disp_dimensional','Rxn_dimensional','snap_through_index','T_combined_dimensional','U_combined_dimensional')
 
 %% Dimensional Plots
 sample_time = linspace(0,T_combined(end),50000);
