@@ -22,6 +22,7 @@ T_end_sec = (1.5*rise*1000)/indentor_speed_mms;
 beta_PRL = 0.25;
 beta = beta_PRL * pi^2*sqrt(rho*AA*EE*II)/L^2;
 
+data = struct();
 data.rho = rho;
 data.AA = AA;
 data.II = II;
@@ -76,7 +77,8 @@ end
 %% ========================================================================
 %  Compare the force
 figure(2); clf; hold on
-plot(tdim,fdim,'LineWidth',2)
-plot(tBB,fBB,'LineWidth',2)
-plot(tPRL,fPRL,'LineWidth',2)
+plot(tdim,fdim,'LineWidth',3,'DisplayName','Dimensional')
+plot(tBB,fBB,'LineWidth',2,'DisplayName','Barenblatt')
+plot(tPRL,fPRL,"--",'LineWidth',1,'DisplayName','PRL')
 ylim([0 5])
+legend()

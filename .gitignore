@@ -18,3 +18,268 @@ Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t =
 Validating Model/Compare Barnblatt and PRL/PRL steel b = 10mm t = 1mm.mat
 Validating Model/Compare Barnblatt and PRL/BB  steel b = 10mm t = 1mm.mat
 Validating Model/PRL Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi.mat
+Validating Model/First Trials - PETG/PRL/EE = 2.3e9 beta = 0.25 eta =0.5.mat
+Validating Model/OLD/Compare Barnblatt and PRL/BB  steel b = 10mm t = 1mm.mat
+Validating Model/OLD/Compare Barnblatt and PRL/PRL steel b = 10mm t = 1mm.mat
+Validating Model/First Trials - PETG/Barenblatt/EE = 2.3e9 beta = 0.25 eta =0.5.mat
+Validating Model/First Trials - PETG/Barenblatt/EE = 4.3e9 beta = 0.25 eta =0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/bd.mat
+Validating Model/First Trials - PETG/Dimensional/EE = 2.3e9 beta = 0.25 eta =0.5.mat
+Validating Model/First Trials - Spring Steel/PRL/EE = 180e9 beta = 0.25 eta =0.5.mat
+Validating Model/First Trials - Spring Steel/PRL/EE = 180e9 beta = 0.65 eta =0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol1.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol2.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol3.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol4.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol6.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol7.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol8.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol9.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol10.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol11.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol12.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol13.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol14.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol15.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol16.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol17.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol18.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol19.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol20.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol21.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol22.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol23.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol24.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol25.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol26.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol27.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol28.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol29.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol30.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol31.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol32.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol33.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol34.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol35.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol36.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol37.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol38.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol39.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol40.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol41.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol42.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol43.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol44.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol45.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol46.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol47.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol48.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol49.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol50.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol51.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol52.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol53.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol54.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol55.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol56.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol57.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol58.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol59.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol60.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol61.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol62.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol63.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol64.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol65.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol66.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol67.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol68.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol69.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol70.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol71.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol72.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol73.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol74.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol75.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol76.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol77.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol78.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol79.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol80.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol81.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol82.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol83.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol84.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol85.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol86.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol87.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol88.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol89.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol90.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol91.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol92.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol93.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol94.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol95.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol96.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol97.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol98.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol99.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol100.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol101.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol102.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol103.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol104.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol105.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol106.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol107.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol108.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol109.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol110.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol111.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol112.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol113.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol114.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol115.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol116.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol117.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol118.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol119.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol120.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol121.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol122.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol123.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol124.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol125.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol126.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol127.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol128.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol129.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol130.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol131.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol132.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol133.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol134.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol135.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol136.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol137.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol138.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol139.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol140.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol141.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol142.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol143.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol144.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol145.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol146.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol147.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol148.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol149.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol150.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol151.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol152.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol153.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol154.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol155.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol156.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol157.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol158.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol159.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol160.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol161.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol162.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol163.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol164.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol165.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol166.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol167.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol168.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol169.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol170.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol171.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol172.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol173.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol174.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol175.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol176.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol177.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol178.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol179.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol180.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol181.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol182.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol183.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol184.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol185.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol186.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol187.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol188.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol189.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol190.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol191.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol192.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol193.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol194.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol195.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol196.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol197.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol198.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol199.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol200.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol201.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol202.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol203.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol204.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol205.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol206.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol207.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol208.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol209.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol210.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol211.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol212.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol213.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol214.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol215.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol216.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol217.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol218.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol219.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol220.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol221.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol222.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol223.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1/sol224.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/bd.mat
+Validating Model/OLD/PRL Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol1.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol2.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol3.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol4.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol6.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol7.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol8.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol9.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol10.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol11.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol12.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol13.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol14.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol15.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Continuation/data/run1lowb/sol16.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.1pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.02pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.03pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.04pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.05pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.06pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.07pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.08pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.09pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.11pi eta = 0.5.mat
+Validating Model/OLD/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.12pi eta = 0.5.mat
+Validating Model/First Trials - Spring Steel/PRL/EE = 180e9 beta = 0.25 eta =0.5.mat

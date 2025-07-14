@@ -9,7 +9,7 @@ rho = 7930;        % Volumetric Density [kg/m^3]
 
 indentor_speed_mms = 0.2;      % Indentor Speed mm/s
 
-beta = 0.25;
+beta = 0.65;
 
 eta = 0.5;
 
@@ -29,10 +29,10 @@ T_end = T_end_sec * (pi^2/L^2*sqrt(EE*II/AA/rho));
 indentor_speed = (indentor_speed_mms/1000)/r / (pi^2/L^2*sqrt(EE*II/AA/rho));
 
 U = zeros(4,1);
-U(1)=+b;		    %a1a
-U(2)=1e-6;			%a1b
-U(3)=0.0; 			%a1adot
-U(4)=0.0; 			%a1bdot
+U(1)=+b;		    %a1
+U(2)=0.0;			%a2
+U(3)=0.0; 			%a1dot
+U(4)=0.0; 			%a2dot
 
 %% Integrate when indentor in contact
 tic

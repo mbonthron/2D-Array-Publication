@@ -27,7 +27,7 @@ matfiles = dir('*.mat');
 for i = 1:length(matfiles)
     load(matfiles(i).name)
 
-    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[3 207 252 125]/255)
+    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[3 227 252]/255)
 end
 cd ..
 
@@ -38,7 +38,7 @@ matfiles = dir('*.mat');
 for i = 1:length(matfiles)
     load(matfiles(i).name)
 
-    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[252 186 3 125]/255)
+    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[227 3 252]/255)
 end
 cd ..
 
@@ -49,10 +49,10 @@ matfiles = dir('*.mat');
 for i = 1:length(matfiles)
     load(matfiles(i).name)
 
-    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[98 50 168 125]/255)
+    plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',matfiles(i).name(1:end-4),'Color',[7 252 3]/255)
 end
 cd ..
 
-
+% legend()
 xlim([0 10])
 %%%
