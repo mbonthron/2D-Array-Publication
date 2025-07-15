@@ -3,7 +3,7 @@ save_each = data.save_each;
 clear_each = data.clear_each;
 plot_vals = cell(length(eta_vals),3, 2);
 plot_vals_small = cell(length(eta_vals),3, 2);
-for eta_idx = length(eta_vals)
+for eta_idx = 1:length(eta_vals)
     data.eta = eta_vals(eta_idx);
     for i = 1:length(schemes_to_run)
         switch(schemes_to_run(i))
