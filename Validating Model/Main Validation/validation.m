@@ -1,7 +1,8 @@
-function plot_vals = validation(data, schemes_to_run, eta_vals)
+function plot_vals_small = validation(data, schemes_to_run, eta_vals, num_points)
 save_each = data.save_each;
 clear_each = data.clear_each;
 plot_vals = cell(length(eta_vals),3, 2);
+plot_vals_small = cell(length(eta_vals),3, 2);
 for eta_idx = length(eta_vals)
     data.eta = eta_vals(eta_idx);
     for i = 1:length(schemes_to_run)
@@ -18,6 +19,11 @@ for eta_idx = length(eta_vals)
                 plot_vals{eta_idx, 1, 1} = disp_dimensional_B;
                 plot_vals{eta_idx, 1, 2} = Rxn_dimensional_B;
 
+                disp_dimensional_B_q = linspace(min(disp_dimensional_B), max(disp_dimensional_B), num_points);
+                Rxn_dimensional_B_q = interp1(disp_dimensional_B, Rxn_dimensional_B, disp_dimensional_B_q, 'linear');
+                plot_vals_small{eta_idx, 1, 1} = disp_dimensional_B_q;
+                plot_vals_small{eta_idx, 1, 2} = Rxn_dimensional_B_q;
+
                 % cd out
                 cd("..\")
             case 'D'
@@ -30,6 +36,11 @@ for eta_idx = length(eta_vals)
                 plot_vals{eta_idx, 2, 1} = disp_dimensional_D;
                 plot_vals{eta_idx, 2, 2} = Rxn_dimensional_D;
 
+                disp_dimensional_D_q = linspace(min(disp_dimensional_D), max(disp_dimensional_D), num_points);
+                Rxn_dimensional_D_q = interp1(disp_dimensional_D, Rxn_dimensional_D, disp_dimensional_D_q, 'linear');
+                plot_vals_small{eta_idx, 2, 1} = disp_dimensional_D_q;
+                plot_vals_small{eta_idx, 2, 2} = Rxn_dimensional_D_q;
+
                 cd("..\");
             case 'P'
 
@@ -41,6 +52,11 @@ for eta_idx = length(eta_vals)
                 [disp_dimensional_P, Rxn_dimensional_P] = snap_through_analytical_P(data);
                 plot_vals{eta_idx, 3, 1} = disp_dimensional_P;
                 plot_vals{eta_idx, 3, 2} = Rxn_dimensional_P;
+
+                disp_dimensional_P_q = linspace(min(disp_dimensional_P), max(disp_dimensional_P), num_points);
+                Rxn_dimensional_P_q = interp1(disp_dimensional_P, Rxn_dimensional_P, disp_dimensional_P_q, 'linear');
+                plot_vals_small{eta_idx, 3, 1} = disp_dimensional_P_q;
+                plot_vals_small{eta_idx, 3, 2} = Rxn_dimensional_P_q;
 
                 cd("..\");
             otherwise
