@@ -122,7 +122,7 @@ legend()
 
 %%
 figure(4); hold on
-plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),":","LineWidth",3,'DisplayName',"Dimensional")
+plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),":","LineWidth",3,'DisplayName',"Dimensional eta = " + eta)
 xlabel('Displacement')
 ylabel('Force')
 legend()
