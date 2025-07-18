@@ -1,0 +1,14 @@
+Tightening instructions
+Hand Tighten:
+Bottom left -> Top Right -> Bottom Right -> Top Left
+Wrench 120 deg:
+Same order
+
+
+7/17
+Made 9.50mm plates and ran trials
+Some pretty good agreement among some
+
+7/17
+Made 9.42mm plates and ran trials
+Some pretty good agreement among some

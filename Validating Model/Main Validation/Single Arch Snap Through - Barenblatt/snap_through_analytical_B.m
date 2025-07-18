@@ -45,7 +45,8 @@ indentor_speed = (indentor_speed_mms/1000)*sqrt(rho/EE);
 T_end_sec = (1.5*rise*1000)/indentor_speed_mms;
 T_end  = T_end_sec/(L*sqrt(rho/EE)/pi);
 
-U2_PRL = 1e-6;
+% U2_PRL = 1e-6;
+U2_PRL = data.U2_PRL;
 U2_dimensional = U2_PRL*r;
 U2_BB = U2_dimensional*pi/L;
 
@@ -77,6 +78,7 @@ end
 
 % Find the first point where reaction force is less than zero
 snap_through_index = find(Rxn>0,1,'last')+1;
+% snap_through_index = find(Rxn<0,1,'first')+1;
 
 T_contact = T_contact(1:snap_through_index);
 Rxn      = Rxn(1:snap_through_index);

@@ -47,7 +47,7 @@ data.L = L;
 % opts = odeset('RelTol',1e-3,'AbsTol',1e-3);
 % opts = odeset('MaxStep',100,'MinStep',10)
 
-U2_PRL = 1e-6;
+U2_PRL = data.U2_PRL;
 U2_dimensional = U2_PRL*r;
 
 b = rise;

@@ -43,8 +43,10 @@ T_end = T_end_sec * (pi^2/L^2*sqrt(EE*II/AA/rho));
 indentor_speed = (indentor_speed_mms/1000)/r / (pi^2/L^2*sqrt(EE*II/AA/rho));
 
 U = zeros(4,1);
+U2_PRL = data.U2_PRL;
+
 U(1)=+b;		    %a1a
-U(2)=1e-6;			%a1b
+U(2)=U2_PRL;			%a1b
 U(3)=0.0; 			%a1adot
 U(4)=0.0; 			%a1bdot
 
