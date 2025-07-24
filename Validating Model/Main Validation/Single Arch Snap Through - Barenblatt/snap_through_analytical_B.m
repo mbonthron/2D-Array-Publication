@@ -125,7 +125,7 @@ legend()
 
 %%
 figure(4); hold on
-plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',"Barenblatt eta = " + eta)
+plot(disp_dimensional*1000,Rxn_dimensional(1:snap_through_index),"LineWidth",3,'DisplayName',"BB eta = " + eta+ " t = "+ thickness*1000+ " b = "+ rise*1000)
 xlabel('Displacement')
 ylabel('Force')
 legend()

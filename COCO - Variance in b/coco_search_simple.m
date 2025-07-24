@@ -27,8 +27,8 @@ data.plot_grids = 1;
 
 % data = init_shape(shapeNum, data);
 
-% run('super_simple_triangle.m')
-run('super_simple_hexagon.m')
+run('super_simple_triangle.m')
+% run('super_simple_hexagon.m')
 %%
 data.t = 0.01*pi;
 data.t_vector = data.t*ones(data.N,1);
