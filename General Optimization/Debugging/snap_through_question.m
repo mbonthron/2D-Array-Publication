@@ -10,7 +10,7 @@ function percent_trans = snap_through_question(t,A,data)
     tl = tiledlayout(f, 2,2,'Padding', 'loose', 'TileSpacing', 'compact');
     ax = nexttile(tl);
     
-    sgtitle(data.shape_name + ", b = " + num2str(data.b) + ", beta = " + num2str(data.beta) + ", NumCells = "+ num2str(data.N_cells) + ", t = "+num2str(data.t), 'FontName', font_name);
+    sgtitle(data.shape_name + ", b = " + num2str(data.b) + ", beta = " + num2str(data.beta) + ", NumCells = "+ num2str(data.N_cells) + ", t = "+num2str(data.t)+", sigma = " +num2str(data.sigma), 'FontName', font_name);
     
     imagesc(A(:,1:N*N_modes))
     title("A", 'FontName', font_name);
@@ -108,7 +108,7 @@ if ~exist("Videos\", 'dir')
     mkdir("Videos\");
 end
 
-file_name = "Videos\"+data.file_name;
+file_name = "Videos\"+data.file_name+", sigma = " +num2str(data.sigma);
 
 %axes(f,'Position',[0 0 999 999],'Visible','off');
 

@@ -1,0 +1,78 @@
+clear; close all
+
+
+tvals = [.2:.2:8];
+
+for t_idx = 1:length(tvals)
+%% Specify Constraints / Desired Dimensions
+b = 3.5;      % [mm] Dimensional Arch Rise
+L = 75;     % [mm] Dimensional Arch Length
+t = tvals(t_idx);   % [mm] Dimensional Distance from centerline of axis to start of tab
+E = 2e9; % Young's Modulus, Pa
+h = 14; % height of arch
+
+%% Old Code
+mode = 1;
+
+%  Calculating Arch Dimensions
+%  SEE ATTACHED PDF FOR DIAGRAM OF RELEVANT DIMENSIONS
+syms x
+
+%% Calculate ``ideal'' intiial length (if directly to centerline of axis)
+L0 = vpaintegral(sqrt(1+(pi/L*b*cos(pi*x/L))^2),x,0,L);
+
+%% Conversions
+b=b*10^-3;
+L=L*10^-3;
+t=t*10^-3;
+h=h*10^-3;
+L0 = L0*10^-3;
+
+%% Calculate q
+switch(mode)
+    case 1
+        w = b*sin(pi*x/L);
+    case 2
+        w = 1/2*sqrt(b^2-12)*sin(2*pi*x/L);
+    otherwise
+        error("Specify Valid Mode");
+end
+
+A = t*h;
+I = 1/12*h*t^3;
+
+p = A*E/L*(L0-L-1/2*vpaintegral(diff(w)^2,x,0,L, 'RelTol', 1e-32, 'AbsTol', 0));
+
+q = E*I*diff(w,4)+p*diff(w,2);
+
+Rigidity = E*I*diff(w,4);
+Axial = p*diff(w,2);
+
+syms x_prime;
+q_tot(t_idx) = eval(vpaintegral(q,x,0,L, 'RelTol', 1e-32, 'AbsTol', 0));
+V = q_tot(t_idx)/2-int(q,x,0,x_prime);
+
+V_max = subs(V,x_prime,0);
+
+tau = 3*V_max/(2*A);
+n(t_idx) = eval(40*10^6/(sqrt(3)*tau));
+
+end
+
+tiledlayout(2,1);
+nexttile
+hold on;
+title("log of Static design factor");
+ylabel("Design Factor");
+xlabel("Thickness (mm)");
+plot(tvals, log10(n));
+hold off;
+
+nexttile
+
+hold on;
+title("Bending Rigidity and Shear");
+ylabel("Total q (N/m)");
+xlabel("Thickness (mm)");
+plot(tvals, q_tot, '--','');
+hold off;
