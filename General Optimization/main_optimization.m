@@ -12,6 +12,7 @@ clear; clc; close all
 % addpath('COCO Continuation/functions')
 % addpath('COCO Continuation')
 % addpath('Time Integration')
+
 restoredefaultpath
 startup
 addpath('..\General Time Integration Code (MATLAB)\Visualize')
@@ -21,6 +22,7 @@ addpath('..\General Continuation Code (COCO)\Arbitary Shape\Visualize\')
 addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
 addpath("Debugging\")
+
 %% Create Empty Data Structure to be Populated
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
