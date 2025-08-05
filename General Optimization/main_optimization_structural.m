@@ -55,9 +55,12 @@ data.continue = true;
 nowTime = datetime('now');
 
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
-data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
+% data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
+data.timeStr = '2025-08-05_17-39-25';
 OG_data = data;
-for count=6:(2^num_arches-1)
+OG_bpoints = bpoints;
+
+for count=1:(2^num_arches-1)
     tic
     data = init_shape_structural(shapeNum, OG_data, count);
     if data.continue
@@ -67,7 +70,6 @@ for count=6:(2^num_arches-1)
         raw_data = deepCopyStruct(data);
         trans_percent_tensor = zeros(length(bpoints),length(betavals), length(tvals));
         tensor_true = 1;
-        OG_bpoints = bpoints;
         %% Run COCO
         for t_idx = 1:length(tvals)
             t = tvals(t_idx);
