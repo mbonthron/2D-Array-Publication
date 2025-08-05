@@ -63,7 +63,7 @@ run_number = run_number + 1;
 % Continue from UZ points
 UZ = coco_bd_labs(run_name1, 'UZ');
 
-for i = 1:2
+for i = 1:min(2, length(UZ))
     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
     prob = coco_prob();
     prob = ode_ep2ep(prob,'',run_name1,UZ(i));
@@ -83,7 +83,7 @@ end
 run_name_start_from = run_name1;
 BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
 
-for i = 1:4
+for i = 1:min(4, length(BP2))
     run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
     prob = coco_prob();
     prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));

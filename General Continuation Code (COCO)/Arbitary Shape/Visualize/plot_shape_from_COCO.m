@@ -60,6 +60,8 @@ for i = 1:length(UZ)
         scatter3(A(1,i),A(2,i),bcrits(i),200,"MarkerFaceColor",'c',"MarkerEdgeColor","k")
         text(A(1,i),A(2,i),bcrits(i),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
     else
+        data.A0 = A(:,i)';
+        data.b_vector = bcrits(i)*ones(N,1)';
         V_vector = calculate_energy(data);
     end
     b_V_vector(i,:) = [0 bcrits(i), sum(V_vector), UZ(i), stability(i)];
