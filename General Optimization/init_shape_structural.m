@@ -69,7 +69,7 @@ elseif shapeNum == 4
     arches_to_force_negative = [3,4];
 
     connections_to_remove = [];
-    data.shape_name = char('Hexagon '+string(count));
+    data.shape_name = char('Hexagon '+string(count)+" ");
 
     %convert count into which connections to remove
     connections = [1     2
