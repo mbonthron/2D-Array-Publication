@@ -1,13 +1,13 @@
-function [data] = init_shape(shapeNum, data)
-run('points_chain_direct')
+function [data] = init_shape_structural(shapeNum, data, count)
+%run('points_chain_direct')
 
-data = determine_adjacency_matrix(data);
+
 % [~] = plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
 
 if shapeNum == 1
     %Rhombus
     %% === Load a points data for the system
-    %run('points_rhombus_direct')
+    run('points_rhombus_direct')
     nodes_to_remove = [3,6,9,12];
     nodes_to_remove2 = [];
     nodes_to_hold = [];
@@ -21,18 +21,18 @@ if shapeNum == 1
 
 elseif shapeNum == 2
     % Double Triangle Chain
-    
+
     nodes_to_remove = [];
     nodes_to_remove2 = (data.N_cells*12)+[2 3];
 
     connections_to_remove = [2 5
-                            5 8
-                            11 8
-                            11 2
-                            3 6
-                            6 9
-                            9 12
-                            12 3];
+        5 8
+        11 8
+        11 2
+        3 6
+        6 9
+        9 12
+        12 3];
     data.shape_name = 'Double Triangle';
 
     nodes_to_hold = [2 3 data.N_cells*12-1 data.N_cells*12];
@@ -69,7 +69,59 @@ elseif shapeNum == 4
     arches_to_force_negative = [3,4];
 
     connections_to_remove = [];
-    data.shape_name = 'Hexagon';
+    data.shape_name = char('Hexagon'+string(count));
+
+    %convert count into which connections to remove
+    connections = [1     2
+        2     3
+        1     4
+        2     4
+        2     5
+        3     5
+        4     5
+        4     6
+        4     7
+        5     7
+        6     7
+        5     8
+        7     8
+        1     9
+        2     9
+        6     9
+        7     9
+        2    10
+        3    10
+        7    10
+        8    10
+        9    10];
+    connections_unique = [1     2
+        2     3
+        1     4
+        2     4
+        2     5
+        3     5
+        4     5
+        4     6
+        4     7
+        5     7
+        5     8];
+    connections_map = [11
+        13
+        16
+        17
+        20
+        21
+        22
+        14
+        15
+        18
+        19];
+    % connections_to_remove =
+    removal_binary = decimalToBinaryVector(count,length(connections_unique));
+    connection_idx_to_remove = [find(ismember(connections, connections_unique(logical(removal_binary),:),'row')); connections_map(logical(removal_binary),:)];
+    connections_to_remove = connections(connection_idx_to_remove,:);
+
+
 
 
 elseif shapeNum == 5
@@ -114,9 +166,9 @@ elseif shapeNum == 7
     arches_to_force_negative = [5];
 
     connections_to_remove = [3 5;
-                             5 8;
-                             8 10
-                             10 3];
+        5 8;
+        8 10
+        10 3];
     data.shape_name = 'Diagonal Arched Rhombus';
 
 elseif shapeNum == 8
@@ -133,11 +185,29 @@ elseif shapeNum == 8
 
     connections_to_remove = [];
     data.shape_name = 'Hexagon';
+elseif shapeNum == 9
+    % Hexagon
+    run('points_rhombus_direct_double.m')
+    nodes_to_remove = [];
+    nodes_to_remove2 = [];
+
+    nodes_to_hold = [];
+    arches_to_displace = [];
+    nodes_to_rotate = [];
+    arches_to_force_positive = [];
+    arches_to_force_negative = [];
+
+    connections_to_remove = [5 8
+        6 9
+        12 3
+        11 2];
+    data.shape_name = 'Point Chained Hexagon';
 
 else
     error("SHAPE DOES NOT EXIST (please fix)")
 
 end
+data = determine_adjacency_matrix(data);
 
 % Remove any unneeded vertecies
 data = remove_node(data, nodes_to_remove);
@@ -162,13 +232,13 @@ data.adjacency_matrix_time_integration = data2.adjacency_matrix;
 if isfield(data, 'static_only')
     static_only = data.static_only;
     if static_only
-data2.points = data.points_time_integration;
-data2.adjacency_matrix = data.adjacency_matrix_time_integration;
-[~] = plot_grid(data2, 1);
-data2 = remove_node(data2,nodes_to_remove2);
-data.points_time_integration = data2.points;
-data.N_time_integration = data2.N;
-data.adjacency_matrix_time_integration = data2.adjacency_matrix;
+        data2.points = data.points_time_integration;
+        data2.adjacency_matrix = data.adjacency_matrix_time_integration;
+        [~] = plot_grid(data2, 1);
+        data2 = remove_node(data2,nodes_to_remove2);
+        data.points_time_integration = data2.points;
+        data.N_time_integration = data2.N;
+        data.adjacency_matrix_time_integration = data2.adjacency_matrix;
     end
 else
     static_only = 0;
@@ -182,8 +252,8 @@ data = remove_connection(data,connections_to_remove);
 [~] = plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
 
 if static_only == 0
-data = determine_per_to_finite(data);
-data = determine_time_to_periodic(data);
+    data = determine_per_to_finite(data);
+    data = determine_time_to_periodic(data);
 end
 
 [~] = plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
@@ -203,9 +273,24 @@ data.arches_to_force_negative = arches_to_force_negative;
 %Consider what's actually necessary since this is going into COCO
 data.e_vector = 0*ones(data.N,1);
 
-% Determine the coefficient matrix and number of constraints of the system
-data = determine_coefficient_matrix(data);
-data = determine_modes_to_skip(data);
+% Check for valid system, connectiveness and existence
+if ~isempty(data.adjacency_matrix)
+    G = graph(data.adjacency_matrix);
+    bins = conncomp(G);
+    binnodes = accumarray(bins', 1:numel(bins), [], @(v) {sort(v')});
+
+    if isscalar(binnodes)
+        % Determine the coefficient matrix and number of constraints of the system
+        data = determine_coefficient_matrix(data);
+        data = determine_modes_to_skip(data);
+    else
+        data.continue = false;
+    end
+else
+    data.continue = false;
+end
+
+
 
 
 

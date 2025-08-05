@@ -1,4 +1,4 @@
-function [f] = COCO_plot_system_once(A,data)
+function [f] = COCO_plot_system_once(A,data,use_curr_fig,arch_color, arch_trans)
 %PLOT_SYSTEM_ONCE Plots the system for a single point
 %
 %   INPUTS
@@ -21,7 +21,7 @@ points = data.points;
 points_finite = data.points_finite;
 
 %% Plot Styles
-arch_color = 'k';
+% arch_color = 'k';
 arch_linewidth = 4;
 
 
@@ -32,7 +32,16 @@ expand = data.expand;
 data2.points = points_finite;
 data2.adjacency_matrix = adjacency_matrix_finite;
 
-f = plot_grid(data2,false);
+if nargin < 5
+    arch_trans = 1;
+    if nargin < 4
+        arch_color = 'k';
+        if nargin < 3
+            use_curr_fig = 0;
+        end
+    end
+end
+f = plot_grid(data2,false,use_curr_fig);
 
 %% Add the shape of each arch
 up_adjac = triu(adjacency_matrix,1);
@@ -87,6 +96,7 @@ for i = 1:N
     
     figure(f); hold on
     line = plot(rotated_xw(1,:)+x_left,rotated_xw(2,:)+y_left,"linewidth",arch_linewidth,"color",arch_color,"LineStyle",'-');
+    line.Color(4) = arch_trans;
 end
 
 end
