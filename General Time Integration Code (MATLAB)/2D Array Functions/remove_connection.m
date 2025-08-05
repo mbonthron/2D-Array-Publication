@@ -78,6 +78,10 @@ adjacency_matrix(:,floating_points) = [];
 
 data.adjacency_matrix = adjacency_matrix;
 
+% Try to recalculate mapping of vertex_map_p2f to account
+% for removed nodes
+data = determine_vertex_map_p2f(data);
+
 %% = Remove the Connections for the Time Integration Adj. Matrix
 N_cells = data.N_cells;
 V = data.V;

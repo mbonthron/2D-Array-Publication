@@ -57,7 +57,8 @@ nowTime = datetime('now');
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
 data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
 OG_data = data;
-for count=1:(2^num_arches-1)
+for count=6:(2^num_arches-1)
+    tic
     data = init_shape_structural(shapeNum, OG_data, count);
     if data.continue
         %%
@@ -88,6 +89,7 @@ for count=1:(2^num_arches-1)
             end
         end
     end
+    toc
 end
 
 

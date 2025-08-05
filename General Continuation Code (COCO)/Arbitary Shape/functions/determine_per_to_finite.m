@@ -59,6 +59,8 @@ for i = 1:N
             % Need to flip left and right convention
             expand(i) = -matched;
         end
+    else
+        2+2
     end
 end
 
