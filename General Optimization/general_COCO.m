@@ -143,7 +143,7 @@ for i = 1:length(UZpoints)
     possible_branches = possible_branches(possible_branches(:,5)==-1,:);
 
     % See if the output should be all branches or not
-    if all_branches
+    if all_branches  == 1
         for branch_idx=1:size(possible_branches,2)
             run_number = possible_branches(branch_idx,1);
             uz_idx     = possible_branches(branch_idx,4);
@@ -162,6 +162,63 @@ for i = 1:length(UZpoints)
                 no_stable_count = no_stable_count+1;
             end
         end
+    elseif all_branches == -1
+        % Max and min energy states
+        % Find the row with the highest energy state
+        [~,row_max] = max(possible_branches(:,3));
+        [~,row_min] = min(possible_branches(:,3));
+
+        % Take the Run Number and the UZ index for the higher energy stable
+        % state
+        run_number_max = possible_branches(row_max,1);
+        uz_idx_max     = possible_branches(row_max,4);
+
+        run_number_min = possible_branches(row_min,1);
+        uz_idx_min     = possible_branches(row_min,4);
+
+        if ~isempty(run_number_max)
+            % Have COCO grab the A0hatp from reading the solution
+            run_name_to_grab_max = [data.shape_name '_run' sprintf('%.0f',run_number_max)];
+            A0hatp = COCO_grab_UZ(run_name_to_grab_max,uz_idx_max);
+
+            % Save the A0hatp
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max.mat","A0hatp")
+            
+            if isfield(data, 'plot_labels')
+                plot_val = data.plot_labels;
+            else
+                plot_val = false;
+            end
+            data.plot_labels = false;
+            A0 = determine_A_from_Ahat(A0hatp', data)';
+            COCO_plot_system_once(A0,data,0,'r',.5);
+
+            run_name_to_grab_min = [data.shape_name '_run' sprintf('%.0f',run_number_min)];
+            A0hatp = COCO_grab_UZ(run_name_to_grab_min,uz_idx_min);
+
+            % Save the A0hatp
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi min.mat","A0hatp")
+            
+            A0 = determine_A_from_Ahat(A0hatp', data)';
+            COCO_plot_system_once(A0,data,1,'b',.5);
+
+            data.plot_labels = plot_val;
+            if ~exist("COCO\"+ data.timeStr + "\", 'dir')
+                mkdir("COCO\"+data.timeStr + "\");
+            end
+
+            data.file_name_COCO = data.timeStr + "\"+ data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max min";
+    
+            title(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max min");
+            print(gcf, "COCO\"+data.file_name_COCO + " - Max Min.png", '-dpng', '-r600');
+
+        else
+            % disp("edge case smh")
+            disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
+            bpoints(i- no_stable_count) = [];
+            no_stable_count = no_stable_count+1;
+        end
+        
     else
         % Find the row with the highest energy state
         [~,row] = max(possible_branches(:,3));

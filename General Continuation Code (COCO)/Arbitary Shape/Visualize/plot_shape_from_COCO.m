@@ -8,7 +8,7 @@ N_modes = data.N_modes;
 
 %% Load the data from coco for the mode shapes
 bd = coco_bd_read(run_name);
-UZ = coco_bd_labs(run_name, 'UZ'); 
+UZ = coco_bd_labs(run_name, 'UZ');
 
 % Constraint length
 C = data.constraint_count;
@@ -30,32 +30,39 @@ for k = 1:length(UZ)
     end
 end
 
-%% Recover the missing modes from the system 
+%% Recover the missing modes from the system
 A = determine_A_from_Ahat(Ahat',data)';
 
 %% Plot the system at each UZ point
 b_V_vector = zeros(length(UZ),5);
 
 for i = 1:length(UZ)
-    f = COCO_plot_system_once(A(:,i),data);
+    if ~isfield(data, 'plot_COCO')
+        data.plot_COCO = true;
+    end
+    if data.plot_COCO
+        f = COCO_plot_system_once(A(:,i),data);
 
-    figure
-    copyobj(allchild(f),gcf);
+        figure
+        copyobj(allchild(f),gcf);
 
-    lbl = gcf().Number;
-    text(min(xlim),max(ylim),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
-    axis off
-    data.A0 = A(:,i)';
-    data.b_vector = bcrits(i)*ones(N,1)';
-    V_vector = calculate_energy(data);
-    title(sprintf("%.6f",sum(V_vector)))
+        lbl = gcf().Number;
+        text(min(xlim),max(ylim),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
+        axis off
+        data.A0 = A(:,i)';
+        data.b_vector = bcrits(i)*ones(N,1)';
+        V_vector = calculate_energy(data);
+        title(sprintf("%.6f",sum(V_vector)))
 
+
+
+        figure(9899); hold on
+        scatter3(A(1,i),A(2,i),bcrits(i),200,"MarkerFaceColor",'c',"MarkerEdgeColor","k")
+        text(A(1,i),A(2,i),bcrits(i),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
+    else
+        V_vector = calculate_energy(data);
+    end
     b_V_vector(i,:) = [0 bcrits(i), sum(V_vector), UZ(i), stability(i)];
- 
-
-    figure(9899); hold on
-    scatter3(A(1,i),A(2,i),bcrits(i),200,"MarkerFaceColor",'c',"MarkerEdgeColor","k")
-    text(A(1,i),A(2,i),bcrits(i),num2str(lbl),'HorizontalAlignment','center','FontSize',14,'FontWeight','bold')
 end
 
 

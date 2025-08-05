@@ -1,4 +1,4 @@
-function [f] = plot_system_once(A,data)
+function [f] = plot_system_once(A,data,use_curr_fig,arch_color, arch_trans)
 %PLOT_SYSTEM_ONCE Plots the system for a single point
 %
 %   INPUTS
@@ -19,14 +19,23 @@ points = data.points;
 mod_factor = 1;
 
 %% Plot Styles
-arch_color = 'k';
+%arch_color = 'k';
 arch_linewidth = 4*mod_factor;
 
 %% Make the grid without any of the deformed arches plotted unless otherwise specified
+if nargin < 5
+    arch_trans = 1;
+    if nargin < 4
+        arch_color = 'k';
+        if nargin < 3
+            use_curr_fig = 0;
+        end
+    end
+end
 if isfield(data, 'plot_labels')
-    f = plot_grid(data,data.plot_labels);
+    f = plot_grid(data,data.plot_labels,use_curr_fig);
 else
-    f = plot_grid(data,false);
+    f = plot_grid(data,false,use_curr_fig);
 end
 
 %% Add the shape of each arch
@@ -66,6 +75,7 @@ for i = 1:N
     
     figure(f); hold on
     line = plot(rotated_xw(1,:)+x_left,rotated_xw(2,:)+y_left,"linewidth",arch_linewidth,"color",arch_color,"LineStyle",'-');
+    line.Color(4) = arch_trans;
 end
 
 

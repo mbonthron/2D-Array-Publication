@@ -1,13 +1,13 @@
 function [data] = init_shape(shapeNum, data)
-run('points_chain_direct')
+%run('points_chain_direct')
 
-data = determine_adjacency_matrix(data);
+
 % [~] = plot_grid(data, 1) %debugging, ask Michael for his nice plotting code
 
 if shapeNum == 1
     %Rhombus
     %% === Load a points data for the system
-    %run('points_rhombus_direct')
+    run('points_rhombus_direct')
     nodes_to_remove = [3,6,9,12];
     nodes_to_remove2 = [];
     nodes_to_hold = [];
@@ -133,11 +133,29 @@ elseif shapeNum == 8
 
     connections_to_remove = [];
     data.shape_name = 'Hexagon';
+elseif shapeNum == 9
+    % Hexagon
+    run('points_rhombus_direct_double.m')
+    nodes_to_remove = [];
+    nodes_to_remove2 = [];
+
+    nodes_to_hold = [];
+    arches_to_displace = [];
+    nodes_to_rotate = [];
+    arches_to_force_positive = [];
+    arches_to_force_negative = [];
+
+    connections_to_remove = [5 8
+                             6 9
+                             12 3
+                             11 2];
+    data.shape_name = 'Point Chained Hexagon';
 
 else
     error("SHAPE DOES NOT EXIST (please fix)")
 
 end
+data = determine_adjacency_matrix(data);
 
 % Remove any unneeded vertecies
 data = remove_node(data, nodes_to_remove);

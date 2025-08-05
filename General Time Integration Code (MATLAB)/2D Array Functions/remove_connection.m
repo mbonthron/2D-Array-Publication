@@ -66,6 +66,18 @@ adjacency_matrix_finite(:,floating_points) = [];
 
 data.adjacency_matrix_finite = adjacency_matrix_finite;
 
+% Remove any "floating" points (i.e. unconnected points)
+floating_points = find(sum(adjacency_matrix) == 0);
+
+% Remove floating points from points
+data.points(floating_points,:) = [];
+
+% Remove floating rows and columns from adjacency matrix
+adjacency_matrix(floating_points,:) = [];
+adjacency_matrix(:,floating_points) = [];
+
+data.adjacency_matrix = adjacency_matrix;
+
 %% = Remove the Connections for the Time Integration Adj. Matrix
 N_cells = data.N_cells;
 V = data.V;

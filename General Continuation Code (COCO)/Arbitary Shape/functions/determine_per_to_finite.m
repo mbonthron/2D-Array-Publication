@@ -50,13 +50,15 @@ for i = 1:N
     % from the periodic structure
     matched = find(sum(ismember(leftright,[left_hinge right_hinge]),2)==2);
 
-    % Check if the left and right hinge match
-    if left_hinge == left_finite(matched) && right_hinge == right_finite(matched)
-        % Left and Right Convention remains
-        expand(i) = matched;
-    else
-        % Need to flip left and right convention
-        expand(i) = -matched;
+    if ~isempty(matched)
+        % Check if the left and right hinge match
+        if left_hinge == left_finite(matched) && right_hinge == right_finite(matched)
+            % Left and Right Convention remains
+            expand(i) = matched;
+        else
+            % Need to flip left and right convention
+            expand(i) = -matched;
+        end
     end
 end
 
