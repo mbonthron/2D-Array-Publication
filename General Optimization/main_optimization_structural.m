@@ -21,6 +21,7 @@ addpath('..\General Continuation Code (COCO)\Arbitary Shape\Visualize\')
 addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
 addpath("Debugging\")
+
 %% Create Empty Data Structure to be Populated
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
@@ -55,25 +56,44 @@ data.continue = true;
 nowTime = datetime('now');
 
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
-% data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
-data.timeStr = '2025-08-05_17-39-25';
+data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
+% data.timeStr = '2025-08-05_17-39-25';
 OG_data = data;
 OG_bpoints = bpoints;
 
+% Create results data structure
+results = {'Index' 'Binary' 'Connected' 'Stable Found' 'VHigh' 'VLow' 'thetaHigh' 'thetaLow' 'Arch Displacement' 'Prohibiting Walls'};
 
 for count=9:(2^num_arches-1)
+    % Write the count number and binary to results
+    results{count+2,1} =  count;
+    results{count+2,2} = strjoin(string(decimalToBinaryVector(count,11)));
+
+    % Initialize the shape / data for the sweep based on count and binary
     tic
     data = init_shape_structural(shapeNum, OG_data, count);
+
+    % Check if the system in connected
     if data.continue
-        %%
+        % Either the field doesnt exist or it is set to true
+        % i.e. examining the system
+        results{count+2,3} = 1; % System is connected
+    else
+        % Either the field doesn't exist or set to false
+        % i.e. Not examining the system
+        results{count+2,3} = 0; % System not connected
+    end
 
-
+    % Proceed to run COCO
+    if data.continue
         raw_data = deepCopyStruct(data);
         trans_percent_tensor = zeros(length(bpoints),length(betavals), length(tvals));
         tensor_true = 1;
+
         %% Run COCO
         for t_idx = 1:length(tvals)
             t = tvals(t_idx);
+            
             % Run COCO
             data = raw_data;
             data.t = t;
@@ -89,8 +109,34 @@ for count=9:(2^num_arches-1)
             end
             if ~runs_exist || troubleshooting_flag
                 [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints,-1); %close all;
+
+                %% Add the Data to results structure
+                %  Grab the needed stuff from data structure and save to results
+                %  structure
+                if data.found_a_stable
+                    results{count+2,4} = 1;
+                    results{count+2,5} = data.Vhigh;
+                    results{count+2,6} = data.Vlow;
+            
+                    results{count+2,7} = data.thetaHigh;
+                    results{count+2,8} = data.thetaLow;
+            
+                    results{count+2,9} = data.arch_delta;
+            
+                    results{count+2,10} = data.prohibit_wall;
+                else
+                    results{count+2,4} = 0;
+                end
+
+        
+                % Save Results Just in Case
+                save("Sweep Data.mat","results","count")
+            
             end
         end
+
+
+
     end
     toc
 end

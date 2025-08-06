@@ -99,7 +99,8 @@ for i = 1:min(4, length(BP2))
 end
 
 
-%% Plot the Results from Coco
+%% ========================================================================
+% Get the Results & Plot from COCO
 close all
 cd('data');
 coco_runs = dir([data.shape_name '*']);
@@ -142,7 +143,8 @@ for i = 1:length(UZpoints)
     % Ignore all the unstable branches
     possible_branches = possible_branches(possible_branches(:,5)==-1,:);
 
-    % See if the output should be all branches or not
+    %% ==========================================
+    %  RETURN ALL ENERGY STATES
     if all_branches  == 1
         for branch_idx=1:size(possible_branches,2)
             run_number = possible_branches(branch_idx,1);
@@ -162,11 +164,14 @@ for i = 1:length(UZpoints)
                 no_stable_count = no_stable_count+1;
             end
         end
+
+    %% ==========================================
+    %  RETURN MAXIMUM AND MINIMUM ENERGY STATES
     elseif all_branches == -1
-        % Max and min energy states
+        % Output only the maximum and minimum energy states
         % Find the row with the highest energy state
-        [~,row_max] = max(possible_branches(:,3));
-        [~,row_min] = min(possible_branches(:,3));
+        [Vhigh,row_max] = max(possible_branches(:,3));
+        [Vlow,row_min] = min(possible_branches(:,3));
 
         % Take the Run Number and the UZ index for the higher energy stable
         % state
@@ -177,7 +182,10 @@ for i = 1:length(UZpoints)
         uz_idx_min     = possible_branches(row_min,4);
 
         if ~isempty(run_number_max)
+            %% Load the Higher Energy Well Data
             % Have COCO grab the A0hatp from reading the solution
+            data.found_a_stable = true;
+            
             run_name_to_grab_max = [data.shape_name '_run' sprintf('%.0f',run_number_max)];
             A0hatp = COCO_grab_UZ(run_name_to_grab_max,uz_idx_max);
 
@@ -190,35 +198,71 @@ for i = 1:length(UZpoints)
                 plot_val = false;
             end
             data.plot_labels = false;
-            A0 = determine_A_from_Ahat(A0hatp', data)';
-            COCO_plot_system_once(A0,data,0,'r',.5);
+            A0_high = determine_A_from_Ahat(A0hatp', data)';
+            COCO_plot_system_once(A0_high,data,0,'r',.5);
 
+            %% Load the Lower Energy Well Data
+            % Have COCO grab the A0hatp from reading the solution
             run_name_to_grab_min = [data.shape_name '_run' sprintf('%.0f',run_number_min)];
             A0hatp = COCO_grab_UZ(run_name_to_grab_min,uz_idx_min);
 
             % Save the A0hatp
             save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi min.mat","A0hatp")
             
-            A0 = determine_A_from_Ahat(A0hatp', data)';
-            COCO_plot_system_once(A0,data,1,'b',.5);
+            A0_low = determine_A_from_Ahat(A0hatp', data)';
+            COCO_plot_system_once(A0_low,data,1,'b',.5);
 
             data.plot_labels = plot_val;
             if ~exist("COCO\"+ data.timeStr + "\", 'dir')
                 mkdir("COCO\"+data.timeStr + "\");
             end
 
+            if ~exist("COCO\Logos\"+ data.timeStr + "\", 'dir')
+                mkdir("COCO\Logos\"+ data.timeStr + "\");
+            end
+
             data.file_name_COCO = data.timeStr + "\"+ data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max min";
     
             title(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max min");
-            print(gcf, "COCO\"+data.file_name_COCO + " - Max Min.png", '-dpng', '-r600');
+            
+            %% Save the Relevant Data
+            % Write the high and low energy to data
+            data.Vhigh = Vhigh;
+            data.Vlow  = Vlow;
+
+            % Determine the rotation of each hinge for the high and low
+            % energy states
+            data.thetaHigh  = determine_thetas(A0_high,data);
+            data.thetaLow   = determine_thetas(A0_low,data);
+
+            %% Check if there are prohibiting wells
+            data.prohibit_wall = determine_prohibiting_walls(data);
+
+            % Scatter Points on Prohibiting Walls and Save
+            exportgraphics(gcf, "COCO\"+data.file_name_COCO + " - Max Min.png","Resolution",600);
+
+            % Find the displacement between the arches
+            data.arch_delta = determine_arch_delta(A0_high,A0_low,data);
+
+            % Plot logo's (small images) of the two energy states
+            COCO_plot_system_once_logo(A0_high,data,0,'r',.5);
+            axis off
+            exportgraphics(gcf, "COCO\Logos\"+data.file_name_COCO + " - High State.eps");
+
+            COCO_plot_system_once_logo(A0_low,data,0,'b',.5);
+            axis off
+            exportgraphics(gcf, "COCO\Logos\"+data.file_name_COCO + " - Low State.eps");
 
         else
-            % disp("edge case smh")
+            % No stable solutions found
             disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
             bpoints(i- no_stable_count) = [];
             no_stable_count = no_stable_count+1;
+            data.found_a_stable = false;
         end
-        
+    
+    %% ==========================================
+    %  RETURN MAXIMUM ENERGY STATE
     else
         % Find the row with the highest energy state
         [~,row] = max(possible_branches(:,3));
@@ -243,18 +287,4 @@ for i = 1:length(UZpoints)
         end
     end
 end
-
-
-
-%% Coco Plotting Trouble Shoot
-theme1 = struct('special', {{'EP','FP','HB','BP'}});
-
-% figure(9900); clf; hold on; view(3); zlim([0 0.1]); xlim(0.3*[-1 1]); ylim(0.2*[-1 1]);
-% grid();
-% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',1)], 'x',1,'x',2,'b');
-% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',2)], 'x',1,'x',2,'b');
-% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',3)], 'x',1,'x',2,'b');
-% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',4)], 'x',1,'x',2,'b')
-% coco_plot_bd(theme1, [data.shape_name '_run' sprintf('%.0f',5)], 'x',1,'x',2,'b')
-
 end
