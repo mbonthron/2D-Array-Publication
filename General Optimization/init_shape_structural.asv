@@ -196,16 +196,6 @@ elseif shapeNum == 9
 
     %convert count into which connections to remove
     data = determine_adjacency_matrix(data);
-    % Remove any unneeded vertecies
-    data = remove_node(data, nodes_to_remove);
-    [~] = plot_grid(data, 1); %debugging, ask Michael for his nice plotting code
-    
-    % Determine the adjacency_matrix (assuming ALL connections)
-    data = determine_adjacency_matrix(data);
-    
-    % Determine what is needed to make structure periodic
-    % Differentiates between points, points_finite, and points_time_integration
-    data = add_periodicity(data);
     up_adjac = triu(data.adjacency_matrix,1);
 
     [left, right] = find(up_adjac == 1);
@@ -224,7 +214,9 @@ elseif shapeNum == 9
         5     7
         6     7
         5     8
-        6     9];
+        7     8
+        6     9
+        7     9];
     connections_map = [14
         16
         18
@@ -238,7 +230,7 @@ elseif shapeNum == 9
         21
         25
         22
-        26];
+        ];
     % connections_to_remove =
     removal_binary = decimalToBinaryVector(count,length(connections_unique));
     connection_idx_to_remove = [find(ismember(connections, connections_unique(logical(removal_binary),:),'row')); connections_map(logical(removal_binary),:)];

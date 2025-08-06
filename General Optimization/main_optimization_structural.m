@@ -48,10 +48,17 @@ sigmavals = [.0001];
 
 %% Run Continuation to Get Stable Configurations at each b
 % Choose which shape
-shapeNum = 4;
+shapeNum = 9;
 
 % Iterate through different shapes
-num_arches = 11;
+if shapeNum == 4
+    num_arches = 11;
+elseif shapeNum == 9
+    num_arches = 14;
+else
+    error("Shape Number not supported")
+end
+
 data.continue = true;
 % Get the current date and time
 nowTime = datetime('now');
@@ -77,7 +84,7 @@ archd_idx = find(strcmp(results,{'Arch Displacement'}));
 prohib_idx = find(strcmp(results,{'Prohibiting Walls'}));
 
 
-for count=0:(2^num_arches-1)
+for count=2:(2^num_arches-1)
     % Write the count number and binary to results
     results{count+2,index_idx} =  count;
     results{count+2,binary_idx} = strjoin(string(decimalToBinaryVector(count,11)));
