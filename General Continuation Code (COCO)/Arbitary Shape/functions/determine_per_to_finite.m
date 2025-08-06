@@ -29,14 +29,21 @@ up_adjac_finite = triu(adjacency_matrix_finite,1);
 %% Change left_finite and right_finite to hold the mapped values from points
 vertex_map_p2f = data.vertex_map_p2f;
 
+% Store an 'original' copy of left_finite and right_finite
+% If vertex_map_p2f is not sequential, the cascading replacement can be an
+% issue
+left_finite_original =  left_finite;
+right_finite_original =  right_finite;
+
+
 [m,n] = size(vertex_map_p2f);
 
 for i = 1:m
     periodic_vertex = vertex_map_p2f(i,1);
     finite_vertex   = vertex_map_p2f(i,2);
     
-    left_finite(left_finite==finite_vertex) = periodic_vertex;
-    right_finite(right_finite==finite_vertex) = periodic_vertex;
+    left_finite(left_finite_original==finite_vertex) = periodic_vertex;
+    right_finite(right_finite_original==finite_vertex) = periodic_vertex;
 end
 
 %% Go through the periodic arch and try to find an element that matches left and right

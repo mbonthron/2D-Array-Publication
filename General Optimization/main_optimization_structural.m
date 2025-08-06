@@ -60,7 +60,7 @@ data.timeStr = '2025-08-05_17-39-25';
 OG_data = data;
 OG_bpoints = bpoints;
 
-for count=1:(2^num_arches-1)
+for count=544:(2^num_arches-1)
     tic
     data = init_shape_structural(shapeNum, OG_data, count);
     if data.continue

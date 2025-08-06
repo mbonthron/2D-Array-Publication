@@ -14,8 +14,14 @@ for i = 1:length(points_finite)
     
     matched = find(ismember(points,[x_pos y_pos],'rows') == 1);
 
-    if ~isempty(matched)
+    if matched == i
         % The periodic hinge is exactly the finite hinge
+        % Do not need to include any mapping
+    elseif ~isempty(matched)
+        % The periodic hinge is renumber (this can happen if our numbering
+        % convention got changed)
+        vertex_map_p2f = [vertex_map_p2f ; 
+                          matched i];
     else
         % Check if off by length of super cell
         x_pos = points_finite(i,1) - L_super_cell;
