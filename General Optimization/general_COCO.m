@@ -191,6 +191,7 @@ for i = 1:length(UZpoints)
 
             % Save the A0hatp
             save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max.mat","A0hatp")
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi.mat","A0hatp")
             
             if isfield(data, 'plot_labels')
                 plot_val = data.plot_labels;

@@ -28,7 +28,6 @@ data.N_modes = 3;   % Number of modes used to describe the system
 data.N_cells = 5;
 data.plot_grids = 1;
 data.plot_COCO = 0;
-data.plot_videos = 0;
 
 % initialize parameters to sweep over (b, maybe t)
 % bpoints = [0.05:0.01:0.20]; %times pi
@@ -51,7 +50,7 @@ sigmavals = [.0001];
 shapeNum = 4;
 
 % Iterate through different shapes
-num_arches = 11;
+num_arches = 0;
 data.continue = true;
 % Get the current date and time
 nowTime = datetime('now');
@@ -149,7 +148,7 @@ for count=0:(2^num_arches-1)
 
 
                 % Save Results Just in Case
-                save("Sweep Data "+data.timeStr+ " .mat","results","count")
+                save("Sweep Data.mat","results","count")
 
             end
         end
@@ -169,9 +168,9 @@ for count=0:(2^num_arches-1)
         raw_data = init_shape_structural(shapeNum, OG_data, count);
         
         % Find arches with negative area to force positive
-        raw_data.arches_to_force_positive = find(results{count+2,archd_idx} < -.3)';
+        raw_data.arches_to_force_positive = find(results{count+2,archd_idx} < -.3);
         % Find arches with negative area to force positive
-        raw_data.arches_to_force_negative = find(results{count+2,archd_idx} > .3)';
+        raw_data.arches_to_force_negative = [];
         
         for t_idx = 1:length(tvals)
             t = tvals(t_idx);

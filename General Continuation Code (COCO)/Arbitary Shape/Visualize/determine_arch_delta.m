@@ -26,7 +26,7 @@ for i = 1:N
     end
 
     % Determine the area difference between the curves
-    area_diff = trapz(x,abs(whigh - wlow));
+    area_diff = trapz(x,whigh - wlow);
     
     % Save the area diff into the arch delta array
     arch_delta(i) = area_diff;
