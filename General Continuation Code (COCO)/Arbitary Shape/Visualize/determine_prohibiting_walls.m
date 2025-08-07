@@ -23,6 +23,25 @@ stationary_hinges = hinges(abs(thetaHigh - thetaLow) < rotation_threshold);
 adjacency_matrix(stationary_hinges,:) = 0;
 adjacency_matrix(:,stationary_hinges) = 0;
 
+% Check to see if in the finite case, the mapped hinges are connected?
+isConnected = 0;
+% Check if the new adjacency_matrix is connected
+old_G = graph(adjacency_matrix);
+
+for start_idx=1:size(data.vertex_map_p2f,1)
+    % Check if there exists a path for each ending point
+    for end_idx=1:size(data.vertex_map_p2f,1)
+        walkNodes = bfsearch(old_G, data.vertex_map_p2f(start_idx,1));
+        isConnected = isConnected || ismember(data.vertex_map_p2f(end_idx,2), walkNodes);
+        if isConnected
+            break;
+        end
+    end
+    if isConnected
+            break;
+    end
+end
+
 % Remove any nodes that are not connected at all
 floating_points = find(sum(adjacency_matrix) == 0);
 
@@ -35,7 +54,7 @@ G = graph(adjacency_matrix);
 bins = conncomp(G);
 binnodes = accumarray(bins', 1:numel(bins), [], @(v) {sort(v')});
 
-if isscalar(binnodes)
+if isConnected
     % Connected Graphc
     prohibiting_walls = 0;
 else
@@ -47,6 +66,7 @@ end
 figure(gcf)
 scatter(data.points_finite(stationary_hinges,1),data.points_finite(stationary_hinges,2),500,"x", ...
     "MarkerEdgeColor","r","LineWidth",5)
+scatter(data.points_finite(stationary_hinges,1)+data.L_super_cell,data.points_finite(stationary_hinges,2),500,"x", ...
+    "MarkerEdgeColor","r","LineWidth",5)
 
 end
-

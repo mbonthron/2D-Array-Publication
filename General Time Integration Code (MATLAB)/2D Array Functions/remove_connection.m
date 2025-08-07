@@ -136,5 +136,8 @@ end
 data.adjacency_matrix_time_integration = adjacency_matrix_time_integration;
 data.N_time_integration = sum(triu(adjacency_matrix_time_integration,1) ==1,'all');
 
+%% Update the number of hinges
+data.V = length(data.points);
+
 end
 
