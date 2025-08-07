@@ -103,7 +103,7 @@ end
 % Get the Results & Plot from COCO
 close all
 cd('data');
-coco_runs = dir([data.shape_name '*']);
+coco_runs = dir([data.shape_name '_*']);
 cd ..
 
 theme1 = struct('special', {{'EP','FP','HB','BP'}});
@@ -238,6 +238,18 @@ for i = 1:length(UZpoints)
 
             %% Check if there are prohibiting wells
             data.prohibit_wall = determine_prohibiting_walls(data);
+            if data.Vhigh >= data.Vlow*1.1
+                % asymmetric
+                data.asym = 1;
+            else
+                data.asym = 0;
+            end
+            if data.prohibit_wall || ~data.asym
+                set(gca, 'Color',[255, 194, 194]/255);
+            else
+                set(gca, 'Color',[228, 255, 194]/255);
+            end
+            set(gca,'XColor', 'none','YColor','none')
 
             % Scatter Points on Prohibiting Walls and Save
             exportgraphics(gcf, "COCO\"+data.file_name_COCO + " - Max Min.png","Resolution",600);

@@ -66,7 +66,10 @@ end
 figure(gcf)
 scatter(data.points_finite(stationary_hinges,1),data.points_finite(stationary_hinges,2),500,"x", ...
     "MarkerEdgeColor","r","LineWidth",5)
-scatter(data.points_finite(stationary_hinges,1)+data.L_super_cell,data.points_finite(stationary_hinges,2),500,"x", ...
+
+end_stationary_hinges = ismember(data.vertex_map_p2f(:,1),stationary_hinges);
+scatter(data.points_finite(data.vertex_map_p2f(end_stationary_hinges,2),1),data.points_finite(data.vertex_map_p2f(end_stationary_hinges,2),2),500,"x", ...
     "MarkerEdgeColor","r","LineWidth",5)
+
 
 end

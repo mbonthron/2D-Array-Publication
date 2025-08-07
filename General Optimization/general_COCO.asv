@@ -1,0 +1,293 @@
+function [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints, all_branches)
+%% Visualize the point and connection between the nodes
+if nargin < 3
+    all_branches = 0;
+end
+
+plot_grid(data,1);
+
+%% General Stuff for Coco Continuation
+run_number = 1;
+run_name1 = [data.shape_name '_run' sprintf('%.0f',run_number)];
+
+Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
+
+% Define the function as the arbitrary gride ODE
+f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
+
+t_val = data.t;
+parameter_names = {'b' 't'};                % Names our two parameters 'b' and 't'
+initial_parameter_value = [0;t_val];      % Starting values of b and t
+
+computational_domain = [-0.01 max([0,bpoints+.02])];          % What is the domain of b to explore
+UZpoints = bpoints;
+
+%% Continuation Constants
+iterations_max = 5000;                  % Maximum number of iterations before continuation terminates
+hmin = 0.0005;                           % Minimum step size of the continuation
+hmax = 0.001;                            % Maximum step size of the continuation
+
+%% ========================================================================
+%  INITIAL RUN FROM ZERO
+prob = coco_prob();
+prob = ode_isol2ep(prob,'',f,Ahat0,parameter_names,initial_parameter_value);
+prob = coco_set(prob,'cont','ItMX', iterations_max);
+prob = coco_set(prob,'cont','NPR',0);
+prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+
+coco(prob,run_name1,[],1,parameter_names,computational_domain)
+
+
+%% ========================================================================
+%  RERUN ANY HB POINTS AS UZ POINTS TO DO CONTINUATION FROM
+bd = coco_bd_read(run_name1);
+HBlbls = coco_bd_labs(run_name1, 'HB');
+
+bcrits = zeros(1,length(HBlbls));
+acrits = zeros(2*(data.N*(data.N_modes)-data.constraint_count),length(HBlbls));
+
+for k = 1:length(HBlbls)
+    bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
+    acrits(:,k) = coco_bd_val(bd,HBlbls(k),'x');
+end
+
+prob = coco_add_event(prob,'UZ','b',bcrits);
+prob = coco_add_event(prob,'UZ','b',UZpoints);
+
+fprintf("\nRun %.0f =========================================",1)
+coco(prob,run_name1,[],1,parameter_names,computational_domain)
+
+run_number = run_number + 1;
+
+%% ========================================================================
+% Continue from UZ points
+UZ = coco_bd_labs(run_name1, 'UZ');
+
+for i = 1:min(2, length(UZ))
+    run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
+    prob = coco_prob();
+    prob = ode_ep2ep(prob,'',run_name1,UZ(i));
+    prob = coco_set(prob,'cont','branch','switch');
+    prob = coco_set(prob,'cont','ItMX', iterations_max);
+    prob = coco_set(prob,'cont','NPR',0);
+    prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+    prob = coco_add_event(prob,'UZ','b',UZpoints);
+
+    fprintf("\nRun %.0f =========================================",run_number)
+    coco(prob,run_name,[],1,parameter_names,computational_domain)
+    run_number = run_number + 1;
+end
+
+%% ========================================================================
+% CONTINUE FROM BP POINTS
+run_name_start_from = run_name1;
+BP2 = coco_bd_labs(run_name_start_from, 'BP'); % labels for BP points in run1
+
+for i = 1:min(4, length(BP2))
+    run_name = [data.shape_name '_run' sprintf('%.0f',run_number)];
+    prob = coco_prob();
+    prob = ode_ep2ep(prob,'',run_name_start_from,BP2(i));
+    prob = coco_set(prob,'cont','branch','switch');
+    prob = coco_set(prob,'cont','ItMX', iterations_max);
+    prob = coco_set(prob,'cont','NPR',0);
+    prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+    prob = coco_add_event(prob,'UZ','b',UZpoints);
+
+    fprintf("\nRun %.0f =========================================",run_number)
+    coco(prob,run_name,[],1,parameter_names,computational_domain)
+    run_number = run_number + 1;
+end
+
+
+%% ========================================================================
+% Get the Results & Plot from COCO
+close all
+cd('data');
+coco_runs = dir([data.shape_name '*']);
+cd ..
+
+theme1 = struct('special', {{'EP','FP','HB','BP'}});
+figure(9899); clf; hold on
+
+% Initilize matrix for pertinant values from coco
+UZ_data_from_coco = zeros(1,5);
+
+run_max_E_per_b = [bpoints' zeros(length(bpoints),2)];
+for i = 1:length(coco_runs)
+    coco_plot_bd(theme1, coco_runs(i).name, 'x',1,'x',2,'b')
+
+    % Plot shape and find b_V_matrix
+    % b_V_matrix = [run_number bcrit energy UZ stability]
+    b_V_matrix = plot_shape_from_COCO(coco_runs(i).name,data);
+    b_V_matrix(:,1) = i;
+
+    UZ_data_from_coco = [UZ_data_from_coco ; b_V_matrix];
+end
+
+figure(9899)
+axis tight; grid on; view(3)
+zlim([0 0.5]); xlim([-1 1]); ylim(0.5*[-1 1])
+
+%% Find time integration starting points
+% Round 'b' values from numerical inaccuracy
+UZ_data_from_coco(:,2) = round(UZ_data_from_coco(:,2),5);
+UZpoints = round(UZpoints,5);
+
+no_stable_count = 0;
+for i = 1:length(UZpoints)
+    % Find branches that had values matching the UZ points
+    % (i.e. values that match the current b value)
+    b_val = UZpoints(i);
+    possible_branches = UZ_data_from_coco(UZ_data_from_coco(:,2)==b_val,:);
+
+    % Ignore all the unstable branches
+    possible_branches = possible_branches(possible_branches(:,5)==-1,:);
+
+    %% ==========================================
+    %  RETURN ALL ENERGY STATES
+    if all_branches  == 1
+        for branch_idx=1:size(possible_branches,2)
+            run_number = possible_branches(branch_idx,1);
+            uz_idx     = possible_branches(branch_idx,4);
+
+            if ~isempty(run_number)
+                % Have COCO grab the A0hatp from reading the solution
+                run_name_to_grab = [data.shape_name '_run' sprintf('%.0f',run_number)];
+                A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
+
+                % Save the A0hatp
+                save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi run "+ sprintf('%.0f',run_number)+".mat","A0hatp")
+            else
+                % disp("edge case smh")
+                disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
+                bpoints(i- no_stable_count) = [];
+                no_stable_count = no_stable_count+1;
+            end
+        end
+
+    %% ==========================================
+    %  RETURN MAXIMUM AND MINIMUM ENERGY STATES
+    elseif all_branches == -1
+        % Output only the maximum and minimum energy states
+        % Find the row with the highest energy state
+        [Vhigh,row_max] = max(possible_branches(:,3));
+        [Vlow,row_min] = min(possible_branches(:,3));
+
+        % Take the Run Number and the UZ index for the higher energy stable
+        % state
+        run_number_max = possible_branches(row_max,1);
+        uz_idx_max     = possible_branches(row_max,4);
+
+        run_number_min = possible_branches(row_min,1);
+        uz_idx_min     = possible_branches(row_min,4);
+
+        if ~isempty(run_number_max)
+            %% Load the Higher Energy Well Data
+            % Have COCO grab the A0hatp from reading the solution
+            data.found_a_stable = true;
+            
+            run_name_to_grab_max = [data.shape_name '_run' sprintf('%.0f',run_number_max)];
+            A0hatp = COCO_grab_UZ(run_name_to_grab_max,uz_idx_max);
+
+            % Save the A0hatp
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max.mat","A0hatp")
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi.mat","A0hatp")
+            
+            if isfield(data, 'plot_labels')
+                plot_val = data.plot_labels;
+            else
+                plot_val = false;
+            end
+            data.plot_labels = false;
+            A0_high = determine_A_from_Ahat(A0hatp', data)';
+            COCO_plot_system_once(A0_high,data,0,'r',.5);
+
+            %% Load the Lower Energy Well Data
+            % Have COCO grab the A0hatp from reading the solution
+            run_name_to_grab_min = [data.shape_name '_run' sprintf('%.0f',run_number_min)];
+            A0hatp = COCO_grab_UZ(run_name_to_grab_min,uz_idx_min);
+
+            % Save the A0hatp
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi min.mat","A0hatp")
+            
+            A0_low = determine_A_from_Ahat(A0hatp', data)';
+            COCO_plot_system_once(A0_low,data,1,'b',.5);
+
+            data.plot_labels = plot_val;
+            if ~exist("COCO\"+ data.timeStr + "\", 'dir')
+                mkdir("COCO\"+data.timeStr + "\");
+            end
+
+            if ~exist("COCO\Logos\"+ data.timeStr + "\", 'dir')
+                mkdir("COCO\Logos\"+ data.timeStr + "\");
+            end
+
+            data.file_name_COCO = data.timeStr + "\"+ data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max min";
+    
+            title(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi max min");
+            
+            %% Save the Relevant Data
+            % Write the high and low energy to data
+            data.Vhigh = Vhigh;
+            data.Vlow  = Vlow;
+
+            % Determine the rotation of each hinge for the high and low
+            % energy states
+            data.thetaHigh  = determine_thetas(A0_high,data);
+            data.thetaLow   = determine_thetas(A0_low,data);
+
+            %% Check if there are prohibiting wells
+            data.prohibit_wall = determine_prohibiting_walls(data);
+            
+            if data.prohibit_wall || ~data.sym
+
+            % Scatter Points on Prohibiting Walls and Save
+            exportgraphics(gcf, "COCO\"+data.file_name_COCO + " - Max Min.png","Resolution",600);
+
+            % Find the displacement between the arches
+            data.arch_delta = determine_arch_delta(A0_high,A0_low,data);
+
+            % Plot logo's (small images) of the two energy states
+            COCO_plot_system_once_logo(A0_high,data,0,'r',.5);
+            axis off
+            exportgraphics(gcf, "COCO\Logos\"+data.file_name_COCO + " - High State.eps");
+
+            COCO_plot_system_once_logo(A0_low,data,0,'b',.5);
+            axis off
+            exportgraphics(gcf, "COCO\Logos\"+data.file_name_COCO + " - Low State.eps");
+
+        else
+            % No stable solutions found
+            disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
+            bpoints(i- no_stable_count) = [];
+            no_stable_count = no_stable_count+1;
+            data.found_a_stable = false;
+        end
+    
+    %% ==========================================
+    %  RETURN MAXIMUM ENERGY STATE
+    else
+        % Find the row with the highest energy state
+        [~,row] = max(possible_branches(:,3));
+
+        % Take the Run Number and the UZ index for the higher energy stable
+        % state
+        run_number = possible_branches(row,1);
+        uz_idx     = possible_branches(row,4);
+
+        if ~isempty(run_number)
+            % Have COCO grab the A0hatp from reading the solution
+            run_name_to_grab = [data.shape_name '_run' sprintf('%.0f',run_number)];
+            A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
+
+            % Save the A0hatp
+            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi.mat","A0hatp")
+        else
+            % disp("edge case smh")
+            disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
+            bpoints(i- no_stable_count) = [];
+            no_stable_count = no_stable_count+1;
+        end
+    end
+end
+end
