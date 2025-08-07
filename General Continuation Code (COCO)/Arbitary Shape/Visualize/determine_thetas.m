@@ -4,7 +4,6 @@ function [theta_vector] = determine_thetas(A,data)
 %% Load from data
 adjacency_matrix        = data.adjacency_matrix;
 
-V  = data.V;    % Number of Hinges
 N  = data.N;    % Number of Arches
 N_modes = data.N_modes;     % Number of Modes
 %% Determine Numbering convention of arches and hinges
@@ -12,6 +11,9 @@ up_adjac = triu(adjacency_matrix,1);
 [left, right] = find(up_adjac == 1);
 
 left_and_right = [left, right];
+
+% Find the number of hinges total
+V = max(max(left_and_right));
 
 % Vector which describes all the arch numbers
 arches = 1:N;

@@ -1,5 +1,5 @@
 %% Clear Everything so there are no stragglers
-clear; clc; close all
+% clear; clc; close all
 
 %profile -memory on;
 %setpref('profiler','showJitLines',1);
@@ -84,7 +84,11 @@ archd_idx = find(strcmp(results,{'Arch Displacement'}));
 prohib_idx = find(strcmp(results,{'Prohibiting Walls'}));
 
 
+<<<<<<< Updated upstream
 for count=2:(2^num_arches-1)
+=======
+for count=115:(2^num_arches-1)
+>>>>>>> Stashed changes
     % Write the count number and binary to results
     results{count+2,index_idx} =  count;
     results{count+2,binary_idx} = strjoin(string(decimalToBinaryVector(count,11)));
