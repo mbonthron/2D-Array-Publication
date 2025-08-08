@@ -22,6 +22,13 @@ for i = 1:length(points_finite)
         % convention got changed)
         vertex_map_p2f = [vertex_map_p2f ; 
                           matched i];
+        ground_nodes_matched = find(ismember(data.ground_nodes_points, points(matched,:),'rows')==1, 1);
+        
+        if ~isempty(ground_nodes_matched)
+            data.ground_nodes_points(ground_nodes_matched,:) = data.points(matched,:);
+            data.ground_nodes_idx(ground_nodes_matched,:) = matched;
+            
+        end
     else
         % Check if off by length of super cell
         x_pos = points_finite(i,1) - L_super_cell;

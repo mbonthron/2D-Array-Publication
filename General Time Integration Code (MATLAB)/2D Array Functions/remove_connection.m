@@ -57,6 +57,11 @@ end
 % Remove any "floating" points (i.e. unconnected points)
 floating_points = find(sum(adjacency_matrix_finite) == 0);
 
+floating_end_nodes_boolean = ismember(data.vertex_map_p2f(:,2),floating_points);
+floating_start_nodes_boolean = ismember(data.vertex_map_p2f(:,  1),floating_points);
+data.ground_nodes_idx = data.ground_nodes_idx(~(floating_start_nodes_boolean | floating_end_nodes_boolean),:);
+data.ground_nodes_points = data.ground_nodes_points(~(floating_start_nodes_boolean | floating_end_nodes_boolean),:);
+
 % Remove floating points from points
 data.points_finite(floating_points,:) = [];
 

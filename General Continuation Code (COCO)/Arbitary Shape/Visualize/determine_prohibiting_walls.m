@@ -28,17 +28,15 @@ isConnected = 0;
 % Check if the new adjacency_matrix is connected
 old_G = graph(adjacency_matrix);
 
-for start_idx=1:size(data.vertex_map_p2f,1)
+% Find vertices that map to ground nodes
+end_nodes = data.vertex_map_p2f(ismember(data.vertex_map_p2f(:,1), data.ground_nodes_idx),2);
+
+for start_idx=1:size(data.ground_nodes_idx,1)
     % Check if there exists a path for each ending point
-    for end_idx=1:size(data.vertex_map_p2f,1)
-        walkNodes = bfsearch(old_G, data.vertex_map_p2f(start_idx,1));
-        isConnected = isConnected || ismember(data.vertex_map_p2f(end_idx,2), walkNodes);
-        if isConnected
-            break;
-        end
-    end
+    walkNodes = bfsearch(old_G, data.ground_nodes_idx(start_idx));
+    isConnected = isConnected || any(ismember(end_nodes, walkNodes));
     if isConnected
-            break;
+        break;
     end
 end
 
@@ -64,11 +62,11 @@ end
 
 %% Scatter The Prohobitive Points on Figure
 figure(gcf)
-scatter(data.points_finite(stationary_hinges,1),data.points_finite(stationary_hinges,2),500,"x", ...
+scatter(data.points(stationary_hinges,1),data.points(stationary_hinges,2),500,"x", ...
     "MarkerEdgeColor","r","LineWidth",5)
 
-end_stationary_hinges = ismember(data.vertex_map_p2f(:,1),stationary_hinges);
-scatter(data.points_finite(data.vertex_map_p2f(end_stationary_hinges,2),1),data.points_finite(data.vertex_map_p2f(end_stationary_hinges,2),2),500,"x", ...
+end_stationary_hinges = ismember(data.ground_nodes_idx,stationary_hinges);
+scatter(data.points(data.ground_nodes_idx(end_stationary_hinges),1)+data.L_super_cell,data.points(data.ground_nodes_idx(end_stationary_hinges),2),500,"x", ...
     "MarkerEdgeColor","r","LineWidth",5)
 
 
