@@ -103,7 +103,7 @@ end
 % Get the Results & Plot from COCO
 close all
 cd('data');
-coco_runs = dir([data.shape_name '*']);
+coco_runs = dir([data.shape_name '_*']);
 cd ..
 
 theme1 = struct('special', {{'EP','FP','HB','BP'}});
@@ -208,7 +208,7 @@ for i = 1:length(UZpoints)
             A0hatp = COCO_grab_UZ(run_name_to_grab_min,uz_idx_min);
 
             % Save the A0hatp
-            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi min.mat","A0hatp")
+            save("COCO mat files/"+data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi min.mat","A0hatp")
             
             A0_low = determine_A_from_Ahat(A0hatp', data)';
             COCO_plot_system_once(A0_low,data,1,'b',.5);
@@ -238,8 +238,18 @@ for i = 1:length(UZpoints)
 
             %% Check if there are prohibiting wells
             data.prohibit_wall = determine_prohibiting_walls(data);
-            
-            if data.prohibit_wall || ~data.sym
+            if data.Vhigh >= data.Vlow*1.1
+                % asymmetric
+                data.asym = 1;
+            else
+                data.asym = 0;
+            end
+            if data.prohibit_wall || ~data.asym
+                set(gca, 'Color',[255, 194, 194]/255);
+            else
+                set(gca, 'Color',[228, 255, 194]/255);
+            end
+            set(gca,'XColor', 'none','YColor','none')
 
             % Scatter Points on Prohibiting Walls and Save
             exportgraphics(gcf, "COCO\"+data.file_name_COCO + " - Max Min.png","Resolution",600);
@@ -281,7 +291,7 @@ for i = 1:length(UZpoints)
             A0hatp = COCO_grab_UZ(run_name_to_grab,uz_idx);
 
             % Save the A0hatp
-            save(data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi.mat","A0hatp")
+            save("COCO mat files/"+data.shape_name + " b = "+ num2str(round(b_val/pi,4)) +" pi t = "+num2str(round(t_val/pi,4)) +" pi.mat","A0hatp")
         else
             % disp("edge case smh")
             disp(num2str(b_val) + " found no stable solutions, removing from bpoints")
