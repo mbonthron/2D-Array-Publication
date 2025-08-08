@@ -1,5 +1,6 @@
 /General Optimization/data
 /General Optimization/Videos
+/General Optimization/COCO mat files
 General Time Integration Code (MATLAB)/2D Array Functions/initialize_time_integration.m
 /Validating Model/Barenblatt Nondimensionalization/Continuation/data
 Validating Model/Barenblatt Nondimensionalization/Time Integration/b = 0.1pi t = 0.01pi eta = 0.5.mat
