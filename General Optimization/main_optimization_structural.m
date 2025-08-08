@@ -85,7 +85,6 @@ prohib_idx      = find(strcmp(results,{'Prohibiting Walls'}));
 
 
 for count=0:(2^num_arches-1)
-% for count = [0]
 % Write the count number and binary to results
     results{count+2,index_idx} =  count;
     results{count+2,binary_idx} = strjoin(string(decimalToBinaryVector(count,11)));
