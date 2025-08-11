@@ -117,7 +117,8 @@ for b = bpoints
             data = data_Orig2;
             %% Prepare for Time Integration
             data.beta = beta;
-            T_end = 2*min([2000*sqrt(beta/.1)-400,10000]);
+            % T_end = 2*min([2000*sqrt(beta/.1)-400,10000]);
+            T_end = min([2000*sqrt(beta/.1)-400,10000]);
 
             %% Run Time Integration
             [t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);

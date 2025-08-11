@@ -173,7 +173,8 @@ delete(myCluster.Jobs);
 myCluster.NumWorkers = 4;
 saveProfile(myCluster);
 OG_data = data;
-for count=1:(2^num_arches-1)
+% for count=1:(2^num_arches-1)
+for count=1552
     if ~any(cellfun(@isempty, results(count+2,:))) && results{count+2,stable_idx} && results{count+2,asym_idx} && ~results{count+2,prohib_idx} && results{count+2,connected_idx}
         raw_data = init_shape_structural(shapeNum, OG_data, count);
 

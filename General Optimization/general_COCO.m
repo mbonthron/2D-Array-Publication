@@ -241,6 +241,8 @@ for i = 1:length(UZpoints)
 
             %% Check if there are prohibiting wells
             data.prohibit_wall = determine_prohibiting_walls(data);
+
+            % Determine if asymmetric energy wells are found
             if data.Vhigh >= data.Vlow*1.1
                 % asymmetric
                 data.asym = 1;
