@@ -64,8 +64,8 @@ data.continue = true;
 nowTime = datetime('now');
 
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
-data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
-% data.timeStr = 'Testing things out';
+% data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
+data.timeStr = 'Hexagon Chain - Weekend Run';
 OG_data = data;
 OG_bpoints = bpoints;
 
