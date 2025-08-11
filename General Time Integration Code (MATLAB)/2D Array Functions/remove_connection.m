@@ -54,14 +54,25 @@ for i = 1:length(connections_to_remove)
     end
 end
 
-% Remove any "floating" points (i.e. unconnected points)
-floating_points = find(sum(adjacency_matrix_finite) == 0);
 
+%%
+
+% Remove any "floating" points (i.e. unconnected points)
+floating_points = find(sum(adjacency_matrix_finite) == 0);  % Returns vector whose values correspond to points with no connections
+
+% Check if any of the floating points are a member of the vertex mapping
+% periodic to finite (ending points)
 floating_end_nodes_boolean = ismember(data.vertex_map_p2f(:,2),floating_points);
-floating_start_nodes_boolean = ismember(data.vertex_map_p2f(:,  1),floating_points);
-data.ground_nodes_idx = data.ground_nodes_idx(~(floating_start_nodes_boolean | floating_end_nodes_boolean),:);
+
+% Check if any of the floating points are a member of the vertex mapping
+% periodic to finite (starting points)
+floating_start_nodes_boolean = ismember(data.vertex_map_p2f(:,1),floating_points);
+
+% Keep the ground nodes that are not floating and still mapped to periodic
+data.ground_nodes_idx    = data.ground_nodes_idx(~(floating_start_nodes_boolean | floating_end_nodes_boolean),:);
 data.ground_nodes_points = data.ground_nodes_points(~(floating_start_nodes_boolean | floating_end_nodes_boolean),:);
 
+%% Remove points from finite
 % Remove floating points from points
 data.points_finite(floating_points,:) = [];
 
@@ -71,6 +82,7 @@ adjacency_matrix_finite(:,floating_points) = [];
 
 data.adjacency_matrix_finite = adjacency_matrix_finite;
 
+%% Remove points from periodic
 % Remove any "floating" points (i.e. unconnected points)
 floating_points = find(sum(adjacency_matrix) == 0);
 
@@ -83,11 +95,12 @@ adjacency_matrix(:,floating_points) = [];
 
 data.adjacency_matrix = adjacency_matrix;
 
-% Try to recalculate mapping of vertex_map_p2f to account
+%% Try to recalculate mapping of vertex_map_p2f to account
 % for removed nodes
 data = determine_vertex_map_p2f(data);
 
 %% = Remove the Connections for the Time Integration Adj. Matrix
+%  (For time integration matrix)
 N_cells = data.N_cells;
 V = data.V;
 adjacency_matrix_time_integration = data.adjacency_matrix_time_integration;

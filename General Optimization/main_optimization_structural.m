@@ -65,7 +65,9 @@ nowTime = datetime('now');
 
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
 % data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
-data.timeStr = 'Hexagon Chain - Weekend Run';
+% data.timeStr = 'Hexagon Chain - Weekend Run';
+data.timeStr = 'Testing things out';
+
 OG_data = data;
 OG_bpoints = bpoints;
 
@@ -86,7 +88,7 @@ prohib_idx      = find(strcmp(results,{'Prohibiting Walls'}));
 tensor_true = 1;
 
 %% Run COCO
-for count=0:(2^num_arches-1)
+for count=1734
 % Write the count number and binary to results
     results{count+2,index_idx} =  count;
     results{count+2,binary_idx} = strjoin(string(decimalToBinaryVector(count,11)));
@@ -174,7 +176,7 @@ myCluster.NumWorkers = 4;
 saveProfile(myCluster);
 OG_data = data;
 % for count=1:(2^num_arches-1)
-for count=1552
+for count=1734
     if ~any(cellfun(@isempty, results(count+2,:))) && results{count+2,stable_idx} && results{count+2,asym_idx} && ~results{count+2,prohib_idx} && results{count+2,connected_idx}
         raw_data = init_shape_structural(shapeNum, OG_data, count);
 

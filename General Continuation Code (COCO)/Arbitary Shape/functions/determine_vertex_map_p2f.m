@@ -14,6 +14,16 @@ for i = 1:length(points_finite)
     
     matched = find(ismember(points,[x_pos y_pos],'rows') == 1);
 
+    %% Try to rematch the ground nodes
+    ground_nodes_matched = find(ismember(data.ground_nodes_points, points_finite(i,:),'rows')==1, 1);
+    
+    % Renumber the ground nodes
+    if ~isempty(ground_nodes_matched) && ~isempty(matched)
+        data.ground_nodes_points(ground_nodes_matched,:) = data.points(matched,:);
+        data.ground_nodes_idx(ground_nodes_matched,:) = matched;
+        
+    end
+
     if matched == i
         % The periodic hinge is exactly the finite hinge
         % Do not need to include any mapping
@@ -22,13 +32,7 @@ for i = 1:length(points_finite)
         % convention got changed)
         vertex_map_p2f = [vertex_map_p2f ; 
                           matched i];
-        ground_nodes_matched = find(ismember(data.ground_nodes_points, points(matched,:),'rows')==1, 1);
-        
-        if ~isempty(ground_nodes_matched)
-            data.ground_nodes_points(ground_nodes_matched,:) = data.points(matched,:);
-            data.ground_nodes_idx(ground_nodes_matched,:) = matched;
-            
-        end
+
     else
         % Check if off by length of super cell
         x_pos = points_finite(i,1) - L_super_cell;
@@ -39,7 +43,14 @@ for i = 1:length(points_finite)
         % periodic
         vertex_map_p2f = [vertex_map_p2f ; 
                           matched i];
+
+        data.ground_nodes_points(ground_nodes_matched,:) = [];
+        data.ground_nodes_idx(ground_nodes_matched,:) = [];
     end
+
+  
+
+
 end
 
 data.vertex_map_p2f = vertex_map_p2f;
