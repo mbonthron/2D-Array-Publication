@@ -22,7 +22,7 @@ addpath('..\General Continuation Code (COCO)\Arbitary Shape\')
 addpath('Shapes Point Data/')
 addpath("Debugging\")
 
-%% Create Empty Data Structure to be Populated
+% Create Empty Data Structure to be Populated
 data = struct();
 data.N_modes = 3;   % Number of modes used to describe the system
 data.N_cells = 5;
@@ -42,11 +42,11 @@ data.plot_videos = 0;
 % tvals = [.01 .025 .05 .06 .065 .070 .075 .08 .085 .09 .095 .1 .105]*pi;
 
 bpoints = [.09]*pi;
-betavals = [.1];
+betavals = [.1 1:.2:3];
 tvals = [.1]*pi;
 sigmavals = [.0001];
 
-%% Run Continuation to Get Stable Configurations at each b
+% Initialize more data parameters
 % Choose which shape
 shapeNum = 4;
 
@@ -83,7 +83,9 @@ tlow_idx        = find(strcmp(results,{'thetaLow'}));
 archd_idx       = find(strcmp(results,{'Arch Displacement'}));
 prohib_idx      = find(strcmp(results,{'Prohibiting Walls'}));
 
+tensor_true = 1;
 
+%% Run COCO
 for count=0:(2^num_arches-1)
 % Write the count number and binary to results
     results{count+2,index_idx} =  count;
@@ -108,7 +110,6 @@ for count=0:(2^num_arches-1)
     if data.continue
         raw_data = deepCopyStruct(data);
         trans_percent_tensor = zeros(length(bpoints),length(betavals), length(tvals));
-        tensor_true = 1;
 
         %% Run COCO
         for t_idx = 1:length(tvals)
@@ -172,7 +173,7 @@ delete(myCluster.Jobs);
 myCluster.NumWorkers = 4;
 saveProfile(myCluster);
 OG_data = data;
-for count=0:(2^num_arches-1)
+for count=1:(2^num_arches-1)
     if ~any(cellfun(@isempty, results(count+2,:))) && results{count+2,stable_idx} && results{count+2,asym_idx} && ~results{count+2,prohib_idx} && results{count+2,connected_idx}
         raw_data = init_shape_structural(shapeNum, OG_data, count);
 
