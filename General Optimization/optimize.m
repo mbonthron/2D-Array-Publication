@@ -141,7 +141,9 @@ for b = bpoints
             data.file_name_trans = data.timeStr + "\"+ data.shape_name + " beta = " + num2str(data.beta) + " NumCells = "+ num2str(data.N_cells);
 
             if isfield(data, 'plot_videos') && data.plot_videos
-                plot_system_over_time(tinterp,Ainterp,data)
+                % plot_system_over_time(tinterp,Ainterp,data)
+                plot_system_over_time_lowkey_nice(tinterp,Ainterp,data)
+
             end
 
             % Determine if a transition occurred and save info (boolean? or distance of wave?)
