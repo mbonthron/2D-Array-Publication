@@ -1,21 +1,14 @@
-% Original vector
-v = [1;1;2;2;3;3;3;4;5;4;5;6;6;8;8;8;9;9];
+f1 = fieldnames(data1);
+f2 = fieldnames(data2);
 
-% Mapping matrix: [newValue, oldValue]
-map = [4 3;
-       5 4;
-       6 5;
-       7 6;
-       8 7;
-       9 8;
-      10 9;
-       1 10;
-       2 11;
-       3 12];
-
-% Apply replacements
-for i = 1:size(map,1)
-    v(v == map(i,2)) = map(i,1);
+for i = 1:length(f1)
+    if isfield(data2,(f1{i}))
+        if ~isequal(data1.(f1{i}),data2.(f1{i}))
+            f1{i}
+            fprintf(" is not equal\n")
+        end
+    else
+        f1{i}
+        fprintf(" DNE in data2\n")
+    end
 end
-
-disp(v)
