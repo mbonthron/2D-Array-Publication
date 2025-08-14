@@ -100,7 +100,7 @@ for i = 1:N
 end
 
 f = gcf;
-f.Position(3:4) = [350 175];
+%f.Position(3:4) = [350 175];
 
 %% Add Hinges atop once more
 node_big_circle_color = 0.75*[1 1 1];
