@@ -1,4 +1,4 @@
-function [] = run_and_plot(countidx,damping,T_end)
+function [] = run_and_plot(countidx,damping,T_end,force_sign)
 %% Makes a nice video plot
 data = struct();
 
@@ -8,15 +8,15 @@ t = 0.1*pi;
 b = 0.09*pi; 
 sigma = 0.0001;
 
-force_magnitude = 0.08;
+force_magnitude = force_sign*0.08;
 
-frame_count = 100;
+frame_count = 300;
 
 data.timeStr = 'Hexagon Chain - Weekend Run';
 
 %% Create needed data structure
 data.N_modes        = 3; 
-data.N_cells        = 5;
+data.N_cells        = 7;
 data.plot_grids     = 1;
 data.plot_COCO      = 0;
 data.plot_videos    = 1;
@@ -47,7 +47,7 @@ data = initialize_time_integration(data);
 data.b_vector = data.b_vector.*normrnd(1,sigma,[1,data.N])';
 data.t_vector       = t*ones(data.N,1);     % 08/11/2025 Time integration N? or periodic N?
 
-data.beta = 0.1;    % Initial beta for first time integration
+data.beta = .1;    % Initial beta for first time integration
 
 data = determine_coefficient_matrix(data);
 data = determine_starting_vals(data);
@@ -114,6 +114,8 @@ Ainterp = interp1(t,A,tinterp);
 if ~exist("Videos\"+ data.timeStr + "\", 'dir')
     mkdir("Videos\"+data.timeStr + "\");
 end
+
+plot_system_once(A(1,:),data)
 
 %% Plot the system lowkey nice over time
 

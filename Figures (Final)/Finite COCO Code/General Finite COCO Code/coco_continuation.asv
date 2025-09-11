@@ -1,0 +1,9 @@
+clear; clc
+%% 
+addpath("functions")
+addpath("visualize")
+
+%% Initialize 'data' for the specific problem
+run('initialize_triangle.m')
+
+%% Define the fun

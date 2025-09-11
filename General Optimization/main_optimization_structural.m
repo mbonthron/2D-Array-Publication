@@ -1,5 +1,5 @@
 %% Clear Everything so there are no stragglers
-% clear; clc; close all
+clear; clc; close all
 
 %profile -memory on;
 %setpref('profiler','showJitLines',1);
@@ -65,11 +65,10 @@ nowTime = datetime('now');
 
 % Format the datetime as a string (e.g., '2025-06-08_14-30-15')
 % data.timeStr = string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'));
-data.timeStr = 'Hexagon Chain - Thin';
-data.timeStr = [
-data.timeStr string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'))];
+% data.timeStr = 'Hexagon Chain - Thin';
+% data.timeStr = [string(datestr(nowTime, 'yyyy-mm-dd_HH-MM-SS'))];
 % data.timeStr = 'Hexagon Chain - Weekend Run';
-%data.timeStr = 'Testing things out';
+data.timeStr = 'Testing things out';
 OG_data = data;
 OG_bpoints = bpoints;
 
@@ -90,7 +89,8 @@ prohib_idx      = find(strcmp(results,{'Prohibiting Walls'}));
 tensor_true = 1;
 
 %% Run COCO
-for count=0:(2^num_arches-1)
+% for count=0:(2^num_arches-1)
+for count = 0
 % Write the count number and binary to results
     results{count+2,index_idx} =  count;
     results{count+2,binary_idx} = strjoin(string(decimalToBinaryVector(count,11)));

@@ -77,7 +77,7 @@ for t_idx = 1:length(tvals)
         end
     end
     if ~runs_exist || troubleshooting_flag
-        [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints,-1); %close all;
+        [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints,0); %close all;
     
     end
 end

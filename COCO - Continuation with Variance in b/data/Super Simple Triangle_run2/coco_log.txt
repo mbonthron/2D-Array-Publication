@@ -1,8 +1,8 @@
 MATLAB version 24.2.0.2833386 (R2024b) Update 4 on architecture win64
 
-run: { runid='Super Simple Triangle_run2' toolbox='empty' tbxctor=@empty_ctor isol_type='' sol_type='' dir='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Variance in b\data\Super Simple Triangle_run2' bdfname='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Variance in b\data\Super Simple Triangle_run2\bd.mat' logname='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Variance in b\data\Super Simple Triangle_run2\coco_log.txt' scrname='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Variance in b\data\Super Simple Triangle_run2\coco_scr.txt' }
+run: { runid='Super Simple Triangle_run2' toolbox='empty' tbxctor=@empty_ctor isol_type='' sol_type='' dir='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Continuation with Variance in b\data\Super Simple Triangle_run2' bdfname='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Continuation with Variance in b\data\Super Simple Triangle_run2\bd.mat' logname='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Continuation with Variance in b\data\Super Simple Triangle_run2\coco_log.txt' scrname='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Continuation with Variance in b\data\Super Simple Triangle_run2\coco_scr.txt' }
 
-all: { TOL=1e-06 CleanData=false LogLevel=1 data_dir='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Variance in b\data' }
+all: { TOL=1e-06 CleanData=false LogLevel=1 data_dir='D:\Snapping Arches\5 - Chiral 2D System\Github Code\2D-Array-Publication\COCO - Continuation with Variance in b\data' }
   +-cont: { branch='switch' ItMX=5000 NPR=0 h_max=0.001 h_min=0.0005 }
   +-lsol: { det=true }
 
@@ -1599,7 +1599,7 @@ POINT 154: computation finished
    0                          5.99e-07  1.24e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  155    1.00e-03  00:00:01   1.2391e+00                 6.7019e-01   3.1416e-02
+  155    1.00e-03  00:00:00   1.2391e+00                 6.7019e-01   3.1416e-02
 
 POINT 155: computation finished
 *********************************************************************
@@ -1609,7 +1609,7 @@ POINT 155: computation finished
    0                          6.00e-07  1.24e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  156    1.00e-03  00:00:01   1.2381e+00                 6.6965e-01   3.1416e-02
+  156    1.00e-03  00:00:00   1.2381e+00                 6.6965e-01   3.1416e-02
 
 POINT 156: computation finished
 *********************************************************************
@@ -1619,7 +1619,7 @@ POINT 156: computation finished
    0                          6.00e-07  1.24e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  157    1.00e-03  00:00:01   1.2371e+00                 6.6911e-01   3.1416e-02
+  157    1.00e-03  00:00:00   1.2371e+00                 6.6911e-01   3.1416e-02
 
 POINT 157: computation finished
 *********************************************************************
@@ -1629,7 +1629,7 @@ POINT 157: computation finished
    0                          6.00e-07  1.24e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  158    1.00e-03  00:00:01   1.2361e+00                 6.6857e-01   3.1416e-02
+  158    1.00e-03  00:00:00   1.2361e+00                 6.6857e-01   3.1416e-02
 
 POINT 158: computation finished
 *********************************************************************
@@ -1639,7 +1639,7 @@ POINT 158: computation finished
    0                          6.00e-07  1.24e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  159    1.00e-03  00:00:01   1.2351e+00                 6.6803e-01   3.1416e-02
+  159    1.00e-03  00:00:00   1.2351e+00                 6.6803e-01   3.1416e-02
 
 POINT 159: computation finished
 *********************************************************************
@@ -1649,7 +1649,7 @@ POINT 159: computation finished
    0                          6.00e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  160    1.00e-03  00:00:01   1.2341e+00                 6.6749e-01   3.1416e-02
+  160    1.00e-03  00:00:00   1.2341e+00                 6.6749e-01   3.1416e-02
 
 POINT 160: computation finished
 *********************************************************************
@@ -1659,7 +1659,7 @@ POINT 160: computation finished
    0                          6.00e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  161    1.00e-03  00:00:01   1.2331e+00                 6.6695e-01   3.1416e-02
+  161    1.00e-03  00:00:00   1.2331e+00                 6.6695e-01   3.1416e-02
 
 POINT 161: computation finished
 *********************************************************************
@@ -1669,7 +1669,7 @@ POINT 161: computation finished
    0                          6.01e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  162    1.00e-03  00:00:01   1.2321e+00                 6.6640e-01   3.1416e-02
+  162    1.00e-03  00:00:00   1.2321e+00                 6.6640e-01   3.1416e-02
 
 POINT 162: computation finished
 *********************************************************************
@@ -1679,7 +1679,7 @@ POINT 162: computation finished
    0                          6.01e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  163    1.00e-03  00:00:01   1.2311e+00                 6.6586e-01   3.1416e-02
+  163    1.00e-03  00:00:00   1.2311e+00                 6.6586e-01   3.1416e-02
 
 POINT 163: computation finished
 *********************************************************************
@@ -1689,7 +1689,7 @@ POINT 163: computation finished
    0                          6.01e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  164    1.00e-03  00:00:01   1.2301e+00                 6.6532e-01   3.1416e-02
+  164    1.00e-03  00:00:00   1.2301e+00                 6.6532e-01   3.1416e-02
 
 POINT 164: computation finished
 *********************************************************************
@@ -1699,7 +1699,7 @@ POINT 164: computation finished
    0                          6.01e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  165    1.00e-03  00:00:01   1.2291e+00                 6.6478e-01   3.1416e-02
+  165    1.00e-03  00:00:00   1.2291e+00                 6.6478e-01   3.1416e-02
 
 POINT 165: computation finished
 *********************************************************************
@@ -1709,7 +1709,7 @@ POINT 165: computation finished
    0                          6.01e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  166    1.00e-03  00:00:01   1.2281e+00                 6.6424e-01   3.1416e-02
+  166    1.00e-03  00:00:00   1.2281e+00                 6.6424e-01   3.1416e-02
 
 POINT 166: computation finished
 *********************************************************************
@@ -1719,7 +1719,7 @@ POINT 166: computation finished
    0                          6.02e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  167    1.00e-03  00:00:01   1.2271e+00                 6.6370e-01   3.1416e-02
+  167    1.00e-03  00:00:00   1.2271e+00                 6.6370e-01   3.1416e-02
 
 POINT 167: computation finished
 *********************************************************************
@@ -1729,7 +1729,7 @@ POINT 167: computation finished
    0                          6.02e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  168    1.00e-03  00:00:01   1.2261e+00                 6.6316e-01   3.1416e-02
+  168    1.00e-03  00:00:00   1.2261e+00                 6.6316e-01   3.1416e-02
 
 POINT 168: computation finished
 *********************************************************************
@@ -1739,7 +1739,7 @@ POINT 168: computation finished
    0                          6.02e-07  1.23e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  169    1.00e-03  00:00:01   1.2251e+00                 6.6262e-01   3.1416e-02
+  169    1.00e-03  00:00:00   1.2251e+00                 6.6262e-01   3.1416e-02
 
 POINT 169: computation finished
 *********************************************************************
@@ -1749,7 +1749,7 @@ POINT 169: computation finished
    0                          6.02e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  170    1.00e-03  00:00:01   1.2241e+00                 6.6208e-01   3.1416e-02
+  170    1.00e-03  00:00:00   1.2241e+00                 6.6208e-01   3.1416e-02
 
 POINT 170: computation finished
 *********************************************************************
@@ -1759,7 +1759,7 @@ POINT 170: computation finished
    0                          6.02e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  171    1.00e-03  00:00:01   1.2231e+00                 6.6154e-01   3.1416e-02
+  171    1.00e-03  00:00:00   1.2231e+00                 6.6154e-01   3.1416e-02
 
 POINT 171: computation finished
 *********************************************************************
@@ -1769,7 +1769,7 @@ POINT 171: computation finished
    0                          6.03e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  172    1.00e-03  00:00:01   1.2221e+00                 6.6100e-01   3.1416e-02
+  172    1.00e-03  00:00:00   1.2221e+00                 6.6100e-01   3.1416e-02
 
 POINT 172: computation finished
 *********************************************************************
@@ -1779,7 +1779,7 @@ POINT 172: computation finished
    0                          6.03e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  173    1.00e-03  00:00:01   1.2211e+00                 6.6046e-01   3.1416e-02
+  173    1.00e-03  00:00:00   1.2211e+00                 6.6046e-01   3.1416e-02
 
 POINT 173: computation finished
 *********************************************************************
@@ -1789,7 +1789,7 @@ POINT 173: computation finished
    0                          6.03e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  174    1.00e-03  00:00:01   1.2201e+00                 6.5992e-01   3.1416e-02
+  174    1.00e-03  00:00:00   1.2201e+00                 6.5992e-01   3.1416e-02
 
 POINT 174: computation finished
 *********************************************************************
@@ -1799,7 +1799,7 @@ POINT 174: computation finished
    0                          6.03e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  175    1.00e-03  00:00:01   1.2191e+00                 6.5938e-01   3.1416e-02
+  175    1.00e-03  00:00:00   1.2191e+00                 6.5938e-01   3.1416e-02
 
 POINT 175: computation finished
 *********************************************************************
@@ -1809,7 +1809,7 @@ POINT 175: computation finished
    0                          6.03e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  176    1.00e-03  00:00:01   1.2181e+00                 6.5884e-01   3.1416e-02
+  176    1.00e-03  00:00:00   1.2181e+00                 6.5884e-01   3.1416e-02
 
 POINT 176: computation finished
 *********************************************************************
@@ -1819,7 +1819,7 @@ POINT 176: computation finished
    0                          6.03e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  177    1.00e-03  00:00:01   1.2171e+00                 6.5830e-01   3.1416e-02
+  177    1.00e-03  00:00:00   1.2171e+00                 6.5830e-01   3.1416e-02
 
 POINT 177: computation finished
 *********************************************************************
@@ -1829,7 +1829,7 @@ POINT 177: computation finished
    0                          6.04e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  178    1.00e-03  00:00:01   1.2161e+00                 6.5776e-01   3.1416e-02
+  178    1.00e-03  00:00:00   1.2161e+00                 6.5776e-01   3.1416e-02
 
 POINT 178: computation finished
 *********************************************************************
@@ -1839,7 +1839,7 @@ POINT 178: computation finished
    0                          6.04e-07  1.22e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  179    1.00e-03  00:00:01   1.2151e+00                 6.5722e-01   3.1416e-02
+  179    1.00e-03  00:00:00   1.2151e+00                 6.5722e-01   3.1416e-02
 
 POINT 179: computation finished
 *********************************************************************
@@ -1849,7 +1849,7 @@ POINT 179: computation finished
    0                          6.04e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  180    1.00e-03  00:00:01   1.2141e+00                 6.5667e-01   3.1416e-02
+  180    1.00e-03  00:00:00   1.2141e+00                 6.5667e-01   3.1416e-02
 
 POINT 180: computation finished
 *********************************************************************
@@ -1859,7 +1859,7 @@ POINT 180: computation finished
    0                          6.04e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  181    1.00e-03  00:00:01   1.2131e+00                 6.5613e-01   3.1416e-02
+  181    1.00e-03  00:00:00   1.2131e+00                 6.5613e-01   3.1416e-02
 
 POINT 181: computation finished
 *********************************************************************
@@ -1869,7 +1869,7 @@ POINT 181: computation finished
    0                          6.04e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  182    1.00e-03  00:00:01   1.2121e+00                 6.5559e-01   3.1416e-02
+  182    1.00e-03  00:00:00   1.2121e+00                 6.5559e-01   3.1416e-02
 
 POINT 182: computation finished
 *********************************************************************
@@ -1879,7 +1879,7 @@ POINT 182: computation finished
    0                          6.05e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  183    1.00e-03  00:00:01   1.2111e+00                 6.5505e-01   3.1416e-02
+  183    1.00e-03  00:00:00   1.2111e+00                 6.5505e-01   3.1416e-02
 
 POINT 183: computation finished
 *********************************************************************
@@ -1889,7 +1889,7 @@ POINT 183: computation finished
    0                          6.05e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  184    1.00e-03  00:00:01   1.2101e+00                 6.5451e-01   3.1416e-02
+  184    1.00e-03  00:00:00   1.2101e+00                 6.5451e-01   3.1416e-02
 
 POINT 184: computation finished
 *********************************************************************
@@ -1899,7 +1899,7 @@ POINT 184: computation finished
    0                          6.05e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  185    1.00e-03  00:00:01   1.2091e+00                 6.5397e-01   3.1416e-02
+  185    1.00e-03  00:00:00   1.2091e+00                 6.5397e-01   3.1416e-02
 
 POINT 185: computation finished
 *********************************************************************
@@ -1909,7 +1909,7 @@ POINT 185: computation finished
    0                          6.05e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  186    1.00e-03  00:00:01   1.2081e+00                 6.5343e-01   3.1416e-02
+  186    1.00e-03  00:00:00   1.2081e+00                 6.5343e-01   3.1416e-02
 
 POINT 186: computation finished
 *********************************************************************
@@ -1919,7 +1919,7 @@ POINT 186: computation finished
    0                          6.05e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  187    1.00e-03  00:00:01   1.2071e+00                 6.5289e-01   3.1416e-02
+  187    1.00e-03  00:00:00   1.2071e+00                 6.5289e-01   3.1416e-02
 
 POINT 187: computation finished
 *********************************************************************
@@ -1929,7 +1929,7 @@ POINT 187: computation finished
    0                          6.05e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  188    1.00e-03  00:00:01   1.2061e+00                 6.5235e-01   3.1416e-02
+  188    1.00e-03  00:00:00   1.2061e+00                 6.5235e-01   3.1416e-02
 
 POINT 188: computation finished
 *********************************************************************
@@ -1939,7 +1939,7 @@ POINT 188: computation finished
    0                          6.06e-07  1.21e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  189    1.00e-03  00:00:01   1.2051e+00                 6.5181e-01   3.1416e-02
+  189    1.00e-03  00:00:00   1.2051e+00                 6.5181e-01   3.1416e-02
 
 POINT 189: computation finished
 *********************************************************************
@@ -1949,7 +1949,7 @@ POINT 189: computation finished
    0                          6.06e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  190    1.00e-03  00:00:01   1.2041e+00                 6.5127e-01   3.1416e-02
+  190    1.00e-03  00:00:00   1.2041e+00                 6.5127e-01   3.1416e-02
 
 POINT 190: computation finished
 *********************************************************************
@@ -1959,7 +1959,7 @@ POINT 190: computation finished
    0                          6.06e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  191    1.00e-03  00:00:01   1.2031e+00                 6.5073e-01   3.1416e-02
+  191    1.00e-03  00:00:00   1.2031e+00                 6.5073e-01   3.1416e-02
 
 POINT 191: computation finished
 *********************************************************************
@@ -1969,7 +1969,7 @@ POINT 191: computation finished
    0                          6.06e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  192    1.00e-03  00:00:01   1.2021e+00                 6.5019e-01   3.1416e-02
+  192    1.00e-03  00:00:00   1.2021e+00                 6.5019e-01   3.1416e-02
 
 POINT 192: computation finished
 *********************************************************************
@@ -1979,7 +1979,7 @@ POINT 192: computation finished
    0                          6.06e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  193    1.00e-03  00:00:01   1.2011e+00                 6.4965e-01   3.1416e-02
+  193    1.00e-03  00:00:00   1.2011e+00                 6.4965e-01   3.1416e-02
 
 POINT 193: computation finished
 *********************************************************************
@@ -1989,7 +1989,7 @@ POINT 193: computation finished
    0                          6.07e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  194    1.00e-03  00:00:01   1.2001e+00                 6.4911e-01   3.1416e-02
+  194    1.00e-03  00:00:00   1.2001e+00                 6.4911e-01   3.1416e-02
 
 POINT 194: computation finished
 *********************************************************************
@@ -1999,7 +1999,7 @@ POINT 194: computation finished
    0                          6.07e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  195    1.00e-03  00:00:01   1.1991e+00                 6.4857e-01   3.1416e-02
+  195    1.00e-03  00:00:00   1.1991e+00                 6.4857e-01   3.1416e-02
 
 POINT 195: computation finished
 *********************************************************************
@@ -2009,7 +2009,7 @@ POINT 195: computation finished
    0                          6.07e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  196    1.00e-03  00:00:01   1.1981e+00                 6.4803e-01   3.1416e-02
+  196    1.00e-03  00:00:00   1.1981e+00                 6.4803e-01   3.1416e-02
 
 POINT 196: computation finished
 *********************************************************************
@@ -2019,7 +2019,7 @@ POINT 196: computation finished
    0                          6.07e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  197    1.00e-03  00:00:01   1.1971e+00                 6.4749e-01   3.1416e-02
+  197    1.00e-03  00:00:00   1.1971e+00                 6.4749e-01   3.1416e-02
 
 POINT 197: computation finished
 *********************************************************************
@@ -2029,7 +2029,7 @@ POINT 197: computation finished
    0                          6.07e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  198    1.00e-03  00:00:01   1.1961e+00                 6.4694e-01   3.1416e-02
+  198    1.00e-03  00:00:00   1.1961e+00                 6.4694e-01   3.1416e-02
 
 POINT 198: computation finished
 *********************************************************************
@@ -2039,7 +2039,7 @@ POINT 198: computation finished
    0                          6.08e-07  1.20e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  199    1.00e-03  00:00:01   1.1951e+00                 6.4640e-01   3.1416e-02
+  199    1.00e-03  00:00:00   1.1951e+00                 6.4640e-01   3.1416e-02
 
 POINT 199: computation finished
 *********************************************************************
@@ -2049,7 +2049,7 @@ POINT 199: computation finished
    0                          6.08e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  200    1.00e-03  00:00:01   1.1941e+00                 6.4586e-01   3.1416e-02
+  200    1.00e-03  00:00:00   1.1941e+00                 6.4586e-01   3.1416e-02
 
 POINT 200: computation finished
 *********************************************************************
@@ -2059,7 +2059,7 @@ POINT 200: computation finished
    0                          6.08e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  201    1.00e-03  00:00:01   1.1931e+00                 6.4532e-01   3.1416e-02
+  201    1.00e-03  00:00:00   1.1931e+00                 6.4532e-01   3.1416e-02
 
 POINT 201: computation finished
 *********************************************************************
@@ -2069,7 +2069,7 @@ POINT 201: computation finished
    0                          6.08e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  202    1.00e-03  00:00:01   1.1921e+00                 6.4478e-01   3.1416e-02
+  202    1.00e-03  00:00:00   1.1921e+00                 6.4478e-01   3.1416e-02
 
 POINT 202: computation finished
 *********************************************************************
@@ -2079,7 +2079,7 @@ POINT 202: computation finished
    0                          6.08e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  203    1.00e-03  00:00:01   1.1911e+00                 6.4424e-01   3.1416e-02
+  203    1.00e-03  00:00:00   1.1911e+00                 6.4424e-01   3.1416e-02
 
 POINT 203: computation finished
 *********************************************************************
@@ -2089,7 +2089,7 @@ POINT 203: computation finished
    0                          6.09e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  204    1.00e-03  00:00:01   1.1901e+00                 6.4370e-01   3.1416e-02
+  204    1.00e-03  00:00:00   1.1901e+00                 6.4370e-01   3.1416e-02
 
 POINT 204: computation finished
 *********************************************************************
@@ -2099,7 +2099,7 @@ POINT 204: computation finished
    0                          6.09e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  205    1.00e-03  00:00:01   1.1891e+00                 6.4316e-01   3.1416e-02
+  205    1.00e-03  00:00:00   1.1891e+00                 6.4316e-01   3.1416e-02
 
 POINT 205: computation finished
 *********************************************************************
@@ -2109,7 +2109,7 @@ POINT 205: computation finished
    0                          6.09e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  206    1.00e-03  00:00:01   1.1881e+00                 6.4262e-01   3.1416e-02
+  206    1.00e-03  00:00:00   1.1881e+00                 6.4262e-01   3.1416e-02
 
 POINT 206: computation finished
 *********************************************************************
@@ -2119,7 +2119,7 @@ POINT 206: computation finished
    0                          6.09e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  207    1.00e-03  00:00:01   1.1871e+00                 6.4208e-01   3.1416e-02
+  207    1.00e-03  00:00:00   1.1871e+00                 6.4208e-01   3.1416e-02
 
 POINT 207: computation finished
 *********************************************************************
@@ -2129,7 +2129,7 @@ POINT 207: computation finished
    0                          6.09e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  208    1.00e-03  00:00:01   1.1861e+00                 6.4154e-01   3.1416e-02
+  208    1.00e-03  00:00:00   1.1861e+00                 6.4154e-01   3.1416e-02
 
 POINT 208: computation finished
 *********************************************************************
@@ -2139,7 +2139,7 @@ POINT 208: computation finished
    0                          6.09e-07  1.19e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  209    1.00e-03  00:00:01   1.1851e+00                 6.4100e-01   3.1416e-02
+  209    1.00e-03  00:00:00   1.1851e+00                 6.4100e-01   3.1416e-02
 
 POINT 209: computation finished
 *********************************************************************
@@ -2149,7 +2149,7 @@ POINT 209: computation finished
    0                          6.10e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  210    1.00e-03  00:00:01   1.1841e+00                 6.4046e-01   3.1416e-02
+  210    1.00e-03  00:00:00   1.1841e+00                 6.4046e-01   3.1416e-02
 
 POINT 210: computation finished
 *********************************************************************
@@ -2159,7 +2159,7 @@ POINT 210: computation finished
    0                          6.10e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  211    1.00e-03  00:00:01   1.1831e+00                 6.3992e-01   3.1416e-02
+  211    1.00e-03  00:00:00   1.1831e+00                 6.3992e-01   3.1416e-02
 
 POINT 211: computation finished
 *********************************************************************
@@ -2169,7 +2169,7 @@ POINT 211: computation finished
    0                          6.10e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  212    1.00e-03  00:00:01   1.1821e+00                 6.3938e-01   3.1416e-02
+  212    1.00e-03  00:00:00   1.1821e+00                 6.3938e-01   3.1416e-02
 
 POINT 212: computation finished
 *********************************************************************
@@ -2179,7 +2179,7 @@ POINT 212: computation finished
    0                          6.10e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  213    1.00e-03  00:00:01   1.1811e+00                 6.3884e-01   3.1416e-02
+  213    1.00e-03  00:00:00   1.1811e+00                 6.3884e-01   3.1416e-02
 
 POINT 213: computation finished
 *********************************************************************
@@ -2189,7 +2189,7 @@ POINT 213: computation finished
    0                          6.10e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  214    1.00e-03  00:00:01   1.1801e+00                 6.3830e-01   3.1416e-02
+  214    1.00e-03  00:00:00   1.1801e+00                 6.3830e-01   3.1416e-02
 
 POINT 214: computation finished
 *********************************************************************
@@ -2199,7 +2199,7 @@ POINT 214: computation finished
    0                          6.11e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  215    1.00e-03  00:00:01   1.1791e+00                 6.3776e-01   3.1416e-02
+  215    1.00e-03  00:00:00   1.1791e+00                 6.3776e-01   3.1416e-02
 
 POINT 215: computation finished
 *********************************************************************
@@ -2209,7 +2209,7 @@ POINT 215: computation finished
    0                          6.11e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  216    1.00e-03  00:00:01   1.1781e+00                 6.3721e-01   3.1416e-02
+  216    1.00e-03  00:00:00   1.1781e+00                 6.3721e-01   3.1416e-02
 
 POINT 216: computation finished
 *********************************************************************
@@ -2219,7 +2219,7 @@ POINT 216: computation finished
    0                          6.11e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  217    1.00e-03  00:00:01   1.1771e+00                 6.3667e-01   3.1416e-02
+  217    1.00e-03  00:00:00   1.1771e+00                 6.3667e-01   3.1416e-02
 
 POINT 217: computation finished
 *********************************************************************
@@ -2229,7 +2229,7 @@ POINT 217: computation finished
    0                          6.11e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  218    1.00e-03  00:00:01   1.1761e+00                 6.3613e-01   3.1416e-02
+  218    1.00e-03  00:00:00   1.1761e+00                 6.3613e-01   3.1416e-02
 
 POINT 218: computation finished
 *********************************************************************
@@ -2239,7 +2239,7 @@ POINT 218: computation finished
    0                          6.11e-07  1.18e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  219    1.00e-03  00:00:01   1.1751e+00                 6.3559e-01   3.1416e-02
+  219    1.00e-03  00:00:00   1.1751e+00                 6.3559e-01   3.1416e-02
 
 POINT 219: computation finished
 *********************************************************************
@@ -2249,7 +2249,7 @@ POINT 219: computation finished
    0                          6.12e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  220    1.00e-03  00:00:01   1.1741e+00                 6.3505e-01   3.1416e-02
+  220    1.00e-03  00:00:00   1.1741e+00                 6.3505e-01   3.1416e-02
 
 POINT 220: computation finished
 *********************************************************************
@@ -2259,7 +2259,7 @@ POINT 220: computation finished
    0                          6.12e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  221    1.00e-03  00:00:01   1.1731e+00                 6.3451e-01   3.1416e-02
+  221    1.00e-03  00:00:00   1.1731e+00                 6.3451e-01   3.1416e-02
 
 POINT 221: computation finished
 *********************************************************************
@@ -2269,7 +2269,7 @@ POINT 221: computation finished
    0                          6.12e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  222    1.00e-03  00:00:01   1.1721e+00                 6.3397e-01   3.1416e-02
+  222    1.00e-03  00:00:00   1.1721e+00                 6.3397e-01   3.1416e-02
 
 POINT 222: computation finished
 *********************************************************************
@@ -2279,7 +2279,7 @@ POINT 222: computation finished
    0                          6.12e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  223    1.00e-03  00:00:01   1.1711e+00                 6.3343e-01   3.1416e-02
+  223    1.00e-03  00:00:00   1.1711e+00                 6.3343e-01   3.1416e-02
 
 POINT 223: computation finished
 *********************************************************************
@@ -2289,7 +2289,7 @@ POINT 223: computation finished
    0                          6.12e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  224    1.00e-03  00:00:01   1.1701e+00                 6.3289e-01   3.1416e-02
+  224    1.00e-03  00:00:00   1.1701e+00                 6.3289e-01   3.1416e-02
 
 POINT 224: computation finished
 *********************************************************************
@@ -2299,7 +2299,7 @@ POINT 224: computation finished
    0                          6.13e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  225    1.00e-03  00:00:01   1.1691e+00                 6.3235e-01   3.1416e-02
+  225    1.00e-03  00:00:00   1.1691e+00                 6.3235e-01   3.1416e-02
 
 POINT 225: computation finished
 *********************************************************************
@@ -2309,7 +2309,7 @@ POINT 225: computation finished
    0                          6.13e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  226    1.00e-03  00:00:01   1.1681e+00                 6.3181e-01   3.1416e-02
+  226    1.00e-03  00:00:00   1.1681e+00                 6.3181e-01   3.1416e-02
 
 POINT 226: computation finished
 *********************************************************************
@@ -2319,7 +2319,7 @@ POINT 226: computation finished
    0                          6.13e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  227    1.00e-03  00:00:01   1.1671e+00                 6.3127e-01   3.1416e-02
+  227    1.00e-03  00:00:00   1.1671e+00                 6.3127e-01   3.1416e-02
 
 POINT 227: computation finished
 *********************************************************************
@@ -2329,7 +2329,7 @@ POINT 227: computation finished
    0                          6.13e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  228    1.00e-03  00:00:01   1.1661e+00                 6.3073e-01   3.1416e-02
+  228    1.00e-03  00:00:00   1.1661e+00                 6.3073e-01   3.1416e-02
 
 POINT 228: computation finished
 *********************************************************************
@@ -2339,7 +2339,7 @@ POINT 228: computation finished
    0                          6.13e-07  1.17e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  229    1.00e-03  00:00:01   1.1651e+00                 6.3019e-01   3.1416e-02
+  229    1.00e-03  00:00:00   1.1651e+00                 6.3019e-01   3.1416e-02
 
 POINT 229: computation finished
 *********************************************************************
@@ -2349,7 +2349,7 @@ POINT 229: computation finished
    0                          6.14e-07  1.16e+00    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  230    1.00e-03  00:00:01   1.1641e+00                 6.2965e-01   3.1416e-02
+  230    1.00e-03  00:00:00   1.1641e+00                 6.2965e-01   3.1416e-02
 
 POINT 230: computation finished
 *********************************************************************
@@ -4189,7 +4189,7 @@ POINT 413: computation finished
    0                          6.52e-07  9.80e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  414    1.00e-03  00:00:02   9.8016e-01                 5.3020e-01   3.1416e-02
+  414    1.00e-03  00:00:01   9.8016e-01                 5.3020e-01   3.1416e-02
 
 POINT 414: computation finished
 *********************************************************************
@@ -4199,7 +4199,7 @@ POINT 414: computation finished
    0                          6.53e-07  9.79e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  415    1.00e-03  00:00:02   9.7916e-01                 5.2966e-01   3.1416e-02
+  415    1.00e-03  00:00:01   9.7916e-01                 5.2966e-01   3.1416e-02
 
 POINT 415: computation finished
 *********************************************************************
@@ -4209,7 +4209,7 @@ POINT 415: computation finished
    0                          6.53e-07  9.78e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  416    1.00e-03  00:00:02   9.7816e-01                 5.2912e-01   3.1416e-02
+  416    1.00e-03  00:00:01   9.7816e-01                 5.2912e-01   3.1416e-02
 
 POINT 416: computation finished
 *********************************************************************
@@ -4219,7 +4219,7 @@ POINT 416: computation finished
    0                          6.53e-07  9.77e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  417    1.00e-03  00:00:02   9.7716e-01                 5.2857e-01   3.1416e-02
+  417    1.00e-03  00:00:01   9.7716e-01                 5.2857e-01   3.1416e-02
 
 POINT 417: computation finished
 *********************************************************************
@@ -4229,7 +4229,7 @@ POINT 417: computation finished
    0                          6.53e-07  9.76e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  418    1.00e-03  00:00:02   9.7616e-01                 5.2803e-01   3.1416e-02
+  418    1.00e-03  00:00:01   9.7616e-01                 5.2803e-01   3.1416e-02
 
 POINT 418: computation finished
 *********************************************************************
@@ -4239,7 +4239,7 @@ POINT 418: computation finished
    0                          6.53e-07  9.75e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  419    1.00e-03  00:00:02   9.7516e-01                 5.2749e-01   3.1416e-02
+  419    1.00e-03  00:00:01   9.7516e-01                 5.2749e-01   3.1416e-02
 
 POINT 419: computation finished
 *********************************************************************
@@ -4249,7 +4249,7 @@ POINT 419: computation finished
    0                          6.54e-07  9.74e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  420    1.00e-03  00:00:02   9.7417e-01                 5.2695e-01   3.1416e-02
+  420    1.00e-03  00:00:01   9.7417e-01                 5.2695e-01   3.1416e-02
 
 POINT 420: computation finished
 *********************************************************************
@@ -4259,7 +4259,7 @@ POINT 420: computation finished
    0                          6.54e-07  9.73e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  421    1.00e-03  00:00:02   9.7317e-01                 5.2641e-01   3.1416e-02
+  421    1.00e-03  00:00:01   9.7317e-01                 5.2641e-01   3.1416e-02
 
 POINT 421: computation finished
 *********************************************************************
@@ -4269,7 +4269,7 @@ POINT 421: computation finished
    0                          6.54e-07  9.72e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  422    1.00e-03  00:00:02   9.7217e-01                 5.2587e-01   3.1416e-02
+  422    1.00e-03  00:00:01   9.7217e-01                 5.2587e-01   3.1416e-02
 
 POINT 422: computation finished
 *********************************************************************
@@ -4279,7 +4279,7 @@ POINT 422: computation finished
    0                          6.54e-07  9.71e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  423    1.00e-03  00:00:02   9.7117e-01                 5.2533e-01   3.1416e-02
+  423    1.00e-03  00:00:01   9.7117e-01                 5.2533e-01   3.1416e-02
 
 POINT 423: computation finished
 *********************************************************************
@@ -4289,7 +4289,7 @@ POINT 423: computation finished
    0                          6.55e-07  9.70e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  424    1.00e-03  00:00:02   9.7017e-01                 5.2479e-01   3.1416e-02
+  424    1.00e-03  00:00:01   9.7017e-01                 5.2479e-01   3.1416e-02
 
 POINT 424: computation finished
 *********************************************************************
@@ -4299,7 +4299,7 @@ POINT 424: computation finished
    0                          6.55e-07  9.69e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  425    1.00e-03  00:00:02   9.6917e-01                 5.2425e-01   3.1416e-02
+  425    1.00e-03  00:00:01   9.6917e-01                 5.2425e-01   3.1416e-02
 
 POINT 425: computation finished
 *********************************************************************
@@ -4309,7 +4309,7 @@ POINT 425: computation finished
    0                          6.55e-07  9.68e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  426    1.00e-03  00:00:02   9.6817e-01                 5.2371e-01   3.1416e-02
+  426    1.00e-03  00:00:01   9.6817e-01                 5.2371e-01   3.1416e-02
 
 POINT 426: computation finished
 *********************************************************************
@@ -4319,7 +4319,7 @@ POINT 426: computation finished
    0                          6.55e-07  9.67e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  427    1.00e-03  00:00:02   9.6717e-01                 5.2317e-01   3.1416e-02
+  427    1.00e-03  00:00:01   9.6717e-01                 5.2317e-01   3.1416e-02
 
 POINT 427: computation finished
 *********************************************************************
@@ -4329,7 +4329,7 @@ POINT 427: computation finished
    0                          6.56e-07  9.66e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  428    1.00e-03  00:00:02   9.6617e-01                 5.2263e-01   3.1416e-02
+  428    1.00e-03  00:00:01   9.6617e-01                 5.2263e-01   3.1416e-02
 
 POINT 428: computation finished
 *********************************************************************
@@ -4339,7 +4339,7 @@ POINT 428: computation finished
    0                          6.56e-07  9.65e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  429    1.00e-03  00:00:02   9.6517e-01                 5.2209e-01   3.1416e-02
+  429    1.00e-03  00:00:01   9.6517e-01                 5.2209e-01   3.1416e-02
 
 POINT 429: computation finished
 *********************************************************************
@@ -4349,7 +4349,7 @@ POINT 429: computation finished
    0                          6.56e-07  9.64e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  430    1.00e-03  00:00:02   9.6417e-01                 5.2155e-01   3.1416e-02
+  430    1.00e-03  00:00:01   9.6417e-01                 5.2155e-01   3.1416e-02
 
 POINT 430: computation finished
 *********************************************************************
@@ -4359,7 +4359,7 @@ POINT 430: computation finished
    0                          6.56e-07  9.63e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  431    1.00e-03  00:00:02   9.6317e-01                 5.2101e-01   3.1416e-02
+  431    1.00e-03  00:00:01   9.6317e-01                 5.2101e-01   3.1416e-02
 
 POINT 431: computation finished
 *********************************************************************
@@ -4369,7 +4369,7 @@ POINT 431: computation finished
    0                          6.57e-07  9.62e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  432    1.00e-03  00:00:02   9.6217e-01                 5.2047e-01   3.1416e-02
+  432    1.00e-03  00:00:01   9.6217e-01                 5.2047e-01   3.1416e-02
 
 POINT 432: computation finished
 *********************************************************************
@@ -4379,7 +4379,7 @@ POINT 432: computation finished
    0                          6.57e-07  9.61e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  433    1.00e-03  00:00:02   9.6117e-01                 5.1993e-01   3.1416e-02
+  433    1.00e-03  00:00:01   9.6117e-01                 5.1993e-01   3.1416e-02
 
 POINT 433: computation finished
 *********************************************************************
@@ -4389,7 +4389,7 @@ POINT 433: computation finished
    0                          6.57e-07  9.60e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  434    1.00e-03  00:00:02   9.6017e-01                 5.1939e-01   3.1416e-02
+  434    1.00e-03  00:00:01   9.6017e-01                 5.1939e-01   3.1416e-02
 
 POINT 434: computation finished
 *********************************************************************
@@ -4399,7 +4399,7 @@ POINT 434: computation finished
    0                          6.57e-07  9.59e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  435    1.00e-03  00:00:02   9.5917e-01                 5.1885e-01   3.1416e-02
+  435    1.00e-03  00:00:01   9.5917e-01                 5.1885e-01   3.1416e-02
 
 POINT 435: computation finished
 *********************************************************************
@@ -4409,7 +4409,7 @@ POINT 435: computation finished
    0                          6.57e-07  9.58e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  436    1.00e-03  00:00:02   9.5817e-01                 5.1831e-01   3.1416e-02
+  436    1.00e-03  00:00:01   9.5817e-01                 5.1831e-01   3.1416e-02
 
 POINT 436: computation finished
 *********************************************************************
@@ -4419,7 +4419,7 @@ POINT 436: computation finished
    0                          6.58e-07  9.57e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  437    1.00e-03  00:00:02   9.5717e-01                 5.1777e-01   3.1416e-02
+  437    1.00e-03  00:00:01   9.5717e-01                 5.1777e-01   3.1416e-02
 
 POINT 437: computation finished
 *********************************************************************
@@ -4429,7 +4429,7 @@ POINT 437: computation finished
    0                          6.58e-07  9.56e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  438    1.00e-03  00:00:02   9.5617e-01                 5.1723e-01   3.1416e-02
+  438    1.00e-03  00:00:01   9.5617e-01                 5.1723e-01   3.1416e-02
 
 POINT 438: computation finished
 *********************************************************************
@@ -4439,7 +4439,7 @@ POINT 438: computation finished
    0                          6.58e-07  9.55e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  439    1.00e-03  00:00:02   9.5518e-01                 5.1669e-01   3.1416e-02
+  439    1.00e-03  00:00:01   9.5518e-01                 5.1669e-01   3.1416e-02
 
 POINT 439: computation finished
 *********************************************************************
@@ -4449,7 +4449,7 @@ POINT 439: computation finished
    0                          6.58e-07  9.54e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  440    1.00e-03  00:00:02   9.5418e-01                 5.1615e-01   3.1416e-02
+  440    1.00e-03  00:00:01   9.5418e-01                 5.1615e-01   3.1416e-02
 
 POINT 440: computation finished
 *********************************************************************
@@ -4459,7 +4459,7 @@ POINT 440: computation finished
    0                          6.59e-07  9.53e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  441    1.00e-03  00:00:02   9.5318e-01                 5.1560e-01   3.1416e-02
+  441    1.00e-03  00:00:01   9.5318e-01                 5.1560e-01   3.1416e-02
 
 POINT 441: computation finished
 *********************************************************************
@@ -4469,7 +4469,7 @@ POINT 441: computation finished
    0                          6.59e-07  9.52e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  442    1.00e-03  00:00:02   9.5218e-01                 5.1506e-01   3.1416e-02
+  442    1.00e-03  00:00:01   9.5218e-01                 5.1506e-01   3.1416e-02
 
 POINT 442: computation finished
 *********************************************************************
@@ -4479,7 +4479,7 @@ POINT 442: computation finished
    0                          6.59e-07  9.51e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  443    1.00e-03  00:00:02   9.5118e-01                 5.1452e-01   3.1416e-02
+  443    1.00e-03  00:00:01   9.5118e-01                 5.1452e-01   3.1416e-02
 
 POINT 443: computation finished
 *********************************************************************
@@ -4489,7 +4489,7 @@ POINT 443: computation finished
    0                          6.59e-07  9.50e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  444    1.00e-03  00:00:02   9.5018e-01                 5.1398e-01   3.1416e-02
+  444    1.00e-03  00:00:01   9.5018e-01                 5.1398e-01   3.1416e-02
 
 POINT 444: computation finished
 *********************************************************************
@@ -4499,7 +4499,7 @@ POINT 444: computation finished
    0                          6.60e-07  9.49e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  445    1.00e-03  00:00:02   9.4918e-01                 5.1344e-01   3.1416e-02
+  445    1.00e-03  00:00:01   9.4918e-01                 5.1344e-01   3.1416e-02
 
 POINT 445: computation finished
 *********************************************************************
@@ -4509,7 +4509,7 @@ POINT 445: computation finished
    0                          6.60e-07  9.48e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  446    1.00e-03  00:00:02   9.4818e-01                 5.1290e-01   3.1416e-02
+  446    1.00e-03  00:00:01   9.4818e-01                 5.1290e-01   3.1416e-02
 
 POINT 446: computation finished
 *********************************************************************
@@ -4519,7 +4519,7 @@ POINT 446: computation finished
    0                          6.60e-07  9.47e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  447    1.00e-03  00:00:02   9.4718e-01                 5.1236e-01   3.1416e-02
+  447    1.00e-03  00:00:01   9.4718e-01                 5.1236e-01   3.1416e-02
 
 POINT 447: computation finished
 *********************************************************************
@@ -4529,7 +4529,7 @@ POINT 447: computation finished
    0                          6.60e-07  9.46e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  448    1.00e-03  00:00:02   9.4618e-01                 5.1182e-01   3.1416e-02
+  448    1.00e-03  00:00:01   9.4618e-01                 5.1182e-01   3.1416e-02
 
 POINT 448: computation finished
 *********************************************************************
@@ -4539,7 +4539,7 @@ POINT 448: computation finished
    0                          6.61e-07  9.45e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  449    1.00e-03  00:00:02   9.4518e-01                 5.1128e-01   3.1416e-02
+  449    1.00e-03  00:00:01   9.4518e-01                 5.1128e-01   3.1416e-02
 
 POINT 449: computation finished
 *********************************************************************
@@ -4549,7 +4549,7 @@ POINT 449: computation finished
    0                          6.61e-07  9.44e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  450    1.00e-03  00:00:02   9.4418e-01                 5.1074e-01   3.1416e-02
+  450    1.00e-03  00:00:01   9.4418e-01                 5.1074e-01   3.1416e-02
 
 POINT 450: computation finished
 *********************************************************************
@@ -4559,7 +4559,7 @@ POINT 450: computation finished
    0                          6.61e-07  9.43e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  451    1.00e-03  00:00:02   9.4318e-01                 5.1020e-01   3.1416e-02
+  451    1.00e-03  00:00:01   9.4318e-01                 5.1020e-01   3.1416e-02
 
 POINT 451: computation finished
 *********************************************************************
@@ -4569,7 +4569,7 @@ POINT 451: computation finished
    0                          6.61e-07  9.42e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  452    1.00e-03  00:00:02   9.4218e-01                 5.0966e-01   3.1416e-02
+  452    1.00e-03  00:00:01   9.4218e-01                 5.0966e-01   3.1416e-02
 
 POINT 452: computation finished
 *********************************************************************
@@ -4579,7 +4579,7 @@ POINT 452: computation finished
    0                          6.61e-07  9.41e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  453    1.00e-03  00:00:02   9.4118e-01                 5.0912e-01   3.1416e-02
+  453    1.00e-03  00:00:01   9.4118e-01                 5.0912e-01   3.1416e-02
 
 POINT 453: computation finished
 *********************************************************************
@@ -4589,7 +4589,7 @@ POINT 453: computation finished
    0                          6.62e-07  9.40e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  454    1.00e-03  00:00:02   9.4018e-01                 5.0858e-01   3.1416e-02
+  454    1.00e-03  00:00:01   9.4018e-01                 5.0858e-01   3.1416e-02
 
 POINT 454: computation finished
 *********************************************************************
@@ -4599,7 +4599,7 @@ POINT 454: computation finished
    0                          6.62e-07  9.39e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  455    1.00e-03  00:00:02   9.3918e-01                 5.0804e-01   3.1416e-02
+  455    1.00e-03  00:00:01   9.3918e-01                 5.0804e-01   3.1416e-02
 
 POINT 455: computation finished
 *********************************************************************
@@ -4609,7 +4609,7 @@ POINT 455: computation finished
    0                          6.62e-07  9.38e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  456    1.00e-03  00:00:02   9.3818e-01                 5.0750e-01   3.1416e-02
+  456    1.00e-03  00:00:01   9.3818e-01                 5.0750e-01   3.1416e-02
 
 POINT 456: computation finished
 *********************************************************************
@@ -4619,7 +4619,7 @@ POINT 456: computation finished
    0                          6.62e-07  9.37e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  457    1.00e-03  00:00:02   9.3719e-01                 5.0696e-01   3.1416e-02
+  457    1.00e-03  00:00:01   9.3719e-01                 5.0696e-01   3.1416e-02
 
 POINT 457: computation finished
 *********************************************************************
@@ -4629,7 +4629,7 @@ POINT 457: computation finished
    0                          6.63e-07  9.36e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  458    1.00e-03  00:00:02   9.3619e-01                 5.0642e-01   3.1416e-02
+  458    1.00e-03  00:00:01   9.3619e-01                 5.0642e-01   3.1416e-02
 
 POINT 458: computation finished
 *********************************************************************
@@ -4639,7 +4639,7 @@ POINT 458: computation finished
    0                          6.63e-07  9.35e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  459    1.00e-03  00:00:02   9.3519e-01                 5.0588e-01   3.1416e-02
+  459    1.00e-03  00:00:01   9.3519e-01                 5.0588e-01   3.1416e-02
 
 POINT 459: computation finished
 *********************************************************************
@@ -4649,7 +4649,7 @@ POINT 459: computation finished
    0                          6.63e-07  9.34e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  460    1.00e-03  00:00:02   9.3419e-01                 5.0534e-01   3.1416e-02
+  460    1.00e-03  00:00:01   9.3419e-01                 5.0534e-01   3.1416e-02
 
 POINT 460: computation finished
 *********************************************************************
@@ -4659,7 +4659,7 @@ POINT 460: computation finished
    0                          6.63e-07  9.33e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  461    1.00e-03  00:00:02   9.3319e-01                 5.0480e-01   3.1416e-02
+  461    1.00e-03  00:00:01   9.3319e-01                 5.0480e-01   3.1416e-02
 
 POINT 461: computation finished
 *********************************************************************
@@ -4669,7 +4669,7 @@ POINT 461: computation finished
    0                          6.64e-07  9.32e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  462    1.00e-03  00:00:02   9.3219e-01                 5.0426e-01   3.1416e-02
+  462    1.00e-03  00:00:01   9.3219e-01                 5.0426e-01   3.1416e-02
 
 POINT 462: computation finished
 *********************************************************************
@@ -4679,7 +4679,7 @@ POINT 462: computation finished
    0                          6.64e-07  9.31e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  463    1.00e-03  00:00:02   9.3119e-01                 5.0372e-01   3.1416e-02
+  463    1.00e-03  00:00:01   9.3119e-01                 5.0372e-01   3.1416e-02
 
 POINT 463: computation finished
 *********************************************************************
@@ -4689,7 +4689,7 @@ POINT 463: computation finished
    0                          6.64e-07  9.30e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  464    1.00e-03  00:00:02   9.3019e-01                 5.0318e-01   3.1416e-02
+  464    1.00e-03  00:00:01   9.3019e-01                 5.0318e-01   3.1416e-02
 
 POINT 464: computation finished
 *********************************************************************
@@ -5874,7 +5874,7 @@ POINT 581: computation finished
    0                          6.95e-07  8.12e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  582    1.00e-03  00:00:03   8.1227e-01                 4.3942e-01   3.1416e-02
+  582    1.00e-03  00:00:02   8.1227e-01                 4.3942e-01   3.1416e-02
 
 POINT 582: computation finished
 *********************************************************************
@@ -5884,7 +5884,7 @@ POINT 582: computation finished
    0                          6.95e-07  8.11e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  583    1.00e-03  00:00:03   8.1127e-01                 4.3888e-01   3.1416e-02
+  583    1.00e-03  00:00:02   8.1127e-01                 4.3888e-01   3.1416e-02
 
 POINT 583: computation finished
 *********************************************************************
@@ -5894,7 +5894,7 @@ POINT 583: computation finished
    0                          6.95e-07  8.10e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  584    1.00e-03  00:00:03   8.1027e-01                 4.3834e-01   3.1416e-02
+  584    1.00e-03  00:00:02   8.1027e-01                 4.3834e-01   3.1416e-02
 
 POINT 584: computation finished
 *********************************************************************
@@ -5904,7 +5904,7 @@ POINT 584: computation finished
    0                          6.95e-07  8.09e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  585    1.00e-03  00:00:03   8.0927e-01                 4.3780e-01   3.1416e-02
+  585    1.00e-03  00:00:02   8.0927e-01                 4.3780e-01   3.1416e-02
 
 POINT 585: computation finished
 *********************************************************************
@@ -5914,7 +5914,7 @@ POINT 585: computation finished
    0                          6.96e-07  8.08e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  586    1.00e-03  00:00:03   8.0827e-01                 4.3726e-01   3.1416e-02
+  586    1.00e-03  00:00:02   8.0827e-01                 4.3726e-01   3.1416e-02
 
 POINT 586: computation finished
 *********************************************************************
@@ -5924,7 +5924,7 @@ POINT 586: computation finished
    0                          6.96e-07  8.07e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  587    1.00e-03  00:00:03   8.0727e-01                 4.3672e-01   3.1416e-02
+  587    1.00e-03  00:00:02   8.0727e-01                 4.3672e-01   3.1416e-02
 
 POINT 587: computation finished
 *********************************************************************
@@ -5934,7 +5934,7 @@ POINT 587: computation finished
    0                          6.96e-07  8.06e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  588    1.00e-03  00:00:03   8.0627e-01                 4.3617e-01   3.1416e-02
+  588    1.00e-03  00:00:02   8.0627e-01                 4.3617e-01   3.1416e-02
 
 POINT 588: computation finished
 *********************************************************************
@@ -5944,7 +5944,7 @@ POINT 588: computation finished
    0                          6.97e-07  8.05e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  589    1.00e-03  00:00:03   8.0527e-01                 4.3563e-01   3.1416e-02
+  589    1.00e-03  00:00:02   8.0527e-01                 4.3563e-01   3.1416e-02
 
 POINT 589: computation finished
 *********************************************************************
@@ -5954,7 +5954,7 @@ POINT 589: computation finished
    0                          6.97e-07  8.04e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  590    1.00e-03  00:00:03   8.0427e-01                 4.3509e-01   3.1416e-02
+  590    1.00e-03  00:00:02   8.0427e-01                 4.3509e-01   3.1416e-02
 
 POINT 590: computation finished
 *********************************************************************
@@ -5964,7 +5964,7 @@ POINT 590: computation finished
    0                          6.97e-07  8.03e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  591    1.00e-03  00:00:03   8.0327e-01                 4.3455e-01   3.1416e-02
+  591    1.00e-03  00:00:02   8.0327e-01                 4.3455e-01   3.1416e-02
 
 POINT 591: computation finished
 *********************************************************************
@@ -5974,7 +5974,7 @@ POINT 591: computation finished
    0                          6.97e-07  8.02e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  592    1.00e-03  00:00:03   8.0227e-01                 4.3401e-01   3.1416e-02
+  592    1.00e-03  00:00:02   8.0227e-01                 4.3401e-01   3.1416e-02
 
 POINT 592: computation finished
 *********************************************************************
@@ -5984,7 +5984,7 @@ POINT 592: computation finished
    0                          6.98e-07  8.01e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  593    1.00e-03  00:00:03   8.0128e-01                 4.3347e-01   3.1416e-02
+  593    1.00e-03  00:00:02   8.0128e-01                 4.3347e-01   3.1416e-02
 
 POINT 593: computation finished
 *********************************************************************
@@ -5994,7 +5994,7 @@ POINT 593: computation finished
    0                          6.98e-07  8.00e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  594    1.00e-03  00:00:03   8.0028e-01                 4.3293e-01   3.1416e-02
+  594    1.00e-03  00:00:02   8.0028e-01                 4.3293e-01   3.1416e-02
 
 POINT 594: computation finished
 *********************************************************************
@@ -6004,7 +6004,7 @@ POINT 594: computation finished
    0                          6.98e-07  7.99e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  595    1.00e-03  00:00:03   7.9928e-01                 4.3239e-01   3.1416e-02
+  595    1.00e-03  00:00:02   7.9928e-01                 4.3239e-01   3.1416e-02
 
 POINT 595: computation finished
 *********************************************************************
@@ -6014,7 +6014,7 @@ POINT 595: computation finished
    0                          6.98e-07  7.98e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  596    1.00e-03  00:00:03   7.9828e-01                 4.3185e-01   3.1416e-02
+  596    1.00e-03  00:00:02   7.9828e-01                 4.3185e-01   3.1416e-02
 
 POINT 596: computation finished
 *********************************************************************
@@ -6024,7 +6024,7 @@ POINT 596: computation finished
    0                          6.99e-07  7.97e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  597    1.00e-03  00:00:03   7.9728e-01                 4.3131e-01   3.1416e-02
+  597    1.00e-03  00:00:02   7.9728e-01                 4.3131e-01   3.1416e-02
 
 POINT 597: computation finished
 *********************************************************************
@@ -6034,7 +6034,7 @@ POINT 597: computation finished
    0                          6.99e-07  7.96e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  598    1.00e-03  00:00:03   7.9628e-01                 4.3077e-01   3.1416e-02
+  598    1.00e-03  00:00:02   7.9628e-01                 4.3077e-01   3.1416e-02
 
 POINT 598: computation finished
 *********************************************************************
@@ -6044,7 +6044,7 @@ POINT 598: computation finished
    0                          6.99e-07  7.95e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  599    1.00e-03  00:00:03   7.9528e-01                 4.3023e-01   3.1416e-02
+  599    1.00e-03  00:00:02   7.9528e-01                 4.3023e-01   3.1416e-02
 
 POINT 599: computation finished
 *********************************************************************
@@ -6054,7 +6054,7 @@ POINT 599: computation finished
    0                          7.00e-07  7.94e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  600    1.00e-03  00:00:03   7.9428e-01                 4.2969e-01   3.1416e-02
+  600    1.00e-03  00:00:02   7.9428e-01                 4.2969e-01   3.1416e-02
 
 POINT 600: computation finished
 *********************************************************************
@@ -6064,7 +6064,7 @@ POINT 600: computation finished
    0                          7.00e-07  7.93e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  601    1.00e-03  00:00:03   7.9328e-01                 4.2915e-01   3.1416e-02
+  601    1.00e-03  00:00:02   7.9328e-01                 4.2915e-01   3.1416e-02
 
 POINT 601: computation finished
 *********************************************************************
@@ -6074,7 +6074,7 @@ POINT 601: computation finished
    0                          7.00e-07  7.92e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  602    1.00e-03  00:00:03   7.9228e-01                 4.2861e-01   3.1416e-02
+  602    1.00e-03  00:00:02   7.9228e-01                 4.2861e-01   3.1416e-02
 
 POINT 602: computation finished
 *********************************************************************
@@ -6084,7 +6084,7 @@ POINT 602: computation finished
    0                          7.00e-07  7.91e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  603    1.00e-03  00:00:03   7.9128e-01                 4.2807e-01   3.1416e-02
+  603    1.00e-03  00:00:02   7.9128e-01                 4.2807e-01   3.1416e-02
 
 POINT 603: computation finished
 *********************************************************************
@@ -6094,7 +6094,7 @@ POINT 603: computation finished
    0                          7.01e-07  7.90e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  604    1.00e-03  00:00:03   7.9028e-01                 4.2753e-01   3.1416e-02
+  604    1.00e-03  00:00:02   7.9028e-01                 4.2753e-01   3.1416e-02
 
 POINT 604: computation finished
 *********************************************************************
@@ -6104,7 +6104,7 @@ POINT 604: computation finished
    0                          7.01e-07  7.89e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  605    1.00e-03  00:00:03   7.8928e-01                 4.2699e-01   3.1416e-02
+  605    1.00e-03  00:00:02   7.8928e-01                 4.2699e-01   3.1416e-02
 
 POINT 605: computation finished
 *********************************************************************
@@ -6114,7 +6114,7 @@ POINT 605: computation finished
    0                          7.01e-07  7.88e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  606    1.00e-03  00:00:03   7.8829e-01                 4.2645e-01   3.1416e-02
+  606    1.00e-03  00:00:02   7.8829e-01                 4.2645e-01   3.1416e-02
 
 POINT 606: computation finished
 *********************************************************************
@@ -6124,7 +6124,7 @@ POINT 606: computation finished
    0                          7.02e-07  7.87e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  607    1.00e-03  00:00:03   7.8729e-01                 4.2591e-01   3.1416e-02
+  607    1.00e-03  00:00:02   7.8729e-01                 4.2591e-01   3.1416e-02
 
 POINT 607: computation finished
 *********************************************************************
@@ -6134,7 +6134,7 @@ POINT 607: computation finished
    0                          7.02e-07  7.86e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  608    1.00e-03  00:00:03   7.8629e-01                 4.2537e-01   3.1416e-02
+  608    1.00e-03  00:00:02   7.8629e-01                 4.2537e-01   3.1416e-02
 
 POINT 608: computation finished
 *********************************************************************
@@ -6144,7 +6144,7 @@ POINT 608: computation finished
    0                          7.02e-07  7.85e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  609    1.00e-03  00:00:03   7.8529e-01                 4.2483e-01   3.1416e-02
+  609    1.00e-03  00:00:02   7.8529e-01                 4.2483e-01   3.1416e-02
 
 POINT 609: computation finished
 *********************************************************************
@@ -6154,7 +6154,7 @@ POINT 609: computation finished
    0                          7.02e-07  7.84e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  610    1.00e-03  00:00:03   7.8429e-01                 4.2429e-01   3.1416e-02
+  610    1.00e-03  00:00:02   7.8429e-01                 4.2429e-01   3.1416e-02
 
 POINT 610: computation finished
 *********************************************************************
@@ -6164,7 +6164,7 @@ POINT 610: computation finished
    0                          7.03e-07  7.83e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  611    1.00e-03  00:00:03   7.8329e-01                 4.2375e-01   3.1416e-02
+  611    1.00e-03  00:00:02   7.8329e-01                 4.2375e-01   3.1416e-02
 
 POINT 611: computation finished
 *********************************************************************
@@ -6174,7 +6174,7 @@ POINT 611: computation finished
    0                          7.03e-07  7.82e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  612    1.00e-03  00:00:03   7.8229e-01                 4.2321e-01   3.1416e-02
+  612    1.00e-03  00:00:02   7.8229e-01                 4.2321e-01   3.1416e-02
 
 POINT 612: computation finished
 *********************************************************************
@@ -6184,7 +6184,7 @@ POINT 612: computation finished
    0                          7.03e-07  7.81e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  613    1.00e-03  00:00:03   7.8129e-01                 4.2267e-01   3.1416e-02
+  613    1.00e-03  00:00:02   7.8129e-01                 4.2267e-01   3.1416e-02
 
 POINT 613: computation finished
 *********************************************************************
@@ -6194,7 +6194,7 @@ POINT 613: computation finished
    0                          7.04e-07  7.80e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  614    1.00e-03  00:00:03   7.8029e-01                 4.2213e-01   3.1416e-02
+  614    1.00e-03  00:00:02   7.8029e-01                 4.2213e-01   3.1416e-02
 
 POINT 614: computation finished
 *********************************************************************
@@ -6204,7 +6204,7 @@ POINT 614: computation finished
    0                          7.04e-07  7.79e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  615    1.00e-03  00:00:03   7.7929e-01                 4.2159e-01   3.1416e-02
+  615    1.00e-03  00:00:02   7.7929e-01                 4.2159e-01   3.1416e-02
 
 POINT 615: computation finished
 *********************************************************************
@@ -6214,7 +6214,7 @@ POINT 615: computation finished
    0                          7.04e-07  7.78e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  616    1.00e-03  00:00:03   7.7829e-01                 4.2105e-01   3.1416e-02
+  616    1.00e-03  00:00:02   7.7829e-01                 4.2105e-01   3.1416e-02
 
 POINT 616: computation finished
 *********************************************************************
@@ -6224,7 +6224,7 @@ POINT 616: computation finished
    0                          7.04e-07  7.77e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  617    1.00e-03  00:00:03   7.7729e-01                 4.2051e-01   3.1416e-02
+  617    1.00e-03  00:00:02   7.7729e-01                 4.2051e-01   3.1416e-02
 
 POINT 617: computation finished
 *********************************************************************
@@ -6234,7 +6234,7 @@ POINT 617: computation finished
    0                          7.05e-07  7.76e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  618    1.00e-03  00:00:03   7.7630e-01                 4.1997e-01   3.1416e-02
+  618    1.00e-03  00:00:02   7.7630e-01                 4.1997e-01   3.1416e-02
 
 POINT 618: computation finished
 *********************************************************************
@@ -6244,7 +6244,7 @@ POINT 618: computation finished
    0                          7.05e-07  7.75e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  619    1.00e-03  00:00:03   7.7530e-01                 4.1943e-01   3.1416e-02
+  619    1.00e-03  00:00:02   7.7530e-01                 4.1943e-01   3.1416e-02
 
 POINT 619: computation finished
 *********************************************************************
@@ -6254,7 +6254,7 @@ POINT 619: computation finished
    0                          7.05e-07  7.74e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  620    1.00e-03  00:00:03   7.7430e-01                 4.1889e-01   3.1416e-02
+  620    1.00e-03  00:00:02   7.7430e-01                 4.1889e-01   3.1416e-02
 
 POINT 620: computation finished
 *********************************************************************
@@ -6264,7 +6264,7 @@ POINT 620: computation finished
    0                          7.06e-07  7.73e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  621    1.00e-03  00:00:03   7.7330e-01                 4.1835e-01   3.1416e-02
+  621    1.00e-03  00:00:02   7.7330e-01                 4.1835e-01   3.1416e-02
 
 POINT 621: computation finished
 *********************************************************************
@@ -6274,7 +6274,7 @@ POINT 621: computation finished
    0                          7.06e-07  7.72e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  622    1.00e-03  00:00:03   7.7230e-01                 4.1781e-01   3.1416e-02
+  622    1.00e-03  00:00:02   7.7230e-01                 4.1781e-01   3.1416e-02
 
 POINT 622: computation finished
 *********************************************************************
@@ -6284,7 +6284,7 @@ POINT 622: computation finished
    0                          7.06e-07  7.71e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  623    1.00e-03  00:00:03   7.7130e-01                 4.1727e-01   3.1416e-02
+  623    1.00e-03  00:00:02   7.7130e-01                 4.1727e-01   3.1416e-02
 
 POINT 623: computation finished
 *********************************************************************
@@ -6294,7 +6294,7 @@ POINT 623: computation finished
    0                          7.06e-07  7.70e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  624    1.00e-03  00:00:03   7.7030e-01                 4.1673e-01   3.1416e-02
+  624    1.00e-03  00:00:02   7.7030e-01                 4.1673e-01   3.1416e-02
 
 POINT 624: computation finished
 *********************************************************************
@@ -6304,7 +6304,7 @@ POINT 624: computation finished
    0                          7.07e-07  7.69e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  625    1.00e-03  00:00:03   7.6930e-01                 4.1619e-01   3.1416e-02
+  625    1.00e-03  00:00:02   7.6930e-01                 4.1619e-01   3.1416e-02
 
 POINT 625: computation finished
 *********************************************************************
@@ -6314,7 +6314,7 @@ POINT 625: computation finished
    0                          7.07e-07  7.68e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  626    1.00e-03  00:00:03   7.6830e-01                 4.1565e-01   3.1416e-02
+  626    1.00e-03  00:00:02   7.6830e-01                 4.1565e-01   3.1416e-02
 
 POINT 626: computation finished
 *********************************************************************
@@ -6324,7 +6324,7 @@ POINT 626: computation finished
    0                          7.07e-07  7.67e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  627    1.00e-03  00:00:03   7.6730e-01                 4.1511e-01   3.1416e-02
+  627    1.00e-03  00:00:02   7.6730e-01                 4.1511e-01   3.1416e-02
 
 POINT 627: computation finished
 *********************************************************************
@@ -6334,7 +6334,7 @@ POINT 627: computation finished
    0                          7.08e-07  7.66e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  628    1.00e-03  00:00:03   7.6630e-01                 4.1457e-01   3.1416e-02
+  628    1.00e-03  00:00:02   7.6630e-01                 4.1457e-01   3.1416e-02
 
 POINT 628: computation finished
 *********************************************************************
@@ -6344,7 +6344,7 @@ POINT 628: computation finished
    0                          7.08e-07  7.65e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  629    1.00e-03  00:00:03   7.6530e-01                 4.1403e-01   3.1416e-02
+  629    1.00e-03  00:00:02   7.6530e-01                 4.1403e-01   3.1416e-02
 
 POINT 629: computation finished
 *********************************************************************
@@ -6354,7 +6354,7 @@ POINT 629: computation finished
    0                          7.08e-07  7.64e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  630    1.00e-03  00:00:03   7.6431e-01                 4.1349e-01   3.1416e-02
+  630    1.00e-03  00:00:02   7.6431e-01                 4.1349e-01   3.1416e-02
 
 POINT 630: computation finished
 *********************************************************************
@@ -6364,7 +6364,7 @@ POINT 630: computation finished
    0                          7.09e-07  7.63e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  631    1.00e-03  00:00:03   7.6331e-01                 4.1295e-01   3.1416e-02
+  631    1.00e-03  00:00:02   7.6331e-01                 4.1295e-01   3.1416e-02
 
 POINT 631: computation finished
 *********************************************************************
@@ -6374,7 +6374,7 @@ POINT 631: computation finished
    0                          7.09e-07  7.62e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  632    1.00e-03  00:00:03   7.6231e-01                 4.1241e-01   3.1416e-02
+  632    1.00e-03  00:00:02   7.6231e-01                 4.1241e-01   3.1416e-02
 
 POINT 632: computation finished
 *********************************************************************
@@ -6384,7 +6384,7 @@ POINT 632: computation finished
    0                          7.09e-07  7.61e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  633    1.00e-03  00:00:03   7.6131e-01                 4.1187e-01   3.1416e-02
+  633    1.00e-03  00:00:02   7.6131e-01                 4.1187e-01   3.1416e-02
 
 POINT 633: computation finished
 *********************************************************************
@@ -6394,7 +6394,7 @@ POINT 633: computation finished
    0                          7.09e-07  7.60e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  634    1.00e-03  00:00:03   7.6031e-01                 4.1132e-01   3.1416e-02
+  634    1.00e-03  00:00:02   7.6031e-01                 4.1132e-01   3.1416e-02
 
 POINT 634: computation finished
 *********************************************************************
@@ -6404,7 +6404,7 @@ POINT 634: computation finished
    0                          7.10e-07  7.59e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  635    1.00e-03  00:00:03   7.5931e-01                 4.1078e-01   3.1416e-02
+  635    1.00e-03  00:00:02   7.5931e-01                 4.1078e-01   3.1416e-02
 
 POINT 635: computation finished
 *********************************************************************
@@ -6414,7 +6414,7 @@ POINT 635: computation finished
    0                          7.10e-07  7.58e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  636    1.00e-03  00:00:03   7.5831e-01                 4.1024e-01   3.1416e-02
+  636    1.00e-03  00:00:02   7.5831e-01                 4.1024e-01   3.1416e-02
 
 POINT 636: computation finished
 *********************************************************************
@@ -6424,7 +6424,7 @@ POINT 636: computation finished
    0                          7.10e-07  7.57e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  637    1.00e-03  00:00:03   7.5731e-01                 4.0970e-01   3.1416e-02
+  637    1.00e-03  00:00:02   7.5731e-01                 4.0970e-01   3.1416e-02
 
 POINT 637: computation finished
 *********************************************************************
@@ -6434,7 +6434,7 @@ POINT 637: computation finished
    0                          7.11e-07  7.56e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  638    1.00e-03  00:00:03   7.5631e-01                 4.0916e-01   3.1416e-02
+  638    1.00e-03  00:00:02   7.5631e-01                 4.0916e-01   3.1416e-02
 
 POINT 638: computation finished
 *********************************************************************
@@ -6444,7 +6444,7 @@ POINT 638: computation finished
    0                          7.11e-07  7.55e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  639    1.00e-03  00:00:03   7.5531e-01                 4.0862e-01   3.1416e-02
+  639    1.00e-03  00:00:02   7.5531e-01                 4.0862e-01   3.1416e-02
 
 POINT 639: computation finished
 *********************************************************************
@@ -6454,7 +6454,7 @@ POINT 639: computation finished
    0                          7.11e-07  7.54e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  640    1.00e-03  00:00:03   7.5431e-01                 4.0808e-01   3.1416e-02
+  640    1.00e-03  00:00:02   7.5431e-01                 4.0808e-01   3.1416e-02
 
 POINT 640: computation finished
 *********************************************************************
@@ -6464,7 +6464,7 @@ POINT 640: computation finished
    0                          7.11e-07  7.53e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  641    1.00e-03  00:00:03   7.5331e-01                 4.0754e-01   3.1416e-02
+  641    1.00e-03  00:00:02   7.5331e-01                 4.0754e-01   3.1416e-02
 
 POINT 641: computation finished
 *********************************************************************
@@ -6474,7 +6474,7 @@ POINT 641: computation finished
    0                          7.12e-07  7.52e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  642    1.00e-03  00:00:03   7.5232e-01                 4.0700e-01   3.1416e-02
+  642    1.00e-03  00:00:02   7.5232e-01                 4.0700e-01   3.1416e-02
 
 POINT 642: computation finished
 *********************************************************************
@@ -6484,7 +6484,7 @@ POINT 642: computation finished
    0                          7.12e-07  7.51e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  643    1.00e-03  00:00:03   7.5132e-01                 4.0646e-01   3.1416e-02
+  643    1.00e-03  00:00:02   7.5132e-01                 4.0646e-01   3.1416e-02
 
 POINT 643: computation finished
 *********************************************************************
@@ -6494,7 +6494,7 @@ POINT 643: computation finished
    0                          7.12e-07  7.50e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  644    1.00e-03  00:00:03   7.5032e-01                 4.0592e-01   3.1416e-02
+  644    1.00e-03  00:00:02   7.5032e-01                 4.0592e-01   3.1416e-02
 
 POINT 644: computation finished
 *********************************************************************
@@ -6504,7 +6504,7 @@ POINT 644: computation finished
    0                          7.13e-07  7.49e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  645    1.00e-03  00:00:03   7.4932e-01                 4.0538e-01   3.1416e-02
+  645    1.00e-03  00:00:02   7.4932e-01                 4.0538e-01   3.1416e-02
 
 POINT 645: computation finished
 *********************************************************************
@@ -6514,7 +6514,7 @@ POINT 645: computation finished
    0                          7.13e-07  7.48e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  646    1.00e-03  00:00:03   7.4832e-01                 4.0484e-01   3.1416e-02
+  646    1.00e-03  00:00:02   7.4832e-01                 4.0484e-01   3.1416e-02
 
 POINT 646: computation finished
 *********************************************************************
@@ -6524,7 +6524,7 @@ POINT 646: computation finished
    0                          7.13e-07  7.47e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  647    1.00e-03  00:00:03   7.4732e-01                 4.0430e-01   3.1416e-02
+  647    1.00e-03  00:00:02   7.4732e-01                 4.0430e-01   3.1416e-02
 
 POINT 647: computation finished
 *********************************************************************
@@ -6534,7 +6534,7 @@ POINT 647: computation finished
    0                          7.14e-07  7.46e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  648    1.00e-03  00:00:03   7.4632e-01                 4.0376e-01   3.1416e-02
+  648    1.00e-03  00:00:02   7.4632e-01                 4.0376e-01   3.1416e-02
 
 POINT 648: computation finished
 *********************************************************************
@@ -6544,7 +6544,7 @@ POINT 648: computation finished
    0                          7.14e-07  7.45e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  649    1.00e-03  00:00:03   7.4532e-01                 4.0322e-01   3.1416e-02
+  649    1.00e-03  00:00:02   7.4532e-01                 4.0322e-01   3.1416e-02
 
 POINT 649: computation finished
 *********************************************************************
@@ -6554,7 +6554,7 @@ POINT 649: computation finished
    0                          7.14e-07  7.44e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  650    1.00e-03  00:00:03   7.4432e-01                 4.0268e-01   3.1416e-02
+  650    1.00e-03  00:00:02   7.4432e-01                 4.0268e-01   3.1416e-02
 
 POINT 650: computation finished
 *********************************************************************
@@ -6564,7 +6564,7 @@ POINT 650: computation finished
    0                          7.14e-07  7.43e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  651    1.00e-03  00:00:03   7.4332e-01                 4.0214e-01   3.1416e-02
+  651    1.00e-03  00:00:02   7.4332e-01                 4.0214e-01   3.1416e-02
 
 POINT 651: computation finished
 *********************************************************************
@@ -6574,7 +6574,7 @@ POINT 651: computation finished
    0                          7.15e-07  7.42e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  652    1.00e-03  00:00:03   7.4232e-01                 4.0160e-01   3.1416e-02
+  652    1.00e-03  00:00:02   7.4232e-01                 4.0160e-01   3.1416e-02
 
 POINT 652: computation finished
 *********************************************************************
@@ -6584,7 +6584,7 @@ POINT 652: computation finished
    0                          7.15e-07  7.41e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  653    1.00e-03  00:00:03   7.4133e-01                 4.0106e-01   3.1416e-02
+  653    1.00e-03  00:00:02   7.4133e-01                 4.0106e-01   3.1416e-02
 
 POINT 653: computation finished
 *********************************************************************
@@ -8344,7 +8344,7 @@ POINT 828: computation finished
    0                          7.75e-07  5.66e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  829    1.00e-03  00:00:04   5.6553e-01                 3.0603e-01   3.1416e-02
+  829    1.00e-03  00:00:03   5.6553e-01                 3.0603e-01   3.1416e-02
 
 POINT 829: computation finished
 *********************************************************************
@@ -8354,7 +8354,7 @@ POINT 829: computation finished
    0                          7.76e-07  5.65e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  830    1.00e-03  00:00:04   5.6454e-01                 3.0549e-01   3.1416e-02
+  830    1.00e-03  00:00:03   5.6454e-01                 3.0549e-01   3.1416e-02
 
 POINT 830: computation finished
 *********************************************************************
@@ -8364,7 +8364,7 @@ POINT 830: computation finished
    0                          7.76e-07  5.64e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  831    1.00e-03  00:00:04   5.6354e-01                 3.0495e-01   3.1416e-02
+  831    1.00e-03  00:00:03   5.6354e-01                 3.0495e-01   3.1416e-02
 
 POINT 831: computation finished
 *********************************************************************
@@ -8374,7 +8374,7 @@ POINT 831: computation finished
    0                          7.76e-07  5.63e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  832    1.00e-03  00:00:04   5.6254e-01                 3.0441e-01   3.1416e-02
+  832    1.00e-03  00:00:03   5.6254e-01                 3.0441e-01   3.1416e-02
 
 POINT 832: computation finished
 *********************************************************************
@@ -8384,7 +8384,7 @@ POINT 832: computation finished
    0                          7.77e-07  5.62e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  833    1.00e-03  00:00:04   5.6154e-01                 3.0387e-01   3.1416e-02
+  833    1.00e-03  00:00:03   5.6154e-01                 3.0387e-01   3.1416e-02
 
 POINT 833: computation finished
 *********************************************************************
@@ -8394,7 +8394,7 @@ POINT 833: computation finished
    0                          7.77e-07  5.61e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  834    1.00e-03  00:00:04   5.6054e-01                 3.0333e-01   3.1416e-02
+  834    1.00e-03  00:00:03   5.6054e-01                 3.0333e-01   3.1416e-02
 
 POINT 834: computation finished
 *********************************************************************
@@ -8404,7 +8404,7 @@ POINT 834: computation finished
    0                          7.78e-07  5.60e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  835    1.00e-03  00:00:04   5.5954e-01                 3.0279e-01   3.1416e-02
+  835    1.00e-03  00:00:03   5.5954e-01                 3.0279e-01   3.1416e-02
 
 POINT 835: computation finished
 *********************************************************************
@@ -8414,7 +8414,7 @@ POINT 835: computation finished
    0                          7.78e-07  5.59e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  836    1.00e-03  00:00:04   5.5855e-01                 3.0225e-01   3.1416e-02
+  836    1.00e-03  00:00:03   5.5855e-01                 3.0225e-01   3.1416e-02
 
 POINT 836: computation finished
 *********************************************************************
@@ -8424,7 +8424,7 @@ POINT 836: computation finished
    0                          7.78e-07  5.58e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  837    1.00e-03  00:00:04   5.5755e-01                 3.0171e-01   3.1416e-02
+  837    1.00e-03  00:00:03   5.5755e-01                 3.0171e-01   3.1416e-02
 
 POINT 837: computation finished
 *********************************************************************
@@ -8434,7 +8434,7 @@ POINT 837: computation finished
    0                          7.79e-07  5.57e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  838    1.00e-03  00:00:04   5.5655e-01                 3.0117e-01   3.1416e-02
+  838    1.00e-03  00:00:03   5.5655e-01                 3.0117e-01   3.1416e-02
 
 POINT 838: computation finished
 *********************************************************************
@@ -8444,7 +8444,7 @@ POINT 838: computation finished
    0                          7.79e-07  5.56e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  839    1.00e-03  00:00:04   5.5555e-01                 3.0063e-01   3.1416e-02
+  839    1.00e-03  00:00:03   5.5555e-01                 3.0063e-01   3.1416e-02
 
 POINT 839: computation finished
 *********************************************************************
@@ -8454,7 +8454,7 @@ POINT 839: computation finished
    0                          7.80e-07  5.55e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  840    1.00e-03  00:00:04   5.5455e-01                 3.0009e-01   3.1416e-02
+  840    1.00e-03  00:00:03   5.5455e-01                 3.0009e-01   3.1416e-02
 
 POINT 840: computation finished
 *********************************************************************
@@ -8464,7 +8464,7 @@ POINT 840: computation finished
    0                          7.80e-07  5.54e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  841    1.00e-03  00:00:04   5.5355e-01                 2.9956e-01   3.1416e-02
+  841    1.00e-03  00:00:03   5.5355e-01                 2.9956e-01   3.1416e-02
 
 POINT 841: computation finished
 *********************************************************************
@@ -8474,7 +8474,7 @@ POINT 841: computation finished
    0                          7.80e-07  5.53e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  842    1.00e-03  00:00:04   5.5255e-01                 2.9902e-01   3.1416e-02
+  842    1.00e-03  00:00:03   5.5255e-01                 2.9902e-01   3.1416e-02
 
 POINT 842: computation finished
 *********************************************************************
@@ -8484,7 +8484,7 @@ POINT 842: computation finished
    0                          7.81e-07  5.52e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  843    1.00e-03  00:00:04   5.5156e-01                 2.9848e-01   3.1416e-02
+  843    1.00e-03  00:00:03   5.5156e-01                 2.9848e-01   3.1416e-02
 
 POINT 843: computation finished
 *********************************************************************
@@ -8494,7 +8494,7 @@ POINT 843: computation finished
    0                          7.81e-07  5.51e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  844    1.00e-03  00:00:04   5.5056e-01                 2.9794e-01   3.1416e-02
+  844    1.00e-03  00:00:03   5.5056e-01                 2.9794e-01   3.1416e-02
 
 POINT 844: computation finished
 *********************************************************************
@@ -8504,7 +8504,7 @@ POINT 844: computation finished
    0                          7.82e-07  5.50e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  845    1.00e-03  00:00:04   5.4956e-01                 2.9740e-01   3.1416e-02
+  845    1.00e-03  00:00:03   5.4956e-01                 2.9740e-01   3.1416e-02
 
 POINT 845: computation finished
 *********************************************************************
@@ -8514,7 +8514,7 @@ POINT 845: computation finished
    0                          7.82e-07  5.49e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  846    1.00e-03  00:00:04   5.4856e-01                 2.9686e-01   3.1416e-02
+  846    1.00e-03  00:00:03   5.4856e-01                 2.9686e-01   3.1416e-02
 
 POINT 846: computation finished
 *********************************************************************
@@ -8524,7 +8524,7 @@ POINT 846: computation finished
    0                          7.82e-07  5.48e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  847    1.00e-03  00:00:04   5.4756e-01                 2.9632e-01   3.1416e-02
+  847    1.00e-03  00:00:03   5.4756e-01                 2.9632e-01   3.1416e-02
 
 POINT 847: computation finished
 *********************************************************************
@@ -8534,7 +8534,7 @@ POINT 847: computation finished
    0                          7.83e-07  5.47e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  848    1.00e-03  00:00:04   5.4656e-01                 2.9578e-01   3.1416e-02
+  848    1.00e-03  00:00:03   5.4656e-01                 2.9578e-01   3.1416e-02
 
 POINT 848: computation finished
 *********************************************************************
@@ -8544,7 +8544,7 @@ POINT 848: computation finished
    0                          7.83e-07  5.46e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  849    1.00e-03  00:00:04   5.4557e-01                 2.9524e-01   3.1416e-02
+  849    1.00e-03  00:00:03   5.4557e-01                 2.9524e-01   3.1416e-02
 
 POINT 849: computation finished
 *********************************************************************
@@ -8554,7 +8554,7 @@ POINT 849: computation finished
    0                          7.84e-07  5.45e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  850    1.00e-03  00:00:04   5.4457e-01                 2.9470e-01   3.1416e-02
+  850    1.00e-03  00:00:03   5.4457e-01                 2.9470e-01   3.1416e-02
 
 POINT 850: computation finished
 *********************************************************************
@@ -8564,7 +8564,7 @@ POINT 850: computation finished
    0                          7.84e-07  5.44e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  851    1.00e-03  00:00:04   5.4357e-01                 2.9416e-01   3.1416e-02
+  851    1.00e-03  00:00:03   5.4357e-01                 2.9416e-01   3.1416e-02
 
 POINT 851: computation finished
 *********************************************************************
@@ -8574,7 +8574,7 @@ POINT 851: computation finished
    0                          7.84e-07  5.43e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  852    1.00e-03  00:00:04   5.4257e-01                 2.9362e-01   3.1416e-02
+  852    1.00e-03  00:00:03   5.4257e-01                 2.9362e-01   3.1416e-02
 
 POINT 852: computation finished
 *********************************************************************
@@ -8584,7 +8584,7 @@ POINT 852: computation finished
    0                          7.85e-07  5.42e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  853    1.00e-03  00:00:04   5.4157e-01                 2.9308e-01   3.1416e-02
+  853    1.00e-03  00:00:03   5.4157e-01                 2.9308e-01   3.1416e-02
 
 POINT 853: computation finished
 *********************************************************************
@@ -8594,7 +8594,7 @@ POINT 853: computation finished
    0                          7.85e-07  5.41e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  854    1.00e-03  00:00:04   5.4058e-01                 2.9254e-01   3.1416e-02
+  854    1.00e-03  00:00:03   5.4058e-01                 2.9254e-01   3.1416e-02
 
 POINT 854: computation finished
 *********************************************************************
@@ -8604,7 +8604,7 @@ POINT 854: computation finished
    0                          7.86e-07  5.40e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  855    1.00e-03  00:00:04   5.3958e-01                 2.9200e-01   3.1416e-02
+  855    1.00e-03  00:00:03   5.3958e-01                 2.9200e-01   3.1416e-02
 
 POINT 855: computation finished
 *********************************************************************
@@ -8614,7 +8614,7 @@ POINT 855: computation finished
    0                          7.86e-07  5.39e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  856    1.00e-03  00:00:04   5.3858e-01                 2.9146e-01   3.1416e-02
+  856    1.00e-03  00:00:03   5.3858e-01                 2.9146e-01   3.1416e-02
 
 POINT 856: computation finished
 *********************************************************************
@@ -8624,7 +8624,7 @@ POINT 856: computation finished
    0                          7.86e-07  5.38e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  857    1.00e-03  00:00:04   5.3758e-01                 2.9092e-01   3.1416e-02
+  857    1.00e-03  00:00:03   5.3758e-01                 2.9092e-01   3.1416e-02
 
 POINT 857: computation finished
 *********************************************************************
@@ -8634,7 +8634,7 @@ POINT 857: computation finished
    0                          7.87e-07  5.37e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  858    1.00e-03  00:00:04   5.3658e-01                 2.9038e-01   3.1416e-02
+  858    1.00e-03  00:00:03   5.3658e-01                 2.9038e-01   3.1416e-02
 
 POINT 858: computation finished
 *********************************************************************
@@ -8644,7 +8644,7 @@ POINT 858: computation finished
    0                          7.87e-07  5.36e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  859    1.00e-03  00:00:04   5.3558e-01                 2.8984e-01   3.1416e-02
+  859    1.00e-03  00:00:03   5.3558e-01                 2.8984e-01   3.1416e-02
 
 POINT 859: computation finished
 *********************************************************************
@@ -8654,7 +8654,7 @@ POINT 859: computation finished
    0                          7.88e-07  5.35e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  860    1.00e-03  00:00:04   5.3459e-01                 2.8930e-01   3.1416e-02
+  860    1.00e-03  00:00:03   5.3459e-01                 2.8930e-01   3.1416e-02
 
 POINT 860: computation finished
 *********************************************************************
@@ -8664,7 +8664,7 @@ POINT 860: computation finished
    0                          7.88e-07  5.34e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  861    1.00e-03  00:00:04   5.3359e-01                 2.8876e-01   3.1416e-02
+  861    1.00e-03  00:00:03   5.3359e-01                 2.8876e-01   3.1416e-02
 
 POINT 861: computation finished
 *********************************************************************
@@ -8674,7 +8674,7 @@ POINT 861: computation finished
    0                          7.88e-07  5.33e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  862    1.00e-03  00:00:04   5.3259e-01                 2.8822e-01   3.1416e-02
+  862    1.00e-03  00:00:03   5.3259e-01                 2.8822e-01   3.1416e-02
 
 POINT 862: computation finished
 *********************************************************************
@@ -8684,7 +8684,7 @@ POINT 862: computation finished
    0                          7.89e-07  5.32e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  863    1.00e-03  00:00:04   5.3159e-01                 2.8768e-01   3.1416e-02
+  863    1.00e-03  00:00:03   5.3159e-01                 2.8768e-01   3.1416e-02
 
 POINT 863: computation finished
 *********************************************************************
@@ -8694,7 +8694,7 @@ POINT 863: computation finished
    0                          7.89e-07  5.31e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  864    1.00e-03  00:00:04   5.3059e-01                 2.8714e-01   3.1416e-02
+  864    1.00e-03  00:00:03   5.3059e-01                 2.8714e-01   3.1416e-02
 
 POINT 864: computation finished
 *********************************************************************
@@ -8704,7 +8704,7 @@ POINT 864: computation finished
    0                          7.90e-07  5.30e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  865    1.00e-03  00:00:04   5.2959e-01                 2.8661e-01   3.1416e-02
+  865    1.00e-03  00:00:03   5.2959e-01                 2.8661e-01   3.1416e-02
 
 POINT 865: computation finished
 *********************************************************************
@@ -8714,7 +8714,7 @@ POINT 865: computation finished
    0                          7.90e-07  5.29e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  866    1.00e-03  00:00:04   5.2860e-01                 2.8607e-01   3.1416e-02
+  866    1.00e-03  00:00:03   5.2860e-01                 2.8607e-01   3.1416e-02
 
 POINT 866: computation finished
 *********************************************************************
@@ -8724,7 +8724,7 @@ POINT 866: computation finished
    0                          7.91e-07  5.28e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  867    1.00e-03  00:00:04   5.2760e-01                 2.8553e-01   3.1416e-02
+  867    1.00e-03  00:00:03   5.2760e-01                 2.8553e-01   3.1416e-02
 
 POINT 867: computation finished
 *********************************************************************
@@ -8734,7 +8734,7 @@ POINT 867: computation finished
    0                          7.91e-07  5.27e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  868    1.00e-03  00:00:04   5.2660e-01                 2.8499e-01   3.1416e-02
+  868    1.00e-03  00:00:03   5.2660e-01                 2.8499e-01   3.1416e-02
 
 POINT 868: computation finished
 *********************************************************************
@@ -8744,7 +8744,7 @@ POINT 868: computation finished
    0                          7.91e-07  5.26e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  869    1.00e-03  00:00:04   5.2560e-01                 2.8445e-01   3.1416e-02
+  869    1.00e-03  00:00:03   5.2560e-01                 2.8445e-01   3.1416e-02
 
 POINT 869: computation finished
 *********************************************************************
@@ -8754,7 +8754,7 @@ POINT 869: computation finished
    0                          7.92e-07  5.25e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  870    1.00e-03  00:00:04   5.2460e-01                 2.8391e-01   3.1416e-02
+  870    1.00e-03  00:00:03   5.2460e-01                 2.8391e-01   3.1416e-02
 
 POINT 870: computation finished
 *********************************************************************
@@ -8764,7 +8764,7 @@ POINT 870: computation finished
    0                          7.92e-07  5.24e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  871    1.00e-03  00:00:04   5.2361e-01                 2.8337e-01   3.1416e-02
+  871    1.00e-03  00:00:03   5.2361e-01                 2.8337e-01   3.1416e-02
 
 POINT 871: computation finished
 *********************************************************************
@@ -8774,7 +8774,7 @@ POINT 871: computation finished
    0                          7.93e-07  5.23e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  872    1.00e-03  00:00:04   5.2261e-01                 2.8283e-01   3.1416e-02
+  872    1.00e-03  00:00:03   5.2261e-01                 2.8283e-01   3.1416e-02
 
 POINT 872: computation finished
 *********************************************************************
@@ -8784,7 +8784,7 @@ POINT 872: computation finished
    0                          7.93e-07  5.22e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  873    1.00e-03  00:00:04   5.2161e-01                 2.8229e-01   3.1416e-02
+  873    1.00e-03  00:00:03   5.2161e-01                 2.8229e-01   3.1416e-02
 
 POINT 873: computation finished
 *********************************************************************
@@ -8794,7 +8794,7 @@ POINT 873: computation finished
    0                          7.93e-07  5.21e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  874    1.00e-03  00:00:04   5.2061e-01                 2.8175e-01   3.1416e-02
+  874    1.00e-03  00:00:03   5.2061e-01                 2.8175e-01   3.1416e-02
 
 POINT 874: computation finished
 *********************************************************************
@@ -8804,7 +8804,7 @@ POINT 874: computation finished
    0                          7.94e-07  5.20e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  875    1.00e-03  00:00:04   5.1961e-01                 2.8121e-01   3.1416e-02
+  875    1.00e-03  00:00:03   5.1961e-01                 2.8121e-01   3.1416e-02
 
 POINT 875: computation finished
 *********************************************************************
@@ -8814,7 +8814,7 @@ POINT 875: computation finished
    0                          7.94e-07  5.19e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  876    1.00e-03  00:00:04   5.1861e-01                 2.8067e-01   3.1416e-02
+  876    1.00e-03  00:00:03   5.1861e-01                 2.8067e-01   3.1416e-02
 
 POINT 876: computation finished
 *********************************************************************
@@ -8824,7 +8824,7 @@ POINT 876: computation finished
    0                          7.95e-07  5.18e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  877    1.00e-03  00:00:04   5.1762e-01                 2.8013e-01   3.1416e-02
+  877    1.00e-03  00:00:03   5.1762e-01                 2.8013e-01   3.1416e-02
 
 POINT 877: computation finished
 *********************************************************************
@@ -8834,7 +8834,7 @@ POINT 877: computation finished
    0                          7.95e-07  5.17e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  878    1.00e-03  00:00:04   5.1662e-01                 2.7959e-01   3.1416e-02
+  878    1.00e-03  00:00:03   5.1662e-01                 2.7959e-01   3.1416e-02
 
 POINT 878: computation finished
 *********************************************************************
@@ -8844,7 +8844,7 @@ POINT 878: computation finished
    0                          7.96e-07  5.16e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  879    1.00e-03  00:00:04   5.1562e-01                 2.7905e-01   3.1416e-02
+  879    1.00e-03  00:00:03   5.1562e-01                 2.7905e-01   3.1416e-02
 
 POINT 879: computation finished
 *********************************************************************
@@ -8854,7 +8854,7 @@ POINT 879: computation finished
    0                          7.96e-07  5.15e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  880    1.00e-03  00:00:04   5.1462e-01                 2.7851e-01   3.1416e-02
+  880    1.00e-03  00:00:03   5.1462e-01                 2.7851e-01   3.1416e-02
 
 POINT 880: computation finished
 *********************************************************************
@@ -8864,7 +8864,7 @@ POINT 880: computation finished
    0                          7.96e-07  5.14e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
-  881    1.00e-03  00:00:04   5.1362e-01                 2.7797e-01   3.1416e-02
+  881    1.00e-03  00:00:03   5.1362e-01                 2.7797e-01   3.1416e-02
 
 POINT 881: computation finished
 *********************************************************************
@@ -10874,7 +10874,7 @@ POINT 1081: computation finished
    0                          9.03e-07  3.13e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1082    1.00e-03  00:00:05   3.1325e-01                 1.6972e-01   3.1416e-02
+ 1082    1.00e-03  00:00:04   3.1325e-01                 1.6972e-01   3.1416e-02
 
 POINT 1082: computation finished
 *********************************************************************
@@ -10884,7 +10884,7 @@ POINT 1082: computation finished
    0                          9.03e-07  3.12e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1083    1.00e-03  00:00:05   3.1226e-01                 1.6918e-01   3.1416e-02
+ 1083    1.00e-03  00:00:04   3.1226e-01                 1.6918e-01   3.1416e-02
 
 POINT 1083: computation finished
 *********************************************************************
@@ -10894,7 +10894,7 @@ POINT 1083: computation finished
    0                          9.04e-07  3.11e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1084    1.00e-03  00:00:05   3.1126e-01                 1.6864e-01   3.1416e-02
+ 1084    1.00e-03  00:00:04   3.1126e-01                 1.6864e-01   3.1416e-02
 
 POINT 1084: computation finished
 *********************************************************************
@@ -10904,7 +10904,7 @@ POINT 1084: computation finished
    0                          9.05e-07  3.10e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1085    1.00e-03  00:00:05   3.1027e-01                 1.6811e-01   3.1416e-02
+ 1085    1.00e-03  00:00:04   3.1027e-01                 1.6811e-01   3.1416e-02
 
 POINT 1085: computation finished
 *********************************************************************
@@ -10914,7 +10914,7 @@ POINT 1085: computation finished
    0                          9.05e-07  3.09e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1086    1.00e-03  00:00:05   3.0927e-01                 1.6757e-01   3.1416e-02
+ 1086    1.00e-03  00:00:04   3.0927e-01                 1.6757e-01   3.1416e-02
 
 POINT 1086: computation finished
 *********************************************************************
@@ -10924,7 +10924,7 @@ POINT 1086: computation finished
    0                          9.06e-07  3.08e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1087    1.00e-03  00:00:05   3.0828e-01                 1.6703e-01   3.1416e-02
+ 1087    1.00e-03  00:00:04   3.0828e-01                 1.6703e-01   3.1416e-02
 
 POINT 1087: computation finished
 *********************************************************************
@@ -10934,7 +10934,7 @@ POINT 1087: computation finished
    0                          9.07e-07  3.07e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1088    1.00e-03  00:00:05   3.0729e-01                 1.6649e-01   3.1416e-02
+ 1088    1.00e-03  00:00:04   3.0729e-01                 1.6649e-01   3.1416e-02
 
 POINT 1088: computation finished
 *********************************************************************
@@ -10944,7 +10944,7 @@ POINT 1088: computation finished
    0                          9.07e-07  3.06e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1089    1.00e-03  00:00:05   3.0629e-01                 1.6596e-01   3.1416e-02
+ 1089    1.00e-03  00:00:04   3.0629e-01                 1.6596e-01   3.1416e-02
 
 POINT 1089: computation finished
 *********************************************************************
@@ -10954,7 +10954,7 @@ POINT 1089: computation finished
    0                          9.08e-07  3.05e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1090    1.00e-03  00:00:05   3.0530e-01                 1.6542e-01   3.1416e-02
+ 1090    1.00e-03  00:00:04   3.0530e-01                 1.6542e-01   3.1416e-02
 
 POINT 1090: computation finished
 *********************************************************************
@@ -10964,7 +10964,7 @@ POINT 1090: computation finished
    0                          9.09e-07  3.04e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1091    1.00e-03  00:00:05   3.0430e-01                 1.6488e-01   3.1416e-02
+ 1091    1.00e-03  00:00:04   3.0430e-01                 1.6488e-01   3.1416e-02
 
 POINT 1091: computation finished
 *********************************************************************
@@ -10974,7 +10974,7 @@ POINT 1091: computation finished
    0                          9.09e-07  3.03e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1092    1.00e-03  00:00:05   3.0331e-01                 1.6435e-01   3.1416e-02
+ 1092    1.00e-03  00:00:04   3.0331e-01                 1.6435e-01   3.1416e-02
 
 POINT 1092: computation finished
 *********************************************************************
@@ -10984,7 +10984,7 @@ POINT 1092: computation finished
    0                          9.10e-07  3.02e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1093    1.00e-03  00:00:05   3.0231e-01                 1.6381e-01   3.1416e-02
+ 1093    1.00e-03  00:00:04   3.0231e-01                 1.6381e-01   3.1416e-02
 
 POINT 1093: computation finished
 *********************************************************************
@@ -10994,7 +10994,7 @@ POINT 1093: computation finished
    0                          9.11e-07  3.01e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1094    1.00e-03  00:00:05   3.0132e-01                 1.6327e-01   3.1416e-02
+ 1094    1.00e-03  00:00:04   3.0132e-01                 1.6327e-01   3.1416e-02
 
 POINT 1094: computation finished
 *********************************************************************
@@ -11004,7 +11004,7 @@ POINT 1094: computation finished
    0                          9.11e-07  3.00e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1095    1.00e-03  00:00:05   3.0032e-01                 1.6274e-01   3.1416e-02
+ 1095    1.00e-03  00:00:04   3.0032e-01                 1.6274e-01   3.1416e-02
 
 POINT 1095: computation finished
 *********************************************************************
@@ -11014,7 +11014,7 @@ POINT 1095: computation finished
    0                          9.12e-07  2.99e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1096    1.00e-03  00:00:05   2.9933e-01                 1.6220e-01   3.1416e-02
+ 1096    1.00e-03  00:00:04   2.9933e-01                 1.6220e-01   3.1416e-02
 
 POINT 1096: computation finished
 *********************************************************************
@@ -11024,7 +11024,7 @@ POINT 1096: computation finished
    0                          9.13e-07  2.98e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1097    1.00e-03  00:00:05   2.9834e-01                 1.6166e-01   3.1416e-02
+ 1097    1.00e-03  00:00:04   2.9834e-01                 1.6166e-01   3.1416e-02
 
 POINT 1097: computation finished
 *********************************************************************
@@ -11034,7 +11034,7 @@ POINT 1097: computation finished
    0                          9.13e-07  2.97e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1098    1.00e-03  00:00:05   2.9734e-01                 1.6112e-01   3.1416e-02
+ 1098    1.00e-03  00:00:04   2.9734e-01                 1.6112e-01   3.1416e-02
 
 POINT 1098: computation finished
 *********************************************************************
@@ -11044,7 +11044,7 @@ POINT 1098: computation finished
    0                          9.14e-07  2.96e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1099    1.00e-03  00:00:05   2.9635e-01                 1.6059e-01   3.1416e-02
+ 1099    1.00e-03  00:00:04   2.9635e-01                 1.6059e-01   3.1416e-02
 
 POINT 1099: computation finished
 *********************************************************************
@@ -11054,7 +11054,7 @@ POINT 1099: computation finished
    0                          9.15e-07  2.95e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1100    1.00e-03  00:00:05   2.9535e-01                 1.6005e-01   3.1416e-02
+ 1100    1.00e-03  00:00:04   2.9535e-01                 1.6005e-01   3.1416e-02
 
 POINT 1100: computation finished
 *********************************************************************
@@ -11064,7 +11064,7 @@ POINT 1100: computation finished
    0                          9.16e-07  2.94e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1101    1.00e-03  00:00:05   2.9436e-01                 1.5951e-01   3.1416e-02
+ 1101    1.00e-03  00:00:04   2.9436e-01                 1.5951e-01   3.1416e-02
 
 POINT 1101: computation finished
 *********************************************************************
@@ -11074,7 +11074,7 @@ POINT 1101: computation finished
    0                          9.16e-07  2.93e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1102    1.00e-03  00:00:05   2.9336e-01                 1.5898e-01   3.1416e-02
+ 1102    1.00e-03  00:00:04   2.9336e-01                 1.5898e-01   3.1416e-02
 
 POINT 1102: computation finished
 *********************************************************************
@@ -11084,7 +11084,7 @@ POINT 1102: computation finished
    0                          9.17e-07  2.92e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1103    1.00e-03  00:00:05   2.9237e-01                 1.5844e-01   3.1416e-02
+ 1103    1.00e-03  00:00:04   2.9237e-01                 1.5844e-01   3.1416e-02
 
 POINT 1103: computation finished
 *********************************************************************
@@ -11094,7 +11094,7 @@ POINT 1103: computation finished
    0                          9.18e-07  2.91e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1104    1.00e-03  00:00:05   2.9138e-01                 1.5790e-01   3.1416e-02
+ 1104    1.00e-03  00:00:04   2.9138e-01                 1.5790e-01   3.1416e-02
 
 POINT 1104: computation finished
 *********************************************************************
@@ -11104,7 +11104,7 @@ POINT 1104: computation finished
    0                          9.18e-07  2.90e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1105    1.00e-03  00:00:05   2.9038e-01                 1.5737e-01   3.1416e-02
+ 1105    1.00e-03  00:00:04   2.9038e-01                 1.5737e-01   3.1416e-02
 
 POINT 1105: computation finished
 *********************************************************************
@@ -11114,7 +11114,7 @@ POINT 1105: computation finished
    0                          9.19e-07  2.89e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1106    1.00e-03  00:00:05   2.8939e-01                 1.5683e-01   3.1416e-02
+ 1106    1.00e-03  00:00:04   2.8939e-01                 1.5683e-01   3.1416e-02
 
 POINT 1106: computation finished
 *********************************************************************
@@ -11124,7 +11124,7 @@ POINT 1106: computation finished
    0                          9.20e-07  2.88e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1107    1.00e-03  00:00:05   2.8839e-01                 1.5629e-01   3.1416e-02
+ 1107    1.00e-03  00:00:04   2.8839e-01                 1.5629e-01   3.1416e-02
 
 POINT 1107: computation finished
 *********************************************************************
@@ -11134,7 +11134,7 @@ POINT 1107: computation finished
    0                          9.20e-07  2.87e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1108    1.00e-03  00:00:05   2.8740e-01                 1.5576e-01   3.1416e-02
+ 1108    1.00e-03  00:00:04   2.8740e-01                 1.5576e-01   3.1416e-02
 
 POINT 1108: computation finished
 *********************************************************************
@@ -11144,7 +11144,7 @@ POINT 1108: computation finished
    0                          9.21e-07  2.86e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1109    1.00e-03  00:00:05   2.8641e-01                 1.5522e-01   3.1416e-02
+ 1109    1.00e-03  00:00:04   2.8641e-01                 1.5522e-01   3.1416e-02
 
 POINT 1109: computation finished
 *********************************************************************
@@ -11154,7 +11154,7 @@ POINT 1109: computation finished
    0                          9.22e-07  2.85e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1110    1.00e-03  00:00:05   2.8541e-01                 1.5468e-01   3.1416e-02
+ 1110    1.00e-03  00:00:04   2.8541e-01                 1.5468e-01   3.1416e-02
 
 POINT 1110: computation finished
 *********************************************************************
@@ -11164,7 +11164,7 @@ POINT 1110: computation finished
    0                          9.23e-07  2.84e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1111    1.00e-03  00:00:05   2.8442e-01                 1.5415e-01   3.1416e-02
+ 1111    1.00e-03  00:00:04   2.8442e-01                 1.5415e-01   3.1416e-02
 
 POINT 1111: computation finished
 *********************************************************************
@@ -11174,7 +11174,7 @@ POINT 1111: computation finished
    0                          9.23e-07  2.83e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1112    1.00e-03  00:00:05   2.8343e-01                 1.5361e-01   3.1416e-02
+ 1112    1.00e-03  00:00:04   2.8343e-01                 1.5361e-01   3.1416e-02
 
 POINT 1112: computation finished
 *********************************************************************
@@ -11184,7 +11184,7 @@ POINT 1112: computation finished
    0                          9.24e-07  2.82e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1113    1.00e-03  00:00:05   2.8243e-01                 1.5308e-01   3.1416e-02
+ 1113    1.00e-03  00:00:04   2.8243e-01                 1.5308e-01   3.1416e-02
 
 POINT 1113: computation finished
 *********************************************************************
@@ -11194,7 +11194,7 @@ POINT 1113: computation finished
    0                          9.25e-07  2.81e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1114    1.00e-03  00:00:05   2.8144e-01                 1.5254e-01   3.1416e-02
+ 1114    1.00e-03  00:00:04   2.8144e-01                 1.5254e-01   3.1416e-02
 
 POINT 1114: computation finished
 *********************************************************************
@@ -11204,7 +11204,7 @@ POINT 1114: computation finished
    0                          9.25e-07  2.80e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1115    1.00e-03  00:00:05   2.8045e-01                 1.5200e-01   3.1416e-02
+ 1115    1.00e-03  00:00:04   2.8045e-01                 1.5200e-01   3.1416e-02
 
 POINT 1115: computation finished
 *********************************************************************
@@ -11214,7 +11214,7 @@ POINT 1115: computation finished
    0                          9.26e-07  2.79e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1116    1.00e-03  00:00:05   2.7945e-01                 1.5147e-01   3.1416e-02
+ 1116    1.00e-03  00:00:04   2.7945e-01                 1.5147e-01   3.1416e-02
 
 POINT 1116: computation finished
 *********************************************************************
@@ -11224,7 +11224,7 @@ POINT 1116: computation finished
    0                          9.27e-07  2.78e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1117    1.00e-03  00:00:05   2.7846e-01                 1.5093e-01   3.1416e-02
+ 1117    1.00e-03  00:00:04   2.7846e-01                 1.5093e-01   3.1416e-02
 
 POINT 1117: computation finished
 *********************************************************************
@@ -11234,7 +11234,7 @@ POINT 1117: computation finished
    0                          9.28e-07  2.77e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1118    1.00e-03  00:00:05   2.7746e-01                 1.5039e-01   3.1416e-02
+ 1118    1.00e-03  00:00:04   2.7746e-01                 1.5039e-01   3.1416e-02
 
 POINT 1118: computation finished
 *********************************************************************
@@ -11244,7 +11244,7 @@ POINT 1118: computation finished
    0                          9.28e-07  2.76e-01    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1119    1.00e-03  00:00:05   2.7647e-01                 1.4986e-01   3.1416e-02
+ 1119    1.00e-03  00:00:04   2.7647e-01                 1.4986e-01   3.1416e-02
 
 POINT 1119: computation finished
 *********************************************************************
@@ -13367,7 +13367,7 @@ POINT 1330: computation finished
    0                          1.38e-07  7.12e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1331    1.00e-03  00:00:06   7.1221e-02                 3.8772e-02   3.1416e-02
+ 1331    1.00e-03  00:00:05   7.1221e-02                 3.8772e-02   3.1416e-02
 
 POINT 1331: computation finished
 *********************************************************************
@@ -13377,7 +13377,7 @@ POINT 1331: computation finished
    0                          1.38e-07  7.04e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1332    1.00e-03  00:00:06   7.0365e-02                 3.8284e-02   3.1416e-02
+ 1332    1.00e-03  00:00:05   7.0365e-02                 3.8284e-02   3.1416e-02
 
 POINT 1332: computation finished
 *********************************************************************
@@ -13387,7 +13387,7 @@ POINT 1332: computation finished
    0                          1.38e-07  6.95e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1333    1.00e-03  00:00:06   6.9513e-02                 3.7797e-02   3.1416e-02
+ 1333    1.00e-03  00:00:05   6.9513e-02                 3.7797e-02   3.1416e-02
 
 POINT 1333: computation finished
 *********************************************************************
@@ -13397,7 +13397,7 @@ POINT 1333: computation finished
    0                          1.39e-07  6.87e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1334    1.00e-03  00:00:06   6.8666e-02                 3.7311e-02   3.1416e-02
+ 1334    1.00e-03  00:00:05   6.8666e-02                 3.7311e-02   3.1416e-02
 
 POINT 1334: computation finished
 *********************************************************************
@@ -13407,7 +13407,7 @@ POINT 1334: computation finished
    0                          1.39e-07  6.78e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1335    1.00e-03  00:00:06   6.7823e-02                 3.6826e-02   3.1416e-02
+ 1335    1.00e-03  00:00:05   6.7823e-02                 3.6826e-02   3.1416e-02
 
 POINT 1335: computation finished
 *********************************************************************
@@ -13417,7 +13417,7 @@ POINT 1335: computation finished
    0                          1.39e-07  6.70e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1336    1.00e-03  00:00:06   6.6985e-02                 3.6341e-02   3.1416e-02
+ 1336    1.00e-03  00:00:05   6.6985e-02                 3.6341e-02   3.1416e-02
 
 POINT 1336: computation finished
 *********************************************************************
@@ -13427,7 +13427,7 @@ POINT 1336: computation finished
    0                          1.39e-07  6.62e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1337    1.00e-03  00:00:06   6.6151e-02                 3.5857e-02   3.1416e-02
+ 1337    1.00e-03  00:00:05   6.6151e-02                 3.5857e-02   3.1416e-02
 
 POINT 1337: computation finished
 *********************************************************************
@@ -13437,7 +13437,7 @@ POINT 1337: computation finished
    0                          1.39e-07  6.53e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1338    1.00e-03  00:00:06   6.5322e-02                 3.5374e-02   3.1416e-02
+ 1338    1.00e-03  00:00:05   6.5322e-02                 3.5374e-02   3.1416e-02
 
 POINT 1338: computation finished
 *********************************************************************
@@ -13447,7 +13447,7 @@ POINT 1338: computation finished
    0                          1.39e-07  6.45e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1339    1.00e-03  00:00:06   6.4498e-02                 3.4892e-02   3.1416e-02
+ 1339    1.00e-03  00:00:05   6.4498e-02                 3.4892e-02   3.1416e-02
 
 POINT 1339: computation finished
 *********************************************************************
@@ -13457,7 +13457,7 @@ POINT 1339: computation finished
    0                          1.39e-07  6.37e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1340    1.00e-03  00:00:06   6.3679e-02                 3.4410e-02   3.1416e-02
+ 1340    1.00e-03  00:00:05   6.3679e-02                 3.4410e-02   3.1416e-02
 
 POINT 1340: computation finished
 *********************************************************************
@@ -14081,7 +14081,7 @@ POINT 1401: computation finished
    0                          7.67e-08  3.14e-02    0.0    0.0    0.0
 
  STEP   STEP SIZE      TIME        ||U||  LABEL  TYPE             b            t
- 1402    1.00e-03  00:00:06   3.1422e-02      3  EP     -7.9398e-10   3.1416e-02
+ 1402    1.00e-03  00:00:07   3.1422e-02      3  EP     -7.9398e-10   3.1416e-02
 
 POINT 1402: computation finished
 *********************************************************************
