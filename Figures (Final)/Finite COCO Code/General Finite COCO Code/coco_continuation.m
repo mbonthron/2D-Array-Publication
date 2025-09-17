@@ -24,12 +24,11 @@ h_max = 0.001;
 % Initial Guess for Continuation
 Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
 
-
 %% Run the Initial Continuation Problem
 prob = coco_prob();
 prob = ode_isol2ep(prob,'',f,Ahat0,parameter_names,initial_parameter_values);
 prob = coco_set(prob,'cont','ItMX', iterations_max);
 prob = coco_set(prob,'cont','NPR',0);
-prob = coco_set(prob,'cont','h_max',hmax,'h_min',hmin);
+prob = coco_set(prob,'cont','h_max',h_max,'h_min',h_min);
 
-coco(prob,run_name1,[],1,parameter_names,computational_domain)
+coco(prob,'run1',[],1,parameter_names,computational_domain)
