@@ -55,7 +55,7 @@ run('simplechain1_5.m')
 idx1 = 1;
 idx2 = 2;
 
-figure(100); clf; hold on
+figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'simplechain1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'simplechain1-1'        ,'x',idx1,'x',idx2,'b')
