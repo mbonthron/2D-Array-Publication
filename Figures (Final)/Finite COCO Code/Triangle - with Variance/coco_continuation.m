@@ -15,7 +15,7 @@ data.mu = 1;
 data.sigma = 0.1;
 data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
-data.variance = [1 1.02 0.98]';
+data.variance = [1 1.05 0.98]';
 
 % data.variance = [1 1 1]';
 
