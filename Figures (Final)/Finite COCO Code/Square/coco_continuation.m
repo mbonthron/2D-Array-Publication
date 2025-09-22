@@ -72,7 +72,7 @@ run('square1_6.m')
 idx1 = 1;
 idx2 = 2;
 
-figure(9898); clf; hold on
+figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'square1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'square1-1'        ,'x',idx1,'x',idx2,'b')
