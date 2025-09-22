@@ -286,7 +286,7 @@ prob = coco_add_event(prob,'UZ','b',UZpoint);
 coco(prob,'triangle1-4',[],1,parameter_names,computational_domain)
 
 %% Plot all the Results COCO
-figure(100); clf; hold on
+figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'triangle1'        ,'x',1,'x',2,'b')
 coco_plot_bd(theme1, 'triangle1-1'      ,'x',1,'x',2,'b')

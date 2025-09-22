@@ -13,7 +13,7 @@ N_modes         = data.N_modes;
 b = p(1,:);
 t = p(2,:);
 
-data.b_vector = b;
+data.b_vector = b.*data.variance;
 data.t_vector = t;
 
 % Set up empty vector used to describe the system

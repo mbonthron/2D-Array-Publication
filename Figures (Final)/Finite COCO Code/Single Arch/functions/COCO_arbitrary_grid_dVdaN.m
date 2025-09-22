@@ -20,6 +20,7 @@ function [dVdt] = COCO_arbitrary_grid_dVdaN(A,data)
 %%
 N = data.N;
 b_vector = data.b_vector;
+e_vector = data.e_vector;
 t_vector = data.t_vector;
 N_modes = data.N_modes;
 
@@ -32,7 +33,7 @@ if n == 1
     for i = 1:N
         indices = (N_modes*i-(N_modes-1)):(N_modes*i);
         % Elastic Arch
-        deltaL = (b_vector/2).^2;
+        deltaL = (b_vector(i)/2).^2;
         sum1 = sum(((1:1:N_modes).^2.*A(indices).'.^2).');
         
         % Write the equation for the first mode
@@ -53,7 +54,7 @@ else
         % Elastic Arch
         indices = (N_modes*i-(N_modes-1)):(N_modes*i);
         % Elastic Arch
-        deltaL = (b_vector/2).^2;
+        deltaL = (b_vector(i)/2).^2;
         sum1 = sum(((1:1:N_modes).^2.*A(indices,:).'.^2).');
 
         for j = 1:N_modes
