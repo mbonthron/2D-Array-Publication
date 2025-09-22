@@ -121,7 +121,7 @@ for arch_num=1:N
         node_intersect = hinge_L + node_projection*axis_vector;
 
         % Store the 'y' value in pixels
-        sign_of_height = cross([node_vector-node_projection*axis_vector, 0],[node_projection*axis_vector,0]); % Get sign from cross product
+        sign_of_height = -1*cross([node_vector-node_projection*axis_vector, 0],[node_projection*axis_vector,0]); % Get sign from cross product
         picture_points_height(arch_num,i) = mm_per_pixel * norm(approx_center - node_intersect)*sign(sign_of_height(3)) % Accounts for both possibilities of directionality 
         
         % Store the 'x' value of the point in UL parameters
