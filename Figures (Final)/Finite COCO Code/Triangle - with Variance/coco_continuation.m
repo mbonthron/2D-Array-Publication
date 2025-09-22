@@ -15,9 +15,9 @@ data.mu = 1;
 data.sigma = 0.1;
 data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
-data.variance = [1 1.05 0.98]';
+% data.variance = [1 1.05 0.98]';
 
-% data.variance = [1 1 1]';
+data.variance = [1 1.15 1.15]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -30,8 +30,8 @@ computational_domain = [-0.01 0.125*pi];
 UZpoint = [0.025 0.050 0.075 0.1]*pi;
 
 iterations_max = 5000;
-h_min = 0.5*0.0005;
-h_max = 0.5*0.001;
+h_min = 0.0005;
+h_max = 0.001;
 
 % Initial Guess for Continuation
 Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
