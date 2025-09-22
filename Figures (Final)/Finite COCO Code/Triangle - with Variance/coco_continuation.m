@@ -12,12 +12,12 @@ data.e_vector = 0*[1 1 1];
 rng('default')
 data.mu = 1;
 % data.sigma = 0.0183;
-data.sigma = 0.1;
+data.sigma = 0.0;
 data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
 % data.variance = [1 1.05 0.98]';
 
-data.variance = [1 1.1 1.1]';
+data.variance = [1.1328 1.0884 1]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -30,8 +30,8 @@ data.computational_domain = [-0.01 0.125*pi];
 data.UZpoint = [0.025 0.050 0.075 0.1]*pi;
 
 data.iterations_max = 5000;
-data.h_min = 0.0005;
-data.h_max = 0.001;
+data.h_min = 0.5*0.0005;
+data.h_max = 0.5*0.001;
 
 % Initial Guess for Continuation
 Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
@@ -48,6 +48,7 @@ coco(prob,'vtriangle1',[],1,data.parameter_names,data.computational_domain)
 
 %% BP1 
 continue_from_BP('vtriangle1',1,'vtriangle1-1',data)
+
 
 %% BP2
 continue_from_BP('vtriangle1',2,'vtriangle1-2',data)
