@@ -25,7 +25,7 @@ scaleFactor     = calibDistReal / calibDistPixels;
 disp(['Calibration factor = ', num2str(scaleFactor), ' units/pixel']);
 
 %% --- Vertex definition ---
-numVerts = input('Enter the number of vertices: ');
+numVerts = data.N;
 
 verts = zeros(numVerts,2);
 
@@ -101,4 +101,5 @@ T = table((1:numSides)', sideLengthsPixels, sideLengthsReal, ...
 disp(T);
 
 exportgraphics(gcf,file_name+" - Annotated.png")
-save(file_name+" - Measurement.mat","T")
+
+save(file_name+" - Measurement.mat","T","verts")

@@ -3,7 +3,7 @@ file_name = 'DSCN2886';
 im_OG = imread(file_name+".jpg");
 
 
-run("initialize_triangle.m")
+run("initialize_simple_chain.m")
 
 %% --- Check if the image should be inverted ---
 if check_if_dark(im_OG)
