@@ -1,5 +1,5 @@
 % Load image
-file_name = 'DSCN3054';
+file_name = 'DSCN3058';
 im_OG = imread(file_name+".jpg");
 
 
@@ -85,7 +85,7 @@ for i = 1:length(left)
     sideLengthsReal(i) = dPix * scaleFactor;
 
     % Plot the edge axis
-    % plot([p1(1) p2(1)], [p1(2) p2(2)], 'g-', 'LineWidth', 2);
+    plot([p1(1) p2(1)], [p1(2) p2(2)], 'g-', 'LineWidth', 2);
 
     mid = (p1+p2)/2; % midpoint of side
 

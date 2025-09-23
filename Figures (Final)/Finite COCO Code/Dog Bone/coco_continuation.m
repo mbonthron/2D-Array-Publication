@@ -41,19 +41,8 @@ prob = coco_set(prob,'cont','h_max',data.h_max,'h_min',data.h_min);
 coco(prob,'dogbone0',[],1,data.parameter_names,data.computational_domain)
 
 %% Since we detected HB points - rewrite those as UZ to continue from
-bd = coco_bd_read('dogbone0');
-HBlbls = coco_bd_labs('dogbone0', 'HB');
+add_UZ_to_HB_points('dogbone0',prob,'dogbone1',data)
 
-bcrits = zeros(1,length(HBlbls));
-
-for k = 1:length(HBlbls)
-    bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
-end
-
-prob = coco_add_event(prob,'UZ','b',bcrits);
-prob = coco_add_event(prob,'UZ','b',data.UZpoint);
-
-coco(prob,'dogbone1',[],1,data.parameter_names,data.computational_domain)
 %% BP1 
 continue_from_BP('dogbone1',1,'dogbone1-1',data)
 

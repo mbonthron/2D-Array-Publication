@@ -14,7 +14,8 @@ data.mu = 1;
 data.sigma = 0;
 data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
-data.variance = [1.5038    1.5075    1.4039    1.3516    1.2834    1.0000]';
+data.variance = [1.0431    1.1864    1.1916    1.0756    1.0525    1.0000]';
+data.variance = 0.25*(data.variance-1)+data.variance;
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -42,20 +43,6 @@ prob = coco_set(prob,'cont','h_max',data.h_max,'h_min',data.h_min);
 
 coco(prob,'hexagon0',[],1,data.parameter_names,data.computational_domain)
 
-%% Since we detected HB points - rewrite those as UZ to continue from
-bd = coco_bd_read('hexagon0');
-HBlbls = coco_bd_labs('hexagon0', 'HB');
-
-bcrits = zeros(1,length(HBlbls));
-
-for k = 1:length(HBlbls)
-    bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
-end
-
-prob = coco_add_event(prob,'UZ','b',bcrits);
-prob = coco_add_event(prob,'UZ','b',data.UZpoint);
-
-coco(prob,'hexagon1',[],1,data.parameter_names,data.computational_domain)
 %% BP1 
 continue_from_BP('hexagon1',1,'hexagon1-1',data)
 
@@ -68,13 +55,23 @@ continue_from_BP('hexagon1',3,'hexagon1-3',data)
 %% BP4
 continue_from_BP('hexagon1',4,'hexagon1-4',data)
 
+%% BP5
+continue_from_BP('hexagon1',5,'hexagon1-5',data)
 
+%% BP6
+continue_from_BP('hexagon1',6,'hexagon1-6',data)
 
-% %% HB1
-% continue_from_UZ('hexagon1',1,'hexagon1-5',data)
-% 
-% %% HB2
-% continue_from_UZ('hexagon1',2,'hexagon1-6',data)
+%% BP7
+continue_from_BP('hexagon1',7,'hexagon1-7',data)
+
+%% BP8
+continue_from_BP('hexagon1',8,'hexagon1-8',data)
+
+%% BP9
+continue_from_BP('hexagon1',9,'hexagon1-9',data)
+
+%% BP10
+continue_from_BP('hexagon1',10,'hexagon1-10',data)
 
 %% Plot all the Results COCO
 idx1 = 1;
@@ -89,6 +86,10 @@ coco_plot_bd(theme1, 'hexagon1-3'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'hexagon1-4'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'hexagon1-5'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'hexagon1-6'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'hexagon1-7'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'hexagon1-8'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'hexagon1-9'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'hexagon1-10'     ,'x',idx1,'x',idx2,'b')
 
 
 view(3); grid();
