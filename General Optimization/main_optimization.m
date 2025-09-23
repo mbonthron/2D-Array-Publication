@@ -70,7 +70,7 @@ for t_idx = 1:length(tvals)
     bpoints = OG_bpoints;
     
     runs_exist = 1;
-    troubleshooting_flag = 1;
+    troubleshooting_flag = 0;
     for b = bpoints
         if ~isfile("COCO mat files/"+data.shape_name + " b = "+ num2str(round(b/pi,4)) +" pi t = "+num2str(round(t/pi,4)) +" pi.mat")
             runs_exist = 0;
