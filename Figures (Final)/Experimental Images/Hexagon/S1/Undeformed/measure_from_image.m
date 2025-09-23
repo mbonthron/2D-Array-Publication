@@ -1,9 +1,9 @@
 % Load image
-file_name = 'DSCN2886';
+file_name = 'DSCN3054';
 im_OG = imread(file_name+".jpg");
 
 
-run("initialize_triangle.m")
+run("initialize_hexagon.m")
 
 %% --- Check if the image should be inverted ---
 if check_if_dark(im_OG)
