@@ -66,3 +66,52 @@ xlim([-0.1 0.1]);
 ylim([-0.05 0.05])
 zlim([0 0.1])
 
+
+%% Make the bifurcation diagram for the figure
+% Run 1
+bd1 = coco_bd_read('single_arch1');
+a_data = bd1(2:end,19);
+
+b_run1  = cellfun(@(x) x(1),bd1(2:end,8));
+a1_run1 = cellfun(@(x) x(1),a_data);
+
+eigs = bd1(2:end,15);
+lambda1 = cellfun(@(x) max(real(x)),eigs);
+
+
+% Run 2
+bd2 = coco_bd_read('single_arch1-1');
+a_data = bd2(2:end,19);
+
+b_run2  = cellfun(@(x) x(1),bd2(2:end,8));
+a1_run2 = cellfun(@(x) x(1),a_data);
+
+eigs = bd2(2:end,15);
+lambda2 = cellfun(@(x) max(real(x)),eigs);
+
+%
+[a1_run1_stab,a1_run1_unst] = separate(a1_run1,lambda1);
+[a1_run2_stab,a1_run2_unst] = separate(a1_run2,lambda2);
+
+
+deltaL_run1 = sqrt(b_run1 / 2);
+deltaL_run2 = sqrt(b_run2 / 2);
+
+%%
+L_dimensional = 100;
+
+f = figure(1); clf; hold on
+f.Units = "inches";
+f.Position(3:4) = 1.05*[1.35 0.75];
+plot(deltaL_run1*100/pi,a1_run1_stab*100/pi,"k-")
+plot(deltaL_run1*100/pi,a1_run1_unst*100/pi,"r-")
+
+plot(deltaL_run2*100/pi,a1_run2_stab*100/pi,"k-")
+plot(deltaL_run2*100/pi,a1_run2_unst*100/pi,"r-")
+
+% xticks([])
+% yticks([])
+
+xlabel("$\Delta L$ - [mm]")
+ylabel("$b$ - [mm]")
+set(gca,'FontSize',10)
