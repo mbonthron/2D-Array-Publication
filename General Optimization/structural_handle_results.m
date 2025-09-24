@@ -20,10 +20,15 @@ connected_count = 0;
 asymmetric_count = 0;
 prohibiting_walls_count =  0;
 
+unconnected_systems = [];
+prohib_walls_systems = [];
+
 for count = 0:(m-2)
     % Count the number of connected systems
     if results{count+2,connected_idx} == 1
         connected_count = connected_count + 1;
+    else
+        unconnected_systems = [unconnected_systems count];
     end
 
     % Count the number of system with asymmetric wells
@@ -74,6 +79,8 @@ for count = 0:(m-2)
                 prohibiting_walls_count2 = prohibiting_walls_count2 + 1;
                 
                 check_out = [check_out ; count];
+            else
+                prohib_walls_systems = [prohib_walls_systems count];
             end
         end
     end

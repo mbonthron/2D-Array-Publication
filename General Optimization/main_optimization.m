@@ -70,14 +70,14 @@ for t_idx = 1:length(tvals)
     bpoints = OG_bpoints;
     
     runs_exist = 1;
-    troubleshooting_flag = 1;
+    troubleshooting_flag = 0;
     for b = bpoints
         if ~isfile("COCO mat files/"+data.shape_name + " b = "+ num2str(round(b/pi,4)) +" pi t = "+num2str(round(t/pi,4)) +" pi.mat")
             runs_exist = 0;
         end
     end
     if ~runs_exist || troubleshooting_flag
-        [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints,-1); %close all;
+        [data,run_max_E_per_b,bpoints] = general_COCO(data, bpoints,0); %close all;
     
     end
 end

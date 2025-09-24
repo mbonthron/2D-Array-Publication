@@ -65,13 +65,15 @@ for j = 1:frames
         horiz_length = sqrt((y_right-y_left)^2+(x_right-x_left)^2);
     
         % Take the portion of A that corresponds to the ith arch
-        Apart = A(N_modes*i-(N_modes - 1):N_modes*i);
+        Apart    = A(N_modes*i-(N_modes - 1):N_modes*i);
+        Apartvel = A(N_modes*N+N_modes*i-(N_modes - 1):N_modes*N+N_modes*i);
     
         % Find x, w(x) for the data
         [xi,wi] = determine_shape_from_modes(Apart,e_vector(i),horiz_length);
     
         % Determine what color to make the arch
         arch_color = find_color(wi,starting_positions{i},ending_position{i});
+        % arch_color = find_color_velocity(Apartvel);
 
         % Scale the arch (if needed)
         wi = (1/pi)*wi*(.15*pi/data.b_vector(1));
@@ -128,6 +130,22 @@ function [color] = find_color(w,w0,w1)
     color = (cur_diff/max_diff)*color1 + (1 - cur_diff/max_diff)*color2;
 end
 
+
+function [color] = find_color_velocity(Adotpart)
+    % Given starting position w0 and ending position w1
+    % determine what the color ought to be based on how close
+    % it is between the two
+    velocity = norm(Adotpart);
+    maxvelocity  = 1e-3;
+
+    color1 = [229 75 75]/255;   % Red representing unstable
+    % color2 = [58 83 164]/255;    % Blue representing stable
+    color2 = 0.25*[1 1 1];
+    if velocity > maxvelocity
+        velocity = maxvelocity;
+    end
+    color = (velocity/maxvelocity)*color1 + (1 - velocity/maxvelocity)*color2;
+end
 
 
 function [f] = just_scatter(data)
