@@ -75,13 +75,15 @@ data.A0hat = Ahat(:,select_branch)';
 clear A
 
 % Now we have the a values for time integration
-T_end = min([2000*sqrt(beta/.1)-400,10000]);
+% T_end = min([2000*sqrt(beta/.1)-400,10000]);
+
+omega = 1.1827e-06;
 
 data.impose_displacement_at(data.arches_to_displace) = 0.49;
-data.displacement_omega(data.arches_to_displace) = 2*pi/T_end;
+data.displacement_omega(data.arches_to_displace) = omega;
 data.beta = beta;
 
-% T_end = 2*min([2000*sqrt(beta/.1)-400,10000]);
+T_end = pi/omega;
 
 
 %% Run Time Integration
