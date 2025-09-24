@@ -40,7 +40,7 @@ data = determine_coefficient_matrix(data);
 data = determine_starting_vals(data);
 
 %% Run Time Integration
-[t,A] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 4*50000],data.A0);
+[t,A] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 50000],data.A0);
 
 %% Visualize the Results
 data.frames = 200;

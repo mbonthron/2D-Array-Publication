@@ -77,7 +77,7 @@ clear A
 % Now we have the a values for time integration
 T_end = min([2000*sqrt(beta/.1)-400,10000]);
 
-data.impose_displacement_at(data.arches_to_displace) = 0.5;
+data.impose_displacement_at(data.arches_to_displace) = 0.49;
 data.displacement_omega(data.arches_to_displace) = 2*pi/T_end;
 data.beta = beta;
 
@@ -92,7 +92,7 @@ data = determine_modes_to_skip(data);
 [t,Ahat] = ode45(@(t,A) arbitrary_grid_ODE(t,A,data),[0 T_end],data.A0hat);
 A = determine_A_from_Ahat(Ahat, data);
 
-data.frames = 1000;
+data.frames = 100;
 data.file_name = "test";
 plot_system_over_time(t,A,data)
 
