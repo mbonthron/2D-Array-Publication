@@ -103,14 +103,16 @@ L_dimensional = 100;
 f = figure(1); clf; hold on
 f.Units = "inches";
 f.Position(3:4) = 1.05*[1.35 0.75];
-plot(deltaL_run1*100/pi,a1_run1_stab*100/pi,"k-")
-plot(deltaL_run1*100/pi,a1_run1_unst*100/pi,"r-")
+plot(deltaL_run1*100/pi,a1_run1_stab*100/pi,"k-","DisplayName","Stable")
+plot(deltaL_run1*100/pi,a1_run1_unst*100/pi,"r-","DisplayName","Unstable")
 
-plot(deltaL_run2*100/pi,a1_run2_stab*100/pi,"k-")
-plot(deltaL_run2*100/pi,a1_run2_unst*100/pi,"r-")
+plot(deltaL_run2*100/pi,a1_run2_stab*100/pi,"k-","HandleVisibility","off")
+plot(deltaL_run2*100/pi,a1_run2_unst*100/pi,"r-","HandleVisibility","off")
 
 % xticks([])
 % yticks([])
+
+legend()
 
 xlabel("$\Delta L$ - [mm]")
 ylabel("$b$ - [mm]")

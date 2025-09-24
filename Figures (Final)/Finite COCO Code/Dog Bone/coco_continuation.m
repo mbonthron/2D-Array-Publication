@@ -79,13 +79,13 @@ theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'dogbone1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'dogbone1-1'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'dogbone1-2'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-3'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-4'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-5'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-6'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-7'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-3'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-4'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-5'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-6'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-7'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
 
 view(3); grid();
 xlim([-0.1 0.1]);

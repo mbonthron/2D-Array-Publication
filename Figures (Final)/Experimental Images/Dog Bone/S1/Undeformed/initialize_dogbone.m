@@ -1,9 +1,9 @@
 xx = cos(pi/6);
 yy = sin(pi/6);
-points = [-xx yy;
-          xx yy;
-          0 0;
+points = [0 0;
           0 -1;
+          -xx yy;
+          xx yy;
           -xx -1-yy
           xx -1-yy];
 
