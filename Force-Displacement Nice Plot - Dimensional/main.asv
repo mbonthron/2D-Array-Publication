@@ -16,7 +16,7 @@ data.plot_grids = 1;
 b_val  = .1*pi;
 t_val  = .01*pi;
 data.arches_to_displace = [1];
-beta = 0.1;
+beta = 0.05;
 
 %% Run Continuation to Get Stable Configurations at each b
 run('initialize_single_arch.m')
@@ -109,8 +109,8 @@ force_rxn    = Q;
 energy       = cumtrapz(displacement,force_rxn');
 
 %%
-string_name = "single arch - beta = "+sprintf("%.1f",beta) + " eta = "+sprintf("%.2f",eta)
-save()
+string_name = "single arch - beta = "+sprintf("%.2f",beta) + " eta = "+sprintf("%.2f",eta) + " alpha = "+sprintf("%.1f",alpha_D*1000)+ "mms.mat";
+save(string_name,"displacement","Q","energy","t","A")
 
 %% Save the data
 figure(100); clf; hold on; 

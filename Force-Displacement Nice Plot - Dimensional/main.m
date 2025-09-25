@@ -16,7 +16,7 @@ data.plot_grids = 1;
 b_val  = .1*pi;
 t_val  = .01*pi;
 data.arches_to_displace = [1];
-beta = 0.1;
+beta = .05;
 
 %% Run Continuation to Get Stable Configurations at each b
 run('initialize_single_arch.m')
@@ -45,7 +45,7 @@ for k = 1:length(UZ)
     %end
 end
 
-% close all
+close all
 
 %% Recover the missing modes from the system
 run('physcial_constants.m')
@@ -62,7 +62,7 @@ data.A0_D   = data.A0*data.L/pi;
 clear A
 
 % Indentor Speed
-alpha_D = .1/1000; % m/s
+alpha_D = 1/1000; % m/s
 eta     = 0.49;  % Where on the arch to impose the displacement
 
 data.impose_displacement_at(data.arches_to_displace) = eta;    % eta value
@@ -96,6 +96,7 @@ A = determine_A_from_Ahatprime_FD(Ahatprime', data,t')';
 
 data.frames = 100;
 data.file_name = "test";
+close all
 plot_system_over_time(t,A,data)
 
 %% Recover Height and Force information
@@ -109,11 +110,11 @@ force_rxn    = Q;
 energy       = cumtrapz(displacement,force_rxn');
 
 %%
-string_name = "single arch - beta = "+sprintf("%.1f",beta) + " eta = "+sprintf("%.2f",eta) + " alpha = "+sprintf("%.1f",alpha_D*1000)+ "mms.mat";
+string_name = "single arch - beta = "+sprintf("%.2f",beta) + " eta = "+sprintf("%.2f",eta) + " alpha = "+sprintf("%.1f",alpha_D*1000)+ "mms.mat";
 save(string_name,"displacement","Q","energy","t","A")
 
 %% Save the data
-figure(100); clf; hold on; 
+figure(100); hold on; 
 plot(displacement,Q,"LineWidth",3)
 grid()
 xlim([0 2*data.initial_height])
@@ -121,7 +122,7 @@ xlabel("Displacement - [mm]")
 ylabel("Force -[N]")
 set(gca,'FontSize',18)
 
-figure(2); clf; hold on
-plot(displacement,energy,"LineWidth",3,"Color",[0.7 0.2 0.3]);
+figure(2);  hold on
+plot(displacement,energy,"LineWidth",3);
 xlim([0 2*data.initial_height])
 % grid()
