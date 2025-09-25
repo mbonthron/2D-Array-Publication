@@ -75,7 +75,8 @@ A0hatprime_D = A0hatprime_D+1e-10*rand(size(A0hatprime_D));
 
 %% Run Time Integration
 
-T_end = 1.3*2*data.initial_height / alpha_D;
+% T_end = 1.3*2*data.initial_height / alpha_D;
+T_end = 15;
 
 tic
 [t,Ahatprime] = ode45(@(t,A) arbitrary_grid_ODE_FD(t,A,data),linspace(0,T_end,500),A0hatprime_D);
