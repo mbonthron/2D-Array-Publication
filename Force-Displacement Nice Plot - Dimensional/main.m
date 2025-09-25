@@ -16,17 +16,17 @@ data.plot_grids = 1;
 b_val  = .1*pi;
 t_val  = .01*pi;
 data.arches_to_displace = [1];
-beta = .05;
+beta = .5;
 
 %% Run Continuation to Get Stable Configurations at each b
-run('initialize_single_arch.m')
-run_name = 'singlearch1-1';
+run('initialize_dogbone.m')
+run_name = 'dogbone1-2';
 
 data.t_vector = t_val*ones(1,data.N);
 
 %% Need to pick a starting configuration from COCO
 plot_shape_from_COCO(run_name,data)
-UZ_instance = 8;
+UZ_instance = 1;
 
 bd = coco_bd_read(run_name);
 UZ = coco_bd_labs(run_name, 'UZ');
@@ -63,7 +63,7 @@ clear A
 
 % Indentor Speed
 alpha_D = 1/1000; % m/s
-eta     = 0.49;  % Where on the arch to impose the displacement
+eta     = 0.75;  % Where on the arch to impose the displacement
 
 data.impose_displacement_at(data.arches_to_displace) = eta;    % eta value
 data.eta = data.impose_displacement_at(data.arches_to_displace);
@@ -84,7 +84,7 @@ A0hatprime_D = determine_Ahatprime_from_A_FD(data.A0_D,data);
 
 %% Run Time Integration
 
-T_end = 1.1*2*data.initial_height / alpha_D;
+T_end = 1.3*2*data.initial_height / alpha_D;
 
 tic
 [t,Ahatprime] = ode45(@(t,A) arbitrary_grid_ODE_FD(t,A,data),linspace(0,T_end,500),A0hatprime_D);
@@ -110,11 +110,11 @@ force_rxn    = Q;
 energy       = cumtrapz(displacement,force_rxn');
 
 %%
-string_name = "single arch - beta = "+sprintf("%.2f",beta) + " eta = "+sprintf("%.2f",eta) + " alpha = "+sprintf("%.1f",alpha_D*1000)+ "mms.mat";
+string_name = "dogbone s2 - beta = "+sprintf("%.2f",beta) + " eta = "+sprintf("%.2f",eta) + " alpha = "+sprintf("%.1f",alpha_D*1000)+ "mms.mat";
 save(string_name,"displacement","Q","energy","t","A")
 
 %% Save the data
-figure(100); hold on; 
+figure(100); clf; hold on; 
 plot(displacement,Q,"LineWidth",3)
 grid()
 xlim([0 2*data.initial_height])
@@ -122,7 +122,9 @@ xlabel("Displacement - [mm]")
 ylabel("Force -[N]")
 set(gca,'FontSize',18)
 
-figure(2);  hold on
+figure(2); clf;  hold on
 plot(displacement,energy,"LineWidth",3);
 xlim([0 2*data.initial_height])
-% grid()
+xlabel("Displacement - [mm]")
+ylabel("Energy -[Nm]")
+grid()

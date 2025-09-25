@@ -18,7 +18,7 @@ RHS = RHS + [beta.*A(:,3*N+1:end)' ; zeros(height(RHS) - 3*N,length(t)) ] ;
 % Include term relating first and second derivatives for imposed disp
 displacement_count = 0;
 for i = 1:length(data.impose_displacement_at)
-    RHS(end - length(data.impose_displacement_at) + 1 + displacement_count,:) = data.b_vector(i)*data.displacement_omega^2*cos(data.displacement_omega*t);
+    RHS(end - length(data.impose_displacement_at) + 1 + displacement_count,:) = 0;
     displacement_count = displacement_count + 1;
 end
 
