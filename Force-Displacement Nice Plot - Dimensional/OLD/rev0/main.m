@@ -1,0 +1,106 @@
+%% Clear Everything so there are no stragglers
+clear; clc; close all
+fprintf("THE SYSTEM MUST BE SET UP SO THE FIRST ARCH IS THE ARCH YOU WISH TO CONTROL")
+%% Add the Paths to the Required Functions
+restoredefaultpath
+startup
+addpath("functions")
+addpath("visualize")
+
+%% Create Empty Data Structure to be Populated
+data = struct();
+data.N_modes = 3;   % Number of modes used to describe the system
+data.N_cells = 1;
+data.plot_grids = 1;
+
+b_val  = .1*pi;
+t_val  = .01*pi;
+data.arches_to_displace = [1];
+beta = 1;
+
+
+%% Run Continuation to Get Stable Configurations at each b
+run('initialize_single_arch.m')
+run_name = 'singlearch1-1';
+
+data.t_vector = t_val*ones(1,data.N);
+
+%% Need to pick a starting configuration, maybe from COCO?
+
+plot_shape_from_COCO(run_name,data)
+UZ_instance = 8;
+
+bd = coco_bd_read(run_name);
+UZ = coco_bd_labs(run_name, 'UZ');
+
+% Constraint length
+C = data.constraint_count;
+bcrits      = zeros(1,length(UZ));
+Ahat        = zeros(2*(data.N*data.N_modes-C),length(UZ));
+stability   = zeros(1,length(UZ));
+
+count = 1;
+for k = 1:length(UZ)
+    %if coco_bd_val(bd,UZ(k),'b') == b_val
+        Ahat(:,count)    = coco_bd_val(bd,UZ(k),'x');
+        count = count + 1;
+    %end
+end
+
+%% Recover the missing modes from the system
+run('physcial_constants.m')
+data.b = b_val;
+data.V = length(data.points);
+
+data = initialize_time_integration(data);
+
+A = determine_A_from_Ahat(Ahat',data)';
+
+data.A0     = A(:,UZ_instance);
+data.A0_D   = data.A0*data.L/pi;
+
+clear A
+
+% Indentor Speed
+alpha_D = 1/1000; % m/s
+
+data.impose_displacement_at(data.arches_to_displace) = 0.35;    % eta value
+data.eta = data.impose_displacement_at(data.arches_to_displace);
+data.alpha = alpha_D;
+
+data.beta = beta;
+
+data = determine_coefficient_matrix_2(data);
+data = dimensionalize_coefficient_matrix(data);
+data = determine_starting_vals(data);
+data = determine_modes_to_skip_FD(data);
+
+%% Find Ahatprime
+A0hatprime_D = determine_Ahatprime_from_A_FD(data.A0_D,data);
+
+%% Run Time Integration
+
+T_end = 2*data.initial_height / alpha_D;
+
+tic
+[t,Ahatprime] = ode45(@(t,A) arbitrary_grid_ODE_FD(t,A,data),linspace(0,T_end,500),A0hatprime_D);
+toc
+
+
+%%
+A = determine_A_from_Ahatprime_FD(Ahatprime', data,t')';
+
+data.frames = 100;
+data.file_name = "test";
+plot_system_over_time(t,A,data)
+
+%% Recover Height and Force information
+M_Q = determine_M_Q(t,A,data);
+force_idx = data.N_modes*data.N+data.V+data.constraint_count+1;
+Q = M_Q(force_idx,:);
+
+%%
+figure(1); hold on
+plot(t,Q);
+grid()
+
