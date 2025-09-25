@@ -4,7 +4,6 @@ function [solution] = determine_M_Q(t,A,data)
 
 beta = data.beta;
 N = data.N;
-Q = data.force_magnitude;
 
 %% Construct the vector composing of dv/dan
 RHS = zeros(height(data.coeff_matrix),length(t));
