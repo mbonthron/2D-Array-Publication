@@ -1,5 +1,6 @@
+clearvars
 % Load image
-file_name = 'DSCN2886';
+file_name = 'DSCN2894_rotated';
 im_OG = imread(file_name+".jpg");
 
 
@@ -25,7 +26,7 @@ scaleFactor     = calibDistReal / calibDistPixels;
 disp(['Calibration factor = ', num2str(scaleFactor), ' units/pixel']);
 
 %% --- Vertex definition ---
-numVerts = data.N;
+numVerts = length(data.points);
 
 verts = zeros(numVerts,2);
 
