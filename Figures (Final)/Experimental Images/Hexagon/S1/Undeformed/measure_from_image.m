@@ -1,5 +1,5 @@
 % Load image
-file_name = 'DSCN3058';
+file_name = 'DSCN3058_Terrence';
 im_OG = imread(file_name+".jpg");
 
 

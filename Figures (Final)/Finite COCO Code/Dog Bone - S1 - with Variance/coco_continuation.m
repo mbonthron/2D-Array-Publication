@@ -12,7 +12,12 @@ data.e_vector = 0*[1 1 1 1 1];
 rng('default')
 data.mu = 1;
 data.sigma = 0;
-data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
+%data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
+%data.variance = [1.0444 .9023 1 .9422 1.0783]';
+%data.variance = [1.0444 .9723 1 .9722 1.0383]';
+%data.variance = [1 1 1 1 1]';
+data.variance = [.97 1 1 1 1]';
+
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -21,8 +26,8 @@ f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
-data.computational_domain = [-0.01 0.125*pi];
-data.UZpoint = [0.025 0.050 0.075 0.1]*pi;
+data.computational_domain = [-0.01 0.2*pi];
+data.UZpoint = [0.025 0.050 0.075 0.12482]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
