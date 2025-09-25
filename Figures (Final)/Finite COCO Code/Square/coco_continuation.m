@@ -12,61 +12,60 @@ data.t_vector = t_val*[1 1 1 1];
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
 % Set up for COCO specific things
-parameter_names = {'b' 't'};
-initial_parameter_values = [0;t_val];
+data.parameter_names = {'b' 't'};
+data.initial_parameter_values = [0;t_val];
 
-computational_domain = [-0.01 0.125*pi];
-UZpoint = [0.025 0.050 0.075 0.1]*pi;
+data.computational_domain = [-0.01 0.125*pi];
+data.UZpoint = [0.025 0.050 0.075 0.1]*pi;
 
-iterations_max = 5000;
-h_min = 0.0005;
-h_max = 0.001;
+data.iterations_max = 5000;
+data.h_min = 0.0005;
+data.h_max = 0.001;
 
 % Initial Guess for Continuation
 Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
 
 %% Run the Initial Continuation Problem
 prob = coco_prob();
-prob = ode_isol2ep(prob,'',f,Ahat0,parameter_names,initial_parameter_values);
-prob = coco_set(prob,'cont','ItMX', iterations_max);
+prob = ode_isol2ep(prob,'',f,Ahat0,data.parameter_names,data.initial_parameter_values);
+prob = coco_set(prob,'cont','ItMX', data.iterations_max);
 prob = coco_set(prob,'cont','NPR',0);
-prob = coco_set(prob,'cont','h_max',h_max,'h_min',h_min);
+prob = coco_set(prob,'cont','h_max',data.h_max,'h_min',data.h_min);
+prob = coco_add_event(prob,'UZ','b',data.UZpoint);
 
-coco(prob,'square0',[],1,parameter_names,computational_domain)
+coco(prob,'square0',[],1,data.parameter_names,data.computational_domain)
 
 %% Since we detected HB points - rewrite those as UZ to continue from
-bd = coco_bd_read('square0');
-HBlbls = coco_bd_labs('square0', 'HB');
-
-bcrits = zeros(1,length(HBlbls));
-
-for k = 1:length(HBlbls)
-    bcrits(k) = coco_bd_val(bd,HBlbls(k),'b');
-end
-
-prob = coco_add_event(prob,'UZ','b',bcrits);
-prob = coco_add_event(prob,'UZ','b',UZpoint);
-
-coco(prob,'square1',[],1,parameter_names,computational_domain)
-
+add_UZ_to_HB_points('square0',prob,'square1',data)
 
 %% BP 1
-run('square1_1.m')
+continue_from_BP('square1',1,'square1-1',data)
 
 %% BP 2
-run('square1_2.m')
+continue_from_BP('square1',2,'square1-2',data)
+
+add_UZ_to_HB_points('square1-2',prob,'square1-2',data)
+continue_from_UZ('square1-2',1,'square1-2-1',data)
+continue_from_UZ('square1-2',2,'square1-2-2',data)
 
 %% BP 3
-run('square1_3.m')
+continue_from_BP('square1',3,'square1-3',data)
 
 %% BP4
-run('square1_4.m')
+continue_from_BP('square1',4,'square1-4',data)
+
+add_UZ_to_HB_points('square1-4',prob,'square1-4',data)
+continue_from_UZ('square1-4',1,'square1-4-1',data)
+continue_from_UZ('square1-4',2,'square1-4-2',data)
+
 
 %% HB 1
-run('square1_5.m')
+continue_from_UZ('square1',1,'square1-5',data)
+continue_from_BP('square1-5',1,'square1-5-1',data)
+continue_from_BP('square1-5',2,'square1-5-2',data)
 
 %% HB 2
-run('square1_6.m')
+continue_from_UZ('square1',2,'square1-6',data)
 
 %% Plot all the Results COCO
 idx1 = 1;
@@ -90,13 +89,6 @@ coco_plot_bd(theme1, 'square1-5'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'square1-5-1'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'square1-5-2'      ,'x',idx1,'x',idx2,'b')
 
-coco_plot_bd(theme1, 'square1-5-3'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-5-3-1'    ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-5-3-2'    ,'x',idx1,'x',idx2,'b')
-
-
-coco_plot_bd(theme1, 'square1-5-4'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-5-5'      ,'x',idx1,'x',idx2,'b')
 
 coco_plot_bd(theme1, 'square1-6'      ,'x',idx1,'x',idx2,'b')
 

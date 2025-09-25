@@ -21,7 +21,7 @@ f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
-data.computational_domain = [-0.01 0.125*pi];
+data.computational_domain = [-0.01 0.2*pi];
 data.UZpoint = [0.025 0.050 0.075 0.1]*pi;
 
 data.iterations_max = 5000;
@@ -94,15 +94,15 @@ lambda2 = cellfun(@(x) max(real(x)),eigs);
 [a1_run2_stab,a1_run2_unst] = separate(a1_run2,lambda2);
 
 
-deltaL_run1 = sqrt(b_run1 / 2);
-deltaL_run2 = sqrt(b_run2 / 2);
+deltaL_run1 = (b_run1 / 2).^2;
+deltaL_run2 = (b_run2 / 2).^2;
 
 %%
 L_dimensional = 100;
 
 f = figure(1); clf; hold on
 f.Units = "inches";
-f.Position(3:4) = 1.05*[1.35 0.75];
+f.Position(3:4) = [5/3 1.05];
 plot(deltaL_run1*100/pi,a1_run1_stab*100/pi,"k-","DisplayName","Stable")
 plot(deltaL_run1*100/pi,a1_run1_unst*100/pi,"r-","DisplayName","Unstable")
 
@@ -112,7 +112,7 @@ plot(deltaL_run2*100/pi,a1_run2_unst*100/pi,"r-","HandleVisibility","off")
 % xticks([])
 % yticks([])
 
-legend()
+% legend()
 
 xlabel("$\Delta L$ - [mm]")
 ylabel("$b$ - [mm]")

@@ -85,11 +85,6 @@ toc
 %%
 A = determine_A_from_Ahatprime_FD(Ahatprime', data,t')';
 
-data.frames = 100;
-data.file_name = "test";
-close all
-plot_system_over_time(t,A,data)
-
 %% Recover Height and Force information
 M_Q = determine_M_Q(t,A,data);
 force_idx = data.N_modes*data.N+data.V+data.constraint_count+1;
@@ -103,6 +98,13 @@ energy       = cumtrapz(displacement,force_rxn');
 %%
 string_name = "dogbone s2 - beta = "+sprintf("%.2f",beta) + " eta = "+sprintf("%.2f",eta) + " alpha = "+sprintf("%.1f",alpha_D*1000)+ "mms.mat";
 save(string_name,"displacement","Q","energy","t","A")
+
+
+data.frames = 100;
+data.file_name = string_name;
+
+close all
+plot_system_over_time(t,A,data)
 
 %% Save the data
 figure(100); clf; hold on; 
