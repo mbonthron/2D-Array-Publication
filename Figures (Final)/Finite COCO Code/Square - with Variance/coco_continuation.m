@@ -18,6 +18,7 @@ data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 % data.variance = [1 1.05 0.98]';
 
 data.variance = [.9967 .9611 1 .9625]';
+%data.variance = [1 1 1 1]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -52,17 +53,28 @@ continue_from_BP('vsquare1',1,'vsquare1-1',data)
 %% BP2
 continue_from_BP('vsquare1',2,'vsquare1-2',data)
 
+add_UZ_to_HB_points('vsquare1-2',prob,'vsquare1-2',data)
+continue_from_UZ('vsquare1-2',1,'vsquare1-2-1',data)
+continue_from_UZ('vsquare1-2',2,'vsquare1-2-2',data)
+
+
 %% BP3
 continue_from_BP('vsquare1',3,'vsquare1-3',data)
 
 %% BP4
 continue_from_BP('vsquare1',4,'vsquare1-4',data)
 
-%% BP5
-continue_from_BP('vsquare1',5,'vsquare1-5',data)
+add_UZ_to_HB_points('vsquare1-4',prob,'vsquare1-4',data)
+continue_from_UZ('vsquare1-4',1,'vsquare1-4-1',data)
+continue_from_UZ('vsquare1-4',2,'vsquare1-4-2',data)
 
-%% BP6
-continue_from_BP('vsquare1',6,'vsquare1-6',data)
+%% HB 1
+continue_from_UZ('vsquare1',1,'vsquare1-5',data)
+continue_from_BP('vsquare1-5',1,'vsquare1-5-1',data)
+continue_from_BP('vsquare1-5',2,'vsquare1-5-2',data)
+
+%% HB 2
+continue_from_UZ('vsquare1',2,'vsquare1-6',data)
 
 %% Plot all the Results COCO
 idx1 = 1;
@@ -71,12 +83,23 @@ idx2 = 2;
 figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'vsquare1'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-2'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-3'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-4'      ,'x',idx1,'x',idx2,'b')
-% coco_plot_bd(theme1, 'vsquare1-5'      ,'x',idx1,'x',idx2,'b')
-% coco_plot_bd(theme1, 'vsquare1-6'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-1'        ,'x',idx1,'x',idx2,'b')
+
+coco_plot_bd(theme1, 'vsquare1-2'        ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-2-1'        ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-2-2'        ,'x',idx1,'x',idx2,'b')
+
+coco_plot_bd(theme1, 'vsquare1-3'        ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-4'        ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-4-1'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-4-2'      ,'x',idx1,'x',idx2,'b')
+
+coco_plot_bd(theme1, 'vsquare1-5'        ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-5-1'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-5-2'      ,'x',idx1,'x',idx2,'b')
+
+
+coco_plot_bd(theme1, 'vsquare1-6'      ,'x',idx1,'x',idx2,'b')
 
 
 view(3); grid();
