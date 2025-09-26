@@ -17,7 +17,7 @@ data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
 % data.variance = [1 1.05 0.98]';
 
-data.variance = [1.58 .8776 1]';
+data.variance = [1.4 .9 1]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
