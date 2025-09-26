@@ -1,5 +1,7 @@
 clear; clc
 %% 
+restoredefaultpath
+startup
 addpath("functions")
 addpath("visualize")
 
@@ -45,7 +47,8 @@ prob = coco_set(prob,'cont','NPR',0);
 prob = coco_set(prob,'cont','h_max',data.h_max,'h_min',data.h_min);
     prob = coco_add_event(prob,'UZ','b',data.UZpoint);
 
-coco(prob,'vsquare1',[],1,data.parameter_names,data.computational_domain)
+coco(prob,'vsquare0',[],1,data.parameter_names,data.computational_domain)
+add_UZ_to_HB_points('vsquare0',prob,'vsquare1',data)
 
 %% BP1 
 continue_from_BP('vsquare1',1,'vsquare1-1',data)
