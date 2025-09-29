@@ -16,7 +16,8 @@ data.sigma = 0;
 %data.variance = [1.0444 .9023 1 .9422 1.0783]';
 %data.variance = [1.0444 .9723 1 .9722 1.0383]';
 %data.variance = [1 1 1 1 1]';
-data.variance = [.97 1 1 1 1]';
+%data.variance = [.8834 .98 1 .979 .98]';
+data.variance = [.93 .999 1 .999 .999]';
 
 
 %% Define the function as the arbitrary grid ODE
@@ -27,7 +28,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.12482]*pi;
+data.UZpoint = [0.025 0.050 0.075 0.161]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -89,8 +90,8 @@ coco_plot_bd(theme1, 'dogbone1-4'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'dogbone1-5'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'dogbone1-6'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'dogbone1-7'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
 
 view(3); grid();
 xlim([-0.1 0.1]);
