@@ -17,7 +17,7 @@ data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
 % data.variance = [1 1.05 0.98]';
 
-data.variance = [.8392 .5250 1]';
+data.variance = [.5250 .8392 1]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -53,8 +53,8 @@ continue_from_BP('vtriangle1',1,'vtriangle1-1',data)
 %% BP2
 continue_from_BP('vtriangle1',2,'vtriangle1-2',data)
 
-% %% BP3
-% continue_from_BP('vtriangle1',3,'vtriangle1-3',data)
+%% BP3
+continue_from_BP('vtriangle1',3,'vtriangle1-3',data)
 % 
 % %% BP4
 % continue_from_BP('vtriangle1',4,'vtriangle1-4',data)
@@ -73,8 +73,8 @@ figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'vtriangle1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'vtriangle1-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vtriangle1-2'      ,'x',idx1,'x',idx2,'b')
-% coco_plot_bd(theme1, 'vtriangle1-3'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vtriangle1-2'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vtriangle1-3'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-4'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-5'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-6'      ,'x',idx1,'x',idx2,'b')

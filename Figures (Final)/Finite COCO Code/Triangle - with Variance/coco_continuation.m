@@ -17,7 +17,7 @@ data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
 % data.variance = [1 1.05 0.98]';
 
-data.variance = [1.59 1.50 1]';
+data.variance = [1.05 0.95 1]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -30,8 +30,8 @@ data.computational_domain = [-0.01 0.125*pi];
 data.UZpoint = [0.025 0.050 0.075 0.1]*pi;
 
 data.iterations_max = 5000;
-data.h_min = 0.5*0.0005;
-data.h_max = 0.5*0.001;
+data.h_min = 0.0005;
+data.h_max = 0.001;
 
 % Initial Guess for Continuation
 Ahat0 = zeros(2*(data.N*(data.N_modes)-data.constraint_count),1);
@@ -73,7 +73,7 @@ figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'vtriangle1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'vtriangle1-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vtriangle1-2'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vtriangle1-2'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-3'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-4'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-5'      ,'x',idx1,'x',idx2,'b')

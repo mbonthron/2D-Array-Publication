@@ -62,9 +62,15 @@ continue_from_UZ('square1-4',2,'square1-4-2',data)
 %% HB 1
 continue_from_UZ('square1',1,'square1-5',data)
 continue_from_BP('square1-5',1,'square1-5-1',data)
+
+% - Dino foot
 continue_from_BP('square1-5',2,'square1-5-2',data)
 
+%%
+[Ahat,A,b] = get_Ahat_from_coco('square1-5-2',0.1*pi,data);
+
 %% HB 2
+
 continue_from_UZ('square1',2,'square1-6',data)
 
 %% Plot all the Results COCO

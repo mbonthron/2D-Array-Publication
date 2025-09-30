@@ -13,17 +13,17 @@ rng('default')
 data.mu = 1;
 data.sigma = 0;
 %data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
-data.variance = [1 .9935]';
+data.variance = [1 .9]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
 % Set up for COCO specific things
 data.parameter_names = {'b' 't'};
-data.initial_parameter_values = [0;t_val];
+data.initial_parameter_values = [0 ; t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.12837]*pi;
+data.UZpoint = [0.025 0.050 0.075 0.10]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -52,10 +52,16 @@ continue_from_BP('simple_chain1',2,'simple_chain1-2',data)
 continue_from_BP('simple_chain1',3,'simple_chain1-3',data)
 
 %% BP3
-continue_from_BP('simple_chain1',4,'simple_chain1-3',data)
+continue_from_BP('simple_chain1',4,'simple_chain1-4',data)
 
 %% BP3
-continue_from_BP('simple_chain1',5,'simple_chain1-3',data)
+continue_from_BP('simple_chain1',5,'simple_chain1-5',data)
+
+%%
+load("Frustrated State.mat")
+start_coco_from_another_point(Ahat,b,'simple_chain1-6',data)
+
+start_coco_from_another_point(-1*Ahat,b,'simple_chain1-7',data)
 
 %% Plot all the Results COCO
 idx1 = 1;
@@ -65,8 +71,12 @@ figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'simple_chain1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'simple_chain1-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'simple_chain1-2'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'simple_chain1-3'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'simple_chain1-2'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'simple_chain1-3'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'simple_chain1-4'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'simple_chain1-5'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'simple_chain1-6'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'simple_chain1-7'      ,'x',idx1,'x',idx2,'b')
 
 view(3); grid();
 xlim([-0.1 0.1]);

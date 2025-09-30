@@ -64,7 +64,7 @@ for i = 1:N
     % Find x, w(x) for the data
     [xi,wi] = determine_shape_from_modes(Apart,e_vector(i),horiz_length);
     
-    % Scale by pi so the x and y axis are tru to scale
+    % Scale by pi so the x and y axis are true to scale
     wi = (1/pi)*wi;
 
     % Find the angle between the two endpoints
@@ -79,15 +79,15 @@ for i = 1:N
 end
 
 %% Add Hinges atop once more
-node_big_circle_color = 0.75*[1 1 1];
-node_big_circle_size  = 200;
-
-node_little_circle_color = 'k';
-node_little_circle_size = 50;
+% node_big_circle_color = 0.75*[1 1 1];
+% node_big_circle_size  = 200;
+% 
+% node_little_circle_color = 'k';
+% node_little_circle_size = 50;
 
 % Plot the nodes
-scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k");
-scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,"MarkerEdgeColor","k");
+% scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k");
+% scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,"MarkerEdgeColor","k");
 
 
 end

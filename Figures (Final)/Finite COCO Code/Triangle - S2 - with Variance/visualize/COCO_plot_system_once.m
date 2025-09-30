@@ -79,15 +79,15 @@ for i = 1:N
 end
 
 %% Add Hinges atop once more
-node_big_circle_color = 0.75*[1 1 1];
-node_big_circle_size  = 200;
-
-node_little_circle_color = 'k';
-node_little_circle_size = 50;
-
-% Plot the nodes
-scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k");
-scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,"MarkerEdgeColor","k");
+% node_big_circle_color = 0.75*[1 1 1];
+% node_big_circle_size  = 200;
+% 
+% node_little_circle_color = 'k';
+% node_little_circle_size = 50;
+% 
+% % Plot the nodes
+% scatter(x,y,node_big_circle_size, "MarkerFaceColor",node_big_circle_color,"MarkerEdgeColor","k");
+% scatter(x,y,node_little_circle_size, "MarkerFaceColor",node_little_circle_color,"MarkerEdgeColor","k");
 
 
 end

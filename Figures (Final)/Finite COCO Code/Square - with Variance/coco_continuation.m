@@ -19,8 +19,9 @@ data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 
 % data.variance = [1 1.05 0.98]';
 
-data.variance = [.9967 .9611 1 .9625]';
-%data.variance = [1 1 1 1]';
+% data.variance = [.9967 .9611 1 .9625]';
+data.variance = [1 .99999 .9999 .9999]';
+% data.variance = [1 1 1 1]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -48,6 +49,7 @@ prob = coco_set(prob,'cont','h_max',data.h_max,'h_min',data.h_min);
     prob = coco_add_event(prob,'UZ','b',data.UZpoint);
 
 coco(prob,'vsquare0',[],1,data.parameter_names,data.computational_domain)
+
 add_UZ_to_HB_points('vsquare0',prob,'vsquare1',data)
 
 %% BP1 
@@ -88,21 +90,21 @@ theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'vsquare1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'vsquare1-1'        ,'x',idx1,'x',idx2,'b')
 
-coco_plot_bd(theme1, 'vsquare1-2'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-2-1'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-2-2'        ,'x',idx1,'x',idx2,'b')
-
-coco_plot_bd(theme1, 'vsquare1-3'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-4'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-4-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-4-2'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-2'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-2-1'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-2-2'        ,'x',idx1,'x',idx2,'b')
+% 
+% coco_plot_bd(theme1, 'vsquare1-3'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-4'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-4-1'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-4-2'      ,'x',idx1,'x',idx2,'b')
 
 coco_plot_bd(theme1, 'vsquare1-5'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-5-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vsquare1-5-2'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-5-1'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-5-2'      ,'x',idx1,'x',idx2,'b')
 
 
-coco_plot_bd(theme1, 'vsquare1-6'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-6'      ,'x',idx1,'x',idx2,'b')
 
 
 view(3); grid();
