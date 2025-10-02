@@ -1,9 +1,9 @@
 % Load image
-file_name = 'DSCN2886';
+file_name = 'DSCN2887';
 im_OG = imread(file_name+".jpg");
 
-
-run("initialize_triangle.m")
+addpath functions
+run("initialize_simple_chain.m")
 
 %% --- Check if the image should be inverted ---
 if check_if_dark(im_OG)
@@ -25,7 +25,7 @@ scaleFactor     = calibDistReal / calibDistPixels;
 disp(['Calibration factor = ', num2str(scaleFactor), ' units/pixel']);
 
 %% --- Vertex definition ---
-numVerts = data.N;
+numVerts = size(data.points,1);
 
 verts = zeros(numVerts,2);
 

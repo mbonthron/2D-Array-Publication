@@ -13,7 +13,7 @@ end
 
 bcrits = unique_tol(bcrits,1e-3);
 
-prob = coco_add_event(prob,'UZ','b',bcrits);
+prob = coco_add_event(prob,'UZ','b',1.00001*bcrits);
 
 coco(prob,new_name,[],1,data.parameter_names,data.computational_domain)
 

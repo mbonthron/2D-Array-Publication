@@ -9,7 +9,7 @@ t_val = 0.01*pi;
 data.t_vector = t_val*[1 1 1];
 data.e_vector = 0*[1 1 1 1 1];
 
-data.variance = [.9598 .9547 1]';
+data.variance = [1.06 1 1.04]';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -19,7 +19,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.16416]*pi;
+data.UZpoint = [0.025 0.050 0.075 0.143 0.16416]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -75,3 +75,10 @@ xlim([-0.1 0.1]);
 ylim([-0.05 0.05])
 zlim([0 0.1])
 
+%%
+clear
+[midptstab1,midptunst1,b1] = get_data_from_coco('triad1');
+[midptstab1_1,midptunst1_1,b1_1] = get_data_from_coco('triad1-1');
+
+
+save("Triad Bifurcation.mat")

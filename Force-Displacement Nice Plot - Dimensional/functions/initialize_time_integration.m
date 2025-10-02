@@ -3,7 +3,7 @@ N = data.N;
 b_val = data.b;
 
 % Update b_vector
-data.b_vector = b_val * ones(N,1);
+data.b_vector = b_val * ones(N,1) .* data.variance;
 data.e_vector = 0*ones(N,1);
 data.t_vector = data.t_vector(1)*ones(N,1);
 

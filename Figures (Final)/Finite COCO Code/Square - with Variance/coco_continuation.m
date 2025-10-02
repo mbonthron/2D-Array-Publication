@@ -1,7 +1,5 @@
 clear; clc
 %% 
-restoredefaultpath
-startup
 addpath("functions")
 addpath("visualize")
 
@@ -20,8 +18,9 @@ data.variance = normrnd(data.mu,data.sigma,[1,data.N])';
 % data.variance = [1 1.05 0.98]';
 
 % data.variance = [.9967 .9611 1 .9625]';
-data.variance = [1 .99999 .9999 .9999]';
+% data.variance = [1 .99999 .9999 .9999]';
 % data.variance = [1 1 1 1]';
+data.variance = ([15.4 14.7 15 13.8]/15.4)';
 
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
@@ -31,7 +30,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.17837]*pi;
+data.UZpoint = [0.025 0.050 0.075 0.154]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -76,10 +75,16 @@ continue_from_UZ('vsquare1-4',2,'vsquare1-4-2',data)
 %% HB 1
 continue_from_UZ('vsquare1',1,'vsquare1-5',data)
 continue_from_BP('vsquare1-5',1,'vsquare1-5-1',data)
-continue_from_BP('vsquare1-5',2,'vsquare1-5-2',data)
 
 %% HB 2
 continue_from_UZ('vsquare1',2,'vsquare1-6',data)
+
+%%
+load('Frustrated State 1.mat')
+start_coco_from_another_point(Ahat,b,'vsquare1-7',data)
+
+load('Frustrated State 2.mat')
+start_coco_from_another_point(Ahat,b,'vsquare1-8',data)
 
 %% Plot all the Results COCO
 idx1 = 1;
@@ -99,12 +104,16 @@ coco_plot_bd(theme1, 'vsquare1-1'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-4-1'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-4-2'      ,'x',idx1,'x',idx2,'b')
 
-coco_plot_bd(theme1, 'vsquare1-5'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vsquare1-5'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-5-1'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-5-2'      ,'x',idx1,'x',idx2,'b')
 
 
 % coco_plot_bd(theme1, 'vsquare1-6'      ,'x',idx1,'x',idx2,'b')
+
+coco_plot_bd(theme1, 'vsquare1-7'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-8'      ,'x',idx1,'x',idx2,'b')
+
 
 
 view(3); grid();
@@ -112,3 +121,12 @@ xlim([-0.1 0.1]);
 ylim([-0.05 0.05])
 zlim([0 0.1])
 
+%%
+clear; close all
+[midptstab1,midptunst1,b1] = get_data_from_coco('vsquare1');
+[midptstab1_1,midptunst1_1,b1_1] = get_data_from_coco('vsquare1-1');
+
+[midptstab1_7,midptunst1_7,b1_7] = get_data_from_coco('vsquare1-7');
+[midptstab1_8,midptunst1_8,b1_8] = get_data_from_coco('vsquare1-8');
+
+save("Square Bifurcation.mat")

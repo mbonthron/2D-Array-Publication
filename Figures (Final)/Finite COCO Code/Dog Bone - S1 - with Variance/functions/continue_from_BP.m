@@ -1,4 +1,4 @@
-function [] = continue_from_BP(root_name,BPnum,extension_name,data)
+function [prob] = continue_from_BP(root_name,BPnum,extension_name,data)
     BP = coco_bd_labs(root_name, 'BP'); % labels for SN points in run1
 
     prob = coco_prob();

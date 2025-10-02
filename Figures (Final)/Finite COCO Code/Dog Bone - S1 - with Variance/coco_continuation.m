@@ -17,7 +17,8 @@ data.sigma = 0;
 %data.variance = [1.0444 .9723 1 .9722 1.0383]';
 %data.variance = [1 1 1 1 1]';
 %data.variance = [.8834 .98 1 .979 .98]';
-data.variance = [.93 .999 1 .999 .999]';
+% data.variance = ([8.1 9.3 10.7 9.9 9.3]/8.1)';
+data.variance = ([8.7 8.8 8.7 9.2 8.9]/8.1)';
 
 
 %% Define the function as the arbitrary grid ODE
@@ -28,7 +29,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.161]*pi;
+data.UZpoint = [0.025 0.050 0.075 0.087]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -44,10 +45,10 @@ prob = coco_set(prob,'cont','ItMX', data.iterations_max);
 prob = coco_set(prob,'cont','NPR',0);
 prob = coco_set(prob,'cont','h_max',data.h_max,'h_min',data.h_min);
 
-coco(prob,'dogbone0',[],1,data.parameter_names,data.computational_domain)
+coco(prob,'dogbone1',[],1,data.parameter_names,data.computational_domain)
 
 %% Since we detected HB points - rewrite those as UZ to continue from
-add_UZ_to_HB_points('dogbone0',prob,'dogbone1',data)
+% add_UZ_to_HB_points('dogbone0',prob,'dogbone1',data)
 
 %% BP1 
 continue_from_BP('dogbone1',1,'dogbone1-1',data)
@@ -70,11 +71,12 @@ continue_from_BP('dogbone1',6,'dogbone1-6',data)
 %% BP7
 continue_from_BP('dogbone1',7,'dogbone1-7',data)
 
-%% HB1
-continue_from_UZ('dogbone1',1,'dogbone1-8',data)
+%%
+load("Frustrated State.mat")
+start_coco_from_another_point(Ahat,b,'dogbone1-8',data)
 
-%% HB2
-continue_from_UZ('dogbone1',2,'dogbone1-9',data)
+%%
+start_coco_from_another_point(-1*Ahat,b,'dogbone1-9',data)
 
 %% Plot all the Results COCO
 idx1 = 1;
@@ -83,15 +85,15 @@ idx2 = 2;
 figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'dogbone1'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-2'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-3'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-4'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-5'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-6'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'dogbone1-7'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-1'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-2'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-3'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-4'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-5'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-6'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'dogbone1-7'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
-% coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
 
 view(3); grid();
 xlim([-0.1 0.1]);

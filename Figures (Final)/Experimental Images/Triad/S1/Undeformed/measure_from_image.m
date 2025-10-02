@@ -1,8 +1,9 @@
 % Load image
-file_name = 'DSCN2891_rotated';
+file_name = 'DSCN2891';
 im_OG = imread(file_name+".jpg");
+im_OG = imrotate(im_OG,180);
 
-
+addpath functions
 run("initialize_triad.m")
 
 %% --- Check if the image should be inverted ---
@@ -25,7 +26,7 @@ scaleFactor     = calibDistReal / calibDistPixels;
 disp(['Calibration factor = ', num2str(scaleFactor), ' units/pixel']);
 
 %% --- Vertex definition ---
-numVerts = length(data.points);
+numVerts = size(data.points,1);
 
 verts = zeros(numVerts,2);
 

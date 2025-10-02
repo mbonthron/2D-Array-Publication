@@ -1,9 +1,8 @@
-clearvars
 % Load image
-file_name = 'DSCN2894_rotated';
+file_name = 'DSCN3075';
 im_OG = imread(file_name+".jpg");
 
-
+addpath functions
 run("initialize_dogbone.m")
 
 %% --- Check if the image should be inverted ---
@@ -26,7 +25,7 @@ scaleFactor     = calibDistReal / calibDistPixels;
 disp(['Calibration factor = ', num2str(scaleFactor), ' units/pixel']);
 
 %% --- Vertex definition ---
-numVerts = length(data.points);
+numVerts = size(data.points,1);
 
 verts = zeros(numVerts,2);
 

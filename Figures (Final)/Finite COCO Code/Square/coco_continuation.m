@@ -7,7 +7,8 @@ addpath("visualize")
 run('initialize_square.m')
 t_val = 0.01*pi;
 data.t_vector = t_val*[1 1 1 1];
-
+data.e_vector = [0 0 0 0];
+data.variance = [1 1 1 1]';
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
@@ -15,8 +16,8 @@ f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
-data.computational_domain = [-0.01 0.125*pi];
-data.UZpoint = [0.025 0.050 0.075 0.1]*pi;
+data.computational_domain = [-0.01 0.2*pi];
+data.UZpoint = [0.025 0.050 0.075 0.154]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -67,7 +68,11 @@ continue_from_BP('square1-5',1,'square1-5-1',data)
 continue_from_BP('square1-5',2,'square1-5-2',data)
 
 %%
-[Ahat,A,b] = get_Ahat_from_coco('square1-5-2',0.1*pi,data);
+[Ahat,b] = COCO_grab_UZ('square1-5-2',10);
+
+A = determine_A_from_Ahat(Ahat',data)';
+
+plot_system_once(A,data)
 
 %% HB 2
 
@@ -82,21 +87,21 @@ theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'square1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'square1-1'        ,'x',idx1,'x',idx2,'b')
 
-coco_plot_bd(theme1, 'square1-2'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-2-1'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-2-2'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-2'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-2-1'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-2-2'        ,'x',idx1,'x',idx2,'b')
+% 
+% coco_plot_bd(theme1, 'square1-3'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-4'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-4-1'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-4-2'      ,'x',idx1,'x',idx2,'b')
 
-coco_plot_bd(theme1, 'square1-3'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-4'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-4-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-4-2'      ,'x',idx1,'x',idx2,'b')
-
-coco_plot_bd(theme1, 'square1-5'        ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'square1-5-1'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-5'        ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-5-1'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'square1-5-2'      ,'x',idx1,'x',idx2,'b')
 
 
-coco_plot_bd(theme1, 'square1-6'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'square1-6'      ,'x',idx1,'x',idx2,'b')
 
 
 
