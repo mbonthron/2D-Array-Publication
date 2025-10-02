@@ -1,5 +1,3 @@
-data.variance = ([8.7 8.8 8.7 9.2 8.9]/8.7)';
-
 %% Define the function as the arbitrary grid ODE
 f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 
