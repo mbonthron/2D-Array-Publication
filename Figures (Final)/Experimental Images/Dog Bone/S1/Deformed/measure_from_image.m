@@ -1,8 +1,8 @@
 % Load image
 addpath functions\
-file_name = 'DSCN2956';
+file_name = 'DSCN3198';
 im_OG = imread(file_name+".jpg");
-im_OG = imrotate(im_OG,90);
+% im_OG = imrotate(im_OG,90);
 
 % run("initialize_triangle.m")
 run("initialize_dogbone.m")

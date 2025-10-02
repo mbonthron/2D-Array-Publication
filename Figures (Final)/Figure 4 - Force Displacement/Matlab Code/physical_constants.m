@@ -1,8 +1,8 @@
 %% Dimensional Parameters
 L         = 100/1000;      % Length [m]
-t         = 0.762/1000;     % Thickness [m]
+t         = 0.75/1000;     % Thickness [m]
 w         = 14.18 / 1000;    % Width [m]
-rise      = 8.7 / 1000;       % Initial Rise [m]
+rise      = 7.5 / 1000;       % Initial Rise [m]
 EE        = 2.1e9;           % Young's Modulus [N/m^2]
 
 rho = 1270;                  % Volumetric Density [kg/m^3]

@@ -7,7 +7,14 @@ points = [0 0;
           -xx -1-yy
           xx -1-yy];
 
+theta = -pi/2;
+R = [cos(theta) -sin(theta);
+     sin(theta) cos(theta)];
+
+points = points*R;
+
 data.N_modes = 3;
+data.V = size(points,1);
 
 data.points = points;
 
