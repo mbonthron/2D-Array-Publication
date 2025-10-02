@@ -1,5 +1,6 @@
-function [displacement_cell,force_cell,energy_cell] = load_data_from_folder(folder_name)
+function [displacement_cell,force_cell,energy_cell] = load_data_from_folder(folder_name,trial_name)
 % Go into directory
+cd(trial_name)
 cd(folder_name)
 
 %%
@@ -14,7 +15,7 @@ for i = 1:trial_count
     % Load the data
     A = readtable(file_name(i).name,ReadVariableNames=false);
     position    = A.Var2; 
-    force       = -1*A.Var3;
+    force       = abs(A.Var3);
 
     startidx = find(force>0.05,1,"first");
 
@@ -32,6 +33,7 @@ end
 
 %%
 % Return to 
+cd ..
 cd ..
 end
 
