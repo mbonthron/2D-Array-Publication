@@ -38,13 +38,13 @@ for i = 2:5
     plot(disp_S_eta_075{i},force_S_eta_075{i},"Color",color5,"HandleVisibility","off")
 end
 
-%
-% load('C eta 50.mat')
-% plot(displacement*1000,Q,"linewidth",2,"Color",color2(1:3),"HandleVisibility","off")
-% 
-% load('C eta 75.mat')
-% plot(displacement*1000,Q,"linewidth",2,"Color",color1(1:3),"HandleVisibility","off")
-% 
+%%
+load('C eta 50.mat')
+plot(displacement*1000,Q,"linewidth",2,"Color",color2(1:3),"HandleVisibility","off")
+
+load('C eta 25.mat')
+plot(displacement*1000,Q,"linewidth",2,"Color",color1(1:3),"HandleVisibility","off")
+
 % load('S eta 25.mat')
 % plot(displacement*1000,Q,"linewidth",2,"Color",color3(1:3),"HandleVisibility","off")
 % 
@@ -54,11 +54,11 @@ end
 % load('S eta 75.mat')
 % plot(displacement*1000,Q,"linewidth",2,"Color",color5(1:3),"HandleVisibility","off")
 
-legend()
-set(gca,"FontSize",12)
-xlabel("Displacement - [mm]")
-ylabel("Force - [N]")
-ylim([0 6])
+% legend()
+% set(gca,"FontSize",12)
+% xlabel("Displacement - [mm]")
+% ylabel("Force - [N]")
+% ylim([0 6])
 %%
 % figure(2); clf; hold on
 % plot(disp_C_eta_050{1},energy_C_eta_050{1},"Color",color2,"DisplayName","C $\eta = 0.50$")

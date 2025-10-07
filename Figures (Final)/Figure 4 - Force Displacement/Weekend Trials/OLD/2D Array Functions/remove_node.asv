@@ -1,0 +1,24 @@
+function [data] = remove_connection(data,nodes_to_remove)
+%ADD_PERIODICITY Adds the required arches for the periodic unit cell
+%   This only applies for the unit cell!!!!
+
+points = data.points;
+
+for i = 1:length(nodes_to_remove)
+    node1 = nodes_to_remove(i);
+    
+    points(node1,1) = NaN;
+    points(node1,2) = NaN;
+
+    if isfield()
+end
+
+points_cleaned = points(~any(isnan(points), 2), :);
+data.points = points_cleaned;
+
+
+data.adjacency_matrix = adjacency_matrix;
+data.N = sum(triu(adjacency_matrix,1) ==1,'all');   
+
+end
+

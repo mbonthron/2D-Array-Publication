@@ -15,9 +15,9 @@ for i = 1:trial_count
     % Load the data
     A = readtable(file_name(i).name,ReadVariableNames=false);
     position    = A.Var2; 
-    force       = abs(A.Var3);
+    force       = A.Var3;
 
-    startidx = find(force>0.05,1,"first");
+    startidx = find(force>0.01,1,"first");
 
     position = position(startidx:end);
     force = force(startidx:end);

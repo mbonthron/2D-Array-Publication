@@ -46,28 +46,39 @@ save("S State.mat","Ahat","b")
 %% =========================================================
 %  Run Time Integration for given eta value
 %  =========================================================
-data.beta = 0.1;
-data.alpha_D = .1/1000;  % m/s displacement
+data.beta = 1;
+data.alpha_D = .5/1000;  % m/s displacement
 
-data.eta  = 0.50;
-data.mms_to_run = 15/1000;
-run_time_integration('C',data,'C eta 50')
+data.eta  = 0.25;
+data.mms_to_run = 10/1000;
+run_time_integration('C',data,'C eta 1')
 
-data.eta  = 0.633;
-data.mms_to_run = 15/1000;
-run_time_integration('C',data,'C eta 75')
+data.eta  = 0.33;
+data.mms_to_run = 10/1000;
+run_time_integration('C',data,'C eta 2')
 
-data.eta  = 0.362;
-% data.eta  = 0.232;
+data.eta  = 0.5;
+data.mms_to_run = 10/1000;
+run_time_integration('C',data,'C eta 3')
+
+data.eta  = 0.66;
+data.mms_to_run = 10/1000;
+run_time_integration('C',data,'C eta 4')
+
+data.eta  = 0.75;
+data.mms_to_run = 10/1000;
+run_time_integration('C',data,'C eta 5')
+
+
+%%
+data.eta  = 0.374;
 data.mms_to_run = 5/1000;
 run_time_integration('S',data,'S eta 25')
 
-data.eta  = 0.5;
-% data.eta  = 0.464;
+data.eta  = 0.479;
 data.mms_to_run = 10/1000;
 run_time_integration('S',data,'S eta 50')
 
-data.eta  = 0.635;
-% data.eta  = 0.8;
+data.eta  = 0.653;
 data.mms_to_run = 15/1000;
 run_time_integration('S',data,'S eta 75')
