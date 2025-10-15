@@ -1,0 +1,113 @@
+% [disp_C_eta_1 ,force_C_eta_1,energy_C_eta_1,C_velocity_1] = load_data_from_folder('C - eta 1 - v = 0.5 mms',15);
+% [disp_C_eta_2 ,force_C_eta_2,energy_C_eta_2,C_velocity_2] = load_data_from_folder('C - eta 2 - v = 0.5 mms',15);
+[disp_C_eta_3 ,force_C_eta_3,energy_C_eta_3,C_velocity_3] = load_data_from_folder('C - eta 3 - v = 0.5 mms',15);
+[disp_C_eta_4 ,force_C_eta_4,energy_C_eta_4,C_velocity_4] = load_data_from_folder('C - eta 4 - v = 0.5 mms',15);
+[disp_C_eta_5 ,force_C_eta_5,energy_C_eta_5,C_velocity_5] = load_data_from_folder('C - eta 5 - v = 0.5 mms',15);
+% [disp_C_eta_6 ,force_C_eta_6,energy_C_eta_6,C_velocity_6] = load_data_from_folder('C - eta 6 - v = 0.5 mms',15);
+% [disp_C_eta_7 ,force_C_eta_7,energy_C_eta_7,C_velocity_7] = load_data_from_folder('C - eta 7 - v = 0.5 mms',15);
+
+
+alphaval = 0.5;
+color1 = [0.894, 0.102, 0.110, alphaval];  % red
+color2 = [0.216, 0.494, 0.722, alphaval];  % blue
+color3 = [0.302, 0.686, 0.290, alphaval];  % green
+color4 = [0.596, 0.306, 0.639, alphaval];  % purple
+color5 = [1.000, 0.498, 0.000, alphaval];  % orange
+color6 = [0.969, 0.506, 0.749, alphaval];  % yellow
+color7 = [0.651, 0.337, 0.157, alphaval];  % brown
+% color8 = [1.000, 1.000, 0.200, alphaval];  % pink
+% color9 = [0.600, 0.600, 0.600, alphaval];  % gray
+% color10 = [0.121, 0.470, 0.705, alphaval]; % steel blue
+
+colormat = [color1;color2;color3;color4;color5;color6;color7];
+
+eta_vector = 0.125:0.125:0.875;
+
+
+%%
+f = figure(1); clf; hold on
+% plot(disp_C_eta_1{1},force_C_eta_1{1},"Color",color1,"DisplayName","C $\eta = 1$","LineWidth",2)
+% plot(disp_C_eta_2{1},force_C_eta_2{1},"Color",color2,"DisplayName","C $\eta = 2$","LineWidth",2)
+plot(disp_C_eta_3{1},force_C_eta_3{1},"Color",color3,"DisplayName","C $\eta = 3$","LineWidth",2)
+plot(disp_C_eta_4{1},force_C_eta_4{1},"Color",color4,"DisplayName","C $\eta = 4$","LineWidth",2)
+plot(disp_C_eta_5{1},force_C_eta_5{1},"Color",color5,"DisplayName","C $\eta = 5$","LineWidth",2)
+% plot(disp_C_eta_6{1},force_C_eta_6{1},"Color",color6,"DisplayName","C $\eta = 6$","LineWidth",2)
+% plot(disp_C_eta_7{1},force_C_eta_7{1},"Color",color7,"DisplayName","C $\eta = 7$","LineWidth",2)
+
+
+for i = 2:5
+    % plot(disp_C_eta_1{i},force_C_eta_1{i},"Color",color1,"HandleVisibility","off","LineWidth",2)
+    % plot(disp_C_eta_2{i},force_C_eta_2{i},"Color",color2,"HandleVisibility","off","LineWidth",2)
+    plot(disp_C_eta_3{i},force_C_eta_3{i},"Color",color3,"HandleVisibility","off","LineWidth",2)
+    plot(disp_C_eta_4{i},force_C_eta_4{i},"Color",color4,"HandleVisibility","off","LineWidth",2)
+    plot(disp_C_eta_5{i},force_C_eta_5{i},"Color",color5,"HandleVisibility","off","LineWidth",2)
+    % plot(disp_C_eta_6{i},force_C_eta_6{i},"Color",color6,"HandleVisibility","off","LineWidth",2)
+    % plot(disp_C_eta_7{i},force_C_eta_7{i},"Color",color7,"HandleVisibility","off","LineWidth",2)
+end
+
+for i = [3 4 5]
+    run_name = 'C eta ' + string(eta_vector(i));
+    load(run_name)
+    plot(displacement*1000,Q,"--","linewidth",4,"Color",colormat(i,1:3),"HandleVisibility","off")
+end
+
+
+
+f.Units = "inches";
+% f.Position(3:4) = 3*[3.4 1.5];
+set(gca,"FontSize",10)
+legend("Location","northwest")
+set(gca,"FontSize",12)
+xlabel("Displacement - [mm]")
+ylabel("Force - [N]")
+ylim([0 1])
+xlim([0 10])
+%% ========================================================================
+%  ========================================================================
+%  ========================================================================
+%  ========================================================================
+% [disp_S_eta_1 ,force_S_eta_1,energy_C_eta_1,C_velocity_1] = load_data_from_folder('S - eta 1 - v = 0.5 mms',15);
+% [disp_S_eta_2 ,force_S_eta_2,energy_C_eta_2,C_velocity_2] = load_data_from_folder('S - eta 2 - v = 0.5 mms',15);
+[disp_S_eta_3 ,force_S_eta_3,energy_C_eta_3,C_velocity_3] = load_data_from_folder('S - eta 3 - v = 0.5 mms',15);
+[disp_S_eta_4 ,force_S_eta_4,energy_C_eta_4,C_velocity_4] = load_data_from_folder('S - eta 4 - v = 0.5 mms',15);
+[disp_S_eta_5 ,force_S_eta_5,energy_C_eta_5,C_velocity_5] = load_data_from_folder('S - eta 5 - v = 0.5 mms',15);
+% [disp_S_eta_6 ,force_S_eta_6,energy_C_eta_6,C_velocity_6] = load_data_from_folder('S - eta 6 - v = 0.5 mms',15);
+% [disp_S_eta_7 ,force_S_eta_7,energy_C_eta_7,C_velocity_7] = load_data_from_folder('S - eta 7 - v = 0.5 mms',15);
+
+%%
+f = figure(2); clf; hold on
+% plot(disp_S_eta_1{1},force_S_eta_1{1},"Color",color1,"DisplayName","S $\eta = 1$","LineWidth",2)
+% plot(disp_S_eta_2{1},force_S_eta_2{1},"Color",color2,"DisplayName","S $\eta = 2$","LineWidth",2)
+plot(disp_S_eta_3{1},force_S_eta_3{1},"Color",color3,"DisplayName","S $\eta = 3$","LineWidth",2)
+plot(disp_S_eta_4{1},force_S_eta_4{1},"Color",color4,"DisplayName","S $\eta = 4$","LineWidth",2)
+plot(disp_S_eta_5{1},force_S_eta_5{1},"Color",color5,"DisplayName","S $\eta = 5$","LineWidth",2)
+% plot(disp_S_eta_6{1},force_S_eta_6{1},"Color",color6,"DisplayName","S $\eta = 6$","LineWidth",2)
+% plot(disp_S_eta_7{1},force_S_eta_7{1},"Color",color7,"DisplayName","S $\eta = 7$","LineWidth",2)
+
+
+for i = 2:5
+    % plot(disp_S_eta_1{i},force_S_eta_1{i},"Color",color1,"HandleVisibility","off","LineWidth",2)
+    % plot(disp_S_eta_2{i},force_S_eta_2{i},"Color",color2,"HandleVisibility","off","LineWidth",2)
+    plot(disp_S_eta_3{i},force_S_eta_3{i},"Color",color3,"HandleVisibility","off","LineWidth",2)
+    plot(disp_S_eta_4{i},force_S_eta_4{i},"Color",color4,"HandleVisibility","off","LineWidth",2)
+    plot(disp_S_eta_5{i},force_S_eta_5{i},"Color",color5,"HandleVisibility","off","LineWidth",2)
+    % plot(disp_S_eta_6{i},force_S_eta_6{i},"Color",color6,"HandleVisibility","off","LineWidth",2)
+    % plot(disp_S_eta_7{i},force_S_eta_7{i},"Color",color7,"HandleVisibility","off","LineWidth",2)
+end
+
+for i = [3 4 5]
+    run_name = 'S eta ' + string(eta_vector(i));
+    load(run_name)
+    plot(displacement*1000,Q,"--","linewidth",4,"Color",colormat(i,1:3),"HandleVisibility","off")
+end
+
+
+f.Units = "inches";
+% f.Position(3:4) = 3*[3.4 1.5];
+set(gca,"FontSize",10)
+legend("Location","northwest")
+set(gca,"FontSize",12)
+xlabel("Displacement - [mm]")
+ylabel("Force - [N]")
+ylim([0 1])
+xlim([0 10])

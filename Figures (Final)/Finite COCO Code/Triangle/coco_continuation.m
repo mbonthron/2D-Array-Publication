@@ -57,12 +57,13 @@ continue_from_BP('triangle1',2,'triangle1-2',data);
 
 %%
 run("rotation.m");
+N_modes = data.N_Modes;
 
 bsym  = 0.0236;
 Asym1 = [ -0.0045   -0.0020    0.0002   -0.0087   -0.0000    0.0003   -0.0045    0.0020    0.0002      0         0         0         0         0         0         0        0         0]';
 
-Asym2 = [   cw*Asym1(1:9) ; zeros(9,1)];
-Asym3 = [cw*cw*Asym1(1:9) ; zeros(9,1)];
+Asym2 = [   cw*Asym1(1:3*N_modes) ; zeros(3*N_modes,1)];
+Asym3 = [cw*cw*Asym1(1:3*N_modes) ; zeros(3*N_modes,1)];
 
 Ahatsym1 = determine_Ahat_from_A(Asym1,data);
 Ahatsym2 = determine_Ahat_from_A(Asym2,data);
@@ -72,8 +73,8 @@ Ahatsym3 = determine_Ahat_from_A(Asym3,data);
 basym = 1.05*0.0236;
 Aasym1 = [basym 0 0 0 0.5*basym 0 -basym 0 0      0         0         0         0         0         0         0        0         0]';
 
-Aasym2 = [   cw*Aasym1(1:9) ; zeros(9,1)];
-Aasym3 = [cw*cw*Aasym1(1:9) ; zeros(9,1)];
+Aasym2 = [   cw*Aasym1(1:3*N_modes) ; zeros(3*N_modes,1)];
+Aasym3 = [cw*cw*Aasym1(1:3*N_modes) ; zeros(3*N_modes,1)];
 
 Ahatasym1 = determine_Ahat_from_A(Aasym1,data);
 Ahatasym2 = determine_Ahat_from_A(Aasym2,data);

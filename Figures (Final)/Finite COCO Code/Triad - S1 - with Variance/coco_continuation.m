@@ -18,8 +18,8 @@ f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
-data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.143 0.16416]*pi;
+data.computational_domain = [-0.01 0.3*pi];
+data.UZpoint = [0.025 0.050 0.075 0.143 0.16416 0.25]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;

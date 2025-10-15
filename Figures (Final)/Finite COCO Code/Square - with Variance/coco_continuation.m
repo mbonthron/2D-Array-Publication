@@ -29,8 +29,8 @@ f = @(x,p) COCO_arbitrary_grid_ODE(x,p,data);
 data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
-data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.154]*pi;
+data.computational_domain = [-0.01 0.3*pi];
+data.UZpoint = [0.025 0.050 0.075 0.154 0.25]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -122,11 +122,11 @@ ylim([-0.05 0.05])
 zlim([0 0.1])
 
 %%
-clear; close all
-[midptstab1,midptunst1,b1] = get_data_from_coco('vsquare1');
-[midptstab1_1,midptunst1_1,b1_1] = get_data_from_coco('vsquare1-1');
-
-[midptstab1_7,midptunst1_7,b1_7] = get_data_from_coco('vsquare1-7');
-[midptstab1_8,midptunst1_8,b1_8] = get_data_from_coco('vsquare1-8');
-
-save("Square Bifurcation.mat")
+% clear; close all
+% [midptstab1,midptunst1,b1] = get_data_from_coco('vsquare1');
+% [midptstab1_1,midptunst1_1,b1_1] = get_data_from_coco('vsquare1-1');
+% 
+% [midptstab1_7,midptunst1_7,b1_7] = get_data_from_coco('vsquare1-7');
+% [midptstab1_8,midptunst1_8,b1_8] = get_data_from_coco('vsquare1-8');
+% 
+% save("Square Bifurcation.mat")

@@ -99,18 +99,19 @@ plot(deltaL2*100/pi,a1unst2*100/pi,"r-","HandleVisibility","off")
 plot(deltaL3*100/pi,a1stab3*100/pi,"k-","HandleVisibility","off")
 plot(deltaL3*100/pi,a1unst3*100/pi,"r-","HandleVisibility","off")
 
-x1 = 0;
-x2 = 0.05;
-y1 = -2.457;
-y2 = 2.457;
-
-plot(4*[x1 x2 x2 x1 x1],3*[y1 y1 y2 y2 y1],"k-")
+% x1 = 0;
+% x2 = 0.05;
+% y1 = -2.457;
+% y2 = 2.457;
+% 
+% plot(4*[x1 x2 x2 x1 x1],3*[y1 y1 y2 y2 y1],"k-")
 
 % xticks([])
 % yticks([])
 
 % legend()
+xlim([0 0.02])
 
-xlabel("$\Delta L$ - [mm]")
-ylabel("$b$ - [mm]")
-set(gca,'FontSize',10)
+% xlabel("$\Delta L$ - [mm]")
+% ylabel("$b$ - [mm]")
+set(gca,'FontSize',8)
