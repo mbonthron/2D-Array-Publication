@@ -76,7 +76,7 @@ end
 %% =========================================================
 %  Make Videos of displacement
 %  =========================================================
-for i = 2
+for i = 1:length(eta_vector)
     data.eta = eta_vector(i);
     run_name = 'C eta ' + string(data.eta);
     load(run_name)

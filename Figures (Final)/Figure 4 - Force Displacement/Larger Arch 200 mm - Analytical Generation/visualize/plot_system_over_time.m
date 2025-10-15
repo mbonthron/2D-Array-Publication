@@ -26,8 +26,11 @@ points = data.points;
 %% Plot Styles
 if shape == "C"
     arch_color = [52 93 168]/255;
+    backgroundcolor = [1 0 0];
 else
     arch_color = [196 43 43]/255;
+    backgroundcolor = [0 0 1];
+
 end
 arch_linewidth = 6;
 
@@ -93,7 +96,7 @@ for j = 1:frames
         line_cell{i} = line;
     end
 
-    set(gcf, 'color',[0 0 1]);   
+    set(gcf, 'color',backgroundcolor);   
 
     axis off
     writeVideo(v, getframe(f));
