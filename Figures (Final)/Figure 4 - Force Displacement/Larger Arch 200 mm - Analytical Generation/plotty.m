@@ -1,10 +1,14 @@
+[disp_C_eta_2 ,force_C_eta_2,force_low_C_eta_2,force_high_C_eta_2,energy_C_eta_2,e_C2_low,e_C2_hig,C_velocity_2] = load_data_from_folder('C - eta 2 - v = 0.5 mms',10);
 [disp_C_eta_3 ,force_C_eta_3,force_low_C_eta_3,force_high_C_eta_3,energy_C_eta_3,e_C3_low,e_C3_hig,C_velocity_3] = load_data_from_folder('C - eta 3 - v = 0.5 mms',10);
 [disp_C_eta_4 ,force_C_eta_4,force_low_C_eta_4,force_high_C_eta_4,energy_C_eta_4,e_C4_low,e_C4_hig,C_velocity_4] = load_data_from_folder('C - eta 4 - v = 0.5 mms',10);
 [disp_C_eta_5 ,force_C_eta_5,force_low_C_eta_5,force_high_C_eta_5,energy_C_eta_5,e_C5_low,e_C5_hig,C_velocity_5] = load_data_from_folder('C - eta 5 - v = 0.5 mms',10);
+[disp_C_eta_6 ,force_C_eta_6,force_low_C_eta_6,force_high_C_eta_6,energy_C_eta_6,e_C6_low,e_C6_hig,C_velocity_6] = load_data_from_folder('C - eta 6 - v = 0.5 mms',10);
 
+[disp_S_eta_2 ,force_S_eta_2,force_low_S_eta_2,force_high_S_eta_2,energy_S_eta_2,e_S2_low,e_S2_hig,C_velocity_2] = load_data_from_folder('S - eta 2 - v = 0.5 mms',10);
 [disp_S_eta_3 ,force_S_eta_3,force_low_S_eta_3,force_high_S_eta_3,energy_S_eta_3,e_S3_low,e_S3_hig,C_velocity_3] = load_data_from_folder('S - eta 3 - v = 0.5 mms',10);
 [disp_S_eta_4 ,force_S_eta_4,force_low_S_eta_4,force_high_S_eta_4,energy_S_eta_4,e_S4_low,e_S4_hig,C_velocity_4] = load_data_from_folder('S - eta 4 - v = 0.5 mms',10);
 [disp_S_eta_5 ,force_S_eta_5,force_low_S_eta_5,force_high_S_eta_5,energy_S_eta_5,e_S5_low,e_S5_hig,C_velocity_5] = load_data_from_folder('S - eta 5 - v = 0.5 mms',10);
+[disp_S_eta_6 ,force_S_eta_6,force_low_S_eta_6,force_high_S_eta_6,energy_S_eta_6,e_S6_low,e_S6_hig,C_velocity_6] = load_data_from_folder('S - eta 6 - v = 0.5 mms',10);
 
 
 
@@ -12,8 +16,10 @@
 C_color = [52 93 168]/255;
 S_color = [196 43 43]/255;
 
-fig_size = [1.65 1.25];
+fig_size = [1.65 0.85];
 xlimss = [0 10];
+
+
 %% Eta = 3
 f = figure(1); clf; hold on
 f.Units = "inches";

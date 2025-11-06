@@ -2,7 +2,7 @@
 L = 100;            % Distance between hinges[mm]
 
 
-L0_prime_nominal = [107.44 107.42 108.00 107.95];
+L0_prime_nominal = [102 105 105];
 b_vector  = [];
 for i = 1:length(L0_prime_nominal)
     L0_prime = L0_prime_nominal(i);
@@ -12,5 +12,5 @@ for i = 1:length(L0_prime_nominal)
 end
 
 %
-idx_nominal = 2;
-b_vector ./ b_vector(idx_nominal)
+% idx_nominal = 2;
+% b_vector ./ b_vector(idx_nominal)

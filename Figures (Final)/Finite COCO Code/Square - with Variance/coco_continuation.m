@@ -30,7 +30,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.3*pi];
-data.UZpoint = [0.025 0.050 0.075 0.154 0.25]*pi;
+data.UZpoint = [0.154]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -58,26 +58,26 @@ continue_from_BP('vsquare1',1,'vsquare1-1',data)
 continue_from_BP('vsquare1',2,'vsquare1-2',data)
 
 add_UZ_to_HB_points('vsquare1-2',prob,'vsquare1-2',data)
-continue_from_UZ('vsquare1-2',1,'vsquare1-2-1',data)
-continue_from_UZ('vsquare1-2',2,'vsquare1-2-2',data)
+% continue_from_UZ('vsquare1-2',1,'vsquare1-2-1',data)
+% continue_from_UZ('vsquare1-2',2,'vsquare1-2-2',data)
 
 
 %% BP3
-continue_from_BP('vsquare1',3,'vsquare1-3',data)
-
-%% BP4
-continue_from_BP('vsquare1',4,'vsquare1-4',data)
-
-add_UZ_to_HB_points('vsquare1-4',prob,'vsquare1-4',data)
-continue_from_UZ('vsquare1-4',1,'vsquare1-4-1',data)
-continue_from_UZ('vsquare1-4',2,'vsquare1-4-2',data)
-
-%% HB 1
-continue_from_UZ('vsquare1',1,'vsquare1-5',data)
-continue_from_BP('vsquare1-5',1,'vsquare1-5-1',data)
-
-%% HB 2
-continue_from_UZ('vsquare1',2,'vsquare1-6',data)
+% continue_from_BP('vsquare1',3,'vsquare1-3',data)
+% 
+% %% BP4
+% continue_from_BP('vsquare1',4,'vsquare1-4',data)
+% 
+% add_UZ_to_HB_points('vsquare1-4',prob,'vsquare1-4',data)
+% continue_from_UZ('vsquare1-4',1,'vsquare1-4-1',data)
+% continue_from_UZ('vsquare1-4',2,'vsquare1-4-2',data)
+% 
+% %% HB 1
+% continue_from_UZ('vsquare1',1,'vsquare1-5',data)
+% continue_from_BP('vsquare1-5',1,'vsquare1-5-1',data)
+% 
+% %% HB 2
+% continue_from_UZ('vsquare1',2,'vsquare1-6',data)
 
 %%
 load('Frustrated State 1.mat')
@@ -95,7 +95,7 @@ theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'vsquare1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'vsquare1-1'        ,'x',idx1,'x',idx2,'b')
 
-% coco_plot_bd(theme1, 'vsquare1-2'        ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'vsquare1-2'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-2-1'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-2-2'        ,'x',idx1,'x',idx2,'b')
 % 
@@ -103,12 +103,12 @@ coco_plot_bd(theme1, 'vsquare1-1'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-4'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-4-1'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-4-2'      ,'x',idx1,'x',idx2,'b')
-
+% 
 % coco_plot_bd(theme1, 'vsquare1-5'        ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-5-1'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vsquare1-5-2'      ,'x',idx1,'x',idx2,'b')
-
-
+% 
+% 
 % coco_plot_bd(theme1, 'vsquare1-6'      ,'x',idx1,'x',idx2,'b')
 
 coco_plot_bd(theme1, 'vsquare1-7'      ,'x',idx1,'x',idx2,'b')

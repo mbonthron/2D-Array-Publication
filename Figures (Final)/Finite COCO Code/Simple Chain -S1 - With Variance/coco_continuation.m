@@ -23,7 +23,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0 ; t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.10]*pi;
+data.UZpoint = [.10]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -46,16 +46,16 @@ coco(prob,'simple_chain1',[],1,data.parameter_names,data.computational_domain)
 continue_from_BP('simple_chain1',1,'simple_chain1-1',data)
 
 %% BP2
-continue_from_BP('simple_chain1',2,'simple_chain1-2',data)
+% continue_from_BP('simple_chain1',2,'simple_chain1-2',data)
 
 %% BP3
-continue_from_BP('simple_chain1',3,'simple_chain1-3',data)
+% continue_from_BP('simple_chain1',3,'simple_chain1-3',data)
 
 %% BP3
-continue_from_BP('simple_chain1',4,'simple_chain1-4',data)
+% continue_from_BP('simple_chain1',4,'simple_chain1-4',data)
 
 %% BP3
-continue_from_BP('simple_chain1',5,'simple_chain1-5',data)
+% continue_from_BP('simple_chain1',5,'simple_chain1-5',data)
 
 %%
 load("Frustrated State.mat")

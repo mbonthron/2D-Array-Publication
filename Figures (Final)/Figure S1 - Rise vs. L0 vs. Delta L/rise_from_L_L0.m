@@ -2,7 +2,7 @@
 L = 100;            % Distance between hinges[mm]
 
 
-L0_prime_vector = linspace(100.01,102,25);
+L0_prime_vector = 100.01:0.01:105;
 b_vector  = [];
 for i = 1:length(L0_prime_vector)
     L0_prime = L0_prime_vector(i);
@@ -24,7 +24,7 @@ plot(deltaL,-1*b_vector)
 plot(deltaL,0*deltaL)
 
 % ylim([0 20])
-
+% axis equal
 xlabel("$\Delta L$ - [mm]")
 ylabel("$b$ - [mm]")
 set(gca,'FontSize',10)

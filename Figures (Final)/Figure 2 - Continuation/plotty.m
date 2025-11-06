@@ -13,7 +13,9 @@ patch_alpha = 0.15;
 %% Long Long Short Triangle
 f = figure(1); clf; hold on
 f.Units = "inches";
-f.Position(3:4) = [2 1.95];
+% f.Position(3:4) = [2 1.95];
+
+f.Position(3:4) = [2 1.25];
 load("Long Long Short Triangle.mat")
 
 fill3(patchx,[0 0 0 0],patchz,patch1_color,"FaceAlpha",patch_alpha,"EdgeColor","none")
@@ -41,7 +43,7 @@ exportgraphics(gcf,"Short Short Long.png","Resolution",600)
 %% Short Short Long Triang
 f = figure(2); clf; hold on
 f.Units = "inches";
-f.Position(3:4) = [2 1.95];
+f.Position(3:4) = [2 1.25];
 load("Short Short Long Triangle.mat")
 
 fill3(patchx,[0 0 0 0],patchz,patch1_color,"FaceAlpha",patch_alpha,"EdgeColor","none")
@@ -81,7 +83,7 @@ load("Symmetric Triangle.mat")
 f = figure(3); clf; hold on
 f.Units = "inches";
 % f.Position(3:4) = [2 1.95];
-f.Position(3:4) = 0.7*[2 1.95];
+f.Position(3:4) = [2 1.25];
 
 plot3(a1stab_1,a2stab_1,b_1,"linewidth",lw,"LineStyle",stabls,"Color",othercolor)
 plot3(a1unst_1,a2unst_1,b_1,"linewidth",lw,"LineStyle",unstls,"Color",othercolor)
@@ -130,5 +132,5 @@ xlim(xlimss); ylim(ylimss); zlim([0 0.075])
 
 
 set(gca,"FontSize",10)
-view(0,90)
-exportgraphics(gcf,"Equal - Rotated.png","Resolution",600)
+% view(0,90)
+exportgraphics(gcf,"Equal.png","Resolution",600)

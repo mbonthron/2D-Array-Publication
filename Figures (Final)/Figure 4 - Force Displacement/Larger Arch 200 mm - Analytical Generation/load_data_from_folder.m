@@ -10,6 +10,7 @@ trial_count = length(file_name);
 displacement_matrix = zeros(750,trial_count);
 force_matrix        = zeros(750,trial_count);
 energy_matrix       = zeros(750,trial_count);
+stiffness_matrix    = zeros(750,trial_count);
 velocity_vector     = [];
 
 for i = 1:trial_count
@@ -45,6 +46,8 @@ for i = 1:trial_count
     force_matrix(:,i) = force_interp;
 
     energy_matrix(:,i) = cumtrapz(position_interp,force_interp);
+    
+    stiffness_matrix(:,i) = gradient(force_interp) ./ gradient(position_interp);
 
 end
 
@@ -64,6 +67,13 @@ e_max = max(energy_matrix,[],2,'omitnan');
 
 e_lower_error = e_max - energy_mean;
 e_upper_error = energy_mean - e_min;
+
+stiffness_mean = mean(stiffness_matrix,2,'omitnan');
+k_min = min(stiffness_matrix,[],2,'omitnan');
+k_max = max(stiffness_matrix,[],2,'omitnan');
+
+k_lower_error = k_max - stiffness_mean;
+k_upper_error = stiffness_mean - k_min;
 
 
 %%

@@ -1,0 +1,138 @@
+function [picture_points_height, picture_points_position] = picture2points(data, file_name)
+%PICTURE2POINTS Summary of this function goes here
+%   Detailed explanation goes here
+% N = 11; %Number of arches
+% arch_center_distance_mm = 120;
+% number_of_points = 5;
+
+N = data.N;
+arch_center_distance_mm = data.arch_center_distance_mm;
+number_of_points = data.number_of_points;
+
+% Length of Perpendicular Point
+len = 500;
+lw = 8;
+
+up_adjac = triu(data.adjacency_matrix,1);
+[left, right] = find(up_adjac == 1);
+
+objectFrame = imread(file_name);
+objectFrame = imrotate(objectFrame,240);
+
+f = figure(1); %clf;
+f.Position = [10 10 900 600];
+
+%% --- Vertex definition ---
+numVerts = size(data.points,1);
+
+verts = zeros(numVerts,2);
+verts_radius = zeros(numVerts,1);
+
+for v = 1:numVerts
+    figure(1); imshow(objectFrame);
+    title(['Draw Vertex ',num2str(v)]);
+    
+    drawn_circle = drawcircle;
+    pause()
+    verts(v,:) = drawn_circle.Position;
+    verts_radius(v) = drawn_circle.Radius;
+
+    close(figure(1))
+end
+
+for v = 1:numVerts
+    objectFrame = insertShape(objectFrame,'Circle',[verts(v,:) verts_radius(v)],'Color','green','linewidth',lw);
+end
+
+
+%%
+% Go side by side - Adding to the plot
+for i = 1:length(left)
+    p1 = verts(left(i),:);
+    p2 = verts(right(i),:);
+
+
+    % Plot the edge axis
+    axis_vector = p2 - p1;
+
+    midpoint = 0.5*(p1 + p2);
+
+    % Plot the x axis
+    objectFrame = insertShape(objectFrame,'Line',[p2  p1],'Color','green','linewidth',lw);
+
+    % Plot the midpoint of the axis
+    objectFrame = insertShape(objectFrame,'Circle',[midpoint 10],'Color','green','linewidth',lw);
+
+    v_perp = [-axis_vector(2), axis_vector(1)];
+    v_perp = v_perp / norm(v_perp);
+
+    % Add perpendicular lines to know where the grab the points from
+    for k = 1:number_of_points
+        % Evenly divide axis to number_of_nodes+2 points and choose i+1th point
+        point_on_axis = p1 + (k)/(number_of_points+1)*(p2-p1);
+        % Find the x point perpendicular to the axis
+        %perpendicular_point = -point_on_axis(2)/perpindicular + point_on_axis(1);
+        perp_1 = point_on_axis + v_perp * len/2;
+        perp_2 = point_on_axis - v_perp * len/2;
+
+        % Add perpendicular line to the axis
+        objectFrame = insertShape(objectFrame,'Line',[perp_1  perp_2],'Color','red','linewidth',lw);
+    end
+end
+
+%%
+im_OG = objectFrame;
+
+for arch_num=1:N
+    %% Grab Values for the hinges and the rise
+    % Determine axis vector as difference between hinges
+    hinge_L = verts(left(arch_num),:);
+    hinge_R = verts(right(arch_num),:);
+    axis_vector = hinge_R - hinge_L;
+
+    % Convert pixels to mm using distance between hinges (pixels) and known
+    % distance between hinges (mm)
+    mm_per_pixel = arch_center_distance_mm / norm(axis_vector);
+
+
+    axis_vector = axis_vector / norm(axis_vector);
+
+    %% Grab the Nodes
+    points_vector = {};
+
+    for i = 1:number_of_points
+        im = insertText(im_OG,[0 0],"Arch " +string(arch_num) + " Point " +string(i),"FontColor","w","FontSize",150);
+        figure(1); 
+        imshow(im);
+
+
+        drawn_point=drawpoint;
+        pause()
+        approx_center = drawn_point.Position;
+        
+        % Not Perpendicular 
+%         node_height_pixels(counter,i) = norm(approx_center - node0_intersection{i})*sign(node0_intersection{i}(2) - approx_center(2));
+        
+        % Perpendicular
+        node_vector = approx_center - hinge_L;
+
+        % Project the node vector onto the axis_vector
+        node_projection = dot(node_vector,axis_vector);
+
+        % Determine the intersect of the node down to the axis
+        node_intersect = hinge_L + node_projection*axis_vector;
+
+        % Store the 'y' value in pixels
+        sign_of_height = -1*cross([node_vector-node_projection*axis_vector, 0],[node_projection*axis_vector,0]); % Get sign from cross product
+        picture_points_height(arch_num,i) = mm_per_pixel * norm(approx_center - node_intersect)*sign(sign_of_height(3)); % Accounts for both possibilities of directionality ;
+        
+        % Store the 'x' value of the point in UL parameters
+        node_distance_UL = node_projection / norm(hinge_R - hinge_L);
+        picture_points_position(arch_num,i) = node_distance_UL;
+
+    end
+
+
+end
+end
+

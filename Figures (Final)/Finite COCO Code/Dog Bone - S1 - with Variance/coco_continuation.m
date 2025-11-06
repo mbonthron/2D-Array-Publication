@@ -29,7 +29,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.3*pi];
-data.UZpoint = [0.025 0.050 0.075 0.087 0.25]*pi;
+data.UZpoint = [0.087]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.0005;
@@ -54,22 +54,22 @@ coco(prob,'dogbone1',[],1,data.parameter_names,data.computational_domain)
 continue_from_BP('dogbone1',1,'dogbone1-1',data)
 
 %% BP2
-continue_from_BP('dogbone1',2,'dogbone1-2',data)
+% continue_from_BP('dogbone1',2,'dogbone1-2',data)
 
 %% BP3
-continue_from_BP('dogbone1',3,'dogbone1-3',data)
-
-%% BP4
-continue_from_BP('dogbone1',4,'dogbone1-4',data)
-
-%% BP5
-continue_from_BP('dogbone1',5,'dogbone1-5',data)
-
-%% BP6
-continue_from_BP('dogbone1',6,'dogbone1-6',data)
-
-%% BP7
-continue_from_BP('dogbone1',7,'dogbone1-7',data)
+% continue_from_BP('dogbone1',3,'dogbone1-3',data)
+% 
+% %% BP4
+% continue_from_BP('dogbone1',4,'dogbone1-4',data)
+% 
+% %% BP5
+% continue_from_BP('dogbone1',5,'dogbone1-5',data)
+% 
+% %% BP6
+% continue_from_BP('dogbone1',6,'dogbone1-6',data)
+% 
+% %% BP7
+% continue_from_BP('dogbone1',7,'dogbone1-7',data)
 
 %%
 load("Frustrated State.mat")
@@ -85,14 +85,14 @@ idx2 = 2;
 figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'dogbone1'        ,'x',idx1,'x',idx2,'b')
-% coco_plot_bd(theme1, 'dogbone1-1'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'dogbone1-1'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-2'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-3'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-4'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-5'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-6'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'dogbone1-7'      ,'x',idx1,'x',idx2,'b')
-% coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
+coco_plot_bd(theme1, 'dogbone1-8'      ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'dogbone1-9'      ,'x',idx1,'x',idx2,'b')
 
 view(3); grid();

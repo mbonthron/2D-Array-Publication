@@ -27,7 +27,7 @@ data.parameter_names = {'b' 't'};
 data.initial_parameter_values = [0;t_val];
 
 data.computational_domain = [-0.01 0.2*pi];
-data.UZpoint = [0.025 0.050 0.075 0.17275]*pi;
+data.UZpoint = [0.1]*pi;
 
 data.iterations_max = 5000;
 data.h_min = 0.5*0.0005;
@@ -51,7 +51,7 @@ continue_from_BP('vtriangle1',1,'vtriangle1-1',data)
 
 
 %% BP2
-continue_from_BP('vtriangle1',2,'vtriangle1-2',data)
+% continue_from_BP('vtriangle1',2,'vtriangle1-2',data)
 
 % %% BP3
 % continue_from_BP('vtriangle1',3,'vtriangle1-3',data)
@@ -73,7 +73,7 @@ figure(9899); clf; hold on
 theme1 = struct('special', {{'HB','BP','EP'}});
 coco_plot_bd(theme1, 'vtriangle1'        ,'x',idx1,'x',idx2,'b')
 coco_plot_bd(theme1, 'vtriangle1-1'      ,'x',idx1,'x',idx2,'b')
-coco_plot_bd(theme1, 'vtriangle1-2'      ,'x',idx1,'x',idx2,'b')
+% coco_plot_bd(theme1, 'vtriangle1-2'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-3'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-4'      ,'x',idx1,'x',idx2,'b')
 % coco_plot_bd(theme1, 'vtriangle1-5'      ,'x',idx1,'x',idx2,'b')

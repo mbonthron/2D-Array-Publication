@@ -2,9 +2,9 @@
 %  Calculating Arch Dimensions
 %  SEE ATTACHED PDF FOR DIAGRAM OF RELEVANT DIMENSIONS
 syms x
-clc
+% clc
 %% Specify Constraints / Desired Dimensions
-b = 10;      % [mm] Dimensional Arch Rise
+b = 13.8;      % [mm] Dimensional Arch Rise
 L = 100;     % [mm] Dimensional Arch Length
 t = 10;   % [mm] Dimensional Distance from centerline of axis to start of tab
 
